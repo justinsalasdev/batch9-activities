@@ -1,0 +1,12 @@
+{
+  "name": "product-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "watch:sass": "sass styles\\index.scss styles\\index.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Justin M. Salas",
+  "license": "ISC"
+}

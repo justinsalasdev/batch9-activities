@@ -1,0 +1,32 @@
+.features {
+  position: relative;
+  height: 40rem;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  &__image {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    // width: 60%;
+    place-self: center;
+  }
+
+  &__heading {
+    font-size: 5rem;
+    padding: 2rem;
+    // position: absolute;
+    top: 2rem;
+    grid-column: 1/-1;
+
+    width: 100%;
+    text-align: right;
+    padding-right: 3rem;
+  }
+
+  &__prag {
+    color: black;
+  }
+}
