@@ -1,37 +1,22 @@
+@import "../variables/colors";
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-#header {
-  height: 100vh;
-  background: linear-gradient(45deg, rgba(black, 0.6), rgba(black, 0.8)),
-    url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
-  margin-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header {
-  &__text {
-    text-transform: uppercase;
-    font-size: 20rem;
-    color: white;
-    text-align: center;
-    font-weight: 900;
-  }
-  &__prag {
-    text-transform: uppercase;
-    color: white;
-  }
-}
-
 footer {
+  height: 20rem;
   background-color: green;
 }
 
 main {
-  height: 100rem;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.power {
+  padding-top: $cut-out;
+  width: 100%;
+  height: 80rem;
+  background-color: $black;
 }

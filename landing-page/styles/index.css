@@ -1,4 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;700&display=swap");
+@font-face {
+  font-family: "Atmospheric";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Atmospheric"), url("../assets/fonts/Atmospheric.ttf") format("truetype"), url("../assets/fonts/Atmospheric.otf") format("opentype");
+}
+@font-face {
+  font-family: "Mechanismo";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Mechanismo"), url("../assets/fonts/Mechanismo.otf") format("opentype");
+}
+@font-face {
+  font-family: "Grave Digger";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Grave Digger"), url("../assets/fonts/Gravedigger.ttf") format("truetype");
+}
 *,
 *::before,
 *::after {
@@ -32,7 +50,7 @@ body {
   overflow-x: hidden;
   font-size: 2.5rem;
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  font-family: "Alegreya Sans SC", sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,34 +72,21 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
-#header {
-  height: 100vh;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
-  margin-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header__text {
-  text-transform: uppercase;
-  font-size: 20rem;
-  color: white;
-  text-align: center;
-  font-weight: 900;
-}
-.header__prag {
-  text-transform: uppercase;
-  color: white;
-}
-
 footer {
+  height: 20rem;
   background-color: green;
 }
 
 main {
-  height: 100rem;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.power {
+  padding-top: 7%;
+  width: 100%;
+  height: 80rem;
+  background-color: black;
 }
 
 .navigation {
@@ -91,7 +96,29 @@ main {
   left: 0;
   height: 10rem;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 2;
+  z-index: 3;
+}
+
+.header {
+  height: 100vh;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 7%;
+}
+.header__text {
+  font-size: 20rem;
+  color: white;
+  font-family: "Grave Digger";
+  font-weight: 300;
+  text-shadow: 1rem 1rem rgba(255, 255, 255, 0.4), 2rem 2rem rgba(255, 255, 255, 0.3);
+}
+.header__prag {
+  font-size: 3rem;
+  font-family: "Atmospheric";
+  color: white;
 }
 
 .drop-bar {
@@ -99,26 +126,40 @@ main {
 }
 
 .features {
+  clip-path: polygon(0 7%, 100% 0, 100% 93%, 0% 100%);
   position: relative;
-  height: 40rem;
+  z-index: 2;
   width: 100%;
   display: grid;
   grid-template-columns: 40rem 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
+  padding: 7% 0;
+  margin-top: -7%;
+  margin-bottom: -7%;
+  background-color: white;
 }
 .features__image {
   grid-column: 1/2;
   grid-row: 2/3;
   place-self: center;
+  width: 30rem;
+  height: 72rem;
+  object-fit: contain;
 }
 .features__heading {
   font-size: 5rem;
   padding: 2rem;
+  font-family: "Mechanismo";
+  text-transform: uppercase;
+  text-shadow: 0.4rem 0.4rem rgba(128, 128, 128, 0.7);
   top: 2rem;
   grid-column: 1/-1;
   width: 100%;
   text-align: right;
   padding-right: 3rem;
+}
+.features__heading > span {
+  color: #555;
 }
 .features__prag {
   color: black;
@@ -126,24 +167,29 @@ main {
 
 .feature__list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
 }
 .feature__item {
-  border: 1px solid gray;
   display: grid;
   grid-template: 1fr 1fr/auto 1fr;
   align-items: center;
 }
 .feature__point {
   align-self: end;
+  font-family: "Atmospheric";
+  font-size: 2.1rem;
+  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.7);
 }
 .feature__desc {
+  font-size: 2.5rem;
   align-self: start;
+  font-weight: 300;
 }
 .feature__image {
-  width: 12rem;
-  border: 1px solid gray;
+  width: 10rem;
   grid-area: 1/1/-1/2;
+  margin: 1.5rem;
 }
 
 /*# sourceMappingURL=index.css.map */
