@@ -3,13 +3,13 @@
 @font-face {
   font-family: "Atmospheric";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   src: local("Atmospheric"), url("../assets/fonts/Atmospheric.ttf") format("truetype"), url("../assets/fonts/Atmospheric.otf") format("opentype");
 }
 @font-face {
   font-family: "Mechanismo";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   src: local("Mechanismo"), url("../assets/fonts/Mechanismo.otf") format("opentype");
 }
 @font-face {
@@ -17,6 +17,18 @@
   font-style: normal;
   font-weight: normal;
   src: local("Grave Digger"), url("../assets/fonts/Gravedigger.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Xolonium";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Xolonium"), url("../assets/fonts/Xolonium-Regular.ttf") format("truetype"), url("../assets/fonts/Xolonium-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Xolonium";
+  font-style: bold;
+  font-weight: 700;
+  src: local("Xolonium"), url("../assets/fonts/Xolonium-Bold.ttf") format("truetype"), url("../assets/fonts/Xolonium-Bold.otf") format("opentype");
 }
 *,
 *::before,
@@ -80,48 +92,7 @@ footer {
 
 main {
   display: grid;
-  grid-template-rows: auto auto;
-}
-
-.material {
-  padding-top: 7%;
-  height: 100rem;
-  width: 100%;
-  background: url("../assets/images/backdown.jpg") center/cover no-repeat;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-}
-.material__desc {
-  grid-area: 1/1/2/2;
-}
-.material__desc > p {
-  color: rgba(0, 0, 0, 0.7);
-  font-family: "Mechanismo";
-  text-transform: uppercase;
-  font-size: 4rem;
-  text-shadow: 0.4rem 0.4rem rgba(128, 128, 128, 0.5);
-}
-.material__desc span {
-  color: crimson;
-}
-.material__feat {
-  text-align: left;
-  grid-area: 2/2/3/3;
-  color: rgba(0, 0, 0, 0.7);
-  font-family: "Mechanismo";
-  font-size: 4rem;
-  padding: 1rem;
-  justify-self: center;
-  text-align: center;
-  text-shadow: 0.4rem 0.4rem rgba(128, 128, 128, 0.7);
-  align-self: end;
-  margin-bottom: 2rem;
-}
-.material__feat > span {
-  display: block;
-  background-image: linear-gradient(to right, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
+  grid-template-rows: auto auto auto auto auto auto;
 }
 
 .navigation {
@@ -152,7 +123,7 @@ main {
 }
 .header__prag {
   font-size: 3rem;
-  font-family: "Atmospheric";
+  font-family: "Xolonium";
   color: white;
 }
 
@@ -211,14 +182,15 @@ main {
 }
 .feature__point {
   align-self: end;
-  font-family: "Lato";
-  font-weight: 900;
+  font-family: "Xolonium";
+  font-weight: 700;
   font-size: 2.2rem;
   margin-bottom: 1rem;
   color: rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
 }
 .feature__desc {
+  font-family: "Lato";
   font-size: 1.8rem;
   align-self: start;
   font-weight: 400;
@@ -253,6 +225,7 @@ main {
   -webkit-background-clip: text;
 }
 .power__desc {
+  font-family: "Xolonium";
   color: white;
   font-weight: 900;
   font-size: 2.2rem;
@@ -268,6 +241,149 @@ main {
   background-clip: text;
   -webkit-background-clip: text;
   text-shadow: none;
+}
+.power sup {
+  font-family: "Lato";
+  text-shadow: none;
+  font-size: 0.6em;
+}
+
+.material {
+  padding-top: 7%;
+  height: 100rem;
+  width: 100%;
+  background: url("../assets/images/backdown.jpg") center/cover no-repeat;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+.material__desc {
+  grid-area: 1/1/2/2;
+}
+.material__desc > p {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: "Mechanismo";
+  text-transform: uppercase;
+  font-size: 4rem;
+  text-shadow: 0.4rem 0.4rem rgba(128, 128, 128, 0.5);
+}
+.material__desc span {
+  color: crimson;
+}
+.material__feat {
+  text-align: left;
+  grid-area: 2/2/3/3;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: "Mechanismo";
+  font-size: 4rem;
+  padding: 1rem;
+  justify-self: center;
+  text-align: center;
+  text-shadow: 0.4rem 0.4rem rgba(128, 128, 128, 0.7);
+  align-self: end;
+  margin-bottom: 2rem;
+}
+.material__feat > span {
+  display: block;
+  background-image: linear-gradient(to right, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
+}
+
+.visual {
+  width: 100%;
+  height: 80rem;
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 50%), url("../assets/images/reality.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.visual__heading {
+  width: 100%;
+  color: white;
+  font-family: "Xolonium";
+  text-transform: uppercase;
+  font-size: 5rem;
+  text-align: center;
+}
+.visual__desc {
+  text-align: center;
+  font-size: 2.2rem;
+  color: white;
+  text-transform: uppercase;
+  max-width: 80rem;
+}
+.visual__feat {
+  font-size: 3rem;
+  font-family: "Mechanismo";
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.visual__feat > sup {
+  font-family: "lato";
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
+.gaming {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-items: end;
+  background: white;
+}
+.gaming__image {
+  margin: 4rem;
+}
+.gaming__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.gaming__heading {
+  font-family: "Xolonium";
+  text-transform: uppercase;
+  text-shadow: 0.4rem 0.4rem rgba(128, 128, 128, 0.5);
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem;
+}
+.gaming__article {
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.15rem;
+  max-width: 80rem;
+}
+
+.usage {
+  width: 100%;
+  height: 70rem;
+  background: url("../assets/images/hammer.jpg") center/cover no-repeat;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  padding-bottom: 6rem;
+}
+.usage__text {
+  grid-area: 2/1/3/2;
+}
+.usage__heading {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Atmospheric";
+  text-shadow: 0.4rem 0.4rem rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+}
+.usage__desc {
+  color: white;
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  font-weight: 400;
+}
+.usage__highlight {
+  color: orange;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=index.css.map */

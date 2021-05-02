@@ -1,4 +1,4 @@
-@import "../variables/colors";
+@import "../variables/constants";
 
 .features {
   clip-path: polygon(0 $cut-out, 100% 0, 100% (100%-$cut-out), 0% 100%);

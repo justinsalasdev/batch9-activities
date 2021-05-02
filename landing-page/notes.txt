@@ -1,5 +1,6 @@
 font-family: 'Alegreya Sans SC', sans-serif;
 font-family: 'Lato', sans-serif;
+font-family: 'Xolonium'
 
 Atmospheric
 
@@ -32,6 +33,12 @@ eye friendly
 you can never have blue light in a black and white screen
 
 
+visuals 
+3310 marks the end of lenses and drives era
+with the reality stone, everything you experience is inherintly recorded
+
+
+
 batch9-activities
 
 commit format
@@ -40,6 +47,14 @@ commit format
 
 
 in main - git branch
+
+a change in the gaming landscape
+3310 owners can play Nokia propriety games which have been clinically proven
+to increase one's physical, mental, and psychological attributes.
+
+
+
+
 
 
 testimonials

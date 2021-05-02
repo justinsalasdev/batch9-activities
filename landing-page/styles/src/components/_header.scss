@@ -1,4 +1,4 @@
-@import "../variables/colors";
+@import "../variables/constants";
 
 .header {
   height: 100vh;
@@ -19,7 +19,7 @@
 
   &__prag {
     font-size: 3rem;
-    font-family: "Atmospheric";
+    font-family: "Xolonium";
     color: $white;
   }
 

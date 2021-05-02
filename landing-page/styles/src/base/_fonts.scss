@@ -4,7 +4,7 @@
 @font-face {
   font-family: "Atmospheric";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   src: local("Atmospheric"), url("../assets/fonts/Atmospheric.ttf") format("truetype"),
     url("../assets/fonts/Atmospheric.otf") format("opentype");
 }
@@ -12,7 +12,7 @@
 @font-face {
   font-family: "Mechanismo";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   src: local("Mechanismo"), url("../assets/fonts/Mechanismo.otf") format("opentype");
 }
 
@@ -21,4 +21,20 @@
   font-style: normal;
   font-weight: normal;
   src: local("Grave Digger"), url("../assets/fonts/Gravedigger.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Xolonium";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Xolonium"), url("../assets/fonts/Xolonium-Regular.ttf") format("truetype"),
+    url("../assets/fonts/Xolonium-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Xolonium";
+  font-style: bold;
+  font-weight: 700;
+  src: local("Xolonium"), url("../assets/fonts/Xolonium-Bold.ttf") format("truetype"),
+    url("../assets/fonts/Xolonium-Bold.otf") format("opentype");
 }

@@ -1,0 +1,39 @@
+@import "../variables/constants.scss";
+
+.gaming {
+  //   height: 80rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-items: end;
+  background: $white;
+
+  &__image {
+    margin: 4rem;
+    // box-shadow: 0.2rem 0.2rem 1.2rem $black_04;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__heading {
+    // text-align: right;
+    font-family: "Xolonium";
+    text-transform: uppercase;
+    text-shadow: 0.4rem 0.4rem $gray_05;
+    color: $black_08;
+    margin-bottom: 1rem;
+  }
+
+  &__article {
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    max-width: 80rem;
+  }
+}
