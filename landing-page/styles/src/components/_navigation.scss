@@ -1,9 +1,10 @@
+@import "../variables/colors";
 .navigation {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   height: 10rem;
-  background-color: rgba(black, 0.6);
-  z-index: 2;
+  background-color: $black_06;
+  z-index: $nav-index;
 }

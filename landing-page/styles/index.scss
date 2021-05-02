@@ -1,7 +1,11 @@
+@use "./src/variables/colors";
+@use './src/base/fonts';
 @use './src/base/base';
 @use './src/components/page';
 @use './src/components/component';
 @use './src/components/navigation';
+@use './src/components/header';
 @use './src/components/drop-bar';
 @use './src/components/features';
 @use './src/components/feature';
+@use './src/components/power';

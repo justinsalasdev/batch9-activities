@@ -1,37 +1,61 @@
+@import "../variables/colors";
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-#header {
-  height: 100vh;
-  background: linear-gradient(45deg, rgba(black, 0.6), rgba(black, 0.8)),
-    url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
-  margin-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header {
-  &__text {
-    text-transform: uppercase;
-    font-size: 20rem;
-    color: white;
-    text-align: center;
-    font-weight: 900;
-  }
-  &__prag {
-    text-transform: uppercase;
-    color: white;
-  }
-}
-
 footer {
+  height: 20rem;
   background-color: green;
 }
 
 main {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.material {
+  padding-top: $cut-out;
   height: 100rem;
+  width: 100%;
+  background: url("../assets/images/backdown.jpg") center/cover no-repeat;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  // align-items: center;
+  justify-items: center;
+
+  &__desc {
+    grid-area: 1/1/2/2;
+    & > p {
+      color: $black_07;
+      font-family: "Mechanismo";
+      text-transform: uppercase;
+      font-size: 4rem;
+      text-shadow: 0.4rem 0.4rem $gray_05;
+    }
+
+    & span {
+      color: crimson;
+    }
+  }
+
+  &__feat {
+    text-align: left;
+    grid-area: 2/2/3/3;
+    color: $black_07;
+    font-family: "Mechanismo";
+    font-size: 4rem;
+    padding: 1rem;
+    justify-self: center;
+    text-align: center;
+    text-shadow: 0.4rem 0.4rem $gray_07;
+    align-self: end;
+    margin-bottom: 2rem;
+
+    & > span {
+      display: block;
+      background-image: linear-gradient(to right, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
+    }
+  }
 }

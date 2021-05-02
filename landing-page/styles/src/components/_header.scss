@@ -1,0 +1,27 @@
+@import "../variables/colors";
+
+.header {
+  height: 100vh;
+  background: linear-gradient(45deg, $black_07, $black_85),
+    url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
+  // margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__text {
+    font-size: 20rem;
+    color: $white;
+    font-family: "Grave Digger";
+    font-weight: 300;
+    text-shadow: 1rem 1rem $white_04, 2rem 2rem $white_03;
+  }
+
+  &__prag {
+    font-size: 3rem;
+    font-family: "Atmospheric";
+    color: $white;
+  }
+
+  padding-bottom: $cut-out;
+}

@@ -1,0 +1,60 @@
+@import "../variables/colors";
+.power {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%-$cut-out);
+  padding-top: $cut-out;
+  width: 100%;
+  margin-bottom: -$cut-out;
+  height: 80rem;
+  background: linear-gradient($black_06, $black_08),
+    url("../assets/images/infinity.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__heading {
+    color: transparent;
+    font-family: "Mechanismo";
+    text-align: center;
+    font-size: 7rem;
+    display: inline-block;
+    // text-shadow: 0 0 0.4rem white;
+    background-image: linear-gradient(
+      to right,
+      $color_ff0066,
+      $color_ffff00,
+      $color_ff00ff,
+      $color_00ff00,
+      $color_0066ff
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  &__desc {
+    // font-family: "Atmospheric";
+    color: $white;
+    font-weight: 900;
+    font-size: 2.2rem;
+    text-shadow: 0 0 0.8rem $white;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  &__6 {
+    color: transparent;
+    font-size: 7rem;
+    background-image: linear-gradient(
+      45deg,
+      $color_ff0066,
+      $color_ffff00,
+      $color_ff00ff,
+      $color_00ff00,
+      $color_0066ff
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: none;
+  }
+}
