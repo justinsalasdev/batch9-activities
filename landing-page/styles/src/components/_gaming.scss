@@ -3,37 +3,42 @@
 .gaming {
   //   height: 80rem;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 20%;
   align-items: center;
   justify-items: end;
   background: $white;
+  // padding: 1rem;
 
   &__image {
-    margin: 4rem;
-    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__text {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    padding: 1rem;
   }
 
   &__heading {
-    // text-align: right;
+    text-align: right;
+    font-size: 1.7rem;
     font-family: "Xolonium";
     text-transform: uppercase;
-    text-shadow: 0.4rem 0.4rem $gray_05;
+    text-shadow: 0.15rem 0.15rem $gray_05;
     color: $black_08;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &__article {
     text-align: right;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 0.8rem;
     font-weight: 400;
-    letter-spacing: 0.15rem;
-    max-width: 80rem;
+    letter-spacing: 0.05rem;
+    max-width: 40rem;
+    width: 100%;
   }
 }
