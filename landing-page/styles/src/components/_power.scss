@@ -5,7 +5,7 @@
   padding-top: $cut-out;
   width: 100%;
   margin-bottom: -$cut-out;
-  height: 30rem;
+  height: 60rem;
   background: linear-gradient($black_06, $black_08),
     url("../assets/images/infinity.jpg") center/cover no-repeat;
   display: flex;
@@ -25,11 +25,11 @@
     // text-shadow: 0 0 0.4rem white;
     background-image: linear-gradient(
       to right,
-      $color_ff0066,
-      $color_ffff00,
-      $color_ff00ff,
-      $color_00ff00,
-      $color_0066ff
+      $red_ff0066,
+      $yellow_ffff00,
+      $magenta_ff00ff,
+      $green_00ff00,
+      $blue_0066ff
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -54,11 +54,11 @@
     font-size: 3rem;
     background-image: linear-gradient(
       45deg,
-      $color_ff0066,
-      $color_ffff00,
-      $color_ff00ff,
-      $color_00ff00,
-      $color_0066ff
+      $red_ff0066,
+      $yellow_ffff00,
+      $magenta_ff00ff,
+      $green_00ff00,
+      $blue_0066ff
     );
     background-clip: text;
     -webkit-background-clip: text;

@@ -3,7 +3,7 @@
 .promotion {
   clip-path: polygon(0 0, 100% $cut-out, 100% 100%-$cut-out, 0 100%);
   width: 100%;
-  height: 30rem;
+  height: 40rem;
   background: linear-gradient(45deg, $white, $white_07),
     url("../assets/images/assorted.jpg") center/cover no-repeat;
 
@@ -11,14 +11,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 2;
+  z-index: 3;
+  margin-bottom: -$cut-out;
   margin-top: -$cut-out;
 
   &__heading {
     font-family: "Xolonium";
     font-size: 4rem;
     color: transparent;
-    background-image: linear-gradient(to right, $color_ff0066, $black, $orange);
+    background-image: linear-gradient(to right, $red_ff0066, $black, $orange);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-stroke: 0.1rem $black_01;
@@ -49,10 +50,10 @@
     width: 13rem;
     background-image: linear-gradient(
       to left,
-      $color_ff0066,
-      $color_ffff00,
-      $color_00ff00,
-      $color_0066ff
+      $red_ff0066,
+      $yellow_ffff00,
+      $green_00ff00,
+      $blue_0066ff
     );
     text-shadow: 0 0 0.4rem white;
 

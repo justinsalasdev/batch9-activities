@@ -5,7 +5,7 @@
   background: url("../assets/images/hammer.jpg") center/cover no-repeat;
 
   display: grid;
-  grid-template-rows: 20rem auto;
+  grid-template-rows: 40rem auto;
   padding-bottom: $cut-out + 2%;
 
   &__text {
@@ -34,7 +34,7 @@
     text-align: center;
     width: 100%;
     max-width: 40rem;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
   }
 
   &__highlight {
