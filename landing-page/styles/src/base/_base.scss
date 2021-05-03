@@ -39,12 +39,10 @@ $max_font: 24px;
 
 html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
-  min-width: 100vw;
 }
 
 body {
   overflow-x: hidden;
-  // font-size: 2.5rem;
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
   font-weight: 300;
@@ -52,6 +50,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 $mod_1: 1.2; // mobile
