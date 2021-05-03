@@ -2,18 +2,22 @@
 
 .features {
   position: relative;
-  clip-path: polygon(0 $cut-out, 100% 0, 100% (100%-$cut-out), 0% 100%);
+  clip-path: polygon(
+    0 $cut-out,
+    100% 0,
+    100% ($features__height - $features__cut-out),
+    0 $features__height
+  );
+  height: $features__height;
   position: relative;
-  height: 43rem;
   z-index: $features-index;
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 3fr;
-  grid-template-rows: $cut-out + 1% auto;
-  padding: $cut-out 0;
-  margin-top: -$cut-out;
-  margin-bottom: -$cut-out;
+  grid-template-rows: $features__cut-out auto;
   background-color: $white;
+  padding: $features__cut-out 0;
+  margin: -$features__cut-out 0;
 
   &__image {
     background: url("../assets/images/single.png") center/contain no-repeat;
@@ -22,20 +26,19 @@
   }
 
   &__heading {
-    top: $cut-out + 1%;
     left: 1rem;
     position: absolute;
     font-size: 1.7rem;
+    top: $features__cut-out;
     margin-bottom: 1.1rem;
     font-family: "Mechanismo";
     text-transform: uppercase;
     text-shadow: 0.2rem 0.2rem $gray_07;
     margin-right: 1rem;
-
     text-align: left;
 
     & > span {
-      color: $color_555;
+      color: $gray_555;
     }
   }
 
@@ -44,7 +47,6 @@
   }
 
   @media screen and (max-width: 825px) {
-    grid-template-rows: $cut-out + 10% auto;
     grid-template-columns: 1fr 1fr;
   }
 }

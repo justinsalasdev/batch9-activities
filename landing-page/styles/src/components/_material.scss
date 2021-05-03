@@ -1,17 +1,17 @@
 @import "../variables/constants";
 .material {
   position: relative;
-  padding-top: $cut-out;
-  margin-top: -$cut-out;
-  height: 50rem;
+  padding-top: $power__cut-out;
+  height: $material__height;
   width: 100%;
   background: url("../assets/images/backdown.jpg") center/cover no-repeat;
   justify-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 
   &__desc {
-    position: absolute;
-    top: 2.5 * $cut-out;
-    left: 2rem;
+    justify-self: start;
+    margin: 0.5rem;
     & > p {
       color: $black_07;
       font-family: "Xolonium";
@@ -27,16 +27,12 @@
   }
 
   &__feat {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     margin: 1rem;
     text-align: right;
-
+    justify-self: end;
     color: $black_06;
     font-family: "Xolonium";
     font-size: 1.7rem;
-    justify-self: center;
     text-shadow: 0.12rem 0.12rem $gray_07;
     align-self: end;
     font-weight: 700;

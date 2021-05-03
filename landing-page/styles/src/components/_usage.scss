@@ -6,7 +6,7 @@
 
   display: grid;
   grid-template-rows: 40rem auto;
-  padding-bottom: $cut-out + 2%;
+  padding-bottom: $promotion__cut-out;
 
   &__text {
     grid-area: 2/1/3/2;
