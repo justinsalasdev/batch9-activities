@@ -9,8 +9,8 @@
   background: $white;
 
   &__image {
-    margin: 4rem;
-    // box-shadow: 0.2rem 0.2rem 1.2rem $black_04;
+    margin: 1rem;
+    width: 2rem;
   }
 
   &__text {
@@ -20,20 +20,21 @@
   }
 
   &__heading {
-    // text-align: right;
+    text-align: right;
+    font-size: 1.8rem;
     font-family: "Xolonium";
     text-transform: uppercase;
-    text-shadow: 0.4rem 0.4rem $gray_05;
+    text-shadow: 0.15rem 0.15rem $gray_05;
     color: $black_08;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &__article {
     text-align: right;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 400;
-    letter-spacing: 0.15rem;
+    letter-spacing: 0.05rem;
     max-width: 80rem;
   }
 }

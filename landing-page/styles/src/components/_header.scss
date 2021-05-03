@@ -10,15 +10,15 @@
   justify-content: center;
   align-items: center;
   &__text {
-    font-size: 20rem;
+    font-size: 10rem;
     color: $white;
     font-family: "Grave Digger";
     font-weight: 300;
-    text-shadow: 1rem 1rem $white_04, 2rem 2rem $white_03;
+    text-shadow: 0.4rem 0.4rem $white_04, 0.8rem 0.8rem $white_03;
   }
 
   &__prag {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-family: "Xolonium";
     color: $white;
   }

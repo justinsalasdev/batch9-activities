@@ -1,23 +1,24 @@
 @import "../variables/constants";
 .material {
+  position: relative;
   padding-top: $cut-out;
-  height: 100rem;
+  height: 50rem;
   width: 100%;
   background: url("../assets/images/backdown.jpg") center/cover no-repeat;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+
   // align-items: center;
   justify-items: center;
 
   &__desc {
-    grid-area: 1/1/2/2;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
     & > p {
       color: $black_07;
       font-family: "Mechanismo";
       text-transform: uppercase;
-      font-size: 4rem;
-      text-shadow: 0.4rem 0.4rem $gray_05;
+      font-size: 2rem;
+      text-shadow: 0.1rem 0.1rem $gray_05;
     }
 
     & span {
@@ -26,19 +27,21 @@
   }
 
   &__feat {
-    text-align: left;
-    grid-area: 2/2/3/3;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: right;
+
     color: $black_07;
     font-family: "Mechanismo";
-    font-size: 4rem;
-    padding: 1rem;
+    font-size: 2rem;
     justify-self: center;
     text-align: center;
-    text-shadow: 0.4rem 0.4rem $gray_07;
+    text-shadow: 0.15rem 0.15rem $gray_07;
     align-self: end;
-    margin-bottom: 2rem;
 
     & > span {
+      text-align: right;
       display: block;
       background-image: linear-gradient(to right, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
     }
