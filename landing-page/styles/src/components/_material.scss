@@ -10,14 +10,15 @@
 
   &__desc {
     position: absolute;
-    top: $cut-out + 10%;
+    top: 2.5 * $cut-out;
     left: 2rem;
     & > p {
       color: $black_07;
-      font-family: "Mechanismo";
+      font-family: "Xolonium";
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: 1.7rem;
       text-shadow: 0.1rem 0.1rem $gray_05;
+      font-weight: 700;
     }
 
     & span {
@@ -27,16 +28,18 @@
 
   &__feat {
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
     text-align: right;
 
     color: $black_06;
-    font-family: "Mechanismo";
-    font-size: 2rem;
+    font-family: "Xolonium";
+    font-size: 1.7rem;
     justify-self: center;
     text-shadow: 0.12rem 0.12rem $gray_07;
     align-self: end;
+    font-weight: 700;
 
     & > span {
       text-align: right;

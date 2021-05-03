@@ -28,18 +28,18 @@
     font-family: "Xolonium";
     text-transform: uppercase;
     text-shadow: 0.15rem 0.15rem $gray_05;
-    color: #4444a5;
+    color: $blue_4444a5;
     margin-bottom: 0.5rem;
   }
 
   &__article {
     text-align: right;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-size: 1rem;
     font-weight: 400;
-    letter-spacing: 0.1rem;
     max-width: 40rem;
     width: 100%;
-    color: $black_06;
+    // color: $black_06;
+    color: $blue_292962;
   }
 }

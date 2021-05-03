@@ -241,21 +241,21 @@ main {
   align-self: end;
   font-family: "Xolonium";
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-bottom: 0.4rem;
   color: rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
 }
 .feature__desc {
   font-family: "Lato";
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   align-self: start;
   font-weight: 400;
-  text-transform: uppercase;
 }
 .feature__image {
   width: 2.5rem;
   grid-area: 1/1/-1/2;
+  margin: 0.5rem;
   object-fit: cover;
 }
 
@@ -325,30 +325,33 @@ main {
 }
 .material__desc {
   position: absolute;
-  top: 17%;
+  top: 17.5%;
   left: 2rem;
 }
 .material__desc > p {
   color: rgba(0, 0, 0, 0.7);
-  font-family: "Mechanismo";
+  font-family: "Xolonium";
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.7rem;
   text-shadow: 0.1rem 0.1rem rgba(128, 128, 128, 0.5);
+  font-weight: 700;
 }
 .material__desc span {
   color: crimson;
 }
 .material__feat {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
   text-align: right;
   color: rgba(0, 0, 0, 0.6);
-  font-family: "Mechanismo";
-  font-size: 2rem;
+  font-family: "Xolonium";
+  font-size: 1.7rem;
   justify-self: center;
   text-shadow: 0.12rem 0.12rem rgba(128, 128, 128, 0.7);
   align-self: end;
+  font-weight: 700;
 }
 .material__feat > span {
   text-align: right;
@@ -375,11 +378,11 @@ main {
 }
 .visual__desc {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: white;
-  text-transform: uppercase;
   max-width: 40rem;
   padding: 0 1rem;
+  text-shadow: 0 0 0.4rem white;
 }
 .visual__feat {
   font-size: 1.5rem;
@@ -425,13 +428,11 @@ main {
 }
 .gaming__article {
   text-align: right;
-  text-transform: uppercase;
   font-size: 1rem;
   font-weight: 400;
-  letter-spacing: 0.1rem;
   max-width: 40rem;
   width: 100%;
-  color: rgba(0, 0, 0, 0.6);
+  color: #292962;
 }
 
 .usage {
@@ -458,14 +459,11 @@ main {
 }
 .usage__desc {
   color: white;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.1rem;
-  font-weight: 400;
+  font-size: 1rem;
   text-align: center;
   width: 100%;
   max-width: 40rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
 }
 .usage__highlight {
   color: orange;
@@ -507,7 +505,7 @@ main {
 }
 .promotion__action {
   appearance: none;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 0.4rem;
   border-radius: 4rem;
   outline: none;

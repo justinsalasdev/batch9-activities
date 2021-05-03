@@ -8,6 +8,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: $cut-out;
+
   &__text {
     font-size: 7rem;
     color: $white;
@@ -25,6 +27,4 @@
     text-align: center;
     margin: 0 2rem;
   }
-
-  padding-bottom: $cut-out;
 }
