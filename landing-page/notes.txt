@@ -71,3 +71,10 @@ it's so limited that only 10 people in the world have one.
 
 16.3625
 rem to px
+
+
+//infinite slide
+translateX
+when element is not in view 
+add to last item
+blank

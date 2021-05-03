@@ -16,6 +16,8 @@
     display: flex;
     align-items: center;
     grid-row: 2/-1;
+    // transform: translate3d(0, 0, 0);
+    // animation: slideshow 40s linear infinite;
   }
 
   &__item {
@@ -75,3 +77,9 @@
     padding-top: 0.1rem;
   }
 }
+
+// @keyframes slideshow {
+//   100% {
+//     -webkit-transform: translateX(-200%);
+//   }
+// }
