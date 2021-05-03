@@ -4,7 +4,7 @@
   position: relative;
   clip-path: polygon(0 $cut-out, 100% 0, 100% (100%-$cut-out), 0% 100%);
   position: relative;
-  height: 40rem;
+  height: 43rem;
   z-index: $features-index;
   width: 100%;
   display: grid;
@@ -30,9 +30,8 @@
     font-family: "Mechanismo";
     text-transform: uppercase;
     text-shadow: 0.2rem 0.2rem $gray_07;
-    padding-right: 1rem;
+    margin-right: 1rem;
 
-    width: 100%;
     text-align: left;
 
     & > span {
