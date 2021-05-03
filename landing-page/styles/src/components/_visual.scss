@@ -16,8 +16,9 @@
     color: $white;
     font-family: "Xolonium";
     text-transform: uppercase;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     text-align: center;
+    padding: 0 1rem;
   }
 
   &__desc {
@@ -27,6 +28,7 @@
     // font-weight: 900;
     text-transform: uppercase;
     max-width: 40rem;
+    padding: 0 1rem;
   }
 
   &__feat {
@@ -35,6 +37,8 @@
     font-family: "Mechanismo";
     margin-top: 1rem;
     color: $white_07;
+    padding: 0 1rem;
+    text-align: center;
 
     & > sup {
       font-family: "lato";

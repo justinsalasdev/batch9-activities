@@ -16,12 +16,13 @@
   }
 
   &__heading {
-    color: $white_07;
+    color: $white_09;
     font-family: "Atmospheric";
     text-shadow: 0.1rem 0.1rem $white_03;
     text-transform: uppercase;
     text-align: center;
     font-size: 1.3rem;
+    padding: 0 2rem;
   }
 
   &__desc {
@@ -33,6 +34,7 @@
     text-align: center;
     width: 100%;
     max-width: 40rem;
+    padding: 0 2rem;
   }
 
   &__highlight {

@@ -4,23 +4,26 @@
   height: 100vh;
   background: linear-gradient(45deg, $black_07, $black_85),
     url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
-  // margin-top: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   &__text {
-    font-size: 10rem;
+    font-size: 7rem;
     color: $white;
     font-family: "Grave Digger";
     font-weight: 300;
     text-shadow: 0.4rem 0.4rem $white_04, 0.8rem 0.8rem $white_03;
+    margin: 2rem 2rem 0.5rem 2rem;
   }
 
   &__prag {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+
     font-family: "Xolonium";
     color: $white;
+    text-align: center;
+    margin: 0 2rem;
   }
 
   padding-bottom: $cut-out;

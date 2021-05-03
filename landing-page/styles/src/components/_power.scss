@@ -1,23 +1,27 @@
 @import "../variables/constants";
 .power {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%-$cut-out);
+  margin-top: -$cut-out;
   padding-top: $cut-out;
   width: 100%;
   margin-bottom: -$cut-out;
-  height: 40rem;
+  height: 30rem;
   background: linear-gradient($black_06, $black_08),
     url("../assets/images/infinity.jpg") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 
   &__heading {
     color: transparent;
     font-family: "Mechanismo";
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     display: inline-block;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
     // text-shadow: 0 0 0.4rem white;
     background-image: linear-gradient(
       to right,
@@ -35,11 +39,14 @@
     font-family: "Xolonium";
     color: $white;
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-shadow: 0 0 0.4rem $white;
     display: flex;
     align-items: center;
     text-transform: uppercase;
+    @media screen and (max-width: 380px) {
+      flex-direction: column;
+    }
   }
 
   &__6 {

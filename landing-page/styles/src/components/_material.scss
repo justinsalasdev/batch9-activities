@@ -11,8 +11,8 @@
 
   &__desc {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: $cut-out + 2%;
+    left: 2rem;
     & > p {
       color: $black_07;
       font-family: "Mechanismo";
@@ -32,18 +32,18 @@
     right: 1rem;
     text-align: right;
 
-    color: $black_07;
+    color: $black_06;
     font-family: "Mechanismo";
     font-size: 2rem;
     justify-self: center;
-    text-align: center;
-    text-shadow: 0.15rem 0.15rem $gray_07;
+    // text-align: center;
+    text-shadow: 0.12rem 0.12rem $gray_07;
     align-self: end;
 
     & > span {
       text-align: right;
-      display: block;
-      background-image: linear-gradient(to right, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
+      // color: #eee;
+      background-image: linear-gradient(45deg, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
     }
   }
 }

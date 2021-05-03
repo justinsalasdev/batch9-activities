@@ -3,25 +3,28 @@
 .gaming {
   //   height: 80rem;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 20%;
   align-items: center;
   justify-items: end;
   background: $white;
+  // padding: 1rem;
 
   &__image {
-    margin: 1rem;
-    width: 2rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__text {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    padding: 1rem;
   }
 
   &__heading {
     text-align: right;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-family: "Xolonium";
     text-transform: uppercase;
     text-shadow: 0.15rem 0.15rem $gray_05;
@@ -32,9 +35,10 @@
   &__article {
     text-align: right;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.05rem;
-    max-width: 80rem;
+    max-width: 40rem;
+    width: 100%;
   }
 }
