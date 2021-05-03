@@ -333,6 +333,7 @@ main {
 }
 .gaming__image {
   margin: 4rem;
+  display: none;
 }
 .gaming__text {
   display: flex;
