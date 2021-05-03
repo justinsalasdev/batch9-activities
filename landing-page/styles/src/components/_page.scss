@@ -11,5 +11,5 @@ footer {
 
 main {
   display: grid;
-  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-rows: repeat(8, auto);
 }
