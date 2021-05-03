@@ -1,0 +1,22 @@
+@import "../variables/constants.scss";
+
+.testimonials {
+  width: 100%;
+  height: 80rem;
+  margin-top: -$cut-out;
+  padding-top: $cut-out;
+  background: limegreen;
+
+  &__list {
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    width: 30rem;
+    height: 40rem;
+  }
+}

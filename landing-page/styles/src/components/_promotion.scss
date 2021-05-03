@@ -1,0 +1,69 @@
+@import "../variables/constants.scss";
+
+.promotion {
+  clip-path: polygon(0 0, 100% $cut-out, 100% 100%-$cut-out, 0 100%);
+  width: 100%;
+  height: 50rem;
+  background: linear-gradient(45deg, $white, $white_07),
+    url("../assets/images/assorted.jpg") center/cover no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  margin-top: -$cut-out;
+
+  &__heading {
+    font-family: "Xolonium";
+    font-size: 8rem;
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      $color_ff0066,
+      //   $color_ffff00,
+      $color_00ff00,
+      $color_ff00ff,
+      $color_0066ff
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0.1rem $black_01;
+  }
+
+  &__desc {
+    color: $black_07;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2.8rem;
+    text-shadow: 0.4rem 0.4rem $gray_03;
+    margin-bottom: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  &__action {
+    appearance: none;
+    font-size: 2rem;
+
+    padding: 1rem;
+    border-radius: 20rem;
+    outline: none;
+    border: none;
+    font-family: "Atmospheric";
+    box-shadow: 0.4rem 0.4rem 0.8rem $black_04;
+    width: 25rem;
+    background-image: linear-gradient(
+      to left,
+      $color_ff0066,
+      $color_ffff00,
+      $color_00ff00,
+      $color_0066ff
+    );
+    text-shadow: 0 0 0.4rem white;
+
+    &:active {
+      transform: translateY(0.2rem);
+      box-shadow: 0.2rem 0.2rem 0.4rem $black_04;
+    }
+  }
+}
