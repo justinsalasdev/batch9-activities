@@ -23,12 +23,13 @@
 
   &__desc {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: $white;
     // font-weight: 900;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     max-width: 40rem;
     padding: 0 1rem;
+    text-shadow: 0 0 0.4rem $white;
   }
 
   &__feat {
@@ -41,7 +42,7 @@
     text-align: center;
 
     & > sup {
-      font-family: "lato";
+      font-family: "Cairo";
       font-size: 0.5em;
       font-weight: 400;
     }

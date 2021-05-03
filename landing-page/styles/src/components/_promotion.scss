@@ -1,7 +1,12 @@
 @import "../variables/constants.scss";
 
 .promotion {
-  clip-path: polygon(0 0, 100% $cut-out, 100% 100%-$cut-out, 0 100%);
+  clip-path: polygon(
+    0 0,
+    100% $promotion__cut-out,
+    100% $promotion__height - $promotion__cut-out,
+    0 $promotion__height
+  );
   width: 100%;
   height: 40rem;
   background: linear-gradient(45deg, $white, $white_07),
@@ -11,9 +16,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 3;
-  margin-bottom: -$cut-out;
-  margin-top: -$cut-out;
+  z-index: $promotion__index;
+  margin: -$promotion__cut-out 0;
+  padding: $promotion__cut-out;
 
   &__heading {
     font-family: "Xolonium";
@@ -39,7 +44,7 @@
 
   &__action {
     appearance: none;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 
     padding: 0.4rem;
     border-radius: 4rem;

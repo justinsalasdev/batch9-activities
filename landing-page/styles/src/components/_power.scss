@@ -1,11 +1,11 @@
 @import "../variables/constants";
 .power {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%-$cut-out);
-  margin-top: -$cut-out;
-  padding-top: $cut-out;
+  clip-path: polygon(0 0, 100% 0, 100% $power__height, 0 $power__height - $power__cut-out);
+  padding-top: $features__cut-out;
+  padding-bottom: $power__cut-out;
+  margin-bottom: -$power__cut-out;
+  height: $power__height;
   width: 100%;
-  margin-bottom: -$cut-out;
-  height: 60rem;
   background: linear-gradient($black_06, $black_08),
     url("../assets/images/infinity.jpg") center/cover no-repeat;
   display: flex;
@@ -66,7 +66,7 @@
   }
 
   & sup {
-    font-family: "Lato";
+    font-family: "Cairo";
     text-shadow: none;
     font-size: 0.8rem;
   }
