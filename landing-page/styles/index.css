@@ -39,6 +39,9 @@
 }
 
 html {
+  min-width: 100vw;
+}
+html {
   font-size: 10px;
 }
 @media screen and (min-width: 300px) {
@@ -59,6 +62,7 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -129,7 +133,7 @@ body {
 }
 
 footer {
-  height: 20rem;
+  height: 10rem;
   background-color: green;
 }
 
@@ -142,7 +146,7 @@ main {
 
 .navigation {
   position: fixed;
-  width: 100%;
+  min-width: 100vw;
   top: 0;
   left: 0;
   height: 4rem;
@@ -236,7 +240,6 @@ main {
   grid-template: 1fr 1fr/auto 1fr;
   align-items: center;
   padding: 0.2rem;
-  width: 100%;
 }
 .feature__point {
   align-self: end;

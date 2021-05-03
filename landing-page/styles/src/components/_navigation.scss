@@ -1,7 +1,7 @@
 @import "../variables/constants";
 .navigation {
   position: fixed;
-  width: 100%;
+  min-width: 100vw;
   top: 0;
   left: 0;
   height: 4rem;

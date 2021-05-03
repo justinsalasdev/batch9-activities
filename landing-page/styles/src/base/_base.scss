@@ -39,6 +39,7 @@ $max_font: 24px;
 
 html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  min-width: 100vw;
 }
 
 body {
@@ -49,6 +50,7 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
   min-height: 100vh;
 }
 
