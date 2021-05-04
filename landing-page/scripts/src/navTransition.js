@@ -1,4 +1,12 @@
-window.addEventListener("scroll", function () {
-  let navBar = document.querySelector(".navigation__bar");
-  navBar.classList.toggle("navigation__bar_sticky", window.scrollY > 0);
-});
+export let navBar = document.querySelector(".navigation__bar");
+let isMobile = false;
+
+export default function () {
+  window.addEventListener("scroll", function () {
+    navBar.classList.toggle(
+      "navigation__bar_sticky",
+      //don't toggle sticky when in mobile;
+      window.scrollY > 0
+    );
+  });
+}
