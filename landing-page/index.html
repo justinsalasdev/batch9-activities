@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
-    <script type="module" src="./scripts/src/navTransition.js" async></script>
+
+    <!-- scrips-->
+    <script type="module" src="./scripts/src/navTransition.js" defer></script>
+    <script type="module" src="./scripts/src/navExpand.js" defer></script>
     <script type="module" src="./scripts/src/multipleSlide.js" defer></script>
     <script type="module" src="./scripts/index.js" defer></script>
     <title>Document</title>
   </head>
   <body>
-    <div class="navigation__bar">
-      <a class="navigation__home" href="#">NOKIA</a>
-      <button class="navigation__action" type="button">+</button>
-      <nav class="navigation__menu">
+    <div class="navigation__bar" >
+      <a class="navigation__home " href="#">NOKIA</a>
+      <button class="navigation__action" type="button"><span>&#171;</span></button>
+      <nav class="navigation__menu navigation__menu_hidden">
         <ul class="navigation__list">
           <li class="navigation__item">
             <a class="navigation__link" href="#">FEATURES</a>
