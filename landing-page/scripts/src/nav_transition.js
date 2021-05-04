@@ -1,5 +1,4 @@
 export let navBar = document.querySelector(".navigation__bar");
-let isMobile = false;
 
 export default function () {
   window.addEventListener("scroll", function () {

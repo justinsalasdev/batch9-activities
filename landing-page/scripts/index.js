@@ -1,6 +1,6 @@
-import startAnimation from "./src/multipleSlide.js";
-import addNavTransition from "./src/navTransition.js";
-import addNavExpansion from "./src/navExpand.js";
+import startAnimation from "./src/multiple_slide.js";
+import addNavTransition from "./src/nav_transition.js";
+import addNavExpansion from "./src/nav_expand.js";
 
 addNavExpansion();
 addNavTransition();

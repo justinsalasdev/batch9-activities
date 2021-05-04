@@ -1,4 +1,4 @@
-import { navBar } from "./navTransition.js";
+import { navBar } from "./nav_transition.js";
 const navAction = navBar.querySelector(".navigation__action");
 const navMenu = navBar.querySelector(".navigation__menu");
 let isOpen = false;
