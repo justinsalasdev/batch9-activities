@@ -3,13 +3,14 @@
 .testimonials {
   position: relative;
   width: 100%;
-  height: $testimonials__height;
   padding-top: $promotion__cut-out;
   background: $gray_222;
   display: grid;
-  grid-template-rows: $promotion__cut-out 1fr;
+  grid-template-rows: $promotion__cut-out $testimonials__height;
   align-items: center;
   overflow-x: hidden;
+  background: linear-gradient(45deg, $black_07, $black_06),
+    url("../assets/images/galaxy.jpeg") center/cover no-repeat;
 
   &__list {
     color: $white;
@@ -23,16 +24,17 @@
     position: relative;
     width: 15rem;
     height: 18rem;
-    background-color: $white_eee;
+    background: $white_04;
+    color: $white_09;
     border-radius: 1rem;
-    margin: 0.5rem;
-    box-shadow: 0.1rem 0.1rem 0.4rem $black;
+    margin: 0.6rem;
+    box-shadow: 0.1rem 0.1rem 0.8rem $black_07;
 
     display: grid;
     grid-template-rows: 1.25rem 1fr auto auto;
 
     &:nth-child(even) {
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
   }
 

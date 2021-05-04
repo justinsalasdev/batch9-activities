@@ -1,7 +1,7 @@
 @import "../variables/constants";
 
 .header {
-  min-height: 100vh;
+  height: 125vh;
   background: linear-gradient(45deg, $black_07, $black_85),
     url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
   display: flex;

@@ -1,27 +1,29 @@
 const parent = document.querySelector(".testimonials__list");
 const targets = parent.children;
 let rafId = null;
-const speed = 5;
+const speed = 1;
 
 export default function startAnimation() {
   const rects = [];
   const recurringStarts = [];
-
+  const parentWidth = parent.offsetWidth;
+  const windowWidth = window.innerWidth;
+  const boxWidth = windowWidth >= parentWidth ? windowWidth : parentWidth;
   for (let i = 0; i <= targets.length - 1; i++) {
     rects.push(targets[i].getBoundingClientRect());
   }
   const initialWidths = rects.map(rect => rect.width);
   const initialRights = rects.map(rect => rect.right);
-  const windowWidth = window.innerWidth;
-  const _recurringDists = rects.map(rect => rect.width + windowWidth);
+
+  const _recurringDists = rects.map(rect => rect.width + boxWidth);
 
   for (let i = 0; i <= targets.length - 1; i++) {
-    recurringStarts.push(windowWidth - initialRights[i] + initialWidths[i]);
+    recurringStarts.push(boxWidth - initialRights[i] + initialWidths[i]);
   }
 
   //mutable
 
-  let xPositionsInitial = [0, 0, 0, 0, 0];
+  let xPositionsInitial = initialRights.map(_ => 0);
   let initialDists = [...initialRights];
   let recurringDists = [..._recurringDists];
   let xPositions = [...recurringStarts];

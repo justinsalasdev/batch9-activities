@@ -5,15 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
-    <script type="module" src="./scripts/src/multipleslide2.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/src/navTransition.js" async></script>
+    <script type="module" src="./scripts/src/multipleSlide.js" defer></script>
+    <script type="module" src="./scripts/index.js" defer></script>
     <title>Document</title>
   </head>
   <body>
-    <nav class="drop-bar"></nav>
-    <nav class="navigation">
-      <a>LOGO</a>
-    </nav>
+    <div class="navigation__bar">
+      <a class="navigation__home" href="#">NOKIA</a>
+      <button class="navigation__action" type="button">+</button>
+      <nav class="navigation__menu">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a class="navigation__link" href="#">FEATURES</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="#">BUILD</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="#">GAMING</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="#">PRICING</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="#">REVIEWS</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="#">VALUE</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <header id="header" class="header">
       <h1 class="header__text">3310</h1>
       <p class="header__prag">THE YEAR COMPETITORS WILL FINALLY CATCH UP</p>
@@ -116,7 +139,6 @@
 
       <section class="testimonials">
         <h2 class="testimonials__heading">Testimonials</h2>
-        <div class="marquee" data-speed="5">
           <ul class="testimonials__list">
             <li class="testimonials__item">
               <div class="filler"></div>
@@ -159,19 +181,38 @@
               </p>
               <p class="testimony__author">Thanos</p>
               <p class="testimony__job">The Mad Titan</p>
-            </li>
-            <li class="testimonials__item">
-              <div class="filler"></div>
-              <img class="testimony__photo" src="assets/images/thanos.jpg" />
-              <p class="testimony">
-                The snap I made destroyed my gauntlet and nearly killed me. Good thing, there's 3310
-                to finish the work. I used it to destroy all the infinity stones.
-              </p>
-              <p class="testimony__author">Thanos</p>
-              <p class="testimony__job">The Mad Titan</p>
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/stevejobs.jpg" />
+                <p class="testimony">
+                  One of my biggest regrets is that I didn't invest in Nokia and continued building fragile smartphones.
+                </p>
+                <p class="testimony__author">Steve Jobs</p>
+                <p class="testimony__job">Apple</p>
+              </li>
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/jackma.jpg" />
+                <p class="testimony">
+                  I don't know if this is relevant but everything written beside my photo is true. If you're rich you can make stuff up.
+                </p>
+                <p class="testimony__author">Jack Ma</p>
+                <p class="testimony__job">Alibaba</p>
+              </li>
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/alien.jpg" />
+                <p class="testimony">
+                  ⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.
+                </p>
+                <p class="testimony__author">⏃⋏⎅ ⏁⟟⍀</p>
+                <p class="testimony__job">Alien</p>
+              </li>
             </li>
           </ul>
-        </div>
+      </section>
+      <section class="value">
+
       </section>
     </main>
     <footer></footer>

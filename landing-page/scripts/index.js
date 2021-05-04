@@ -1,3 +1,3 @@
-import startAnimation from "./src/multipleslide2.js";
+import startAnimation from "./src/multipleSlide.js";
 
 requestAnimationFrame(startAnimation());

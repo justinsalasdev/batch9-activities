@@ -1,10 +1,73 @@
 @import "../variables/constants";
 .navigation {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 4rem;
-  background-color: $black_06;
-  z-index: $nav-index;
+  position: relative;
+
+  &__bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 4rem;
+    background-color: transparent;
+    z-index: $nav-index;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.2s ease-in;
+
+    &_sticky {
+      background-color: $gray_222;
+      height: 4.2rem;
+      box-shadow: 0 0.2rem 0.4rem $black_06;
+
+      .navigation__home {
+        text-shadow: none;
+      }
+
+      .navigation__link {
+        text-shadow: none;
+      }
+    }
+  }
+
+  &__home {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: $white;
+    text-shadow: 0 0 0.2rem $white;
+    font-size: 1.5rem;
+    // transition: text-shadow 0.3s ease-in;
+    // margin-left: 0.5rem;
+  }
+
+  &__menu {
+    margin-right: 1rem;
+    ul {
+      display: flex;
+    }
+  }
+
+  &__link {
+    padding: 0.2rem 0.6rem;
+    color: $white;
+    text-shadow: 0 0 0.3rem $white;
+    font-size: 1rem;
+    // transition: text-shadow 0.3s ease-in;
+  }
+
+  &__action {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5rem;
+    font-size: 1rem;
+    // padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    border-radius: 100%;
+  }
 }
