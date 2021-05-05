@@ -13,10 +13,13 @@
     url("../assets/images/galaxy.jpeg") center/cover no-repeat;
 
   &__list {
-    color: $white;
-    display: flex;
-    align-items: center;
+    display: inline-flex;
     grid-row: 2/-1;
+  }
+
+  &__batch {
+    color: $white;
+    display: inline-flex;
   }
 
   &__item {

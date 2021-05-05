@@ -712,10 +712,12 @@ main {
   background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url("../assets/images/galaxy.jpeg") center/cover no-repeat;
 }
 .testimonials__list {
-  color: white;
-  display: flex;
-  align-items: center;
+  display: inline-flex;
   grid-row: 2/-1;
+}
+.testimonials__batch {
+  color: white;
+  display: inline-flex;
 }
 .testimonials__item {
   color: rgba(0, 0, 0, 0.8);
