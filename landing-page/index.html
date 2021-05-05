@@ -9,34 +9,37 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="modal">
-      <form action="" id="survey-form" class="form">
-        <!--name-->
-        <div class="text-group">
-          <div class="text-input">
-            <input type="text" class="text__field" id="name" placeholder="." />
-            <label for="name" class="text__label" id="name-label"
-              >Full name</label
-            >
+    <div class="modal modal_hidden">
+      <div class="modal__shell">
+        <button class="modal__action" type="button">&#215;</button>
+        <form action="" id="survey-form" class="form">
+          <!--name-->
+          <div class="text-group">
+            <div class="text-input">
+              <input type="text" class="text__field" id="name" placeholder="." />
+              <label for="name" class="text__label" id="name-label"
+                >Full name</label
+              >
+            </div>
+            <span class="text__toolkit"></span>
           </div>
-          <span class="text__toolkit"></span>
-        </div>
-
-        <!--email-->
-        <div class="text-group">
-          <div class="text-input">
-            <input type="text" class="text__field" id="email" placeholder="." />
-            <label for="email" class="text__label" id="email-label"
-              >Email</label
-            >
+  
+          <!--email-->
+          <div class="text-group">
+            <div class="text-input">
+              <input type="text" class="text__field" id="email" placeholder="." />
+              <label for="email" class="text__label" id="email-label"
+                >Email</label
+              >
+            </div>
+            <span class="text__toolkit"></span>
           </div>
-          <span class="text__toolkit"></span>
-        </div>
-        <button class="button" type="submit">Submit</button>
-        <p class="form-error"></p>
-      </form>
+          <button class="button" type="submit">Submit</button>
+          <p class="form-error"></p>
+        </form>
+      </div>
     </div>
-    <div class="modal__backdrop"></div>
+    <div class="modal__backdrop modal__backdrop_hidden"></div>
     <div class="navigation__bar" >
       <a class="navigation__home " href="#">NOKIA</a>
       <button class="navigation__action" type="button"><span>&#171;</span></button>
