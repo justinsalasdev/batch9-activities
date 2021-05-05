@@ -1,11 +1,9 @@
 @import "../variables/constants.scss";
 .feature {
   &__list {
-    // background: pink;
     grid-area: 2/2/3/3;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    // grid-template-rows: auto auto;
     padding: 0.5rem;
   }
 
@@ -22,7 +20,7 @@
     font-family: "Xolonium";
     // font-family: "Atmospheric";
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 0.4rem;
     color: $black_07;
     text-transform: uppercase;
@@ -31,16 +29,24 @@
 
   &__desc {
     font-family: "Cairo";
-    font-size: 0.9rem;
+    font-size: 1rem;
     align-self: start;
     font-weight: 400;
     // text-transform: uppercase;
   }
 
   &__image {
-    width: 2.5rem;
+    width: 4rem;
     grid-area: 1/1/-1/2;
-    margin: 0.5rem;
+    margin: 1rem;
     object-fit: cover;
+  }
+}
+
+@media screen and (max-width: $features-breakpoint) {
+  .feature {
+    &__list {
+      grid-area: 2/1/-1/-1;
+    }
   }
 }
