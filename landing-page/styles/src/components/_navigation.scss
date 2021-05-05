@@ -1,8 +1,5 @@
 @import "../variables/constants";
 
-$nav-breakpoint: 490px;
-$menu-mobile-offset: 1rem;
-
 .navigation {
   position: relative;
 
@@ -76,107 +73,6 @@ $menu-mobile-offset: 1rem;
     border-radius: 100%;
   }
 }
-
-@media screen and (max-width: 490px) {
-  .navigation {
-    position: relative;
-
-    &__bar {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      height: 0;
-      z-index: $nav-index;
-      background-color: transparent;
-      transition: none;
-      // display: flex;
-      // justify-content: flex-end;
-      // align-items: center;
-
-      &_sticky {
-        background-color: transparent;
-        box-shadow: none;
-        transform: none;
-      }
-    }
-
-    &__home {
-      display: block;
-      position: fixed;
-      top: 0.7rem;
-      transform: none;
-      left: 0.7rem;
-      color: transparent;
-      text-shadow: none;
-      font-size: 2rem;
-      padding: 0.5rem 3rem 0.5rem 0.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 1.2rem $black_04;
-      background: url("../assets/icons/nokia-logo.jpg") center/cover no-repeat;
-    }
-
-    &__menu {
-      position: fixed;
-      margin-right: 0;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: $white;
-      padding: 1.2rem;
-      z-index: $nav-index;
-      border-top-left-radius: 0.8rem;
-      border-bottom-left-radius: 0.8rem;
-      box-shadow: 0 0 1.2rem $black_04;
-
-      &_show {
-        animation: fade-in 0.2s ease-in;
-      }
-
-      &_hide {
-        animation: fade-out 0.2s ease-in;
-      }
-
-      &_hidden {
-        display: none;
-      }
-    }
-
-    &__list {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    &__link {
-      display: block;
-      padding: 0.2rem;
-      color: $black;
-      text-shadow: none;
-      font-size: 1.4rem;
-    }
-
-    &__action {
-      display: block;
-      position: fixed;
-      top: 1rem;
-      transform: none;
-      right: 1rem;
-      font-size: 1.5rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      padding-bottom: 0.2rem;
-      box-shadow: 0 0 1rem $black_04;
-      background: $white;
-      // border-radius:
-
-      &_shown {
-        animation: button-to-left 0.2s linear forwards;
-      }
-    }
-  }
-}
-
-//animations
 
 @keyframes button-to-left {
   0% {

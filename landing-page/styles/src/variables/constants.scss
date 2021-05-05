@@ -36,7 +36,7 @@ $blue_0066ff: #0066ff;
 
 //dimensions
 $features__cut-out: 5rem;
-$features__height: 43rem;
+$features__height: 60rem;
 
 $power__cut-out: 5rem;
 $power__height: 60rem;
@@ -48,7 +48,11 @@ $promotion__height: 40rem;
 
 $testimonials__height: 32rem;
 
-$cut-out: 7%;
+//breakpoints
+$nav-breakpoint: 490px;
+$features-breakpoint: 673px;
+
+//z-index
 $features-index: 2;
 $promotion__index: 2;
 $nav-index: 3;
