@@ -9,7 +9,5 @@
   },
   "author": "Justin M. Salas",
   "license": "ISC",
-  "dependencies": {
-    "@egstad/marquee": "^3.0.2"
-  }
+  "dependencies": {}
 }

@@ -482,7 +482,7 @@ main {
   align-items: center;
   text-transform: uppercase;
 }
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 516px) {
   .power__desc {
     flex-direction: column;
   }
@@ -699,7 +699,7 @@ main {
   font-family: "Xolonium";
   font-size: 4rem;
   color: transparent;
-  background-image: linear-gradient(to right, #ff0066, black);
+  background-image: linear-gradient(to right, black, #ff0066);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-stroke: 0.1rem rgba(0, 0, 0, 0.1);
@@ -806,6 +806,168 @@ main {
 .testimony__job {
   padding: 1rem;
   padding-top: 0.1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 30rem;
+  width: 95%;
+  background: pink;
+  z-index: 5;
+  border-radius: 0.8rem;
+}
+
+.modal__backdrop {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 4;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal__action {
+  position: relative;
+}
+
+.form,
+#survey-form {
+  width: 100%;
+  padding: 3rem 1rem 0.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  gap: 0.8rem;
+  background-color: white;
+  box-shadow: 0.1rem 0.1rem 0.8rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.8rem;
+}
+
+.form-error {
+  text-align: center;
+  margin-top: -1rem;
+  font-size: 0.7rem;
+  color: crimson;
+  height: 2.2rem;
+}
+
+.text-group {
+  margin-top: 1rem;
+  margin-left: 0.75rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1rem;
+}
+
+.text-input {
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+.text-input::after {
+  content: "";
+  position: absolute;
+  bottom: -0.01rem;
+  left: 0;
+  height: 0.1rem;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+.text-input_error::after {
+  background: rgba(220, 20, 60, 0.1);
+}
+
+.text__label {
+  font-weight: 300;
+  position: absolute;
+  font-size: 1.2rem;
+  left: 0.25rem;
+  transition: all 0.1s ease-in;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: initial;
+}
+.text__label_error {
+  color: crimson;
+  text-shadow: 0 0 0.2rem rgba(220, 20, 60, 0.3);
+}
+
+.text__field {
+  appearance: none;
+  font-weight: 300;
+  padding-bottom: 0.09rem;
+  z-index: 2;
+  font-family: "Cairo";
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #666;
+  padding-left: 0.25rem;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid transparent;
+  transition: border-bottom 0.1s ease-in;
+  background-color: transparent;
+}
+.text__field::placeholder {
+  color: transparent;
+}
+.text__field:focus {
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.3);
+}
+.text__field_error {
+  color: crimson;
+}
+.text__field_error:focus {
+  border-bottom: 0.1rem solid rgba(220, 20, 60, 0.5);
+}
+.text__field:not(:placeholder-shown) + .text__label, .text__field:focus + .text__label {
+  top: -1.2rem;
+  transform: translateY(0);
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+.text__toolkit {
+  padding-top: 0.5rem;
+  display: none;
+  width: 100%;
+  font-size: 0.7rem;
+  padding-left: 0.25rem;
+}
+.text__toolkit_error {
+  display: block;
+  color: crimson;
+}
+
+.button {
+  margin: 1rem 0 0.5rem 0;
+  border-radius: 20rem;
+  width: 8rem;
+  padding: 0.3rem;
+  font-size: 1rem;
+  font-family: "Cairo";
+  font-weight: 300;
+  text-transform: uppercase;
+  vertical-align: middle;
+  outline: none;
+  border: none;
+  background-color: #222;
+  color: white;
+  align-self: center;
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+.button:active {
+  transform: translateY(0.1rem);
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+.modal__button {
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 /*# sourceMappingURL=index.css.map */

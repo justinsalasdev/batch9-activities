@@ -44,7 +44,8 @@
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    @media screen and (max-width: 380px) {
+
+    @media screen and (max-width: 516px) {
       flex-direction: column;
     }
   }
