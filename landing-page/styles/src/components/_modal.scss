@@ -1,0 +1,25 @@
+@import "../variables/constants.scss";
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 30rem;
+  width: 95%;
+  background: pink;
+  z-index: $modal-index;
+  border-radius: 0.8rem;
+}
+
+.modal__backdrop {
+  position: fixed;
+  background: $black_08;
+  z-index: $backdrop-index;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal__action {
+  position: relative;
+}

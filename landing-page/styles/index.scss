@@ -15,3 +15,9 @@
 @use './src/components/demo';
 @use './src/components/promotion';
 @use './src/components/testimonials';
+@use './src/components/modal';
+
+//form from previous project
+@use './src/components/form-elements/form';
+@use './src/components/form-elements/text-group';
+@use './src/components/form-elements/button';
