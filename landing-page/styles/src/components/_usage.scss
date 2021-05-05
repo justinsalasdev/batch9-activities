@@ -5,7 +5,7 @@
   background: url("../assets/images/hammer.jpg") center/cover no-repeat;
 
   display: grid;
-  grid-template-rows: 40rem auto;
+  grid-template-rows: 30rem auto;
   padding-bottom: $promotion__cut-out;
 
   &__text {
@@ -26,11 +26,9 @@
   }
 
   &__desc {
+    text-transform: uppercase;
     color: $white;
-    // text-transform: uppercase;
     font-size: 1rem;
-    // letter-spacing: 0.1rem;
-    // font-weight: 400;
     text-align: center;
     width: 100%;
     max-width: 40rem;
