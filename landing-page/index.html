@@ -9,7 +9,7 @@
     <!-- scrips-->
     <script type="module" src="scripts/src/nav_transition.js" defer></script>
     <script type="module" src="scripts/src/nav_expand.js" defer></script>
-    <script type="module" src="scripts/src/multiple_slide.js" defer></script>
+    <script type="module" src="scripts/src/slide.js" defer></script>
     <script type="module" src="scripts/index.js" defer></script>
     <title>Document</title>
   </head>
@@ -143,75 +143,148 @@
       <section class="testimonials">
         <h2 class="testimonials__heading">Testimonials</h2>
           <ul class="testimonials__list">
-            <li class="testimonials__item">
-              <div class="filler"></div>
-              <img class="testimony__photo" src="assets/images/enrile.jpg" />
-              <p class="testimony">
-                I'm a proud 3310 user and have witnessed how this amazing product have improved from
-                being powered by fire, to being more than an Azgardian tech.
-              </p>
-              <p class="testimony__author">Juan Ponce Enrile</p>
-              <p class="testimony__job">Senator</p>
-            </li>
-            <li class="testimonials__item">
-              <div class="filler"></div>
-              <img class="testimony__photo" src="assets/images/thor.jpg" />
-              <p class="testimony">
-                This proved to be a superb alternative to my Mjolnir back when I lost my worthiness.
-                Sometimes, I think it's even better. There's not a single day that I didn't miss my
-                3310 hammer.
-              </p>
-              <p class="testimony__author">Thor</p>
-              <p class="testimony__job">God of Thunder</p>
-            </li>
-
-            <li class="testimonials__item">
-              <div class="filler"></div>
-              <img class="testimony__photo" src="assets/images/guy1.jpg" />
-              <p class="testimony">
-                I remember that day when I dropped this phone in a diner. I paid the repair cost of
-                all the damaged floorings. This phone also made me broke.
-              </p>
-              <p class="testimony__author">James Andrews</p>
-              <p class="testimony__job">Just a regular guy</p>
-            </li>
-            <li class="testimonials__item">
-              <div class="filler"></div>
-              <img class="testimony__photo" src="assets/images/thanos.jpg" />
-              <p class="testimony">
-                The snap I made destroyed my gauntlet and nearly killed me. Good thing, there's 3310
-                to finish the work. I used it to destroy all the infinity stones.
-              </p>
-              <p class="testimony__author">Thanos</p>
-              <p class="testimony__job">The Mad Titan</p>
+            <div class="testimonials__batch">
               <li class="testimonials__item">
                 <div class="filler"></div>
-                <img class="testimony__photo" src="assets/images/stevejobs.jpg" />
+                <img class="testimony__photo" src="assets/images/enrile.jpg" />
                 <p class="testimony">
-                  One of my biggest regrets is that I didn't invest in Nokia and continued building fragile smartphones.
+                  I'm a proud 3310 user and have witnessed how this amazing product have improved from
+                  being powered by fire, to being more than an Azgardian tech.
                 </p>
-                <p class="testimony__author">Steve Jobs</p>
-                <p class="testimony__job">Apple</p>
+                <p class="testimony__author">Juan Ponce Enrile</p>
+                <p class="testimony__job">Senator</p>
               </li>
               <li class="testimonials__item">
                 <div class="filler"></div>
-                <img class="testimony__photo" src="assets/images/jackma.jpg" />
+                <img class="testimony__photo" src="assets/images/thor.jpg" />
                 <p class="testimony">
-                  I don't know if this is relevant but everything written beside my photo is true. If you're rich you can make stuff up.
+                  This proved to be a superb alternative to my Mjolnir back when I lost my worthiness.
+                  Sometimes, I think it's even better. There's not a single day that I didn't miss my
+                  3310 hammer.
                 </p>
-                <p class="testimony__author">Jack Ma</p>
-                <p class="testimony__job">Alibaba</p>
+                <p class="testimony__author">Thor</p>
+                <p class="testimony__job">God of Thunder</p>
+              </li>
+  
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/guy1.jpg" />
+                <p class="testimony">
+                  I remember that day when I dropped this phone in a diner. I paid the repair cost of
+                  all the damaged floorings. This phone also made me broke.
+                </p>
+                <p class="testimony__author">James Andrews</p>
+                <p class="testimony__job">Just a regular guy</p>
               </li>
               <li class="testimonials__item">
                 <div class="filler"></div>
-                <img class="testimony__photo" src="assets/images/alien.jpg" />
+                <img class="testimony__photo" src="assets/images/thanos.jpg" />
                 <p class="testimony">
-                  ⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.
+                  The snap I made destroyed my gauntlet and nearly killed me. Good thing, there's 3310
+                  to finish the work. I used it to destroy all the infinity stones.
                 </p>
-                <p class="testimony__author">⏃⋏⎅ ⏁⟟⍀</p>
-                <p class="testimony__job">Alien</p>
+                <p class="testimony__author">Thanos</p>
+                <p class="testimony__job">The Mad Titan</p>
+                <li class="testimonials__item">
+                  <div class="filler"></div>
+                  <img class="testimony__photo" src="assets/images/stevejobs.jpg" />
+                  <p class="testimony">
+                    One of my biggest regrets is that I didn't invest in Nokia and continued building fragile smartphones.
+                  </p>
+                  <p class="testimony__author">Steve Jobs</p>
+                  <p class="testimony__job">Apple</p>
+                </li>
+                <li class="testimonials__item">
+                  <div class="filler"></div>
+                  <img class="testimony__photo" src="assets/images/jackma.jpg" />
+                  <p class="testimony">
+                    I don't know if this is relevant but everything written beside my photo is true. If you're rich you can make stuff up.
+                  </p>
+                  <p class="testimony__author">Jack Ma</p>
+                  <p class="testimony__job">Alibaba</p>
+                </li>
+                <li class="testimonials__item">
+                  <div class="filler"></div>
+                  <img class="testimony__photo" src="assets/images/alien.jpg" />
+                  <p class="testimony">
+                    ⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.
+                  </p>
+                  <p class="testimony__author">⏃⋏⎅ ⏁⟟⍀</p>
+                  <p class="testimony__job">Alien</p>
+                </li>
               </li>
-            </li>
+            </div>
+            <div class="testimonials__batch" aria-hidden="true">
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/enrile.jpg" />
+                <p class="testimony">
+                  I'm a proud 3310 user and have witnessed how this amazing product have improved from
+                  being powered by fire, to being more than an Azgardian tech.
+                </p>
+                <p class="testimony__author">Juan Ponce Enrile</p>
+                <p class="testimony__job">Senator</p>
+              </li>
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/thor.jpg" />
+                <p class="testimony">
+                  This proved to be a superb alternative to my Mjolnir back when I lost my worthiness.
+                  Sometimes, I think it's even better. There's not a single day that I didn't miss my
+                  3310 hammer.
+                </p>
+                <p class="testimony__author">Thor</p>
+                <p class="testimony__job">God of Thunder</p>
+              </li>
+  
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/guy1.jpg" />
+                <p class="testimony">
+                  I remember that day when I dropped this phone in a diner. I paid the repair cost of
+                  all the damaged floorings. This phone also made me broke.
+                </p>
+                <p class="testimony__author">James Andrews</p>
+                <p class="testimony__job">Just a regular guy</p>
+              </li>
+              <li class="testimonials__item">
+                <div class="filler"></div>
+                <img class="testimony__photo" src="assets/images/thanos.jpg" />
+                <p class="testimony">
+                  The snap I made destroyed my gauntlet and nearly killed me. Good thing, there's 3310
+                  to finish the work. I used it to destroy all the infinity stones.
+                </p>
+                <p class="testimony__author">Thanos</p>
+                <p class="testimony__job">The Mad Titan</p>
+                <li class="testimonials__item">
+                  <div class="filler"></div>
+                  <img class="testimony__photo" src="assets/images/stevejobs.jpg" />
+                  <p class="testimony">
+                    One of my biggest regrets is that I didn't invest in Nokia and continued building fragile smartphones.
+                  </p>
+                  <p class="testimony__author">Steve Jobs</p>
+                  <p class="testimony__job">Apple</p>
+                </li>
+                <li class="testimonials__item">
+                  <div class="filler"></div>
+                  <img class="testimony__photo" src="assets/images/jackma.jpg" />
+                  <p class="testimony">
+                    I don't know if this is relevant but everything written beside my photo is true. If you're rich you can make stuff up.
+                  </p>
+                  <p class="testimony__author">Jack Ma</p>
+                  <p class="testimony__job">Alibaba</p>
+                </li>
+                <li class="testimonials__item">
+                  <div class="filler"></div>
+                  <img class="testimony__photo" src="assets/images/alien.jpg" />
+                  <p class="testimony">
+                    ⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.⏁⊑⟒ ⏁⊑⟟⍀⎅ ⏃☊⏁ ⍙⏃⌇ ⎅⎍⌰⌰ ⏃⋏⎅ ⏁⟟⍀⟒⎅ ⏁⊑⟒ ⌿⌰⏃⊬⟒⍀⌇. ⍙⏃⏁☊⊑ ⏁⊑⟒ ⌰⍜☌ ⎎⌰⍜⏃⏁ ⟟⋏ ⏁⊑⟒ ⍙⟟⎅⟒ ⍀⟟⎐⟒⍀.
+                  </p>
+                  <p class="testimony__author">⏃⋏⎅ ⏁⟟⍀</p>
+                  <p class="testimony__job">Alien</p>
+                </li>
+              </li>
+            </div>
           </ul>
       </section>
       <section class="value">
