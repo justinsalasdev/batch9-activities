@@ -2,6 +2,7 @@ import validateField from "./validate_field.js";
 import { formData, errorData } from "./form_data.js";
 import displayData from "./display_data.js";
 import displayError from "./display_error.js";
+import { showModal } from "../track_modal.js";
 
 export default function () {
   const form = document.querySelector(".form");
@@ -28,13 +29,13 @@ export default function () {
       return;
     } else {
       displayError(false);
-      displayData(formData);
+      showModal();
+      // displayData(formData); display modal
     }
   });
 
   fieldConfigs.forEach(({ id, type }) => {
     const field = document.querySelector(`#${id}`);
-    console.log(field);
     field.addEventListener(`${type === "radio" || type === "check" ? "click" : "input"}`, event => {
       validateField(field, id, type);
     });

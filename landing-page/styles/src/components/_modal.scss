@@ -1,25 +1,114 @@
 @import "../variables/constants.scss";
 
+$_modal-radius: 0.8rem;
+
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 30rem;
-  width: 95%;
+  width: 90%;
   background: pink;
   z-index: $modal-index;
-  border-radius: 0.8rem;
+  border-radius: $_modal-radius;
+
+  &_hidden {
+    display: none;
+  }
+
+  &_show {
+    animation: modal-show 0.1s ease-in forwards;
+  }
+
+  &_hide {
+    animation: modal-hide 0.1s ease-in forwards;
+  }
+
+  &__shell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__action {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    background: $gray_222;
+    border-radius: 20rem;
+    font-size: 1.5rem;
+    color: $white;
+    border: 0.05rem solid;
+  }
 }
 
 .modal__backdrop {
   position: fixed;
   background: $black_08;
   z-index: $backdrop-index;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+
+  &_hidden {
+    display: none;
+  }
+
+  &_show {
+    animation: backdrop-show 0.1s ease-in forwards;
+  }
+
+  &_hide {
+    animation: backdrop-hide 0.1s ease-in forwards;
+  }
 }
 
-.modal__action {
-  position: relative;
+@keyframes modal-show {
+  0% {
+    opacity: 0;
+    top: 40%; //fade from above
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes modal-hide {
+  0% {
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    top: 45%; //fade to top
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes backdrop-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes backdrop-hide {
+  0% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
 }
