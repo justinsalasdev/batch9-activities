@@ -1,5 +1,4 @@
 const target = document.querySelector(".testimonials__list");
-let rafId = null;
 
 export default function startAnimation() {
   const step = 1;
@@ -19,11 +18,6 @@ export default function startAnimation() {
       remainingSlideDist -= step;
       startingPosition -= step;
     }
-    rafId = requestAnimationFrame(performAnimation);
+    requestAnimationFrame(performAnimation);
   };
 }
-
-window.addEventListener("resize", () => {
-  cancelAnimationFrame(rafId); //stop current animation
-  requestAnimationFrame(startAnimation()); //restart animation
-});

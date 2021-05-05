@@ -33,8 +33,8 @@
       color: transparent;
       text-shadow: none;
       font-size: 2rem;
-      padding: 0.5rem 3rem 0.5rem 0.5rem;
-      //   border-radius: 0.5rem;
+      padding: 0.4rem 2rem 0.4rem 0.4rem;
+      border-radius: 0.3rem;
       box-shadow: 0 0 1.2rem $black_04;
       background: url("../assets/icons/nokia-logo.jpg") center/cover no-repeat;
     }
@@ -47,16 +47,15 @@
       background: $white;
       padding: 1.2rem;
       z-index: $nav-index;
-      border-top-left-radius: 0.8rem;
-      border-bottom-left-radius: 0.8rem;
+      border-radius: 0.8rem;
       box-shadow: 0 0 1.2rem $black_04;
 
       &_show {
-        animation: fade-in 0.2s ease-in;
+        animation: fade-in 0.1s ease-in;
       }
 
       &_hide {
-        animation: fade-out 0.2s ease-in;
+        animation: fade-out 0.1s ease-in;
       }
 
       &_hidden {
@@ -75,7 +74,7 @@
       padding: 0.2rem;
       color: $black;
       text-shadow: none;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
     &__action {

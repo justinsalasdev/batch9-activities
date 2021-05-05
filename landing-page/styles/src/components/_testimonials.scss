@@ -1,25 +1,32 @@
 @import "../variables/constants.scss";
 
 .testimonials {
-  position: relative;
   width: 100%;
   padding-top: $promotion__cut-out;
   background: $gray_222;
   display: grid;
-  grid-template-rows: $promotion__cut-out $testimonials__height;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto $testimonials__height;
   align-items: center;
-  overflow-x: hidden;
   background: linear-gradient(45deg, $black_07, $black_06),
     url("../assets/images/galaxy.jpeg") center/cover no-repeat;
 
-  &__list {
-    display: inline-flex;
+  & > div {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
     grid-row: 2/-1;
+  }
+
+  &__list {
+    display: flex;
   }
 
   &__batch {
     color: $white;
-    display: inline-flex;
+    display: flex;
   }
 
   &__item {
@@ -42,11 +49,12 @@
   }
 
   &__heading {
+    display: inline;
     font-family: "Atmospheric";
-    color: $white;
-    text-shadow: 0.15rem 0.15rem $white_04;
+    color: $white_eee;
     font-size: 2rem;
     margin: 1rem;
+    text-align: right;
   }
 }
 
@@ -80,9 +88,3 @@
     padding-top: 0.1rem;
   }
 }
-
-// @keyframes slideshow {
-//   100% {
-//     -webkit-transform: translateX(-200%);
-//   }
-// }
