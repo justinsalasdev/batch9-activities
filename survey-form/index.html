@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
     <script type="module" src="./scripts/src/addFocus.js" async></script>
-    <script
-      type="module"
-      src="./scripts/src/validationLevels.js"
-      defer
-    ></script>
-    <script type="module" src="./scripts/src/displayError.js" defer></script>
-    <script type="module" src="./scripts/src/globalData.js" defer></script>
-    <script type="module" src="./scripts/src/getElemParams.js" defer></script>
-    <script type="module" src="./scripts/src/validateField.js" defer></script>
     <script type="module" src="./scripts/index.js"></script>
 
     <title>Survey Form</title>
@@ -25,31 +16,26 @@
     <div class="modal">
       <ul class="answers">
         <li class="key-value">
-          <span class="question">Full Name </span
-          ><span class="answer answer1"></span>
+          <span class="question">Full Name </span><span class="answer answer1"></span>
         </li>
         <li class="key-value">
-          <span class="question">Email </span
-          ><span class="answer answer2"></span>
+          <span class="question">Email </span><span class="answer answer2"></span>
         </li>
         <li class="key-value">
           <span class="question">Age </span><span class="answer answer3"></span>
         </li>
         <li class="key-value">
-          <span class="question">Favorite Avion person </span
-          ><span class="answer answer4"></span>
+          <span class="question">Favorite Avion person </span><span class="answer answer4"></span>
         </li>
         <li class="key-value">
-          <span class="question">Confidence</span
-          ><span class="answer answer5"></span>
+          <span class="question">Confidence</span><span class="answer answer5"></span>
         </li>
         <li class="key-value technologies">
           <span class="question techs">Want to learn</span>
           <ul class="tech_list"></ul>
         </li>
         <li class="key-value technologies">
-          <span class="question techs">Remarks </span
-          ><span class="answer6"></span>
+          <span class="question techs">Remarks </span><span class="answer6"></span>
         </li>
       </ul>
       <button class="button modal__button" type="button">Confirm</button>
@@ -57,9 +43,7 @@
 
     <header class="header">
       <h1 id="title">Avion School Survey Form</h1>
-      <p id="description">
-        Thank you for taking the time to help us improve the platform
-      </p>
+      <p id="description">Thank you for taking the time to help us improve the platform</p>
     </header>
 
     <main class="main">
@@ -68,9 +52,7 @@
         <div class="text-group">
           <div class="text-input">
             <input type="text" class="text__field" id="name" placeholder="." />
-            <label for="name" class="text__label" id="name-label"
-              >Full name</label
-            >
+            <label for="name" class="text__label" id="name-label">Full name</label>
           </div>
           <span class="text__toolkit"></span>
         </div>
@@ -79,9 +61,7 @@
         <div class="text-group">
           <div class="text-input">
             <input type="text" class="text__field" id="email" placeholder="." />
-            <label for="email" class="text__label" id="email-label"
-              >Email</label
-            >
+            <label for="email" class="text__label" id="email-label">Email</label>
           </div>
           <span class="text__toolkit"></span>
         </div>
@@ -89,15 +69,8 @@
         <!--age-->
         <div class="text-group">
           <div class="text-input">
-            <input
-              type="text"
-              class="text__field"
-              id="number"
-              placeholder="."
-            />
-            <label for="email" class="text__label" id="number-label"
-              >Age (optional)</label
-            >
+            <input type="text" class="text__field" id="number" placeholder="." />
+            <label for="email" class="text__label" id="number-label">Age (optional)</label>
           </div>
           <span class="text__toolkit"></span>
         </div>
@@ -105,24 +78,14 @@
         <!--select group-->
         <div class="drop-group">
           <div class="drop-input">
-            <label for="dropdown" class="drop__label"
-              >Who's your favorite Avion person?</label
-            >
+            <label for="dropdown" class="drop__label">Who's your favorite Avion person?</label>
             <select class="drop__field" name="cars" id="dropdown">
               <option class="drop__option" selected value="initial"></option>
-              <option class="drop__option" value="John Young">
-                John Young
-              </option>
-              <option class="drop__option" value="Victor Rivera">
-                Victor Rivera
-              </option>
+              <option class="drop__option" value="John Young">John Young</option>
+              <option class="drop__option" value="Victor Rivera">Victor Rivera</option>
               <option class="drop__option" value="Pau Riosa">Pau Riosa</option>
-              <option class="drop__option" value="Analyn Cajocson">
-                Analyn Cajocson
-              </option>
-              <option class="drop__option" value="Amanda Cua">
-                Amanda Cua
-              </option>
+              <option class="drop__option" value="Analyn Cajocson">Analyn Cajocson</option>
+              <option class="drop__option" value="Amanda Cua">Amanda Cua</option>
             </select>
           </div>
           <span class="drop__toolkit"></span>
@@ -130,9 +93,7 @@
 
         <!--radio group-->
         <div class="radio-group">
-          <p class="radio__question">
-            How confident you are now to apply for a dev role?
-          </p>
+          <p class="radio__question">How confident you are now to apply for a dev role?</p>
           <span class="radio__toolkit"></span>
           <div id="radio-input" class="radio-input">
             <div class="radio__option">
@@ -153,9 +114,7 @@
                 name="radio"
                 value="I still need to polish my skills"
               />
-              <label class="radio__label" for="radio2"
-                >I still need to polish my skills</label
-              >
+              <label class="radio__label" for="radio2">I still need to polish my skills</label>
             </div>
 
             <div class="radio__option">
@@ -166,9 +125,7 @@
                 name="radio"
                 value="I'm still consolidating my learnings"
               />
-              <label class="radio__label" for="radio3"
-                >I'm still consolidating my learnings</label
-              >
+              <label class="radio__label" for="radio3">I'm still consolidating my learnings</label>
             </div>
 
             <div class="radio__option">
@@ -179,17 +136,13 @@
                 name="radio"
                 value="I think dev career is not for me"
               />
-              <label class="radio__label" for="radio4"
-                >I think dev career is not for me</label
-              >
+              <label class="radio__label" for="radio4">I think dev career is not for me</label>
             </div>
           </div>
         </div>
 
         <div class="check-group">
-          <p class="check__question">
-            What technologies you hope Avion will teach in the future?
-          </p>
+          <p class="check__question">What technologies you hope Avion will teach in the future?</p>
           <span class="check__toolkit"></span>
 
           <div class="check-input">
@@ -234,9 +187,7 @@
                 id="check4"
                 value="Progressive Web Apps"
               />
-              <label class="check__label" for="check4"
-                >Progressive Web Apps</label
-              >
+              <label class="check__label" for="check4">Progressive Web Apps</label>
             </div>
           </div>
         </div>
@@ -250,9 +201,7 @@
               rows="5"
               placeholder="."
             ></textarea>
-            <label class="area__label" for="feedback"
-              >Tell us something we can improve</label
-            >
+            <label class="area__label" for="feedback">Tell us something we can improve</label>
           </div>
           <span class="area__toolkit">this field is required</span>
         </div>
