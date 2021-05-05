@@ -5,8 +5,8 @@
   background: url("../assets/images/hammer.jpg") center/cover no-repeat;
 
   display: grid;
-  grid-template-rows: 30rem auto;
-  padding-bottom: $promotion__cut-out;
+  grid-template-rows: $usage__height auto;
+  padding-bottom: $demo__cut-out;
 
   &__text {
     grid-area: 2/1/3/2;
