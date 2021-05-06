@@ -3,6 +3,7 @@ const backDrop = document.querySelector(".modal__backdrop");
 const modal = document.querySelector(".modal");
 const modalAction = modal.querySelector(".modal__action");
 const modalTrigger = document.querySelector(".promotion__action");
+
 let isOpen = false;
 
 export function closeModal() {

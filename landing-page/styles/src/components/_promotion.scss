@@ -19,6 +19,7 @@
   z-index: $promotion__index;
   margin: -$promotion__cut-out 0;
   padding: $promotion__cut-out;
+  box-shadow: 0 0 0.9rem $black_08;
 
   &__heading {
     font-family: "Xolonium";
@@ -60,6 +61,11 @@
     &:active {
       transform: translateY(0.1rem);
       box-shadow: 0.05rem 0.05rem 0.2rem $black_04;
+    }
+
+    &:hover,
+    &:focus {
+      background-image: linear-gradient(45deg, $red_ff0066 40%, $blue_0066ff);
     }
   }
 }

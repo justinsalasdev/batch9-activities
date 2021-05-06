@@ -2,7 +2,9 @@
 
 @media screen and (max-width: 490px) {
   .navigation {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
 
     &__bar {
       position: fixed;
@@ -30,13 +32,14 @@
       top: 0.5rem;
       transform: none;
       left: 0.5rem;
-      color: transparent;
+      color: $blue_292962;
       text-shadow: none;
-      font-size: 2rem;
-      padding: 0.4rem 2rem 0.4rem 0.4rem;
-      border-radius: 0.3rem;
+      font-size: 1rem;
+      padding: 0.7rem;
+      // border-radius: 0.3rem;
       box-shadow: 0 0 1.2rem $black_04;
-      background: url("../assets/icons/nokia-logo.jpg") center/cover no-repeat;
+      background: $white;
+      // background: url("../assets/icons/nokia-logo.jpg") center/cover no-repeat;
     }
 
     &__menu {
@@ -51,11 +54,11 @@
       box-shadow: 0 0 1.2rem $black_04;
 
       &_show {
-        animation: fade-in 0.1s ease-in;
+        animation: menu-fade-in 0.1s ease-in;
       }
 
       &_hide {
-        animation: fade-out 0.1s ease-in;
+        animation: menu-fade-out 0.1s ease-in;
       }
 
       &_hidden {

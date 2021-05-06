@@ -39,6 +39,7 @@ $_modal-radius: 0.8rem;
     height: 2rem;
     background: $gray_222;
     border-radius: $_modal-radius;
+    background: linear-gradient(36deg, $red_ff0066, $magenta_ff00ff, $blue_0066ff);
     box-shadow: 0.1rem 0.1rem 0.4rem $black_04;
     font-size: 1.5rem;
     color: $white;
@@ -46,6 +47,11 @@ $_modal-radius: 0.8rem;
 
   &:active {
     box-shadow: 0.05rem 0.05rem 0.2rem $black_04;
+  }
+
+  &:hover,
+  &:focus {
+    background: $white;
   }
 }
 

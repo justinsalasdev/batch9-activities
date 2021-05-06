@@ -18,6 +18,7 @@
   background-color: $white;
   padding: $features__cut-out 0;
   margin: -$features__cut-out 0;
+  box-shadow: 0 0 0.9rem $black_08;
 
   @media screen and (max-width: 673px) {
     background: linear-gradient(45deg, $white, $white_09),

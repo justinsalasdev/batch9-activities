@@ -8,6 +8,7 @@
   justify-items: center;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  box-shadow: 0 0 0.9rem $black_08;
 
   &__desc {
     justify-self: start;
