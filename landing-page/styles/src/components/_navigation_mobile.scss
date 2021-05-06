@@ -1,4 +1,4 @@
-@import "../variables/constants.scss";
+@import "../constants/constants.scss";
 
 @media screen and (max-width: 490px) {
   .navigation {
@@ -88,11 +88,14 @@
       height: 2.5rem;
       padding-bottom: 0.2rem;
       box-shadow: 0 0 1rem $black_04;
-      background: $white;
-      // border-radius:
+      background: conic-gradient($red_ff0066, $magenta_ff00ff, $blue_0066ff);
+      color: $white;
+      font-weight: 900;
+      transition: all 0.2s linear;
 
       &_shown {
-        animation: button-to-left 0.2s linear forwards;
+        right: 9.2rem;
+        transform: rotateZ(180deg);
       }
     }
   }

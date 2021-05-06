@@ -1,4 +1,4 @@
-@import "../variables/constants";
+@import "../constants/constants";
 
 .features {
   position: relative;
@@ -34,9 +34,12 @@
     font-size: 1.7rem;
     font-family: "Mechanismo";
     text-transform: uppercase;
-    text-shadow: 0.15rem 0.15rem $gray_05;
+    // text-shadow: 0.15rem 0.15rem $gray_05;
     grid-area: 1/1/2/-1;
-    margin: 0.5rem;
+    margin: 1rem;
+    text-align: right;
+    color: $gray_222;
+    opacity: 0; //starting animation state
 
     & > span {
       color: $gray_555;

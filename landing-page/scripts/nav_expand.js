@@ -1,15 +1,14 @@
-import { navBar } from "./nav_transition.js";
-import animateMount from "./animate_mount.js";
+import animateMount from "./src/animation-helper/animate_mount.js";
+
+const navBar = document.querySelector(".navigation__bar");
 const navAction = navBar.querySelector(".navigation__action");
 const navMenu = navBar.querySelector(".navigation__menu");
 let isOpen = false;
 
-export default function () {
-  navAction.addEventListener("click", function () {
-    toggleMenu();
-    navAction.classList.toggle("navigation__action_shown", isOpen);
-  });
-}
+navAction.addEventListener("click", function () {
+  toggleMenu();
+  navAction.classList.toggle("navigation__action_shown", isOpen);
+});
 
 function toggleMenu() {
   const action = isOpen ? "hide" : "show";

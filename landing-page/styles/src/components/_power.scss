@@ -1,4 +1,4 @@
-@import "../variables/constants";
+@import "../constants/constants";
 .power {
   clip-path: polygon(0 0, 100% 0, 100% $power__height, 0 $power__height - $power__cut-out);
   padding-top: $features__cut-out;
@@ -33,6 +33,7 @@
     );
     background-clip: text;
     -webkit-background-clip: text;
+    opacity: 0; //animation starting
   }
 
   &__desc {
@@ -48,6 +49,8 @@
     @media screen and (max-width: 516px) {
       flex-direction: column;
     }
+
+    opacity: 0; //starting animation state
   }
 
   &__6 {

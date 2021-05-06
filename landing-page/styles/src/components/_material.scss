@@ -1,4 +1,4 @@
-@import "../variables/constants";
+@import "../constants/constants";
 .material {
   position: relative;
   padding-top: $power__cut-out;
@@ -11,34 +11,41 @@
 
   &__desc {
     justify-self: start;
-    margin: 0.5rem;
+    margin: 1rem;
     & > p {
       color: $black_07;
       font-family: "Xolonium";
       text-transform: uppercase;
-      font-size: 1.7rem;
-      text-shadow: 0.1rem 0.1rem $gray_05;
+      font-size: 1.5rem;
+      // text-shadow: 0.1rem 0.1rem $gray_05;
       font-weight: 700;
     }
 
     & span {
       color: crimson;
     }
+    opacity: 0; //starting animation
   }
 
   &__feat {
     margin: 1rem;
+    padding: 0.1rem;
     text-align: right;
     justify-self: end;
-    color: $black_06;
+    color: $gray_555;
     font-family: "Xolonium";
-    font-size: 1.7rem;
-    text-shadow: 0.12rem 0.12rem $gray_07;
+    text-transform: uppercase;
+    line-height: 1.4;
+    font-size: 1.4rem;
+    // text-shadow: 0.1rem 0.1rem $gray_07;
     align-self: end;
     font-weight: 700;
+    opacity: 0; //starting animation
 
     & > span {
       text-align: right;
+      font-size: 1.7rem;
+      padding: 0.2rem;
       background-image: linear-gradient(45deg, transparent, #bcc6cc, #eee, #bcc6cc, transparent);
     }
   }

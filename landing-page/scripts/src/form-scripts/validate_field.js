@@ -1,6 +1,6 @@
-import validationLevels from "./validation_levels.js";
-import getElemParams from "./get_elem_params.js";
-import { formData, errorData } from "./form_data.js";
+import validationLevels from "./form-helpers/validation_levels.js";
+import getElemParams from "./form-helpers/get_elem_params.js";
+import { formData, errorData } from "./form-helpers/form_data.js";
 
 function checkKey(type, fieldId) {
   if (type === "check") {

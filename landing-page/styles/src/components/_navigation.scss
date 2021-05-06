@@ -1,4 +1,4 @@
-@import "../variables/constants";
+@import "../constants/constants";
 
 .navigation {
   position: relative;
@@ -71,19 +71,6 @@
     height: 2rem;
     vertical-align: middle;
     border-radius: 100%;
-  }
-}
-
-@keyframes button-to-left {
-  0% {
-    top: 1rem;
-    right: 1rem;
-    transform: rotateZ(0deg);
-  }
-  100% {
-    top: 1rem;
-    right: 9.2rem;
-    transform: rotateZ(180deg);
   }
 }
 
