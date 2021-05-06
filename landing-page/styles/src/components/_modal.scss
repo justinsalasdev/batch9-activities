@@ -1,4 +1,4 @@
-@import "../variables/constants.scss";
+@import "../constants/constants.scss";
 
 $_modal-radius: 0.8rem;
 
@@ -33,15 +33,25 @@ $_modal-radius: 0.8rem;
 
   &__action {
     position: absolute;
-    top: 0.2rem;
-    right: 0.2rem;
+    top: 0.4rem;
+    right: 0.4rem;
     width: 2rem;
     height: 2rem;
     background: $gray_222;
-    border-radius: 20rem;
+    border-radius: $_modal-radius;
+    background: linear-gradient(36deg, $red_ff0066, $magenta_ff00ff, $blue_0066ff);
+    box-shadow: 0.1rem 0.1rem 0.4rem $black_04;
     font-size: 1.5rem;
     color: $white;
-    border: 0.05rem solid;
+  }
+
+  &:active {
+    box-shadow: 0.05rem 0.05rem 0.2rem $black_04;
+  }
+
+  &:hover,
+  &:focus {
+    background: $white;
   }
 }
 

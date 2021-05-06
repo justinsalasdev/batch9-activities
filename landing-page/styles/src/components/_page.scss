@@ -1,18 +1,11 @@
-@import "../variables/constants";
+@import "../constants/constants";
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-footer {
-  height: 10rem;
-  background-color: green;
-}
-
 main {
   display: grid;
   grid-column: 1fr;
-  // grid-template-rows: repeat(10, auto);
   background-color: transparent;
-  // margin-top: -$cut-out;
 }

@@ -1,4 +1,4 @@
-@import "../../variables/constants.scss";
+@import "../../constants/constants.scss";
 
 .text-group {
   margin-top: $form__label-margin-top;
@@ -46,7 +46,7 @@
 
 .text__field {
   appearance: none;
-  font-weight: 300;
+  font-weight: 400;
   padding-bottom: $form__field-padding-b;
   z-index: $form__field-index;
   font-family: "Cairo";
@@ -88,7 +88,7 @@
 }
 
 .text__toolkit {
-  padding-top: 0.5rem;
+  padding-top: 0.05rem;
   display: none;
   width: 100%;
   font-size: $form__toolkit-size;

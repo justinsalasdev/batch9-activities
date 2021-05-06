@@ -1,4 +1,4 @@
-@import "../variables/constants.scss";
+@import "../constants/constants.scss";
 
 .gaming {
   height: 30rem;
@@ -7,6 +7,7 @@
   align-items: center;
   justify-items: end;
   background: $white;
+  box-shadow: 0 0 0.9rem $black_08;
   // padding: 1rem;
 
   &__image {
@@ -27,9 +28,10 @@
     font-size: 1.7rem;
     font-family: "Xolonium";
     text-transform: uppercase;
-    text-shadow: 0.15rem 0.15rem $gray_05;
+    text-shadow: 0.15rem 0.15rem $gray_03;
     color: $blue_4444a5;
     margin-bottom: 0.5rem;
+    opacity: 0; //starting animation
   }
 
   &__article {
@@ -41,5 +43,6 @@
     width: 100%;
     // color: $black_06;
     color: $blue_292962;
+    opacity: 0; //starting animation
   }
 }

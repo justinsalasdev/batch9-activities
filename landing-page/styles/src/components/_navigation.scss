@@ -1,4 +1,4 @@
-@import "../variables/constants";
+@import "../constants/constants";
 
 .navigation {
   position: relative;
@@ -39,6 +39,12 @@
     color: $white;
     text-shadow: 0 0 0.2rem $white;
     font-size: 1.5rem;
+    font-family: "Nokia";
+    &:active,
+    &:hover,
+    &:focus {
+      font-weight: bold;
+    }
   }
 
   &__menu {
@@ -58,6 +64,11 @@
     color: $white;
     text-shadow: 0 0 0.3rem $white;
     font-size: 1rem;
+    &:active,
+    &:hover,
+    &:focus {
+      font-weight: bold;
+    }
   }
 
   &__action {
@@ -74,20 +85,7 @@
   }
 }
 
-@keyframes button-to-left {
-  0% {
-    top: 1rem;
-    right: 1rem;
-    transform: rotateZ(0deg);
-  }
-  100% {
-    top: 1rem;
-    right: 9.2rem;
-    transform: rotateZ(180deg);
-  }
-}
-
-@keyframes fade-in {
+@keyframes menu-fade-in {
   0% {
     opacity: 0;
     transform: translateX(50%);
@@ -98,7 +96,7 @@
   }
 }
 
-@keyframes fade-out {
+@keyframes menu-fade-out {
   0% {
     opacity: 1;
 

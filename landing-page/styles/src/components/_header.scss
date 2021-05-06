@@ -1,8 +1,8 @@
-@import "../variables/constants";
+@import "../constants/constants";
 
 .header {
   height: 110vh;
-  background: linear-gradient(45deg, $black_07, $black_85),
+  background: linear-gradient(45deg, $black_07, $black_08),
     url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -13,18 +13,25 @@
   &__text {
     font-size: 7rem;
     color: $white;
-    font-family: "Grave Digger";
+    font-family: "Atmospheric";
     font-weight: 300;
-    text-shadow: 0.4rem 0.4rem $white_04, 0.8rem 0.8rem $white_03;
-    margin: 2rem 2rem 0.5rem 2rem;
+    margin: 2rem 2rem 0.3rem 2rem;
+    animation: fade-zoom-in 2s cubic-bezier(0, 1, 0, 1) both;
   }
 
   &__prag {
     font-size: 1.2rem;
-
     font-family: "Xolonium";
     color: $white;
     text-align: center;
     margin: 0 2rem;
+    animation: fade-from-right 2s cubic-bezier(0, 1, 0, 1) both;
+  }
+
+  &__0 {
+    color: transparent;
+    background: conic-gradient($blue_0066ff, $magenta_ff00ff, $red_ff0066, $yellow_ffff00, $orange);
+    background-clip: text;
+    -webkit-background-clip: text;
   }
 }
