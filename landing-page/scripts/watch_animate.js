@@ -4,6 +4,8 @@ let options = {
 };
 
 const animations = {
+  header__text: "fade-from-left",
+  header__prag: "fade-from-right",
   features__heading: "fade-zoom-in",
   power__heading: "fade-from-left",
   power__desc: "fade-zoom-in",
