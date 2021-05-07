@@ -17,14 +17,17 @@
     transition: all 0.2s ease-in;
 
     &_sticky {
-      background-color: $gray_222;
-      box-shadow: 0 0.2rem 0.4rem $black_06;
+      background-color: $white_07;
+      box-shadow: 0 0.1rem 0.6rem $black_04;
+      backdrop-filter: blur(5px);
       transform: scale(1.005);
       .navigation__home {
+        color: $blue_0066ff;
         text-shadow: none;
       }
 
       .navigation__link {
+        color: $black_08;
         text-shadow: none;
       }
     }

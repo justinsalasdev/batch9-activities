@@ -232,14 +232,17 @@ main {
   transition: all 0.2s ease-in;
 }
 .navigation__bar_sticky {
-  background-color: #222;
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
   transform: scale(1.005);
 }
 .navigation__bar_sticky .navigation__home {
+  color: #0066ff;
   text-shadow: none;
 }
 .navigation__bar_sticky .navigation__link {
+  color: rgba(0, 0, 0, 0.8);
   text-shadow: none;
 }
 .navigation__home {
@@ -309,11 +312,6 @@ main {
   }
 }
 @media screen and (max-width: 490px) {
-  .navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
   .navigation__bar {
     position: fixed;
     width: 100%;
@@ -335,29 +333,35 @@ main {
     top: 0.5rem;
     transform: none;
     left: 0.5rem;
-    color: #292962;
+    color: #0066ff;
     text-shadow: none;
     font-size: 1rem;
-    padding: 0.7rem;
+    padding: 0.7rem 0.7rem 0.9rem 0.7rem;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.7);
+    border-left: 1.5px solid rgba(255, 255, 255, 0.7);
     box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.4);
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
   }
   .navigation__menu {
     position: fixed;
     margin-right: 0;
     top: 0.5rem;
     right: 0.5rem;
-    background: white;
+    border-top: 0.1px solid rgba(255, 255, 255, 0.7);
+    border-left: 0.1px solid rgba(255, 255, 255, 0.7);
     padding: 1.2rem;
     z-index: 3;
     border-radius: 0.8rem;
-    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 1.4rem rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
   }
   .navigation__menu_show {
-    animation: menu-fade-in 0.1s ease-in;
+    animation: menu-fade-in 0.2s linear;
   }
   .navigation__menu_hide {
-    animation: menu-fade-out 0.1s ease-in;
+    animation: menu-fade-out 0.2s linear;
   }
   .navigation__menu_hidden {
     display: none;
@@ -370,7 +374,7 @@ main {
   .navigation__link {
     display: block;
     padding: 0.2rem;
-    color: black;
+    color: rgba(0, 0, 0, 0.8);
     text-shadow: none;
     font-size: 1.2rem;
   }
@@ -847,17 +851,16 @@ main {
 }
 .testimonials__list {
   display: flex;
-}
-.testimonials__batch {
   color: white;
-  display: flex;
 }
 .testimonials__item {
   color: rgba(0, 0, 0, 0.8);
   position: relative;
   width: 15rem;
-  height: 20rem;
-  background: rgba(255, 255, 255, 0.4);
+  min-height: 18rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.4);
   color: rgba(255, 255, 255, 0.9);
   border-radius: 1rem;
   margin: 0.6rem;
@@ -866,7 +869,10 @@ main {
   grid-template-rows: 1.25rem 1fr auto auto;
 }
 .testimonials__item:nth-child(even) {
-  margin-top: 4rem;
+  align-self: start;
+}
+.testimonials__item:nth-child(odd) {
+  align-self: flex-end;
 }
 .testimonials__heading {
   display: inline;
@@ -912,7 +918,7 @@ main {
   transform: translate(-50%, -50%);
   max-width: 30rem;
   width: 90%;
-  background: pink;
+  background: rgba(255, 255, 255, 0.9);
   z-index: 5;
   border-radius: 0.8rem;
 }
@@ -936,23 +942,22 @@ main {
   right: 0.4rem;
   width: 2rem;
   height: 2rem;
-  background: #222;
   border-radius: 0.8rem;
   background: linear-gradient(36deg, #ff0066, #ff00ff, #0066ff);
   box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.4);
   font-size: 1.5rem;
   color: white;
 }
-.modal:active {
+.modal__action:active {
   box-shadow: 0.05rem 0.05rem 0.2rem rgba(0, 0, 0, 0.4);
 }
-.modal:hover, .modal:focus {
-  background: white;
+.modal__action:hover, .modal__action:focus {
+  background: linear-gradient(36deg, #ff0066 30%, #ff00ff, #0066ff);
 }
 
 .modal__backdrop {
   position: fixed;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 4;
   width: 100%;
   height: 100%;
@@ -1065,7 +1070,7 @@ main {
   align-self: end;
 }
 .footer__link {
-  padding: 1rem;
+  padding: 0.5rem;
   cursor: pointer;
 }
 .footer__link:last-child {
@@ -1121,7 +1126,7 @@ main {
   align-items: left;
   justify-content: center;
   gap: 0.8rem;
-  background-color: white;
+  background-color: transparent;
   box-shadow: 0.1rem 0.1rem 0.8rem rgba(0, 0, 0, 0.3);
   border-radius: 0.8rem;
 }
@@ -1129,7 +1134,7 @@ main {
 #survey-form__description {
   text-align: center;
   font-size: 1.3rem;
-  color: #333;
+  color: black;
   margin-bottom: 2rem;
   font-weight: 900;
 }
@@ -1168,7 +1173,7 @@ main {
 }
 
 .text__label {
-  font-weight: 300;
+  font-weight: 700;
   position: absolute;
   font-size: 1.2rem;
   left: 0.25rem;
@@ -1184,7 +1189,7 @@ main {
 
 .text__field {
   appearance: none;
-  font-weight: 400;
+  font-weight: 700;
   padding-bottom: 0.09rem;
   z-index: 2;
   font-family: "Cairo";

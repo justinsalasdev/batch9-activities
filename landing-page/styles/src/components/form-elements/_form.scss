@@ -11,14 +11,14 @@
   justify-content: center;
   gap: 0.8rem;
   // border: 0.1rem solid $form__border-normal;
-  background-color: white;
+  background-color: transparent;
   box-shadow: 0.1rem 0.1rem 0.8rem $black_03;
   border-radius: 0.8rem;
 
   &__description {
     text-align: center;
     font-size: 1.3rem;
-    color: $gray_333;
+    color: $black;
     margin-bottom: 2rem;
     font-weight: 900;
   }

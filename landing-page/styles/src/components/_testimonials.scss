@@ -22,19 +22,18 @@
 
   &__list {
     display: flex;
-  }
-
-  &__batch {
     color: $white;
-    display: flex;
   }
 
   &__item {
     color: $black_08;
     position: relative;
     width: 15rem;
-    height: 20rem;
-    background: $white_04;
+    min-height: 18rem;
+    background: $white_03;
+    border-top: 1.5px solid $white_04;
+    border-left: 1.5px solid $white_04;
+    // backdrop-filter: blur(5px);
     color: $white_09;
     border-radius: 1rem;
     margin: 0.6rem;
@@ -44,7 +43,10 @@
     grid-template-rows: 1.25rem 1fr auto auto;
 
     &:nth-child(even) {
-      margin-top: 4rem;
+      align-self: start;
+    }
+    &:nth-child(odd) {
+      align-self: flex-end;
     }
   }
 
