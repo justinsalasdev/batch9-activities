@@ -29,7 +29,7 @@
 .text__label {
   // background-color: lightgray;
   // display: block;
-  font-weight: 300;
+  font-weight: 700;
   position: absolute;
   font-size: $form__label-size;
   left: $form__field-indent;
@@ -46,7 +46,7 @@
 
 .text__field {
   appearance: none;
-  font-weight: 400;
+  font-weight: 700;
   padding-bottom: $form__field-padding-b;
   z-index: $form__field-index;
   font-family: "Cairo";
