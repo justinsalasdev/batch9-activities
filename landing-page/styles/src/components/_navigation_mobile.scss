@@ -4,7 +4,7 @@
   .navigation {
     &__bar {
       position: fixed;
-      width: 100%;
+      // width: 100%;
       top: 0;
       left: 0;
       height: 0;
@@ -31,12 +31,13 @@
       color: $blue_0066ff;
       text-shadow: none;
       font-size: 1rem;
-      padding: 0.7rem 0.7rem 0.9rem 0.7rem;
+      padding: 0.7rem;
       // border-radius: 0.3rem;
       border-top: 1.5px solid $white_07;
       border-left: 1.5px solid $white_07;
       box-shadow: 0 0 1.2rem $black_04;
       background: $white_09;
+
       // background: url("../assets/icons/nokia-logo.jpg") center/cover no-repeat;
     }
 
@@ -52,8 +53,7 @@
       border-radius: 0.8rem;
       box-shadow: 0 0 1.4rem $black_04;
       font-weight: bold;
-      background: $white_07;
-      backdrop-filter: blur(5px);
+      background: $white_09;
 
       &_show {
         animation: menu-fade-in 0.2s linear;
