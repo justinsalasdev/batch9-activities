@@ -412,7 +412,7 @@ main {
   font-family: "Atmospheric";
   font-weight: 300;
   margin: 2rem 2rem 0.3rem 2rem;
-  animation: fade-zoom-in 2s cubic-bezier(0, 1, 0, 1) both;
+  opacity: 0;
 }
 .header__prag {
   font-size: 1.2rem;
@@ -420,7 +420,7 @@ main {
   color: white;
   text-align: center;
   margin: 0 2rem;
-  animation: fade-from-right 2s cubic-bezier(0, 1, 0, 1) both;
+  opacity: 0;
 }
 .header__0 {
   color: transparent;
@@ -1020,7 +1020,7 @@ main {
   color: white;
   box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.8);
   display: grid;
-  grid-template: repeat(4, auto)/auto auto;
+  grid-template: auto auto auto auto auto/1fr auto;
   align-items: center;
   justify-items: center;
   padding: 1rem;
@@ -1030,6 +1030,7 @@ main {
   align-self: start;
   grid-area: 1/1/2/-1;
   font-size: 0.7rem;
+  margin-bottom: 0.5rem;
 }
 .footer__author > span {
   font-size: 1rem;
@@ -1041,8 +1042,8 @@ main {
   justify-self: start;
 }
 .footer__stack-item {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   margin: 0.3rem;
 }
 .footer__stack-item:nth-child(1) {
@@ -1057,13 +1058,20 @@ main {
 .footer__stack-item:nth-child(4) {
   background: url("../assets/icons/javascript.svg") center/80% no-repeat;
 }
-.footer__disclaimer {
-  grid-area: 3/1/4/2;
+.footer__notes {
+  grid-area: 3/1/4/-1;
   font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  margin: 1rem;
+}
+.footer__notes > li {
+  list-style-type: circle;
+  margin-bottom: 0.4rem;
 }
 .footer__links {
   display: flex;
-  grid-area: 3/2/4/3;
+  grid-area: 4/2/5/3;
   justify-self: end;
   align-self: end;
 }
@@ -1100,13 +1108,13 @@ main {
   stroke-width: 1;
 }
 .footer__infos {
-  grid-area: 4/1/5/-1;
+  grid-area: 5/1/6/-1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   height: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   align-items: flex-start;
   font-size: 0.7rem;
   font-weight: 300;
