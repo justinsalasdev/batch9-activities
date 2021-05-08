@@ -16,6 +16,7 @@
   justify-items: center;
   box-shadow: 0 0.2rem 0.8rem $black_03;
   padding: 1rem;
+  margin-bottom: 1rem;
 
   &.x {
     .cell:not(.x):not(.circle):hover {
@@ -24,7 +25,7 @@
         content: "";
         width: $mark-w;
         height: $mark-h;
-        background: $white_07;
+        background: $white_02;
         clip-path: polygon(
           20% 0%,
           0% 20%,
@@ -38,6 +39,29 @@
           100% 20%,
           80% 0%,
           50% 30%
+        );
+      }
+    }
+  }
+  &.circle {
+    .cell:not(.x):not(.circle):hover {
+      &::before {
+        position: absolute;
+        content: "";
+        width: $mark-w;
+        height: $mark-h;
+        background: $white_02;
+        clip-path: polygon(
+          0% 0%,
+          0% 100%,
+          25% 100%,
+          25% 25%,
+          75% 25%,
+          75% 75%,
+          25% 75%,
+          25% 100%,
+          100% 100%,
+          100% 0%
         );
       }
     }
