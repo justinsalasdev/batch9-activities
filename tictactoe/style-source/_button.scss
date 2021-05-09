@@ -1,0 +1,33 @@
+@import "./constants";
+
+.button {
+  padding: 0.5rem 2rem;
+  font-family: inherit;
+  border-radius: 20rem;
+  background: $white_04;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $black_08;
+  box-shadow: 0 0.2rem 0.8rem $black_03;
+  border: 1px solid transparent;
+  border-top: 2px solid $white_04;
+  border-right: 1px solid $white_04;
+  min-width: 6rem;
+  backdrop-filter: blur(5px);
+
+  &.hidden {
+    display: none;
+  }
+
+  &:active {
+    transform: translateX(0.2rem);
+  }
+
+  &:disabled {
+    border: 1px solid transparent;
+
+    cursor: not-allowed;
+    background: $gray_929292;
+    color: $gray_555;
+  }
+}
