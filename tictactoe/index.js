@@ -11,12 +11,16 @@ const WINNING_COMBINATIONS = [
   [2, 4, 6]
 ];
 
+const boardState = ["", "", "", "", "", "", "", ""];
+const history = [];
+
 const cells = document.querySelectorAll("[data-cell]");
 const board = document.getElementById("board");
 const status = document.getElementById("status");
 const reset = document.getElementById("reset");
 
 let circleTurn = false;
+let isStarted = false;
 
 //main ----------------
 initGame();
@@ -27,6 +31,13 @@ function handleClick(e) {
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
   //place mark
   target.classList.add(currentClass);
+
+  //enable reset button at first turn only
+  if (!isStarted) {
+    reset.addEventListener("click", initGame);
+    reset.removeAttribute("disabled");
+    isStarted = true;
+  }
 
   //checkWin
   if (isWin(currentClass)) {
@@ -87,10 +98,36 @@ function isDraw() {
   });
 }
 
+function enableReset() {
+  let completed = false;
+
+  return function () {
+    if (completed) {
+      return;
+    } else {
+      const isStarted = [...cells].some(cell => {
+        return cell.classList.length > 1;
+      });
+
+      if (isStarted) {
+        reset.addEventListener("click", initGame);
+        completed = true;
+      } else {
+        return;
+      }
+    }
+  };
+}
+
 function initGame() {
+  isStarted = false;
+  circleTurn = false;
+
   const dirtyClasses = ["x", "circle", "won", "draw"];
-  board.classList.remove(...dirtyClasses); //
+  board.classList.remove(...dirtyClasses); //remove board classes other than .board
   board.classList.add("x"); //init board turn
+
+  //remove board classes other than .cell
   cells.forEach(cell => cell.classList.remove(...dirtyClasses));
 
   //disable reset
@@ -100,5 +137,11 @@ function initGame() {
   //re-add click handlers
   cells.forEach(cell => {
     cell.addEventListener("click", handleClick, { once: true });
+  });
+}
+
+function updateBoard() {
+  boardState.forEach(state => {
+    cell.classList.add("");
   });
 }
