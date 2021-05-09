@@ -4,7 +4,7 @@ button {
   padding: 0.5rem 2rem;
   font-family: inherit;
   border-radius: 20rem;
-  background: $white_06;
+  background: $white_07;
   text-transform: uppercase;
   font-weight: 700;
   color: $white_09;
@@ -15,5 +15,11 @@ button {
 
   &:active {
     transform: translateX(0.2rem);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: $gray_929292;
+    color: $gray_555;
   }
 }

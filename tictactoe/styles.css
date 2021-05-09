@@ -3,6 +3,8 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.6rem;
   margin-bottom: 0.5rem;
+  min-height: 2rem;
+  text-transform: uppercase;
 }
 
 *,
@@ -138,6 +140,9 @@ button {
   background: rgba(255, 255, 255, 0.7);
   clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
+.cell.x.won::before {
+  background: black;
+}
 .cell.circle {
   cursor: not-allowed;
 }
@@ -148,6 +153,9 @@ button {
   height: 60%;
   background: rgba(255, 255, 255, 0.7);
   clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
+}
+.cell.circle.won::before {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .board {
@@ -167,7 +175,10 @@ button {
   padding: 1rem;
   margin-bottom: 1rem;
 }
-.board.x .cell:not(.x):not(.circle):hover::before {
+.board.draw .cell, .board.won .cell {
+  cursor: not-allowed;
+}
+.board:not(.won):not(.draw).x .cell:not(.x):not(.circle):hover::before {
   position: absolute;
   content: "";
   width: 60%;
@@ -175,7 +186,7 @@ button {
   background: rgba(255, 255, 255, 0.2);
   clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
-.board.circle .cell:not(.x):not(.circle):hover::before {
+.board:not(.won):not(.draw).circle .cell:not(.x):not(.circle):hover::before {
   position: absolute;
   content: "";
   width: 60%;
@@ -188,7 +199,7 @@ button {
   padding: 0.5rem 2rem;
   font-family: inherit;
   border-radius: 20rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.9);
@@ -199,6 +210,11 @@ button {
 }
 button:active {
   transform: translateX(0.2rem);
+}
+button:disabled {
+  cursor: not-allowed;
+  background: #929292;
+  color: #555555;
 }
 
 body {

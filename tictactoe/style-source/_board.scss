@@ -18,7 +18,14 @@
   padding: 1rem;
   margin-bottom: 1rem;
 
-  &.x {
+  &.draw,
+  &.won {
+    .cell {
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(.won):not(.draw).x {
     .cell:not(.x):not(.circle):hover {
       &::before {
         position: absolute;
@@ -43,7 +50,8 @@
       }
     }
   }
-  &.circle {
+
+  &:not(.won):not(.draw).circle {
     .cell:not(.x):not(.circle):hover {
       &::before {
         position: absolute;

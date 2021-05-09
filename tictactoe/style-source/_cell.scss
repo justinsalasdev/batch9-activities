@@ -27,7 +27,6 @@
   &.x {
     cursor: not-allowed;
 
-    %x-before,
     &::before {
       position: absolute;
       content: "";
@@ -49,6 +48,10 @@
         80% 0%,
         50% 30%
       );
+    }
+
+    &.won::before {
+      background: $black;
     }
   }
 
@@ -72,6 +75,9 @@
         100% 100%,
         100% 0%
       );
+    }
+    &.won::before {
+      background: $black_06;
     }
   }
 }
