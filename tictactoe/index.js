@@ -130,6 +130,7 @@ function initGame() {
   const dirtyClasses = ["x", "circle", "won", "draw"];
   board.classList.remove(...dirtyClasses); //remove board classes other than .board
   board.classList.add("x"); //init board turn
+  status.innerText = `${circleTurn ? "circle turn" : "x turn"}`;
 
   //remove board classes other than .cell
   cells.forEach(cell => cell.classList.remove(...dirtyClasses));

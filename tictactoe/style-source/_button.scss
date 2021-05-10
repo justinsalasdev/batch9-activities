@@ -12,15 +12,33 @@
   border: 1px solid transparent;
   border-top: 2px solid $white_04;
   border-right: 1px solid $white_04;
-  min-width: 6rem;
+  min-width: 4rem;
+  min-height: 2rem;
   backdrop-filter: blur(5px);
 
   &.hidden {
     display: none;
   }
 
+  &.next {
+    background: $white_07;
+    border-radius: 0;
+    border: none;
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  }
+
+  &.previous {
+    background: $white_07;
+    border-radius: 0;
+    border: none;
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    &:active {
+      transform: translateX(-0.2rem);
+    }
+  }
+
   &:active {
-    transform: translateX(0.2rem);
+    transform: translateY(0.1rem);
   }
 
   &:disabled {
