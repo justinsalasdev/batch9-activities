@@ -1,0 +1,112 @@
+@import "../constants/constants";
+
+.navigation {
+  position: relative;
+
+  &__bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 4rem;
+    background-color: transparent;
+    z-index: $nav-index;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.2s ease-in;
+
+    &_sticky {
+      background-color: $white_07;
+      box-shadow: 0 0.1rem 0.6rem $black_04;
+      backdrop-filter: blur(5px);
+      transform: scale(1.005);
+      .navigation__home {
+        color: $blue_0066ff;
+        text-shadow: none;
+      }
+
+      .navigation__link {
+        color: $black_08;
+        text-shadow: none;
+      }
+    }
+  }
+
+  &__home {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: $white;
+    text-shadow: 0 0 0.2rem $white;
+    font-size: 1.5rem;
+    font-family: "Nokia";
+    &:active,
+    &:hover,
+    &:focus {
+      font-weight: bold;
+    }
+  }
+
+  &__menu {
+    margin-right: 1rem;
+    &_hidden {
+      display: block;
+    }
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    display: block;
+    padding: 0.2rem 0.6rem;
+    color: $white;
+    text-shadow: 0 0 0.3rem $white;
+    font-size: 1rem;
+    &:active,
+    &:hover,
+    &:focus {
+      font-weight: bold;
+    }
+  }
+
+  &__action {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    border-radius: 100%;
+  }
+}
+
+@keyframes menu-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes menu-fade-out {
+  0% {
+    opacity: 1;
+
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}

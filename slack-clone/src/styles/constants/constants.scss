@@ -1,0 +1,115 @@
+$black: black;
+$black_01: rgba(black, 0.1);
+$black_03: rgba(black, 0.3);
+$black_04: rgba(black, 0.4);
+$black_05: rgba(black, 0.5);
+$black_06: rgba(black, 0.6);
+$black_07: rgba(black, 0.7);
+$black_08: rgba(black, 0.8);
+$black_85: rgba(black, 0.85);
+
+$blue_4444a5: #4444a5;
+$blue_292962: #292962;
+$blue_0066ff: #0066ff;
+
+$crimson: crimson;
+$crimson_01: rgba(crimson, 0.1);
+
+$gray_03: rgba(gray, 0.3);
+$gray_05: rgba(gray, 0.5);
+$gray_07: rgba(gray, 0.7);
+$gray_333: #333;
+$gray_222: #222;
+$gray_111: #111;
+$gray_555: #555;
+
+$green_00ff00: #00ff00;
+
+$magenta_ff00ff: #ff00ff;
+
+$orange: orange;
+$orange_04: rgba(orange, 0.4);
+
+$red_ff0066: #ff0066;
+
+$yellow_ffff00: #ffff00;
+$yellow_fcf6ba: #fcf6ba;
+
+$white: white;
+$white_eee: #eee;
+$white_03: rgba(white, 0.3);
+$white_04: rgba(white, 0.4);
+$white_06: rgba(white, 0.6);
+$white_07: rgba(white, 0.7);
+$white_09: rgba(white, 0.9);
+
+//dimensions
+$features__cut-out: 5rem;
+$features__height: 60rem;
+
+$power__cut-out: 5rem;
+$power__height: 60rem;
+
+$material__height: 50rem;
+
+$usage__height: 27rem;
+
+$demo__height: 35rem;
+$demo__cut-out: 5rem;
+
+$promotion__cut-out: 5rem;
+$promotion__height: 40rem;
+
+$testimonials__height: 32rem;
+
+//breakpoints
+$nav-breakpoint: 490px;
+$features-breakpoint: 673px;
+
+//z-index
+$features-index: 2;
+$promotion__index: 2;
+$nav-index: 3;
+$modal-index: 5;
+$backdrop-index: 4;
+
+//form variables from previous project
+//-----------------------------------------------------------------------------------------
+$form__group-margin-left: 0.75rem;
+$form__group-radius: 0.5rem;
+
+$form__field-index: 2;
+$form__modal-index: 4;
+$form__backdrop-index: 3;
+
+//textgroup variables
+$form__padding-bottom: 0.05rem;
+$form__label-size: 1.2rem;
+$form__field-indent: 0.25rem;
+
+$form__field-padding-b: 0.09rem;
+$form__toolkit-size: 0.7rem;
+$form__toolkit-space: 0.15rem;
+$form__label-margin-top: 1rem;
+$form__label-shoot: -1.2rem;
+$form__label-shoot-size: 0.95rem;
+
+//colors
+$form__border-black-focus: rgba(black, 0.3);
+$form__text-error-shadow: rgba(crimson, 0.3);
+$form__shadow-error: rgba(crimson, 0.3);
+$form__shadow-normal: rgba(0, 0, 0, 0.3);
+$form__shadow-active: rgba(0, 0, 0, 0.5);
+$form__shadow-error-spread: 0.2rem;
+$form__shadow-spread: 0.2rem;
+$form__border-error: rgba(crimson, 0.3);
+$form__border-error-focus: rgba(crimson, 0.5);
+$form__border-inactive: rgba(0, 0, 0, 0.05);
+$form__border-normal: rgba(0, 0, 0, 0.3);
+
+$form__label-focus-color: rgba(44, 130, 201, 0.6);
+
+$form__option-selected: rgba(blue, 0.7);
+
+$form__error-primary: crimson;
+$form__field-color: #666;
