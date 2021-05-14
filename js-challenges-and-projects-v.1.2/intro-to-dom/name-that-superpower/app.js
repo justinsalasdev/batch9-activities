@@ -13,3 +13,7 @@ justiceLeague.forEach(({ name, superpower }) => {
   item.textContent = `${name} - ${superpower}`;
   list.appendChild(item);
 });
+
+//add event listeners
+list.addEventListener("click", () => console.log("click"));
+window.addEventListener("scroll", () => console.log("scrolled"));
