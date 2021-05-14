@@ -1,0 +1,107 @@
+@import "../constants/constants.scss";
+
+@media screen and (max-width: 490px) {
+  .navigation {
+    &__bar {
+      position: fixed;
+      // width: 100%;
+      top: 0;
+      left: 0;
+      height: 0;
+      z-index: $nav-index;
+      background-color: transparent;
+      transition: none;
+      // display: flex;
+      // justify-content: flex-end;
+      // align-items: center;
+
+      &_sticky {
+        background-color: transparent;
+        box-shadow: none;
+        transform: none;
+      }
+    }
+
+    &__home {
+      display: block;
+      position: fixed;
+      top: 0.5rem;
+      transform: none;
+      left: 0.5rem;
+      color: $blue_0066ff;
+      text-shadow: none;
+      font-size: 1rem;
+      padding: 0.7rem;
+      // border-radius: 0.3rem;
+      border-top: 1.5px solid $white_07;
+      border-left: 1.5px solid $white_07;
+      box-shadow: 0 0 1.2rem $black_04;
+      background: $white_09;
+
+      // background: url("../assets/icons/nokia-logo.jpg") center/cover no-repeat;
+    }
+
+    &__menu {
+      position: fixed;
+      margin-right: 0;
+      top: 0.5rem;
+      right: 0.5rem;
+      border-top: 0.1px solid $white_07;
+      border-left: 0.1px solid $white_07;
+      padding: 1.2rem;
+      z-index: $nav-index;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 1.4rem $black_04;
+      font-weight: bold;
+      background: $white_09;
+
+      &_show {
+        animation: menu-fade-in 0.2s linear;
+      }
+
+      &_hide {
+        animation: menu-fade-out 0.2s linear;
+      }
+
+      &_hidden {
+        display: none;
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    &__link {
+      display: block;
+      padding: 0.2rem;
+      color: $black_08;
+      text-shadow: none;
+      font-size: 1.2rem;
+    }
+
+    &__action {
+      display: block;
+      position: fixed;
+      top: 1rem;
+      transform: none;
+      right: 1rem;
+      font-size: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding-bottom: 0.2rem;
+      box-shadow: 0 0 1rem $black_04;
+      background: conic-gradient($red_ff0066, $magenta_ff00ff, $blue_0066ff);
+      color: $white;
+      font-weight: 900;
+      transition: all 0.2s linear;
+
+      &_shown {
+        right: 9.2rem;
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+}
