@@ -21,18 +21,24 @@
     margin-left: 0;
     width: 100%;
     font-size: 1.2rem;
+    &::placeholder {
+      color: $white_04;
+    }
   }
 
-  //   &__list {
-  //     // min-width: 33%;
-  //   }
+  &__list {
+    max-width: 30rem;
+    width: 100%;
+  }
 
   &__item {
+    margin: 1rem;
     & > div {
       padding: 0.1rem;
       height: 1.5em;
       display: flex;
       align-items: center;
+      min-width: 10rem;
     }
   }
 
@@ -62,9 +68,10 @@
   &__mark {
     height: 1.5em;
     width: 1.5em;
+    background-color: red;
     &:checked ~ .todo__text {
       text-decoration: line-through;
-      color: $white_02;
+      color: $white_04;
     }
   }
 

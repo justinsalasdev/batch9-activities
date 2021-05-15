@@ -4,23 +4,32 @@
   // text-transform: uppercase;
   // font-family: "Comic Neue";
   font-weight: 700;
-  color: $white_07;
-  padding: 0.5rem;
+  color: $white_09;
+  padding: 1.5rem;
 
   font-size: 1.6rem;
 
   &__date {
+    margin-bottom: 0.2rem;
     font-weight: 300;
     font-size: 1rem;
     text-transform: uppercase;
   }
+
+  &__name {
+    outline: none;
+    &:focus,
+    &:active {
+      color: $blue_0066ff;
+    }
+  }
 }
 
 .time {
-  font-size: 4rem;
+  font-size: 3.2rem;
   color: $white;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
   padding-bottom: 0;
   font-weight: 700;
 }
