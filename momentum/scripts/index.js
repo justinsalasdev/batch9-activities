@@ -1,8 +1,8 @@
 import editIcon from "./icons/edit.js";
 import randomIcon from "./icons/random.js";
-import { editButton, randomButton, toDoList, toDoInput } from "./handles.js";
-import { toDos } from "./state.js";
-import displayToDos from "./displayToDos.js";
+import { editButton, randomButton, toDoList, toDoInput } from "./helpers/handles.js";
+import { toDos } from "./helpers/constants.js";
+import displayToDos from "./helpers/displayToDos.js";
 
 editButton.innerHTML = editIcon;
 randomButton.innerHTML = randomIcon;
@@ -26,6 +26,7 @@ toDoInput.addEventListener("keydown", function (e) {
   }
 });
 
+//update toDos state (updated stated not used)
 toDoList.addEventListener("change", e => {
   const checkBox = e.target;
   const index = parseInt(checkBox.dataset.index);

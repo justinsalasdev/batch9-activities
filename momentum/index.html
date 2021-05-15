@@ -5,46 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
-    <link
-      rel="stylesheet"
-      href=" https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"
-    />
+
     <script type="module" src="scripts/index.js" defer></script>
+    <script type="module" src="scripts/updateTime.js" async></script>
     <title>Momentum</title>
   </head>
   <body>
     <section class="greet">
-      <p class="greet__date">MAY 15, 2021</p>
-      <p class="greet__text">Good morning <span class="gree__name">Justin</span>!</p>
+      <p class="greet__date"></p>
+      <p class="greet__text">Good morning <span class="greet__name">Justin</span>!</p>
     </section>
-    <section class="time">05:15 PM</section>
+    <section class="time"></section>
     <section class="todo">
       <input class="todo__add" type="text" id="todo" placeholder="What do you want to do today?" />
 
-      <ul class="todo__list">
-        <!--
-        <li class="todo__item">
-          
-          <div>
-            <button class="todo__delete" type="button">d</button>
-            <input class="todo__mark" type="checkbox" id="check_0" />
-            <label class="todo__text" for="check_0">Make todo number 1</label>
-          </div>
-        </li>
-       
-        <li class="todo__item">
-          <div>
-            <input class="todo__mark" type="checkbox" id="check_1" />
-            <label class="todo__text" for="check_1">Make todo number 1</label>
-          </div>
-        </li>
-        <li class="todo__item">
-          <div>
-            <input class="todo__mark" type="checkbox" id="check_2" />
-            <label class="todo__text" for="check_2">Make todo number 1</label>
-          </div>
-        </li> -->
-      </ul>
+      <ul class="todo__list"></ul>
     </section>
 
     <section class="quotation">

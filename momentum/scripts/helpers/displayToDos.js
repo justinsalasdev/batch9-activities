@@ -1,6 +1,6 @@
 import { toDoList } from "./handles.js";
-import deleteButtonIcon from "./icons/delete.js";
-import { toDos } from "./state.js";
+import deleteButtonIcon from "../icons/delete.js";
+import { toDos } from "./constants.js";
 
 export default function displayToDos() {
   //remove existing toDoList children;
@@ -13,15 +13,18 @@ export default function displayToDos() {
     <input class="todo__mark" type="checkbox" id="check_${index}" data-index="${index}" />
     <label class="todo__text" for="check_${index}">${todo.name}</label>
   </div>`;
-
-    //once listItem is created with deleteButton --button can be selected
-    const deleteButton = listItem.querySelector(".todo__delete");
-    deleteButton.innerHTML = deleteButtonIcon;
-    deleteButton.addEventListener("click", function () {
-      const index = deleteButton.dataset.index;
-      toDos.splice(index, 1);
-      displayToDos();
-    });
+    addDeleteBtn(listItem);
     toDoList.appendChild(listItem);
+  });
+}
+
+function addDeleteBtn(listItem) {
+  //once listItem is created with deleteButton --button can be selected
+  const deleteButton = listItem.querySelector(".todo__delete");
+  deleteButton.innerHTML = deleteButtonIcon;
+  deleteButton.addEventListener("click", function () {
+    const index = deleteButton.dataset.index;
+    toDos.splice(index, 1);
+    displayToDos();
   });
 }
