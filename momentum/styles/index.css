@@ -130,6 +130,7 @@ body {
 .greet__date {
   font-weight: 300;
   font-size: 1rem;
+  text-transform: uppercase;
 }
 
 .time {
