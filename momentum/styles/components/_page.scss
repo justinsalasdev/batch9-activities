@@ -1,0 +1,10 @@
+@import "../constants/constants";
+body {
+  background: linear-gradient(45deg, $black_06, $black_85),
+    url("../assets/images/wallpaper.jpg") center/cover no-repeat;
+  // @extend %flex-center;
+  position: relative;
+
+  display: grid;
+  grid-template: auto auto 1fr auto / 100%;
+}

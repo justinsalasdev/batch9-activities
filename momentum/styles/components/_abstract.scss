@@ -1,0 +1,25 @@
+@import "../constants/constants.scss";
+
+.greet {
+  // text-transform: uppercase;
+  // font-family: "Comic Neue";
+  font-weight: 700;
+  color: $white_07;
+  padding: 0.5rem;
+
+  font-size: 1.6rem;
+
+  &__date {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+}
+
+.time {
+  font-size: 4rem;
+  color: $white;
+  text-align: center;
+  padding: 1rem;
+  padding-bottom: 0;
+  font-weight: 700;
+}
