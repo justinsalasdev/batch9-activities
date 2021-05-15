@@ -28,3 +28,8 @@ export const monthNames = {
   10: "November",
   11: "December"
 };
+
+export const defaultQuote =
+  "Fake news and rumors thrive online because few verify what's real and always bias towards content that reinforces their own biases";
+
+export const defaultAuthor = "Ryan Higa";

@@ -13,6 +13,7 @@ export default function displayToDos() {
     <input class="todo__mark" type="checkbox" id="check_${index}" data-index="${index}" />
     <label class="todo__text" for="check_${index}">${todo.name}</label>
   </div>`;
+    listItem.querySelector(".todo__mark").checked = toDos[index].done;
     addDeleteBtn(listItem);
     toDoList.appendChild(listItem);
   });

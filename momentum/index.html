@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
 
+    <script type="module" src="scripts/saveEdited.js" defer></script>
     <script type="module" src="scripts/index.js" defer></script>
     <script type="module" src="scripts/updateTime.js" async></script>
     <title>Momentum</title>
@@ -14,7 +15,8 @@
     <section class="greet">
       <p class="greet__date"></p>
       <p class="greet__text">
-        <span class="greet__desc"></span> <span class="greet__name">Justin</span>!
+        <span class="greet__desc"></span>
+        <span class="greet__name" contenteditable spellcheck="false">Justin</span>!
       </p>
     </section>
     <section class="time"></section>
@@ -25,16 +27,13 @@
     </section>
 
     <section class="quotation">
-      <p class="quotation__text">
-        Fake news and rumors thrive online because few verify what's real and always bias towards
-        content that reinforces their own biases.
-      </p>
-      <p class="quotation__author">Ryan Higa</p>
-
       <div class="quotation__actions">
         <button class="quotation__edit"></button>
         <button class="quotation__random"></button>
       </div>
+      <p class="quotation__text"></p>
+
+      <p class="quotation__author"></p>
     </section>
   </body>
 </html>
