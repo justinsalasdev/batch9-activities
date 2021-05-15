@@ -7,3 +7,4 @@ export const toDoInput = document.querySelector(".todo__add");
 
 export const timeEl = document.querySelector(".time");
 export const dateEl = document.querySelector(".greet__date");
+export const greetEl = document.querySelector(".greet__desc");
