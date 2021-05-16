@@ -1,11 +1,10 @@
-@import "../constants/constants";
 body {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  align-items: stretch;
 }
 
-main {
+#root {
+  width: 100%;
   display: grid;
-  grid-column: 1fr;
-  background-color: transparent;
+  grid-template: 1fr / auto 1fr;
 }

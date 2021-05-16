@@ -4,3 +4,7 @@
 
 /create channel
     -select members from users
+
+
+/create channel or DMs
+    -when user successfully added - go straight to recently added
