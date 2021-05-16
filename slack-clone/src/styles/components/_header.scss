@@ -1,0 +1,37 @@
+@import "../constants/constants";
+
+.header {
+  height: 110vh;
+  background: linear-gradient(45deg, $black_07, $black_08),
+    url("../assets/images/nokia910_683.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: $features__cut-out;
+
+  &__text {
+    font-size: 7rem;
+    color: $white;
+    font-family: "Atmospheric";
+    font-weight: 300;
+    margin: 2rem 2rem 0.3rem 2rem;
+    opacity: 0; //starting state
+  }
+
+  &__prag {
+    font-size: 1.2rem;
+    font-family: "Xolonium";
+    color: $white;
+    text-align: center;
+    margin: 0 2rem;
+    opacity: 0; //starting state
+  }
+
+  &__0 {
+    color: transparent;
+    background: conic-gradient($blue_0066ff, $magenta_ff00ff, $red_ff0066, $yellow_ffff00, $orange);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}

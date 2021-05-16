@@ -1,0 +1,26 @@
+
+
+
+tabs
+DMs
+Channels
+Profile
+
+Main
+-message box
+
+
+
+Mobile Home Screen
+----------------------
+--Channels
+--Users status
+--createDM button
+--------------------
+[--navBar--]
+
+
+
+
+
+
