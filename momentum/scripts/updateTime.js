@@ -8,7 +8,7 @@ function withZero(num) {
 function getGreeting(num) {
   if (num === 0) return "Silent midnight";
   if (num > 0 && num < 6) return "Early morning";
-  if (num > 6 && num < 11) return "Good morning";
+  if (num > 6 && num <= 11) return "Good morning";
   if (num === 12) return "Scorchy afternoon";
   if (num > 12 && num < 17) return "Good afternoon";
   if (num >= 17) return "Good evening";
