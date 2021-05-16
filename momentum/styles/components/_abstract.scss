@@ -1,35 +1,35 @@
 @import "../constants/constants.scss";
 
 .greet {
-  // text-transform: uppercase;
-  // font-family: "Comic Neue";
-  font-weight: 700;
-  color: $white_09;
-  padding: 1.5rem;
+	// text-transform: uppercase;
+	// font-family: "Comic Neue";
+	font-weight: 700;
+	color: $white_09;
+	padding: 1.5rem;
 
-  font-size: 1.6rem;
+	font-size: 1.59rem;
 
-  &__date {
-    margin-bottom: 0.2rem;
-    font-weight: 300;
-    font-size: 1rem;
-    text-transform: uppercase;
-  }
+	&__date {
+		margin-bottom: 0.2rem;
+		font-weight: 300;
+		font-size: 1rem;
+		text-transform: uppercase;
+	}
 
-  &__name {
-    outline: none;
-    &:focus,
-    &:active {
-      color: $blue_0066ff;
-    }
-  }
+	&__name {
+		outline: none;
+		&:focus,
+		&:active {
+			color: $blue_0066ff;
+		}
+	}
 }
 
 .time {
-  font-size: 3.2rem;
-  color: $white;
-  text-align: center;
-  padding: 1.5rem;
-  padding-bottom: 0;
-  font-weight: 700;
+	font-size: 3.2rem;
+	color: $white;
+	text-align: center;
+	padding: 1.5rem;
+	padding-bottom: 0;
+	font-weight: 700;
 }
