@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { auth } from "../../firebase/firebase";
+import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
 import useLoadUpdater from "../../hooks/userLoadUpdater";
 
 const initialState = { _e: false, _w: false, _c: false };
@@ -8,6 +9,16 @@ export default function Form() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, dispatch] = useLoadUpdater(initialState);
+  const authDispatch = useAuthDispatcher();
+
+  function signOut() {
+    auth
+      .signOut()
+      .then(() => console.log("logged out"))
+      .catch(err => {
+        authDispatch({ type: "error", payload: err });
+      });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -51,7 +62,11 @@ export default function Form() {
           setPassword(e.target.value);
         }}
       />
-      <button type="submit">submit</button>
+      <button type="submit">Login</button>
+
+      <button type="button" onClick={signOut}>
+        Logout
+      </button>
     </form>
   );
 }

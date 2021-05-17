@@ -15,7 +15,7 @@ export default function loadUpdater(state, action) {
     }
 
     default:
-      return { ...state };
+      console.log("unhandle action " + action);
   }
 }
 
