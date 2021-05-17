@@ -1,0 +1,10 @@
+body {
+  display: flex;
+  align-items: stretch;
+}
+
+#root {
+  width: 100%;
+  display: grid;
+  grid-template: 1fr / auto 1fr;
+}

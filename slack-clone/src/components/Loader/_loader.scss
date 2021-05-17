@@ -1,0 +1,48 @@
+.container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.loader {
+  width: 100%;
+  height: 100%;
+  background: $violet_350d36;
+  position: relative;
+  border-radius: 50%;
+
+  div {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: transparent;
+    border: 0.1em solid $violet_1817188;
+    border-radius: 50%;
+    animation: ripple 1s linear infinite;
+    opacity: 0.5;
+
+    &:nth-child(2) {
+      width: 25%;
+      height: 25%;
+      background: transparent;
+      animation-delay: 0.2s;
+    }
+  }
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0.5;
+    border: 0.1em solid $violet_1817188;
+  }
+
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+    border: 0.1em solid $violet_1817188;
+  }
+}

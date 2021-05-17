@@ -1,0 +1,28 @@
+.menu {
+  margin-top: 0.5rem;
+  &__actions {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.2rem;
+  }
+
+  &__adder {
+    margin-left: 0.5rem;
+    background: transparent;
+  }
+
+  &__expander {
+    display: flex;
+    align-items: center;
+    background: transparent;
+  }
+
+  &__items {
+    margin-left: 1.2rem;
+  }
+
+  &__name {
+    margin-left: 0.2rem;
+  }
+}

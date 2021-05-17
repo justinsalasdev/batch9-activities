@@ -17,3 +17,5 @@ justiceLeague.forEach(({ name, superpower }) => {
 //add event listeners
 list.addEventListener("click", () => console.log("click"));
 window.addEventListener("scroll", () => console.log("scrolled"));
+
+
