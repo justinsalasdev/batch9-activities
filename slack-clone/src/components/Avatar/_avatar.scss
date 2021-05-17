@@ -1,0 +1,44 @@
+.avatar {
+  display: inline-block;
+  position: relative;
+  margin-right: 0.5rem;
+
+  &__image {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: $violet_1817188;
+    border-radius: 50%;
+  }
+
+  &__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    &:hover + .avatar__icon,
+    &:focus + .avatar__icon {
+      color: $white_09;
+    }
+  }
+
+  &__icon {
+    font-size: 1em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: inline-flex;
+    color: $violet_1817188;
+    background: $violet_350d36;
+    padding: 0.2rem;
+    border-radius: 50%;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white_09;
+    }
+  }
+}

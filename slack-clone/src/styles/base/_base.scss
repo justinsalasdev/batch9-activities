@@ -94,6 +94,7 @@ a {
   outline: none;
 }
 
+input,
 button {
   appearance: none;
   border: none;
@@ -102,4 +103,8 @@ button {
   font-size: inherit;
   color: inherit;
   font-family: inherit;
+}
+
+input[type="file"] {
+  cursor: auto;
 }

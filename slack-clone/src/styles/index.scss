@@ -1,5 +1,10 @@
+@import "./constants/colors";
+@import "./constants/dimensions";
 @import "./base/fonts";
 @import "./base/base";
-@import "./components/page";
-@import "./components/sidebar";
-@import "./components/A0";
+@import "./page";
+@import "./A0";
+@import "../components/Menu/menu";
+@import "../components/Profile/profile";
+@import "../components/Sidebar/sidebar";
+@import "../components/Avatar/avatar";
