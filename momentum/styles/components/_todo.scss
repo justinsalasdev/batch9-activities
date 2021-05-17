@@ -1,0 +1,81 @@
+@import "../constants/constants.scss";
+.todo {
+  padding: 1rem;
+  color: $white_06;
+  font-size: 1rem;
+  //   place-self: center;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__add {
+    text-align: center;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    background: transparent;
+    border-bottom: 1px solid $white_02;
+    margin: 0.2rem;
+    margin-left: 0;
+    width: 100%;
+    font-size: 1.2rem;
+    &::placeholder {
+      color: $white_04;
+    }
+  }
+
+  &__list {
+    max-width: 30rem;
+    width: 100%;
+  }
+
+  &__item {
+    margin: 1rem;
+    & > div {
+      padding: 0.1rem;
+      height: 1.5em;
+      display: flex;
+      align-items: center;
+      min-width: 10rem;
+    }
+  }
+
+  &__delete {
+    margin-right: 0.5rem;
+    width: 2em;
+    height: 2em;
+    background-color: transparent;
+
+    .svg-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    .svg-icon path,
+    .svg-icon polygon,
+    .svg-icon rect {
+      fill: $white_07;
+    }
+
+    .svg-icon circle {
+      stroke: $white_07;
+      stroke-width: 1;
+    }
+  }
+
+  &__mark {
+    height: 1.5em;
+    width: 1.5em;
+    background-color: red;
+    &:checked ~ .todo__text {
+      text-decoration: line-through;
+      color: $white_04;
+    }
+  }
+
+  &__text {
+    margin-left: 0.5rem;
+  }
+}

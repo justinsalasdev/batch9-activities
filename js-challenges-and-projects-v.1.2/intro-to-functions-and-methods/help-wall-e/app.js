@@ -1,9 +1,10 @@
-const robot = document.querySelector('.robot')
+const robot = document.querySelector(".robot");
 
 //Challenge: Make Eve move when you click its body.
+let position = 0;
 
 function moveRobot() {
-    //add code here
-    
+  robot.style.transform = `translate3d(${++position}rem,0,0)`;
+  //add code here
 }
-robot.addEventListener('click', moveRobot)
+robot.addEventListener("click", moveRobot);
