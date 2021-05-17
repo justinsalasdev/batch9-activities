@@ -1,16 +1,32 @@
+import { useEffect } from "react";
 import { auth } from "../../firebase/firebase";
+import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
+import useAuthState from "../../hooks/auth/useAuthState";
 import Form from "../Form/Form";
 import Sidebar from "../Sidebar/Sidebar";
 
-function App() {
-  auth.onAuthStateChanged(user => {
+function onAuthStateChange(auth, authDispatch) {
+  return auth.onAuthStateChanged(user => {
     if (user) {
-      const uid = user.uid;
-      console.log(uid);
+      authDispatch({ type: "save user", payload: user });
     } else {
-      console.log("user logged out");
+      authDispatch({ type: "delete user" });
     }
   });
+}
+
+export default function App() {
+  const authDispatch = useAuthDispatcher();
+  const authState = useAuthState();
+
+  console.log(authState);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange(auth, authDispatch); //subscribe to authChanges & receive unsubscribe
+    return function () {
+      unsubscribe(); //unsubscribe when app unmounts
+    };
+  }, []);
 
   return (
     <>
@@ -19,5 +35,3 @@ function App() {
     </>
   );
 }
-
-export default App;
