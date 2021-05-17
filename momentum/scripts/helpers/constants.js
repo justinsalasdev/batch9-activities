@@ -1,8 +1,6 @@
-export const toDos = [
-  //   { name: "Fetch water", done: false },
-  //   { name: "Fetch water", done: false },
-  //   { name: "Fetch water", done: false }
-];
+import getTodos from "./getTodos.js";
+
+export const toDos = getTodos();
 
 export const dayNames = {
   0: "Sunday",
