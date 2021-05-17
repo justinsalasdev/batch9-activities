@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles/index.css" />
+
+		<script type="module" src="scripts/index.js" defer></script>
+		<script type="module" src="scripts/updateTime.js" async></script>
+		<title>Momentum</title>
+	</head>
+	<body>
+		<section class="greet">
+			<p class="greet__date"></p>
+			<p class="greet__text">
+				<span class="greet__desc"></span>
+				<span class="greet__name" contenteditable spellcheck="false"></span>!
+			</p>
+		</section>
+		<section class="time"></section>
+		<section class="todo">
+			<input
+				class="todo__add"
+				type="text"
+				id="todo"
+				placeholder="What do you want to do today?"
+			/>
+
+			<ul class="todo__list"></ul>
+		</section>
+
+		<section class="quotation">
+			<button class="quotation__random"></button>
+			<p
+				class="quotation__text"
+				data-custom="false"
+				contenteditable
+				spellcheck="false"
+			></p>
+			<p contenteditable spellcheck="false" class="quotation__author"></p>
+		</section>
+	</body>
+</html>

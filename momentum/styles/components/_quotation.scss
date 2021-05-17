@@ -1,0 +1,97 @@
+@import "../constants/constants.scss";
+
+.quotation {
+	position: relative;
+	width: 95%;
+	//   max-width: 60rem;
+	display: grid;
+	grid-template: auto auto auto / 1fr;
+	justify-items: center;
+
+	padding: 0.5rem;
+	place-self: center;
+	//   font-weight: 700;
+	color: $white_07;
+	margin-bottom: 1rem;
+
+	&__text {
+		display: inline-block;
+		font-size: 1.2rem;
+		font-family: "Kalam";
+		font-weight: 300;
+		grid-area: 2/1/3/-1;
+		margin-bottom: 0.5rem;
+		text-align: center;
+		border-top: 1px solid $white_02;
+		border-bottom: 1px solid $white_02;
+		padding-top: 0.8rem;
+		padding-bottom: 0.8rem;
+
+		outline: none;
+		border: none;
+
+		&:active,
+		&:focus {
+			color: $blue_0066ff;
+		}
+	}
+
+	&__author {
+		grid-area: 3/1/4/-1;
+		font-weight: 300;
+		font-size: 0.8rem;
+		padding-left: 0.5rem;
+
+		outline: none;
+		border: none;
+
+		&:active,
+		&:focus {
+			color: $blue_0066ff;
+		}
+	}
+
+	&__random {
+		grid-area: 1/1/2/-1;
+		justify-self: center;
+		margin-bottom: 0.2rem;
+	}
+
+	&__random,
+	&__edit {
+		display: inline-block;
+		margin-right: 0.5rem;
+		width: 2em;
+		height: 2em;
+		background-color: transparent;
+
+		&:active {
+			transform: scale(1.2);
+			.svg-icon path,
+			.svg-icon polygon,
+			.svg-icon rect {
+				fill: $green_00ff00;
+			}
+			.svg-icon circle {
+				stroke: $green_00ff00;
+				stroke-width: 1;
+			}
+		}
+
+		.svg-icon {
+			width: 100%;
+			height: 100%;
+		}
+
+		.svg-icon path,
+		.svg-icon polygon,
+		.svg-icon rect {
+			fill: $white_07;
+		}
+
+		.svg-icon circle {
+			stroke: $white_07;
+			stroke-width: 1;
+		}
+	}
+}
