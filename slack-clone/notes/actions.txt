@@ -8,3 +8,11 @@
 
 /create channel or DMs
     -when user successfully added - go straight to recently added
+
+
+//change profilePhoto progress
+1. user clicks "change profile"
+2. pics one photo
+3. start upload process
+4. get download URL
+5. change img src to download URL

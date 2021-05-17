@@ -1,56 +1,84 @@
-import { useReducer, useState } from "react";
+import { useState, useEffect } from "react";
 import { storage } from "../../firebase/firebase";
-import trackUpload from "../../reducers/trackUpload";
 import { BiImageAdd } from "react-icons/bi";
+import defaultAvatar from "../../assets/images/default.jpg";
+import Loader from "../Loader/Loader";
+import useLoadUpdater from "../../hooks/userLoadUpdater";
 const initialState = { _w: false, _c: false, _e: false };
 
 export default function Avatar() {
-  const [imageFile, saveImageFile] = useState("");
-  const [state, dispatch] = useReducer(trackUpload, initialState);
-  const { _w, _c, _e } = state;
+  const [imageURL, setImageURL] = useState("");
+  const [state, dispatch] = useLoadUpdater(initialState);
+  const { _w, _e } = state;
+  console.log(state);
 
-  function startUpload(e) {
-    e.preventDefault();
-    dispatch({ type: "wait" });
-    const ref = storage.ref(`/images/${imageFile.name}`);
-    ref
-      .put(imageFile)
-      .then(snapshot => {
-        dispatch({ type: "complete" });
-        console.log(snapshot);
-      })
-      .catch(err => {
+  useEffect(() => {
+    setImageURL(localStorage.getItem("imageURL") || defaultAvatar);
+  }, []);
+
+  function startUpload(imageFile) {
+    const ref = storage.ref(`images/${imageFile.name}`);
+    const uploadTask = ref.put(imageFile);
+    uploadTask.on(
+      "state_changed", //name of event
+
+      //state changed observer
+      snapShot => {
+        dispatch({ type: "wait" });
+        console.log(snapShot);
+      },
+
+      //error observer
+      err => {
         dispatch({
           type: "error",
-          payload: {
-            error: err
-          }
+          error: err
         });
-      });
+      },
+
+      //completion observer
+      () => {
+        // gets the functions from storage refences the image storage in firebase by the children
+        // gets the download url then sets the image from firebase as the value for the imgUrl key:
+        ref.getDownloadURL().then(url => {
+          setImageURL(url);
+          localStorage.setItem("imageURL", url);
+          dispatch({ type: "complete" });
+        });
+      }
+    );
+  }
+
+  function updateAvatar(e) {
+    const imageFile = e.target.files[0];
+    if (imageFile) {
+      startUpload(imageFile);
+    } else {
+      console.log("nothing selected");
+    }
   }
 
   return (
     <div className="avatar">
-      <div className="avatar__image"></div>
-
+      {_w ? (
+        <Loader />
+      ) : (
+        <img src={imageURL || defaultAvatar} className="avatar__image" alt="user avatar"></img>
+      )}
       <input
         className="avatar__input"
         id="file"
         name="file"
         accept="image/*"
         type="file"
-        onChange={function (e) {
-          const imageFile = e.target.files[0];
-          console.log(imageFile);
-          saveImageFile(_ => imageFile);
-        }}
+        onChange={updateAvatar}
       />
-      <label className="avatar__icon" htmlFor="file">
-        {<BiImageAdd />}
-      </label>
+      {!_w && (
+        <label className="avatar__icon" htmlFor="file">
+          {<BiImageAdd />}
+        </label>
+      )}
 
-      {_w && <p>uploading..</p>}
-      {_c && <p>finished</p>}
       {_e && <p>error occured</p>}
     </div>
   );

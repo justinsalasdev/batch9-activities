@@ -1,6 +1,6 @@
 // const initialState = { isStarted: false, isUploading: false, isFinished: false, isError: false };
 
-export default function trackUpload(state, action) {
+export default function loadUpdater(state, action) {
   switch (action.type) {
     case "wait":
       console.log("waiting");
@@ -9,6 +9,7 @@ export default function trackUpload(state, action) {
       console.log("completed");
       return { ...state, _w: false, _e: false, _c: true };
     case "error": {
+      console.log("error");
       console.log(action.error);
       return { ...state, _w: false, _e: true, _c: false };
     }
