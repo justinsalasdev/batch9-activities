@@ -1,6 +1,7 @@
 import { toDoList } from "./handles.js";
 import deleteButtonIcon from "../icons/delete.js";
 import { toDos } from "./constants.js";
+import saveTodos from "./saveTodos.js";
 
 export default function displayToDos() {
   //remove existing toDoList children;
@@ -27,5 +28,6 @@ function addDeleteBtn(listItem) {
     const index = deleteButton.dataset.index;
     toDos.splice(index, 1);
     displayToDos();
+    saveTodos(toDos);
   });
 }

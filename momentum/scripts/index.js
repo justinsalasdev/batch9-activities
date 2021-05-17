@@ -7,10 +7,12 @@ import {
   quoteTextEl,
   quoteAuthorEl
 } from "./helpers/handles.js";
-import { defaultQuote, toDos } from "./helpers/constants.js";
+import { toDos } from "./helpers/constants.js";
 import displayToDos from "./helpers/displayToDos.js";
 import addEdit from "./helpers/addEdit.js";
 import generateQuote from "./helpers/generateQuote.js";
+import saveTodos from "./helpers/saveTodos.js";
+import getTodos from "./helpers/getTodos.js";
 
 // editButton.innerHTML = editIcon;
 randomButton.innerHTML = randomIcon;
@@ -40,6 +42,7 @@ toDoInput.addEventListener("keydown", function (e) {
     const toDoName = toDoInput.value;
     if (toDoName) {
       toDos.unshift({ name: toDoName, done: false });
+      saveTodos(toDos);
       displayToDos();
       toDoInput.value = "";
     } else {
@@ -55,4 +58,5 @@ toDoList.addEventListener("change", e => {
   const checkBox = e.target;
   const index = parseInt(checkBox.dataset.index);
   toDos[index].done = checkBox.checked;
+  saveTodos(toDos);
 });
