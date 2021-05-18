@@ -5,16 +5,6 @@ import useAuthState from "../../hooks/auth/useAuthState";
 import Form from "../Form/Form";
 import Sidebar from "../Sidebar/Sidebar";
 
-function onAuthStateChange(auth, authDispatch) {
-  return auth.onAuthStateChanged(user => {
-    if (user) {
-      authDispatch({ type: "save user", payload: user });
-    } else {
-      authDispatch({ type: "delete user" });
-    }
-  });
-}
-
 export default function App() {
   const authDispatch = useAuthDispatcher();
   const authState = useAuthState();
@@ -26,12 +16,26 @@ export default function App() {
     return function () {
       unsubscribe(); //unsubscribe when app unmounts
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <Sidebar />
-      <Form />
+      <div className="view">
+        <Form />
+      </div>
+      <div className="chat"></div>
     </>
   );
+}
+
+function onAuthStateChange(auth, authDispatch) {
+  return auth.onAuthStateChanged(user => {
+    if (user) {
+      authDispatch({ type: "save user", payload: user });
+    } else {
+      authDispatch({ type: "delete user" });
+    }
+  });
 }
