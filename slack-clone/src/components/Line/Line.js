@@ -8,6 +8,7 @@ const icons = {
 
 export default function Line(props) {
   const { id, value, type, handler } = props;
+
   return (
     <div className="line">
       <div className="line__div">

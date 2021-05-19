@@ -9,8 +9,9 @@ const initialState = { _e: false, _w: false, _c: false };
 
 export default function Form() {
   const [email, setEmail] = useState("");
+  const [loadState, updateLoadState] = useLoadUpdater(initialState);
   const [password, setPassword] = useState("");
-  const [state, dispatch] = useLoadUpdater(initialState);
+
   const authDispatch = useAuthDispatcher();
 
   function signOut() {
@@ -25,17 +26,17 @@ export default function Form() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch({ type: "wait" });
+    updateLoadState({ type: "wait" });
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(userCredential => {
         // Signed in
-        dispatch({ type: "complete" });
+        updateLoadState({ type: "complete" });
         console.log(userCredential);
         // ...
       })
       .catch(err => {
-        dispatch({
+        updateLoadState({
           type: "error",
           error: err
         });
