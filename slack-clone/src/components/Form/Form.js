@@ -3,12 +3,15 @@ import { auth } from "../../firebase/firebase";
 import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
 import useLoadUpdater from "../../hooks/userLoadUpdater";
 
+import Line from "../Line/Line";
+
 const initialState = { _e: false, _w: false, _c: false };
 
 export default function Form() {
   const [email, setEmail] = useState("");
+  const [loadState, updateLoadState] = useLoadUpdater(initialState);
   const [password, setPassword] = useState("");
-  const [state, dispatch] = useLoadUpdater(initialState);
+
   const authDispatch = useAuthDispatcher();
 
   function signOut() {
@@ -23,45 +26,42 @@ export default function Form() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch({ type: "wait" });
+    updateLoadState({ type: "wait" });
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(userCredential => {
         // Signed in
-        dispatch({ type: "complete" });
+        updateLoadState({ type: "complete" });
         console.log(userCredential);
         // ...
       })
       .catch(err => {
-        dispatch({
+        updateLoadState({
           type: "error",
           error: err
         });
       });
   }
 
+  const emailConfig = {
+    id: "email",
+    type: "text",
+    value: email,
+    handler: setEmail
+  };
+
+  const passwordConfig = {
+    id: "password",
+    type: "password",
+    value: password,
+    handler: setPassword
+  };
+
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        name="email"
-        type="text"
-        value={email || ""}
-        onChange={function (e) {
-          setEmail(e.target.value);
-        }}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        value={password || ""}
-        onChange={function (e) {
-          setPassword(e.target.value);
-        }}
-      />
+      <Line {...emailConfig} />
+      <Line {...passwordConfig} />
+
       <button type="submit">Login</button>
 
       <button type="button" onClick={signOut}>
