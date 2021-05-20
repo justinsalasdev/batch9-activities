@@ -1,8 +1,20 @@
 .line {
   width: 15rem;
-  margin: 1rem;
-
+  margin-bottom: 0.5rem;
   display: grid;
+
+  &.error {
+    .line__field {
+      color: $crimson_06;
+      border-bottom: 1px solid $crimson_06;
+      &::placeholder {
+        color: $crimson_06;
+      }
+    }
+    .line__icon {
+      color: $crimson_06;
+    }
+  }
 
   &__div {
     position: relative;
@@ -13,8 +25,13 @@
     padding-left: 1.8rem;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
-    border-radius: 0.2rem;
+    border-bottom: 1px solid $violet_350d36_05;
+    // border-radius: 0.2rem;
+
+    &::placeholder {
+      font-size: inherit;
+      color: $violet_1817188;
+    }
   }
 
   &__icon {
@@ -23,10 +40,15 @@
     top: 50%;
     transform: translateY(-50%);
     display: flex;
+    color: $violet_350d36;
   }
 
   &__toolkit {
-    font-size: 0.7em;
+    min-height: 1.2rem;
+    width: 100%;
+    font-size: 0.6rem;
     padding-left: 0.2rem;
+    padding-top: 0.2rem;
+    color: $crimson;
   }
 }
