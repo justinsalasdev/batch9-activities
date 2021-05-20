@@ -9,12 +9,11 @@ import Loader from "../Loader/Loader";
 const formData = { errors: {} };
 
 export default function Form() {
+  console.log("Form");
   const [isLoading, setLoading] = useState(false);
   const [isLogin, changeForm] = useState(true);
   const authDispatch = useAuthDispatcher();
   const authState = useAuthState();
-
-  console.log(authState);
 
   function signUp(e) {
     e.preventDefault();

@@ -11,11 +11,10 @@ const icons = {
 const fieldValidator = new FieldValidator();
 
 export default React.memo(function Line(props) {
+  console.log("Line");
   const { id, type, placeholder, formData } = props;
   const [state, setState] = useState("");
   const lineRef = useRef();
-
-  console.log("renders");
 
   //update formData every render
   const err = fieldValidator.error;

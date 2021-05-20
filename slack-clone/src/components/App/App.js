@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { auth } from "../../firebase/firebase";
 import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
-import useAuthState from "../../hooks/auth/useAuthState";
 import Form from "../Form/Form";
 import Sidebar from "../Sidebar/Sidebar";
 
 export default function App() {
+  console.log("App");
   const authDispatch = useAuthDispatcher();
 
   useEffect(() => {

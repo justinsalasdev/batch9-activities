@@ -7,7 +7,7 @@ import AuthProvider from "./contexts/Auth";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider initialState={{ user: null }}>
+    <AuthProvider initialState={{ user: null, error: null }}>
       <App />
     </AuthProvider>
   </React.StrictMode>,

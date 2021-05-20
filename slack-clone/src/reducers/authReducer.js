@@ -6,6 +6,16 @@ export default function authReducer(state, action) {
       return { ...state, user: { ...action.payload }, error: null };
     }
 
+    case "update photo": {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          photoURL: action.payload
+        }
+      };
+    }
+
     case "delete user": {
       return { ...state, user: null, error: null };
     }
