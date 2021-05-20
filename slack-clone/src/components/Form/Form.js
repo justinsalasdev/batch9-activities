@@ -1,17 +1,18 @@
-import { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
 import useLoadUpdater from "../../hooks/userLoadUpdater";
-
 import Line from "../Line/Line";
 
 const initialState = { _e: false, _w: false, _c: false };
+const formData = { email: "", password: "", error: "" };
+
+function setFormData(key, value, errorVal) {
+  formData[key] = value;
+  formData.error = errorVal;
+}
 
 export default function Form() {
-  const [email, setEmail] = useState("");
-  const [loadState, updateLoadState] = useLoadUpdater(initialState);
-  const [password, setPassword] = useState("");
-
+  const [, updateLoadState] = useLoadUpdater(initialState);
   const authDispatch = useAuthDispatcher();
 
   function signOut() {
@@ -25,10 +26,14 @@ export default function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (formData.error) {
+      console.log(formData);
+      return;
+    }
 
     updateLoadState({ type: "wait" });
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(formData.email, formData.password)
       .then(userCredential => {
         // Signed in
         updateLoadState({ type: "complete" });
@@ -43,30 +48,12 @@ export default function Form() {
       });
   }
 
-  const emailConfig = {
-    id: "email",
-    type: "text",
-    value: email,
-    handler: setEmail
-  };
-
-  const passwordConfig = {
-    id: "password",
-    type: "password",
-    value: password,
-    handler: setPassword
-  };
-
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <Line {...emailConfig} />
-      <Line {...passwordConfig} />
+      <Line id="email" type="text" setFormData={setFormData} />
+      <Line id="password" type="password" setFormData={setFormData} />
 
       <button type="submit">Login</button>
-
-      <button type="button" onClick={signOut}>
-        Logout
-      </button>
     </form>
   );
 }
