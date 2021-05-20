@@ -1,40 +1,48 @@
+import { useEffect, useRef, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import useLineValidator from "../../hooks/useLineValidator";
+import FieldValidator from "../../helpers/FieldValidator";
 
 const icons = {
   email: <MdEmail />,
   password: <RiLockPasswordFill />
 };
 
+const fieldValidator = new FieldValidator();
+
 export default function Line(props) {
-  const { id, type, setFormData } = props;
-  const [state, dispatch] = useLineValidator(id);
+  const { id, type, placeholder, formData } = props;
+  const [state, setState] = useState("");
+  const lineRef = useRef();
 
-  const { value, errorMessage } = state;
+  //update formData every render
+  const err = fieldValidator.error;
+  formData[id] = state;
+  formData.errors[id] = err;
 
-  //run this function every render
-  setFormData(id, value, errorMessage);
+  useEffect(() => {
+    lineRef.current.classList.toggle("error", err?.length > 0);
+  }, [err]);
 
   return (
-    <div className="line">
+    <div ref={lineRef} className="line">
       <div className="line__div">
         <input
-          className="line__field"
+          placeholder={placeholder}
+          className={`line__field`}
           id={id}
           name={id}
           type={type}
-          value={value || ""}
-          onBlur={() => dispatch({ type: "touch" })}
+          value={state || ""}
           onChange={function (e) {
-            dispatch({ type: "update", payload: e.target.value });
+            setState(fieldValidator.validateField(e.target.value, id));
           }}
         />
         <label className="line__icon" htmlFor={id}>
           {icons[id]}
         </label>
       </div>
-      <p className="line__toolkit">{errorMessage}</p>
+      <p className="line__toolkit">{err}</p>
     </div>
   );
 }

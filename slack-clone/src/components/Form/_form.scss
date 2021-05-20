@@ -2,6 +2,22 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid $violet_350d36_05;
   width: auto;
+  margin: 0.5rem;
+  padding: 1rem;
+
+  &__fields {
+  }
+
+  &__info {
+    margin-bottom: 1.5rem;
+  }
+
+  &__action {
+    background: $violet_350d36;
+    padding: 0.2rem 1rem;
+    border-radius: 10rem;
+    color: $violet_1817188;
+  }
 }
