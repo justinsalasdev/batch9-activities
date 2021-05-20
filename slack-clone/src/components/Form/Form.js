@@ -1,35 +1,27 @@
-import { auth } from "../../firebase/firebase";
-import isClean from "../../helpers/isClean";
-import useLoadUpdater from "../../hooks/userLoadUpdater";
+import { useState } from "react";
+import authenticate from "../../helpers/authenticate";
+import createAccount from "../../helpers/createAccount";
+import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
+import useAuthState from "../../hooks/auth/useAuthState";
 import Line from "../Line/Line";
+import Loader from "../Loader/Loader";
 
-const initialState = { _e: false, _w: false, _c: false };
 const formData = { errors: {} };
 
 export default function Form() {
-  const [{ _e, _w, _c }, updateLoadState] = useLoadUpdater(initialState);
+  const [isLoading, setLoading] = useState(false);
+  const [isLogin, changeForm] = useState(true);
+  const authDispatch = useAuthDispatcher();
+  const authState = useAuthState();
 
-  function handleSubmit(e) {
+  console.log(authState);
+
+  function signUp(e) {
     e.preventDefault();
-
-    if (isClean(Object.values(formData.errors))) {
-      updateLoadState({ type: "wait" });
-      auth
-        .createUserWithEmailAndPassword(formData.email, formData.password)
-        .then(userCredential => {
-          // Signed in
-          updateLoadState({ type: "complete" });
-          console.log(userCredential);
-          // ...
-        })
-        .catch(err => {
-          updateLoadState({
-            type: "error",
-            error: err
-          });
-        });
+    if (isLogin) {
+      authenticate(formData, setLoading, authDispatch);
     } else {
-      console.log(formData);
+      createAccount(formData, setLoading, authDispatch);
     }
   }
 
@@ -48,14 +40,20 @@ export default function Form() {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <p className="form__info">Create Account</p>
+    <form className="form" onSubmit={signUp}>
+      <div className="form__info">
+        <h3 className="form__title">{isLogin ? "LOGIN" : "CREATE ACCOUNT"}</h3>
+        <span className="form__switch" onClick={() => changeForm(state => !state)}>
+          {isLogin ? "create account" : "login instead"}
+        </span>
+      </div>
+      <p className="form__toolkit">{authState.error?.message}</p>
       <div className="form__fields">
         <Line {...emailConfig} />
         <Line {...passwordConfig} />
       </div>
       <button className="form__action" type="submit">
-        {_w ? "..." : "Submit"}
+        {isLoading ? <Loader type="inline" /> : isLogin ? "Login" : "Signup"}
       </button>
     </form>
   );

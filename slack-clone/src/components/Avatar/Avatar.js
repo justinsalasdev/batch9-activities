@@ -3,14 +3,10 @@ import { storage } from "../../firebase/firebase";
 import { BiImageAdd } from "react-icons/bi";
 import defaultAvatar from "../../assets/images/default.jpg";
 import Loader from "../Loader/Loader";
-import useLoadUpdater from "../../hooks/userLoadUpdater";
-const initialState = { _w: false, _c: false, _e: false };
 
 export default function Avatar() {
+  const [isLoading, setLoading] = useState(false);
   const [imageURL, setImageURL] = useState("");
-  const [state, dispatch] = useLoadUpdater(initialState);
-  const { _w, _e } = state;
-  console.log(state);
 
   useEffect(() => {
     setImageURL(localStorage.getItem("imageURL") || defaultAvatar);
@@ -24,16 +20,14 @@ export default function Avatar() {
 
       //state changed observer
       snapShot => {
-        dispatch({ type: "wait" });
+        setLoading(true);
         console.log(snapShot);
       },
 
       //error observer
       err => {
-        dispatch({
-          type: "error",
-          error: err
-        });
+        setLoading(false);
+        console.log(err);
       },
 
       //completion observer
@@ -43,7 +37,7 @@ export default function Avatar() {
         ref.getDownloadURL().then(url => {
           setImageURL(url);
           localStorage.setItem("imageURL", url);
-          dispatch({ type: "complete" });
+          setLoading(false);
         });
       }
     );
@@ -60,7 +54,7 @@ export default function Avatar() {
 
   return (
     <div className="avatar">
-      {_w ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <img src={imageURL || defaultAvatar} className="avatar__image" alt="user avatar"></img>
@@ -73,13 +67,11 @@ export default function Avatar() {
         type="file"
         onChange={updateAvatar}
       />
-      {!_w && (
+      {!isLoading && (
         <label className="avatar__icon" htmlFor="file">
           {<BiImageAdd />}
         </label>
       )}
-
-      {_e && <p>error occured</p>}
     </div>
   );
 }
