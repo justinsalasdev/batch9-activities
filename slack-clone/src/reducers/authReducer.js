@@ -11,7 +11,7 @@ export default function authReducer(state, action) {
     }
 
     case "error": {
-      return { ...state, error: action.payload };
+      return { ...state, error: { ...action.payload } };
     }
     default: {
       console.log("auth-reducer: unknown action");

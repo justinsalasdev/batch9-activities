@@ -1,0 +1,15 @@
+%flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%inline-flex-column {
+  @extend %flex-column;
+  display: inline-flex;
+}
+
+%flex-row {
+  display: flex;
+  align-items: center;
+}

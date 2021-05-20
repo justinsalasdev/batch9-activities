@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import FieldValidator from "../../helpers/FieldValidator";
@@ -10,10 +10,12 @@ const icons = {
 
 const fieldValidator = new FieldValidator();
 
-export default function Line(props) {
+export default React.memo(function Line(props) {
   const { id, type, placeholder, formData } = props;
   const [state, setState] = useState("");
   const lineRef = useRef();
+
+  console.log("renders");
 
   //update formData every render
   const err = fieldValidator.error;
@@ -45,4 +47,4 @@ export default function Line(props) {
       <p className="line__toolkit">{err}</p>
     </div>
   );
-}
+});

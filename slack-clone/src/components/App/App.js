@@ -7,9 +7,6 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function App() {
   const authDispatch = useAuthDispatcher();
-  const authState = useAuthState();
-
-  console.log(authState);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChange(auth, authDispatch); //subscribe to authChanges & receive unsubscribe
