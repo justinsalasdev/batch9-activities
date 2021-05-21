@@ -1,7 +1,7 @@
 import { auth } from "../firebase/firebase";
 import isClean from "./isClean";
 
-export default function createAccount(formData, setLoading, authDispatch) {
+export default function createAccount(formData, setLoading, authDispatch, setAuthError) {
   if (isClean(Object.values(formData.errors))) {
     setLoading(true);
     auth
@@ -14,7 +14,7 @@ export default function createAccount(formData, setLoading, authDispatch) {
         // ...
       })
       .catch(err => {
-        authDispatch({ type: "error", payload: err });
+        setAuthError(err.message);
         setLoading(false);
       });
   } else {

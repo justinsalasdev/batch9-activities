@@ -2,25 +2,23 @@ import { useState } from "react";
 import authenticate from "../../helpers/authenticate";
 import createAccount from "../../helpers/createAccount";
 import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
-import useAuthState from "../../hooks/auth/useAuthState";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
 
 const formData = { errors: {} };
 
 export default function Form() {
-  console.log("Form");
   const [isLoading, setLoading] = useState(false);
   const [isLogin, changeForm] = useState(true);
+  const [authError, setAuthError] = useState("");
   const authDispatch = useAuthDispatcher();
-  const authState = useAuthState();
 
   function signUp(e) {
     e.preventDefault();
     if (isLogin) {
-      authenticate(formData, setLoading, authDispatch);
+      authenticate(formData, setLoading, authDispatch, setAuthError);
     } else {
-      createAccount(formData, setLoading, authDispatch);
+      createAccount(formData, setLoading, authDispatch, setAuthError);
     }
   }
 
@@ -46,7 +44,7 @@ export default function Form() {
           {isLogin ? "create account" : "login instead"}
         </span>
       </div>
-      <p className="form__toolkit">{authState.error?.message}</p>
+      <p className="form__toolkit">{authError}</p>
       <div className="form__fields">
         <Line {...emailConfig} />
         <Line {...passwordConfig} />

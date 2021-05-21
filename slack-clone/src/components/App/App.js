@@ -4,6 +4,8 @@ import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
 import Form from "../Form/Form";
 import Sidebar from "../Sidebar/Sidebar";
 
+//TODO: make name content-editable
+
 export default function App() {
   console.log("App");
   const authDispatch = useAuthDispatcher();
