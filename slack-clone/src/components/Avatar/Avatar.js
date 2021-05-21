@@ -2,18 +2,18 @@ import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import defaultAvatar from "../../assets/images/default.jpg";
 import Loader from "../Loader/Loader";
-import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
+import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import uploadPhoto from "../../helpers/uploadPhoto";
 
 export default function Avatar({ photoURL }) {
   console.log("Avatar");
   const [isLoading, setLoading] = useState(false);
-  const authDispatch = useAuthDispatcher();
+  const userDispatch = useUserDispatcher();
 
   function updateAvatar(e) {
     const imageFile = e.target.files[0];
     if (imageFile) {
-      uploadPhoto(imageFile, setLoading, authDispatch);
+      uploadPhoto(imageFile, setLoading, userDispatch);
     } else {
       console.log("nothing selected");
     }

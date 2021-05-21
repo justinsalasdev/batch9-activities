@@ -1,7 +1,7 @@
 import { useState } from "react";
 import authenticate from "../../helpers/authenticate";
 import createAccount from "../../helpers/createAccount";
-import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
+import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
 
@@ -11,14 +11,14 @@ export default function Form() {
   const [isLoading, setLoading] = useState(false);
   const [isLogin, changeForm] = useState(true);
   const [authError, setAuthError] = useState("");
-  const authDispatch = useAuthDispatcher();
+  const userDispatch = useUserDispatcher();
 
   function signUp(e) {
     e.preventDefault();
     if (isLogin) {
-      authenticate(formData, setLoading, authDispatch, setAuthError);
+      authenticate(formData, setLoading, userDispatch, setAuthError);
     } else {
-      createAccount(formData, setLoading, authDispatch, setAuthError);
+      createAccount(formData, setLoading, userDispatch, setAuthError);
     }
   }
 
