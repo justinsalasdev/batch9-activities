@@ -2,6 +2,7 @@ import Menu from "../Menu/Menu";
 import Profile from "../Profile/Profile";
 
 export default function Sidebar() {
+  console.log("sidebar");
   return (
     <div className="sidebar">
       <nav>

@@ -1,63 +1,29 @@
-import { useState, useEffect } from "react";
-import { storage } from "../../firebase/firebase";
+import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import defaultAvatar from "../../assets/images/default.jpg";
 import Loader from "../Loader/Loader";
+import useUserDispatcher from "../../hooks/user/useUserDispatcher";
+import uploadPhoto from "../../helpers/uploadPhoto";
 
-export default function Avatar() {
+export default function Avatar({ photoURL }) {
+  console.log("Avatar");
   const [isLoading, setLoading] = useState(false);
-  const [imageURL, setImageURL] = useState("");
-
-  useEffect(() => {
-    setImageURL(localStorage.getItem("imageURL") || defaultAvatar);
-  }, []);
-
-  function startUpload(imageFile) {
-    const ref = storage.ref(`images/${imageFile.name}`);
-    const uploadTask = ref.put(imageFile);
-    uploadTask.on(
-      "state_changed", //name of event
-
-      //state changed observer
-      snapShot => {
-        setLoading(true);
-        console.log(snapShot);
-      },
-
-      //error observer
-      err => {
-        setLoading(false);
-        console.log(err);
-      },
-
-      //completion observer
-      () => {
-        // gets the functions from storage refences the image storage in firebase by the children
-        // gets the download url then sets the image from firebase as the value for the imgUrl key:
-        ref.getDownloadURL().then(url => {
-          setImageURL(url);
-          localStorage.setItem("imageURL", url);
-          setLoading(false);
-        });
-      }
-    );
-  }
+  const userDispatch = useUserDispatcher();
 
   function updateAvatar(e) {
     const imageFile = e.target.files[0];
     if (imageFile) {
-      startUpload(imageFile);
+      uploadPhoto(imageFile, setLoading, userDispatch);
     } else {
       console.log("nothing selected");
     }
   }
-
   return (
     <div className="avatar">
       {isLoading ? (
         <Loader />
       ) : (
-        <img src={imageURL || defaultAvatar} className="avatar__image" alt="user avatar"></img>
+        <img src={photoURL || defaultAvatar} className="avatar__image" alt="user avatar"></img>
       )}
       <input
         className="avatar__input"

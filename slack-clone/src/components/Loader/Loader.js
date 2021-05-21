@@ -1,4 +1,5 @@
 export default function Loader({ type }) {
+  console.log("Loader");
   if (type === "inline") {
     return <InlineLoader />;
   }

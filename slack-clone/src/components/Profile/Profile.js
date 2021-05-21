@@ -1,24 +1,20 @@
 import Avatar from "../Avatar/Avatar";
 import { FiLogOut } from "react-icons/fi";
-import { auth } from "../../firebase/firebase";
-import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
+import useUserDispatcher from "../../hooks/user/useUserDispatcher";
+import useUserState from "../../hooks/user/useUserState";
+import signOut from "../../helpers/signOut";
 
 export default function Profile() {
-  const authDispatch = useAuthDispatcher();
-  function signOut() {
-    auth
-      .signOut()
-      .then(() => console.log("logged out"))
-      .catch(err => {
-        authDispatch({ type: "error", payload: err });
-      });
-  }
+  const userDispatch = useUserDispatcher();
+  const userState = useUserState();
+
+  console.log(userState);
 
   return (
     <div className="profile">
-      <Avatar />
-      <div className="profile__name">Justin Rafael </div>
-      <button className="profile__logout" onClick={signOut}>
+      <Avatar photoURL={userState?.photoURL} />
+      <p className="profile__name">{userState?.displayName || "User"}</p>
+      <button className="profile__logout" onClick={() => signOut(userDispatch)}>
         <FiLogOut />
       </button>
     </div>

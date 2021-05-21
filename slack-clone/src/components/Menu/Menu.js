@@ -3,6 +3,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 
 export default function Menu({ name, entries }) {
+  console.log("Menu");
   const [isListExpanded, expandList] = useState(false);
   return (
     <div className="menu">
