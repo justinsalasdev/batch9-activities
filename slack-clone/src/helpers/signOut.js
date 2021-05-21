@@ -1,10 +1,10 @@
 import { auth } from "../firebase/firebase";
 
-export default function signOut(authDispatch) {
+export default function signOut(userDispatch) {
   auth
     .signOut()
-    .then(() => authDispatch({ type: "delete user" }))
+    .then(() => userDispatch({ type: "delete user" }))
     .catch(err => {
-      authDispatch({ type: "error", payload: err });
+      console.log(err);
     });
 }

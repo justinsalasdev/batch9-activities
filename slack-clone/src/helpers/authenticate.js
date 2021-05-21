@@ -1,14 +1,16 @@
 import { auth } from "../firebase/firebase";
+import getUserFields from "./getUserFields";
 import isClean from "./isClean";
 
-export default function authenticate(formData, setLoading, authDispatch, setAuthError) {
+export default function authenticate(formData, setLoading, userDispatch, setAuthError) {
   if (isClean(Object.values(formData.errors))) {
     setLoading(true);
     auth
       .signInWithEmailAndPassword(formData.email, formData.password)
       .then(userCredential => {
         // Signed in
-        authDispatch({ type: "save user", payload: userCredential.user });
+
+        userDispatch({ type: "save user", payload: getUserFields(userCredential.user) });
         setLoading(false);
 
         // ...

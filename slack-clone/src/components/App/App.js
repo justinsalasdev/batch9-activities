@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { auth } from "../../firebase/firebase";
-import useAuthDispatcher from "../../hooks/auth/useAuthDispatcher";
+import getUserFields from "../../helpers/getUserFields";
+import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Form from "../Form/Form";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -8,10 +9,10 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function App() {
   console.log("App");
-  const authDispatch = useAuthDispatcher();
+  const userDispatch = useUserDispatcher();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChange(auth, authDispatch); //subscribe to authChanges & receive unsubscribe
+    const unsubscribe = onAuthStateChange(auth, userDispatch); //subscribe to authChanges & receive unsubscribe
     return function () {
       unsubscribe(); //unsubscribe when app unmounts
     };
@@ -29,12 +30,15 @@ export default function App() {
   );
 }
 
-function onAuthStateChange(auth, authDispatch) {
+function onAuthStateChange(auth, userDispatch) {
   return auth.onAuthStateChanged(user => {
     if (user) {
-      authDispatch({ type: "save user", payload: user });
+      userDispatch({
+        type: "save user",
+        payload: getUserFields(user)
+      });
     } else {
-      authDispatch({ type: "delete user" });
+      userDispatch({ type: "delete user" });
     }
   });
 }
