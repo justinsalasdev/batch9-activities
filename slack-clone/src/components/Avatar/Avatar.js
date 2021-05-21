@@ -19,7 +19,7 @@ export default function Avatar({ photoURL }) {
     }
   }
   return (
-    <div className="avatar">
+    <div className="avatar profile__avatar">
       {isLoading ? (
         <Loader />
       ) : (

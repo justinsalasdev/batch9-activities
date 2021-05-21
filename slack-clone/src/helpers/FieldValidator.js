@@ -13,7 +13,7 @@ export default class FieldValidator {
 
   validateField(value, id) {
     if (!value) {
-      this.error = "field is required";
+      this.error = `${id} is required`;
       return value;
     }
 
@@ -27,6 +27,7 @@ export default class FieldValidator {
       return value;
     }
 
+    //jf all IFs passed, set error to ""
     this.error = "";
     return value;
   }

@@ -1,38 +1,37 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import authenticate from "../../helpers/authenticate";
 import createAccount from "../../helpers/createAccount";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
 
-const formData = { errors: {} };
-
 export default function Form() {
   const [isLoading, setLoading] = useState(false);
   const [isLogin, changeForm] = useState(true);
   const [authError, setAuthError] = useState("");
   const userDispatch = useUserDispatcher();
+  const formData = useRef({ errors: {} });
 
   function signUp(e) {
     e.preventDefault();
     if (isLogin) {
-      authenticate(formData, setLoading, userDispatch, setAuthError);
+      authenticate(formData.current, setLoading, userDispatch, setAuthError);
     } else {
-      createAccount(formData, setLoading, userDispatch, setAuthError);
+      createAccount(formData.current, setLoading, userDispatch, setAuthError);
     }
   }
 
   const emailConfig = {
     id: "email",
     type: "text",
-    formData: formData,
+    formData: formData.current,
     placeholder: "Email"
   };
 
   const passwordConfig = {
     id: "password",
     type: "password",
-    formData: formData,
+    formData: formData.current,
     placeholder: "Password"
   };
 

@@ -1,5 +1,4 @@
 import Avatar from "../Avatar/Avatar";
-import { FiLogOut } from "react-icons/fi";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import useUserState from "../../hooks/user/useUserState";
 import signOut from "../../helpers/signOut";
@@ -15,7 +14,7 @@ export default function Profile() {
       <Avatar photoURL={userState?.photoURL} />
       <p className="profile__name">{userState?.displayName || "User"}</p>
       <button className="profile__logout" onClick={() => signOut(userDispatch)}>
-        <FiLogOut />
+        logout
       </button>
     </div>
   );

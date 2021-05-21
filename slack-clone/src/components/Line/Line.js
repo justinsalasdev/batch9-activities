@@ -16,14 +16,12 @@ export default React.memo(function Line(props) {
   const [state, setState] = useState("");
   const lineRef = useRef();
 
-  //update formData every render
-  const err = fieldValidator.error;
-  formData[id] = state;
-  formData.errors[id] = err;
-
   useEffect(() => {
-    lineRef.current.classList.toggle("error", err?.length > 0);
-  }, [err]);
+    //update formData every render
+    formData[id] = state;
+    formData.errors[id] = fieldValidator.error;
+    lineRef.current.classList.toggle("error", fieldValidator.error?.length > 0);
+  }); //effect run on every render
 
   return (
     <div ref={lineRef} className="line">
@@ -43,7 +41,7 @@ export default React.memo(function Line(props) {
           {icons[id]}
         </label>
       </div>
-      <p className="line__toolkit">{err}</p>
+      <p className="line__toolkit">{fieldValidator.error}</p>
     </div>
   );
 });
