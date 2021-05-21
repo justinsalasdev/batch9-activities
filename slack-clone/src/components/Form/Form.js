@@ -12,7 +12,8 @@ export default function Form() {
   const userDispatch = useUserDispatcher();
   const formData = useRef({ errors: {} });
 
-  function signUp(e) {
+  function handleSubmit(e) {
+    setAuthError("");
     e.preventDefault();
     if (isLogin) {
       authenticate(formData.current, setLoading, userDispatch, setAuthError);
@@ -36,10 +37,16 @@ export default function Form() {
   };
 
   return (
-    <form className="form" onSubmit={signUp}>
+    <form className="form" onSubmit={handleSubmit}>
       <div className="form__info">
         <h3 className="form__title">{isLogin ? "LOGIN" : "CREATE ACCOUNT"}</h3>
-        <span className="form__switch" onClick={() => changeForm(state => !state)}>
+        <span
+          className="form__switch"
+          onClick={() => {
+            changeForm(state => !state);
+            setAuthError("");
+          }}
+        >
           {isLogin ? "create account" : "login instead"}
         </span>
       </div>
