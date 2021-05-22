@@ -1,0 +1,40 @@
+program flow
+
+//Initialization flow
+ fn_initGame()
+    state is initialized
+    element handles are initialized
+
+    fn_disableHistory()
+        fn_displayPrevious is initialized and used as event handler
+            fn_showLog is initialized 
+        fn_displayNext is initialized and used as event handler
+
+
+    fn_initGame is used as eventhandler
+    handleClick is initialized and used as event handler
+    
+
+fn_handleClick initialization
+    fn_updateBoard is initialized
+    fn_saveMove is initialized
+    fn_initGame is used as event handler
+        already initialized
+    fn_checkWin is initialized
+    fn_handleClick is used as event handler
+        already initialized
+    fn_enableHistory is initialized
+        dependencies already initialized at line 8
+    fn_handleClick is used as event handler
+        already initialized
+    fn_swapTurns is initialized
+    
+
+
+
+
+
+
+
+
+

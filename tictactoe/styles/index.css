@@ -238,6 +238,9 @@ body {
   border: none;
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
+.button.next:active {
+  transform: translateX(0.2rem);
+}
 .button.previous {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 0;
@@ -257,4 +260,4 @@ body {
   color: #555555;
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=index.css.map */
