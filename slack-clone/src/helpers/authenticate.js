@@ -1,8 +1,7 @@
 import { auth } from "../firebase/firebase";
-import getUserFields from "./getUserFields";
 import isClean from "./isClean";
 
-export default function authenticate(formData, setLoading, userDispatch, setAuthError) {
+export default function authenticate(formData, setLoading, setAuthError, history) {
   if (isClean(Object.values(formData.errors))) {
     setLoading(true);
     auth
@@ -10,8 +9,10 @@ export default function authenticate(formData, setLoading, userDispatch, setAuth
       .then(userCredential => {
         // Signed in
 
-        userDispatch({ type: "save user", payload: getUserFields(userCredential.user) });
+        //no need to run because onAuthState on App runs when Auth Changes
+        // userDispatch({ type: "save user", payload: getUserFields(userCredential.user) });
         setLoading(false);
+        history.push("/");
 
         // ...
       })

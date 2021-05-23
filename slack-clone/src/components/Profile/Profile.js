@@ -1,21 +1,34 @@
 import Avatar from "../Avatar/Avatar";
-import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import useUserState from "../../hooks/user/useUserState";
 import signOut from "../../helpers/signOut";
+import Name from "../Name/Name";
+import { Redirect, useHistory } from "react-router-dom";
 
 export default function Profile() {
-  const userDispatch = useUserDispatcher();
-  const userState = useUserState();
+  console.log("Profile");
+  const { photoURL, displayName, uid } = useUserState();
+  const navigator = useHistory();
 
-  console.log(userState);
+  if (!uid) {
+    return <NoProfile />;
+  }
 
   return (
     <div className="profile">
-      <Avatar photoURL={userState?.photoURL} />
-      <p className="profile__name">{userState?.displayName || "User"}</p>
-      <button className="profile__logout" onClick={() => signOut(userDispatch)}>
+      <Avatar photoURL={photoURL} />
+      <Name initialName={displayName} />
+      <button className="profile__logout" onClick={() => signOut(navigator)}>
         logout
       </button>
+    </div>
+  );
+}
+
+function NoProfile() {
+  return (
+    <div className="profile profile--none">
+      <div className="profile--none__avatar"></div>
+      <div className="profile--none__name"></div>
     </div>
   );
 }

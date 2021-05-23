@@ -18,6 +18,13 @@ export default function authReducer(state, action) {
       };
     }
 
+    case "update name": {
+      return {
+        ...state,
+        displayName: action.payload
+      };
+    }
+
     case "delete user": {
       return initialState;
     }

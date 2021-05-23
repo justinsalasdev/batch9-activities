@@ -1,6 +1,6 @@
 @import "./constants/colors";
 @import "./constants/dimensions";
-@import "./constants/helpers";
+@import "./helpers/helpers";
 @import "./base/fonts";
 @import "./base/base";
 @import "./page";
@@ -14,3 +14,4 @@
 @import "../components/Loader/loader";
 @import "../components/Line/line";
 @import "../components/Name/i-form";
+@import "../components/View/view";

@@ -2,37 +2,11 @@ import { useEffect } from "react";
 import { auth } from "../../firebase/firebase";
 import getUserFields from "../../helpers/getUserFields";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
-import Form from "../Form/Form";
-import Name from "../Name/Name";
 import Sidebar from "../Sidebar/Sidebar";
+import Form from "../Form/Form";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 
-//TODO: make name content-editable
-
-export default function App() {
-  console.log("App");
-  const userDispatch = useUserDispatcher();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChange(auth, userDispatch); //subscribe to authChanges & receive unsubscribe
-    return function () {
-      unsubscribe(); //unsubscribe when app unmounts
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <>
-      <Sidebar />
-      <div className="view">
-        <Form />
-        <Name />
-      </div>
-      <div className="chat"></div>
-    </>
-  );
-}
-
-function onAuthStateChange(auth, userDispatch) {
+function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
     if (user) {
       userDispatch({
@@ -41,6 +15,38 @@ function onAuthStateChange(auth, userDispatch) {
       });
     } else {
       userDispatch({ type: "delete user" });
+      navigator.push("/login");
     }
   });
+}
+
+export default function App() {
+  const navigator = useHistory();
+  const userDispatch = useUserDispatcher();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange(auth, userDispatch, navigator); //subscribe to authChanges & receive unsubscribe
+    return function () {
+      unsubscribe(); //unsubscribe when app unmounts
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //TODO: guard login route
+  return (
+    <>
+      <Sidebar />
+      <div className="view">
+        <Switch>
+          <Route path="/login">
+            <Form />
+          </Route>
+          <Route path="/">
+            <div>Home view</div>
+          </Route>
+        </Switch>
+      </div>
+      <div className="chat"></div>
+    </>
+  );
 }

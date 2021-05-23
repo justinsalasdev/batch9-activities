@@ -18,6 +18,7 @@ export default function Avatar({ photoURL }) {
       console.log("nothing selected");
     }
   }
+
   return (
     <div className="avatar profile__avatar">
       {isLoading ? (

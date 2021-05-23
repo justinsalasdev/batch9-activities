@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import authenticate from "../../helpers/authenticate";
 import createAccount from "../../helpers/createAccount";
-import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
 
@@ -9,16 +9,18 @@ export default function Form() {
   const [isLoading, setLoading] = useState(false);
   const [isLogin, changeForm] = useState(true);
   const [authError, setAuthError] = useState("");
-  const userDispatch = useUserDispatcher();
   const formData = useRef({ errors: {} });
+  const navigator = useHistory();
+
+  const authResources = [formData.current, setLoading, setAuthError, navigator];
 
   function handleSubmit(e) {
     setAuthError("");
     e.preventDefault();
     if (isLogin) {
-      authenticate(formData.current, setLoading, userDispatch, setAuthError);
+      authenticate.apply(null, authResources);
     } else {
-      createAccount(formData.current, setLoading, userDispatch, setAuthError);
+      createAccount.apply(null, authResources);
     }
   }
 

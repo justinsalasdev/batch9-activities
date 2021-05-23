@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
+import useUserState from "../../hooks/user/useUserState";
 
 export default function Menu({ name, entries }) {
   console.log("Menu");
   const [isListExpanded, expandList] = useState(false);
+  const { uid } = useUserState();
+
+  if (!uid) {
+    return <NoMenu />;
+  }
+
   return (
     <div className="menu">
       <div className="menu__actions">
@@ -29,4 +36,8 @@ export default function Menu({ name, entries }) {
       )}
     </div>
   );
+}
+
+function NoMenu() {
+  return <div className="menu--none"></div>;
 }
