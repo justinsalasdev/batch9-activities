@@ -3,7 +3,6 @@ import { auth } from "../../firebase/firebase";
 import getUserFields from "../../helpers/getUserFields";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Form from "../Form/Form";
-import Name from "../Name/Name";
 import Sidebar from "../Sidebar/Sidebar";
 
 //TODO: make name content-editable
@@ -25,7 +24,6 @@ export default function App() {
       <Sidebar />
       <div className="view">
         <Form />
-        <Name />
       </div>
       <div className="chat"></div>
     </>

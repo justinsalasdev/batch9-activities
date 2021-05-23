@@ -1,17 +1,32 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { BiSave } from "react-icons/bi";
+import { auth } from "../../firebase/firebase";
+import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 
-function Child({ initialName }) {
-  const initialLabel = useRef(initialName);
+export default function Name({ initialName }) {
+  console.log("Name");
+  const userDispatch = useUserDispatcher();
   const labelRef = useRef();
   const [state, setState] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!state || state === initialLabel.current) {
-      console.log("same");
+    if (!state || state === initialName) {
+      labelRef.current.previousElementSibling.blur();
+    } else {
+      const user = auth.currentUser;
+      user
+        .updateProfile({
+          displayName: state
+        })
+        .then(function () {
+          userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
+          labelRef.current.previousElementSibling.blur();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
-    initialLabel.current = state; //when displayName is updated in firebase
   }
 
   return (
@@ -28,7 +43,7 @@ function Child({ initialName }) {
               labelRef.current.textContent = state;
             } else {
               //use initialLabel when input doesn't have any content
-              labelRef.current.textContent = initialLabel.current;
+              labelRef.current.textContent = initialName;
             }
           }}
           onFocus={() => setState(labelRef.current.textContent)}
@@ -38,16 +53,15 @@ function Child({ initialName }) {
           }}
         />
         <label ref={labelRef} htmlFor="name" className="i-form__label">
-          {initialLabel.current}
+          {initialName || "User"}
         </label>
       </div>
-      <button className="i-form__submit">
-        {state && !(state === initialLabel.current) && <BiSave />}
-      </button>
+
+      {state && !(state === initialName) && (
+        <button className="i-form__submit">
+          <BiSave />
+        </button>
+      )}
     </form>
   );
-}
-
-export default function Name() {
-  return <Child initialName="User" />;
 }

@@ -1,6 +1,7 @@
 $padding: 0.2rem;
 
 .i-form {
+  position: relative;
   display: inline-flex;
   align-items: center;
   background-color: $violet_350d36;
@@ -35,13 +36,13 @@ $padding: 0.2rem;
   }
 
   &__submit {
-    // margin-left: 0.5rem;
-    font-size: 0.9em;
-    min-width: 1.5rem;
-    min-height: 1.5rem;
+    position: absolute;
     display: flex;
-    justify-content: center;
     align-items: center;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+    font-size: 0.9em;
     background-color: transparent;
   }
 }

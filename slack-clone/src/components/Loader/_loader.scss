@@ -1,12 +1,12 @@
 .container {
-  width: 4rem;
-  height: 4rem;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 .loader {
   width: 100%;
   height: 100%;
-  background: $violet_350d36;
+  background: transparent;
   position: relative;
   border-radius: 50%;
 
