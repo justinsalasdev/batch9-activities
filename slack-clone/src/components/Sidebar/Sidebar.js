@@ -5,8 +5,8 @@ export default function Sidebar() {
   console.log("sidebar");
   return (
     <div className="sidebar">
+      <Profile />
       <nav>
-        <Profile />
         {/* <div className></div> */}
         <Menu name="Channels" entries={["Channel 1", "Channel 2", "Channel 3", "Channel 4"]} />
         <Menu name="DMs" entries={["DM1", "DM2", "DM3", "DM4"]} />

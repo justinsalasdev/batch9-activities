@@ -1,16 +1,17 @@
 import { auth } from "../firebase/firebase";
-import getUserFields from "./getUserFields";
 import isClean from "./isClean";
 
-export default function createAccount(formData, setLoading, userDispatch, setAuthError) {
+export default function createAccount(formData, setLoading, setAuthError, history) {
   if (isClean(Object.values(formData.errors))) {
     setLoading(true);
     auth
       .createUserWithEmailAndPassword(formData.email, formData.password)
       .then(userCredential => {
         // Signed in
-        userDispatch({ type: "save user", payload: getUserFields(userCredential.user) });
+        //no need to run onAuthState updates context value upon signup
+        // userDispatch({ type: "save user", payload: getUserFields(userCredential.user) });
         setLoading(false);
+        history.push("/");
 
         // ...
       })

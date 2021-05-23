@@ -30,7 +30,7 @@ export default function Name({ initialName }) {
   }
 
   return (
-    <form className="i-form" onSubmit={handleSubmit}>
+    <form className="i-form profile__name" onSubmit={handleSubmit}>
       <div className="i-form__div">
         <input
           spellCheck="false"

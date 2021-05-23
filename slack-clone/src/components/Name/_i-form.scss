@@ -12,6 +12,7 @@ $padding: 0.2rem;
   }
 
   &__field {
+    font-size: 1.1rem;
     position: absolute;
     left: $padding;
     color: transparent;
@@ -21,10 +22,15 @@ $padding: 0.2rem;
     width: 100%;
     &:focus {
       color: $violet_1817188;
+      text-decoration: underline;
     }
 
     &:focus + .i-form__label {
       color: transparent;
+    }
+
+    &:hover + .i-form__label {
+      text-decoration: underline;
     }
   }
 
@@ -33,6 +39,7 @@ $padding: 0.2rem;
     padding: $padding;
     background-color: transparent;
     cursor: text;
+    font-size: 1.1rem;
   }
 
   &__submit {

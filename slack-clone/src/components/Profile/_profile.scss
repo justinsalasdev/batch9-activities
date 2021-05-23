@@ -2,17 +2,19 @@
   @extend %flex-column;
   border-bottom: 1px solid $violet_1817188_06;
   padding-bottom: 1rem;
+  margin-bottom: 0.8rem;
 
   &__avatar {
     margin: 0.5rem auto;
   }
 
   &__name {
+    margin-bottom: 0.3rem;
   }
 
   &__logout {
     text-transform: uppercase;
-    font-size: 0.5em;
+    font-size: 0.6rem;
     background: transparent;
     display: inline-flex;
 
@@ -23,6 +25,24 @@
 
     &:active {
       transform: scale(1.05);
+    }
+  }
+
+  &--none {
+    min-height: 10rem;
+
+    &__avatar {
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: $violet_1817188_06;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+    }
+
+    &__name {
+      height: 1rem;
+      width: 5rem;
+      background-color: $violet_1817188_06;
     }
   }
 }
