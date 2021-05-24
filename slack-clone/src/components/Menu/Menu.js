@@ -39,10 +39,10 @@ export default function Menu({ name, entries, type }) {
           {...$("adder")}
           onClick={() => {
             if (isListExpanded) {
-              setAdding(true);
+              setAdding(state => !state);
             } else {
               expandList(true);
-              setAdding(true);
+              setAdding(state => !state);
             }
           }}
         >
@@ -52,8 +52,14 @@ export default function Menu({ name, entries, type }) {
 
       {isListExpanded && (
         <ul {...$("items")}>
-          {isAdding && <LineForm type={type} mods={lineFormMods} initialName="Name" />}
-
+          {isAdding && (
+            <LineForm
+              type={type}
+              mods={lineFormMods}
+              initialName="Enter name"
+              setAdding={setAdding}
+            />
+          )}
           {entries.map((entry, index) => {
             return (
               <li {...$("item")} key={index}>

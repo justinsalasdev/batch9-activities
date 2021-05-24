@@ -3,11 +3,12 @@ import genClass from "../../helpers/genClass";
 import useLineFormLogic from "../../hooks/useLineFormLogic";
 import Loader from "../Loader/Loader";
 
-export default function LineForm({ initialName, mods, type }) {
+export default function LineForm({ initialName, mods, type, setAdding }) {
   console.log("LineForm");
   const { isLoading, state, labelRef, handleSubmit, handleChange, handleEscape } = useLineFormLogic(
     initialName,
-    type
+    type,
+    setAdding
   );
 
   const $ = genClass("line-form", mods);

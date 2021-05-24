@@ -5,7 +5,6 @@ import createAccount from "../../helpers/createAccount";
 import genClass from "../../helpers/genClass";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
-const $ = genClass("form", {});
 
 export default function Form() {
   const [isLoading, setLoading] = useState(false);
@@ -15,6 +14,7 @@ export default function Form() {
   const navigator = useHistory();
 
   const authResources = [formData.current, setLoading, setAuthError, navigator];
+  const $ = genClass("form", {});
 
   function handleSubmit(e) {
     setAuthError("");

@@ -42,6 +42,17 @@ $padding: 0.2rem;
       left: 0;
       padding: 0;
       font-size: 1rem;
+
+      &:focus {
+        left: $padding;
+        color: $violet_1817188;
+        text-decoration: underline;
+      }
+
+      &:focus + .line-form__label {
+        padding: $padding;
+        color: transparent;
+      }
     }
   }
 

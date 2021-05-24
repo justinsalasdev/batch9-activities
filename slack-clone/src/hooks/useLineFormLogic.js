@@ -10,8 +10,7 @@ const submitFunctions = {
   dms: saveChannel("dms")
 };
 
-export default function useNameChanger(initialName, type) {
-  console.log(type);
+export default function useNameChanger(initialName, type, setAdding) {
   const labelRef = useRef();
   const userDispatch = useUserDispatcher();
   const userState = useUserState();
@@ -19,6 +18,7 @@ export default function useNameChanger(initialName, type) {
   const [isLoading, setLoading] = useState(false);
 
   const resources = {
+    setAdding,
     labelRef,
     state,
     setLoading,
@@ -35,6 +35,7 @@ export default function useNameChanger(initialName, type) {
     if (e.key === "Escape") {
       setState(initialName);
       labelRef.current.previousElementSibling.blur();
+      setAdding && setAdding(false); //
     } else return;
   }
 
