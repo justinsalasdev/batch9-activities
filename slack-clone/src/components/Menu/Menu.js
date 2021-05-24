@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import useUserState from "../../hooks/user/useUserState";
-import LineForm from "../LineForm/LineForm";
-import createChannelSaver from "../../hooks/createChannelSaver";
 import genClass from "../../helpers/genClass";
 
-export default function Menu({ name, entries }) {
+export default function Menu({ name, entries, type }) {
   console.log("Menu");
 
   const [isAdding, setAdding] = useState(false);
@@ -39,10 +37,10 @@ export default function Menu({ name, entries }) {
         <button
           {...$("adder")}
           onClick={() => {
-            if (!isListExpanded) {
-              expandList(true);
+            if (isListExpanded) {
               setAdding(true);
             } else {
+              expandList(true);
               setAdding(true);
             }
           }}
@@ -53,9 +51,14 @@ export default function Menu({ name, entries }) {
 
       {isListExpanded && (
         <ul {...$("items")}>
-          {isAdding && (
-            <LineForm mods={lineFormMods} customHook={createChannelSaver("Name", setAdding)} />
-          )}
+          {/* {isAdding && (
+            <LineForm
+              type={type}
+              mods={lineFormMods}
+              customHook={createChannelSaver("Name", setAdding)}
+            />
+          )} */}
+
           {entries.map((entry, index) => {
             return (
               <li {...$("item")} key={index}>

@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import { BiSave } from "react-icons/bi";
 import genClass from "../../helpers/genClass";
+import useNameChanger from "../../hooks/useNameChanger";
 import Loader from "../Loader/Loader";
 
-export default function LineForm({ customHook, mods }) {
+export default function LineForm({ initialName, mods }) {
+  console.log("LineForm");
   const {
-    initialName,
     isLoading,
     state,
     labelRef,
@@ -13,7 +15,7 @@ export default function LineForm({ customHook, mods }) {
     handleBlur,
     handleFocus,
     handleEscape
-  } = customHook();
+  } = useNameChanger(initialName);
 
   const $ = genClass("line-form", mods);
 

@@ -3,11 +3,16 @@ import { db } from "../firebase/firebase";
 import useUserState from "./user/useUserState";
 
 export default function createChannelHook(initialName, cancel) {
-  return function useChannelSaver() {
+  return function useChannelSaver(type) {
     const userState = useUserState();
     const labelRef = useRef();
     const [state, setState] = useState("");
     const [isLoading, setLoading] = useState(false);
+
+    useEffect(() => {
+      console.log(labelRef.current);
+      labelRef.current.focus();
+    });
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -52,14 +57,6 @@ export default function createChannelHook(initialName, cancel) {
         labelRef.current.previousElementSibling.blur();
       } else return;
     }
-
-    //dynamics : isLoading, state, setState, handleSubmit, labelRef,
-
-    /*value={state || ""}
-            onKeyDown={handleEscape}
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            onChange={handleChange} */
 
     return {
       initialName,

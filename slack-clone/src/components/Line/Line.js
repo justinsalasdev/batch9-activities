@@ -17,6 +17,7 @@ export default React.memo(function Line(props) {
   const { id, type, placeholder, formData } = props;
   const [state, setState] = useState("");
   const lineRef = useRef();
+  const labelRef = useRef();
 
   useEffect(() => {
     //update formData every render
@@ -24,6 +25,10 @@ export default React.memo(function Line(props) {
     formData.errors[id] = fieldValidator.error;
     lineRef.current.classList.toggle("error", fieldValidator.error?.length > 0);
   }); //effect run on every render
+
+  useEffect(() => {
+    labelRef.current.focus();
+  }, []);
 
   return (
     <div ref={lineRef} {...$()}>
@@ -39,7 +44,7 @@ export default React.memo(function Line(props) {
             setState(fieldValidator.validateField(e.target.value, id));
           }}
         />
-        <label {...$("icon")} htmlFor={id}>
+        <label ref={labelRef} {...$("icon")} htmlFor={id}>
           {icons[id]}
         </label>
       </div>
