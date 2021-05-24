@@ -1,11 +1,12 @@
 $padding: 0.2rem;
 
-.i-form {
+.line-form {
   position: relative;
   display: inline-flex;
   align-items: center;
   background-color: $violet_350d36;
   color: $violet_1817188;
+  min-height: 2rem;
 
   &__div {
     position: relative;

@@ -1,13 +1,11 @@
 import Avatar from "../Avatar/Avatar";
 import useUserState from "../../hooks/user/useUserState";
 import signOut from "../../helpers/signOut";
-import Name from "../Name/Name";
-import { Redirect, useHistory } from "react-router-dom";
+import LineForm from "../LineForm/LineForm";
+import createNameChanger from "../../hooks/createNameChanger";
 
 export default function Profile() {
-  console.log("Profile");
   const { photoURL, displayName, uid } = useUserState();
-  const navigator = useHistory();
 
   if (!uid) {
     return <NoProfile />;
@@ -16,8 +14,8 @@ export default function Profile() {
   return (
     <div className="profile">
       <Avatar photoURL={photoURL} />
-      <Name initialName={displayName} />
-      <button className="profile__logout" onClick={() => signOut(navigator)}>
+      <LineForm customHook={createNameChanger(displayName || "User")} />
+      <button className="profile__logout" onClick={() => signOut()}>
         logout
       </button>
     </div>

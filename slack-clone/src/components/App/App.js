@@ -4,7 +4,7 @@ import getUserFields from "../../helpers/getUserFields";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Sidebar from "../Sidebar/Sidebar";
 import Form from "../Form/Form";
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {

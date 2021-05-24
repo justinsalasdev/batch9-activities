@@ -5,7 +5,8 @@ Channels
     -channel2
         -name
         -messages with channelId
-        -users
+        -creator: uid
+        -users: [uid, uid, uid]
     -channel3
     -channel4
     -channel5
