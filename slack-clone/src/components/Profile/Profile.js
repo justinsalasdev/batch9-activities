@@ -19,7 +19,7 @@ export default function Profile() {
   return (
     <div className="profile">
       <Avatar photoURL={photoURL} />
-      <LineForm mods={lineFormMods} initialName={displayName} />
+      <LineForm type="profile" mods={lineFormMods} initialName={displayName} />
       <button className="profile__logout" onClick={() => signOut()}>
         logout
       </button>

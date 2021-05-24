@@ -1,12 +1,31 @@
 import { useEffect, useRef, useState } from "react";
+import saveChannel from "../helpers/saveChannel";
 import saveName from "../helpers/saveName";
 import useUserDispatcher from "./user/useUserDispatcher";
+import useUserState from "./user/useUserState";
 
-export default function useNameChanger(initialName, face) {
+const submitFunctions = {
+  profile: saveName,
+  channels: saveChannel("channels"),
+  dms: saveChannel("dms")
+};
+
+export default function useNameChanger(initialName, type) {
+  console.log(type);
   const labelRef = useRef();
   const userDispatch = useUserDispatcher();
+  const userState = useUserState();
   const [state, setState] = useState(initialName);
   const [isLoading, setLoading] = useState(false);
+
+  const resources = {
+    labelRef,
+    state,
+    setLoading,
+    userDispatch,
+    initialName,
+    userState
+  };
 
   function handleChange(e) {
     setState(e.target.value);
@@ -23,7 +42,7 @@ export default function useNameChanger(initialName, face) {
     state,
     labelRef,
     isLoading,
-    handleSubmit: saveName({ labelRef, state, setLoading, userDispatch, initialName }),
+    handleSubmit: submitFunctions[type](resources),
     handleChange,
     handleEscape
   };

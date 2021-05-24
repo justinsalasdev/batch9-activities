@@ -3,6 +3,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import useUserState from "../../hooks/user/useUserState";
 import genClass from "../../helpers/genClass";
+import LineForm from "../LineForm/LineForm";
 
 export default function Menu({ name, entries, type }) {
   console.log("Menu");
@@ -51,13 +52,7 @@ export default function Menu({ name, entries, type }) {
 
       {isListExpanded && (
         <ul {...$("items")}>
-          {/* {isAdding && (
-            <LineForm
-              type={type}
-              mods={lineFormMods}
-              customHook={createChannelSaver("Name", setAdding)}
-            />
-          )} */}
+          {isAdding && <LineForm type={type} mods={lineFormMods} initialName="Name" />}
 
           {entries.map((entry, index) => {
             return (
