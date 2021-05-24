@@ -1,35 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import useUserState from "../../hooks/user/useUserState";
 import LineForm from "../LineForm/LineForm";
 import createChannelSaver from "../../hooks/createChannelSaver";
+import genClass from "../../helpers/genClass";
 
 export default function Menu({ name, entries }) {
   console.log("Menu");
+
   const [isAdding, setAdding] = useState(false);
   const [isListExpanded, expandList] = useState(false);
   const { uid } = useUserState();
-  console.log(isAdding);
+
+  const lineFormMods = {
+    field: ["channel"],
+    label: ["channel"]
+  };
+
+  const $ = genClass("menu", {});
 
   if (!uid) {
     return <NoMenu />;
   }
 
   return (
-    <div className="menu">
-      <div className="menu__actions">
+    <div {...$()}>
+      <div {...$("actions")}>
         <button
-          className="menu__expander"
+          {...$("expander")}
           onClick={() => {
             expandList(state => !state);
             setAdding(false);
           }}
         >
-          <IoIosArrowDropdownCircle /> <span className="menu__name">{name}</span>
+          <IoIosArrowDropdownCircle /> <span {...$("name")}>{name}</span>
         </button>
         <button
-          className="menu__adder"
+          {...$("adder")}
           onClick={() => {
             if (!isListExpanded) {
               expandList(true);
@@ -44,11 +52,13 @@ export default function Menu({ name, entries }) {
       </div>
 
       {isListExpanded && (
-        <ul className="menu__items">
-          {isAdding && <LineForm customHook={createChannelSaver("Name", setAdding)} />}
+        <ul {...$("items")}>
+          {isAdding && (
+            <LineForm mods={lineFormMods} customHook={createChannelSaver("Name", setAdding)} />
+          )}
           {entries.map((entry, index) => {
             return (
-              <li className="menu__item" key={index}>
+              <li {...$("item")} key={index}>
                 {entry}
               </li>
             );
@@ -60,5 +70,6 @@ export default function Menu({ name, entries }) {
 }
 
 function NoMenu() {
-  return <div className="menu--none"></div>;
+  const $ = genClass("menu", { menu: ["none"] });
+  return <div {...$()}></div>;
 }

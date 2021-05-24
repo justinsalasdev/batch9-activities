@@ -1,8 +1,8 @@
 import { BiSave } from "react-icons/bi";
+import genClass from "../../helpers/genClass";
 import Loader from "../Loader/Loader";
 
-export default function LineForm({ customHook }) {
-  console.log("LineForm");
+export default function LineForm({ customHook, mods }) {
   const {
     initialName,
     isLoading,
@@ -15,15 +15,17 @@ export default function LineForm({ customHook }) {
     handleEscape
   } = customHook();
 
+  const $ = genClass("line-form", mods);
+
   return (
-    <form className="line-form profile__name" onSubmit={handleSubmit}>
+    <form {...$()} onSubmit={handleSubmit}>
       {isLoading ? (
         <Loader type="inline" />
       ) : (
-        <div className="line-form__div">
+        <div {...$("div")}>
           <input
             spellCheck="false"
-            className="line-form__field"
+            {...$("field")}
             type="text"
             id="field"
             value={state || ""}
@@ -32,14 +34,14 @@ export default function LineForm({ customHook }) {
             onFocus={handleFocus}
             onChange={handleChange}
           />
-          <label ref={labelRef} htmlFor="field" className="line-form__label">
+          <label ref={labelRef} htmlFor="field" {...$("label")}>
             {initialName}
           </label>
         </div>
       )}
 
       {!isLoading && state && !(state === initialName) && (
-        <button className="line-form__submit">
+        <button {...$("submit")}>
           <BiSave />
         </button>
       )}

@@ -1,11 +1,16 @@
+import genClass from "../../helpers/genClass";
+
 export default function Loader({ type }) {
+  const $ = genClass("loader");
+  const $$ = genClass("container");
+
   console.log("Loader");
   if (type === "inline") {
     return <InlineLoader />;
   }
   return (
-    <div className="container">
-      <div className="loader">
+    <div {...$$()}>
+      <div {...$()}>
         <div></div>
         <div></div>
       </div>
@@ -14,11 +19,12 @@ export default function Loader({ type }) {
 }
 
 function InlineLoader() {
+  const $ = genClass("inline-loader", {});
   return (
-    <span className="inline-loader">
-      <span className="inline-loader__box"></span>
-      <span className="inline-loader__box"></span>
-      <span className="inline-loader__box"></span>
+    <span {...$()}>
+      <span {...$("box")}></span>
+      <span {...$("box")}></span>
+      <span {...$("box")}></span>
     </span>
   );
 }

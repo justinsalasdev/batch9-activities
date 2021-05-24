@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
-import { auth } from "../firebase/firebase";
-import useUserDispatcher from "./user/useUserDispatcher";
+import { useEffect, useRef, useState } from "react";
+import { db } from "../firebase/firebase";
+import useUserState from "./user/useUserState";
 
 export default function createChannelHook(initialName, cancel) {
   return function useChannelSaver() {
+    const userState = useUserState();
     const labelRef = useRef();
-    const userDispatch = useUserDispatcher();
     const [state, setState] = useState("");
     const [isLoading, setLoading] = useState(false);
 
@@ -17,18 +17,18 @@ export default function createChannelHook(initialName, cancel) {
       } else {
         setLoading(true);
 
-        const user = auth.currentUser;
-        user
-          .updateProfile({
-            displayName: state
+        db.collection("channels")
+          .add({
+            name: state,
+            creator: userState.uid
           })
-          .then(function () {
+          .then(docRef => {
             setLoading(false);
-            userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
-            labelRef.current.previousElementSibling.blur();
+            console.log("Document written with ID: ", docRef.id);
           })
-          .catch(function (error) {
-            console.log(error);
+          .catch(error => {
+            setLoading(false);
+            console.error("Error adding document: ", error);
           });
       }
     }
@@ -55,12 +55,17 @@ export default function createChannelHook(initialName, cancel) {
 
     //dynamics : isLoading, state, setState, handleSubmit, labelRef,
 
+    /*value={state || ""}
+            onKeyDown={handleEscape}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            onChange={handleChange} */
+
     return {
       initialName,
       state,
-      setState,
-      isLoading,
       labelRef,
+      isLoading,
       handleSubmit,
       handleChange,
       handleBlur,

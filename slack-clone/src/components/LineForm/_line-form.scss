@@ -6,7 +6,11 @@ $padding: 0.2rem;
   align-items: center;
   background-color: $violet_350d36;
   color: $violet_1817188;
-  min-height: 2rem;
+  min-height: 1em;
+
+  &--profile {
+    margin-bottom: 0.3rem;
+  }
 
   &__div {
     position: relative;
@@ -33,6 +37,10 @@ $padding: 0.2rem;
     &:hover + .i-form__label {
       text-decoration: underline;
     }
+
+    &--channel {
+      font-size: 1rem;
+    }
   }
 
   &__label {
@@ -41,6 +49,10 @@ $padding: 0.2rem;
     background-color: transparent;
     cursor: text;
     font-size: 1.1rem;
+
+    &--channel {
+      font-size: 1rem;
+    }
   }
 
   &__submit {

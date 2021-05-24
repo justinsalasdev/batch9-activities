@@ -2,8 +2,10 @@ import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import authenticate from "../../helpers/authenticate";
 import createAccount from "../../helpers/createAccount";
+import genClass from "../../helpers/genClass";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
+const $ = genClass("form", {});
 
 export default function Form() {
   const [isLoading, setLoading] = useState(false);
@@ -39,11 +41,11 @@ export default function Form() {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <div className="form__info">
-        <h3 className="form__title">{isLogin ? "LOGIN" : "CREATE ACCOUNT"}</h3>
+    <form {...$()} onSubmit={handleSubmit}>
+      <div {...$("info")}>
+        <h3 {...$("title")}>{isLogin ? "LOGIN" : "CREATE ACCOUNT"}</h3>
         <span
-          className="form__switch"
+          {...$("switch")}
           onClick={() => {
             changeForm(state => !state);
             setAuthError("");
@@ -52,12 +54,12 @@ export default function Form() {
           {isLogin ? "create account" : "login instead"}
         </span>
       </div>
-      <p className="form__toolkit">{authError}</p>
-      <div className="form__fields">
+      <p {...$("toolkit")}>{authError}</p>
+      <div {...$("fields")}>
         <Line {...emailConfig} />
         <Line {...passwordConfig} />
       </div>
-      <button className="form__action" type="submit">
+      <button {...$("action")} type="submit">
         {isLoading ? <Loader type="inline" /> : isLogin ? "Login" : "Signup"}
       </button>
     </form>
