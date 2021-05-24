@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import FieldValidator from "../../helpers/FieldValidator";
+import genClass from "../../helpers/genClass";
 
 const icons = {
   email: <MdEmail />,
@@ -9,6 +10,7 @@ const icons = {
 };
 
 const fieldValidator = new FieldValidator();
+const $ = genClass("line", {});
 
 export default React.memo(function Line(props) {
   console.log("Line");
@@ -24,11 +26,11 @@ export default React.memo(function Line(props) {
   }); //effect run on every render
 
   return (
-    <div ref={lineRef} className="line">
-      <div className="line__div">
+    <div ref={lineRef} {...$()}>
+      <div {...$("div")}>
         <input
           placeholder={placeholder}
-          className={`line__field`}
+          {...$("field")}
           id={id}
           name={id}
           type={type}
@@ -37,11 +39,11 @@ export default React.memo(function Line(props) {
             setState(fieldValidator.validateField(e.target.value, id));
           }}
         />
-        <label className="line__icon" htmlFor={id}>
+        <label {...$("icon")} htmlFor={id}>
           {icons[id]}
         </label>
       </div>
-      <p className="line__toolkit">{fieldValidator.error}</p>
+      <p {...$("toolkit")}>{fieldValidator.error}</p>
     </div>
   );
 });

@@ -4,11 +4,12 @@ import defaultAvatar from "../../assets/images/default.jpg";
 import Loader from "../Loader/Loader";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import uploadPhoto from "../../helpers/uploadPhoto";
+import genClass from "../../helpers/genClass";
 
 export default function Avatar({ photoURL }) {
-  console.log("Avatar");
   const [isLoading, setLoading] = useState(false);
   const userDispatch = useUserDispatcher();
+  const $ = genClass("avatar", { avatar: ["profile"] });
 
   function updateAvatar(e) {
     const imageFile = e.target.files[0];
@@ -20,14 +21,14 @@ export default function Avatar({ photoURL }) {
   }
 
   return (
-    <div className="avatar profile__avatar">
+    <div {...$()}>
       {isLoading ? (
         <Loader />
       ) : (
-        <img src={photoURL || defaultAvatar} className="avatar__image" alt="user avatar"></img>
+        <img src={photoURL || defaultAvatar} {...$("image")} alt="user avatar"></img>
       )}
       <input
-        className="avatar__input"
+        {...$("input")}
         id="file"
         name="file"
         accept="image/*"
@@ -35,7 +36,7 @@ export default function Avatar({ photoURL }) {
         onChange={updateAvatar}
       />
       {!isLoading && (
-        <label className="avatar__icon" htmlFor="file">
+        <label {...$("icon")} htmlFor="file">
           {<BiImageAdd />}
         </label>
       )}

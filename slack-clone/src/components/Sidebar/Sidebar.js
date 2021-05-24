@@ -1,10 +1,13 @@
+import genClass from "../../helpers/genClass";
 import Menu from "../Menu/Menu";
 import Profile from "../Profile/Profile";
 
+const $ = genClass("sidebar", {});
+
 export default function Sidebar() {
-  console.log("sidebar");
+  console.log("Sidebar");
   return (
-    <div className="sidebar">
+    <div {...$()}>
       <Profile />
       <nav>
         {/* <div className></div> */}
