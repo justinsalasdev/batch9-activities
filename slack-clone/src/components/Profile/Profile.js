@@ -2,7 +2,6 @@ import Avatar from "../Avatar/Avatar";
 import useUserState from "../../hooks/user/useUserState";
 import signOut from "../../helpers/signOut";
 import LineForm from "../LineForm/LineForm";
-import createNameChanger from "../../hooks/createNameChanger";
 import genClass from "../../helpers/genClass";
 
 const lineFormMods = {
@@ -10,6 +9,8 @@ const lineFormMods = {
 };
 
 export default function Profile() {
+  console.log("Profile");
+  const $ = genClass({ block: "profile" });
   const { photoURL, displayName, uid } = useUserState();
 
   if (!uid) {
@@ -18,9 +19,9 @@ export default function Profile() {
 
   return (
     <div className="profile">
-      <Avatar photoURL={photoURL} />
-      <LineForm mods={lineFormMods} customHook={createNameChanger(displayName || "User")} />
-      <button className="profile__logout" onClick={() => signOut()}>
+      <Avatar propStyles={$("avatar").className} photoURL={photoURL} />
+      <LineForm type="profile" mods={lineFormMods} initialName={displayName} />
+      <button {...$("logout")} onClick={() => signOut()}>
         logout
       </button>
     </div>
@@ -28,7 +29,7 @@ export default function Profile() {
 }
 
 function NoProfile() {
-  const $ = genClass("profile--none", {});
+  const $ = genClass({ block: "profile", mod: { profile: ["none"] } });
   return (
     <div {...$()}>
       <div {...$("avatar")}></div>

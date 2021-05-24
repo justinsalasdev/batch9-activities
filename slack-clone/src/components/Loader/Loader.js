@@ -1,8 +1,8 @@
 import genClass from "../../helpers/genClass";
 
 export default function Loader({ type }) {
-  const $ = genClass("loader");
-  const $$ = genClass("container");
+  const $ = genClass({ block: "loader" });
+  const $$ = genClass({ block: "container" });
 
   console.log("Loader");
   if (type === "inline") {
@@ -19,7 +19,7 @@ export default function Loader({ type }) {
 }
 
 function InlineLoader() {
-  const $ = genClass("inline-loader", {});
+  const $ = genClass({ block: "inline-loader" });
   return (
     <span {...$()}>
       <span {...$("box")}></span>

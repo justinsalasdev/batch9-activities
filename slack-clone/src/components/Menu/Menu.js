@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import useUserState from "../../hooks/user/useUserState";
-import LineForm from "../LineForm/LineForm";
-import createChannelSaver from "../../hooks/createChannelSaver";
 import genClass from "../../helpers/genClass";
+import LineForm from "../LineForm/LineForm";
 
-export default function Menu({ name, entries }) {
+export default function Menu({ name, entries, type, propStyles }) {
   console.log("Menu");
 
   const [isAdding, setAdding] = useState(false);
@@ -18,7 +17,7 @@ export default function Menu({ name, entries }) {
     label: ["channel"]
   };
 
-  const $ = genClass("menu", {});
+  const $ = genClass({ block: "menu", propStyles });
 
   if (!uid) {
     return <NoMenu />;
@@ -39,11 +38,11 @@ export default function Menu({ name, entries }) {
         <button
           {...$("adder")}
           onClick={() => {
-            if (!isListExpanded) {
-              expandList(true);
-              setAdding(true);
+            if (isListExpanded) {
+              setAdding(state => !state);
             } else {
-              setAdding(true);
+              expandList(true);
+              setAdding(state => !state);
             }
           }}
         >
@@ -53,9 +52,17 @@ export default function Menu({ name, entries }) {
 
       {isListExpanded && (
         <ul {...$("items")}>
-          {isAdding && (
-            <LineForm mods={lineFormMods} customHook={createChannelSaver("Name", setAdding)} />
-          )}
+          <li {...$("item")}>
+            {isAdding && (
+              <LineForm
+                type={type}
+                mods={lineFormMods}
+                initialName="Enter name"
+                setAdding={setAdding}
+              />
+            )}
+          </li>
+
           {entries.map((entry, index) => {
             return (
               <li {...$("item")} key={index}>
@@ -70,6 +77,6 @@ export default function Menu({ name, entries }) {
 }
 
 function NoMenu() {
-  const $ = genClass("menu", { menu: ["none"] });
+  const $ = genClass({ block: "menu", menu: ["none"] });
   return <div {...$()}></div>;
 }

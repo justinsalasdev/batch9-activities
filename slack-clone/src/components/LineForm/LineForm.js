@@ -1,21 +1,14 @@
 import { BiSave } from "react-icons/bi";
 import genClass from "../../helpers/genClass";
+import useLineFormLogic from "../../hooks/useLineFormLogic";
 import Loader from "../Loader/Loader";
 
-export default function LineForm({ customHook, mods }) {
-  const {
-    initialName,
-    isLoading,
-    state,
-    labelRef,
-    handleSubmit,
-    handleChange,
-    handleBlur,
-    handleFocus,
-    handleEscape
-  } = customHook();
+export default function LineForm({ initialName, mods, type, setAdding }) {
+  console.log("LineForm");
+  const { isLoading, state, labelRef, handleSubmit, handleChange, handleEscape, handleBlur } =
+    useLineFormLogic(initialName, type, setAdding);
 
-  const $ = genClass("line-form", mods);
+  const $ = genClass({ block: "line-form", mods });
 
   return (
     <form {...$()} onSubmit={handleSubmit}>
@@ -30,18 +23,17 @@ export default function LineForm({ customHook, mods }) {
             id="field"
             value={state || ""}
             onKeyDown={handleEscape}
-            onBlur={handleBlur}
-            onFocus={handleFocus}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
           <label ref={labelRef} htmlFor="field" {...$("label")}>
-            {initialName}
+            {state}
           </label>
         </div>
       )}
 
       {!isLoading && state && !(state === initialName) && (
-        <button {...$("submit")}>
+        <button type="submit" {...$("submit")}>
           <BiSave />
         </button>
       )}
