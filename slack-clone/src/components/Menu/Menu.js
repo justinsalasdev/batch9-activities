@@ -5,7 +5,7 @@ import useUserState from "../../hooks/user/useUserState";
 import genClass from "../../helpers/genClass";
 import LineForm from "../LineForm/LineForm";
 
-export default function Menu({ name, entries, type }) {
+export default function Menu({ name, entries, type, propStyles }) {
   console.log("Menu");
 
   const [isAdding, setAdding] = useState(false);
@@ -17,7 +17,7 @@ export default function Menu({ name, entries, type }) {
     label: ["channel"]
   };
 
-  const $ = genClass("menu", {});
+  const $ = genClass({ block: "menu", propStyles });
 
   if (!uid) {
     return <NoMenu />;
@@ -52,14 +52,17 @@ export default function Menu({ name, entries, type }) {
 
       {isListExpanded && (
         <ul {...$("items")}>
-          {isAdding && (
-            <LineForm
-              type={type}
-              mods={lineFormMods}
-              initialName="Enter name"
-              setAdding={setAdding}
-            />
-          )}
+          <li {...$("item")}>
+            {isAdding && (
+              <LineForm
+                type={type}
+                mods={lineFormMods}
+                initialName="Enter name"
+                setAdding={setAdding}
+              />
+            )}
+          </li>
+
           {entries.map((entry, index) => {
             return (
               <li {...$("item")} key={index}>
@@ -74,6 +77,6 @@ export default function Menu({ name, entries, type }) {
 }
 
 function NoMenu() {
-  const $ = genClass("menu", { menu: ["none"] });
+  const $ = genClass({ block: "menu", menu: ["none"] });
   return <div {...$()}></div>;
 }

@@ -9,4 +9,15 @@ $profile-height: 2rem;
 
   padding: 0.5rem;
   min-width: 10rem;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: $menu__name-lm;
+    }
+  }
+  &__item {
+    font-variant: normal;
+  }
 }

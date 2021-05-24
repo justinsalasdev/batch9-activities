@@ -1,16 +1,5 @@
 .avatar {
-  width: 3.5rem;
-  height: 3.5rem;
-  display: inline-block;
   position: relative;
-
-  &--profile {
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: $violet_1817188_06;
-    border-radius: 50%;
-    margin: 0.5rem auto;
-  }
 
   &__image {
     width: 100%;

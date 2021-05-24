@@ -31,6 +31,12 @@ export default function useNameChanger(initialName, type, setAdding) {
     setState(e.target.value);
   }
 
+  function handleBlur(e) {
+    if (state === "") {
+      setState(initialName);
+    } else return;
+  }
+
   function handleEscape(e) {
     if (e.key === "Escape") {
       setState(initialName);
@@ -45,6 +51,7 @@ export default function useNameChanger(initialName, type, setAdding) {
     isLoading,
     handleSubmit: submitFunctions[type](resources),
     handleChange,
-    handleEscape
+    handleEscape,
+    handleBlur
   };
 }

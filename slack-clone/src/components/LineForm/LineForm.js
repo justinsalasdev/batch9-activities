@@ -5,13 +5,10 @@ import Loader from "../Loader/Loader";
 
 export default function LineForm({ initialName, mods, type, setAdding }) {
   console.log("LineForm");
-  const { isLoading, state, labelRef, handleSubmit, handleChange, handleEscape } = useLineFormLogic(
-    initialName,
-    type,
-    setAdding
-  );
+  const { isLoading, state, labelRef, handleSubmit, handleChange, handleEscape, handleBlur } =
+    useLineFormLogic(initialName, type, setAdding);
 
-  const $ = genClass("line-form", mods);
+  const $ = genClass({ block: "line-form", mods });
 
   return (
     <form {...$()} onSubmit={handleSubmit}>
@@ -27,6 +24,7 @@ export default function LineForm({ initialName, mods, type, setAdding }) {
             value={state || ""}
             onKeyDown={handleEscape}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
           <label ref={labelRef} htmlFor="field" {...$("label")}>
             {state}

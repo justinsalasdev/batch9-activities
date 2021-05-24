@@ -6,10 +6,10 @@ import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import uploadPhoto from "../../helpers/uploadPhoto";
 import genClass from "../../helpers/genClass";
 
-export default function Avatar({ photoURL }) {
+export default function Avatar({ photoURL, propStyles }) {
   const [isLoading, setLoading] = useState(false);
   const userDispatch = useUserDispatcher();
-  const $ = genClass("avatar", { avatar: ["profile"] });
+  const $ = genClass({ block: "avatar", propStyles });
 
   function updateAvatar(e) {
     const imageFile = e.target.files[0];

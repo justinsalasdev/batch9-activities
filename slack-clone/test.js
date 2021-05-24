@@ -1,16 +1,16 @@
-export default function genClass(config) {
-  const { block, mods, propStyles } = config;
+function genClasses(config) {
+  const { block, mods, parentClasses } = config;
   let blockString = "";
 
   if (block) {
     blockString += block;
   }
-  if (mods?.[block]) {
-    blockString += " " + mods[block].map(mod => `${block}--${mod}`).join(" ");
+  if (parentClasses) {
+    blockString += " " + parentClasses;
   }
 
-  if (propStyles) {
-    blockString += " " + propStyles;
+  if (mods?.[block]) {
+    blockString += " " + mods[block].map(mod => `${block}--${mod}`).join(" ");
   }
 
   return function (elem) {

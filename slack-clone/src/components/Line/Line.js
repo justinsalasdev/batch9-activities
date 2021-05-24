@@ -10,7 +10,7 @@ const icons = {
 };
 
 const fieldValidator = new FieldValidator();
-const $ = genClass("line", {});
+const $ = genClass({ block: "line" });
 
 export default React.memo(function Line(props) {
   console.log("Line");

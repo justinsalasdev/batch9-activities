@@ -14,7 +14,7 @@ export default function Form() {
   const navigator = useHistory();
 
   const authResources = [formData.current, setLoading, setAuthError, navigator];
-  const $ = genClass("form", {});
+  const $ = genClass({ block: "form" });
 
   function handleSubmit(e) {
     setAuthError("");
