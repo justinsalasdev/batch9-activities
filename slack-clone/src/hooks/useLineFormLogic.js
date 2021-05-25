@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import saveChannel from "../helpers/saveChannel";
 import saveName from "../helpers/saveName";
 import useUserDispatcher from "./user/useUserDispatcher";

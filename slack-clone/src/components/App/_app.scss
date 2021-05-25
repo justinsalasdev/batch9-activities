@@ -1,0 +1,19 @@
+.app {
+  width: 100%;
+  min-height: 100%;
+
+  display: grid;
+  grid-template: 1fr auto / auto 1fr;
+
+  &__sidebar {
+    grid-area: 1/1/-1/2;
+  }
+
+  &__view {
+    grid-area: 1/2/2/3;
+  }
+
+  &__chat-bar {
+    grid-area: 2/2/3/3;
+  }
+}

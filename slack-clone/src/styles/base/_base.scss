@@ -40,6 +40,7 @@ $max_font: 24px;
 html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -51,6 +52,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+#root {
+  width: 100%;
 }
 
 $mod_1: 1.2; // mobile
@@ -108,5 +115,11 @@ button {
 input[type="password"],
 input[type="text"],
 input[type="file"] {
+  cursor: auto;
+}
+
+textarea {
+  appearance: none;
+  outline: none;
   cursor: auto;
 }

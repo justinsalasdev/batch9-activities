@@ -1,0 +1,28 @@
+.chat-bar {
+  width: 100%;
+  padding: 0.2rem;
+  padding-right: 1rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  &__input {
+    resize: none;
+    font-size: inherit;
+    font-family: inherit;
+    width: 100%;
+    height: 100%;
+    padding: 0.2rem;
+    padding-right: 2rem;
+
+    &::placeholder {
+      font-size: inherit;
+    }
+  }
+
+  &__send {
+    display: flex;
+    background-color: transparent;
+    padding-left: 0.5rem;
+  }
+}

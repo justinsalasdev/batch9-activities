@@ -1,72 +1,47 @@
 import { useState } from "react";
-import { IoIosArrowDropdownCircle } from "react-icons/io";
-import { AiOutlinePlus } from "react-icons/ai";
-import useUserState from "../../hooks/user/useUserState";
+import { IoIosArrowDropdown } from "react-icons/io";
 import genClass from "../../helpers/genClass";
-import LineForm from "../LineForm/LineForm";
+import NavLink from "../NavLink/NavLink";
 
-export default function Menu({ name, entries, type, propStyles }) {
+export default function Menu({ name, entries, propStyles }) {
   console.log("Menu");
 
-  const [isAdding, setAdding] = useState(false);
   const [isListExpanded, expandList] = useState(false);
-  const { uid } = useUserState();
-
-  const lineFormMods = {
-    field: ["channel"],
-    label: ["channel"]
-  };
 
   const $ = genClass({ block: "menu", propStyles });
 
-  if (!uid) {
-    return <NoMenu />;
-  }
+  //   if (!uid) {
+  //     return <NoMenu />;
+  //   }
 
   return (
     <div {...$()}>
-      <div {...$("actions")}>
-        <button
-          {...$("expander")}
-          onClick={() => {
-            expandList(state => !state);
-            setAdding(false);
-          }}
-        >
-          <IoIosArrowDropdownCircle /> <span {...$("name")}>{name}</span>
-        </button>
-        <button
-          {...$("adder")}
-          onClick={() => {
-            if (isListExpanded) {
-              setAdding(state => !state);
-            } else {
-              expandList(true);
-              setAdding(state => !state);
-            }
-          }}
-        >
-          <AiOutlinePlus />
-        </button>
-      </div>
+      <button
+        {...$("expander")}
+        onClick={() => {
+          expandList(state => !state);
+        }}
+      >
+        <span {...$("icon")}>
+          <IoIosArrowDropdown />
+        </span>
+        <span {...$("text")}>{name}</span>
+      </button>
 
       {isListExpanded && (
         <ul {...$("items")}>
           <li {...$("item")}>
-            {isAdding && (
-              <LineForm
-                type={type}
-                mods={lineFormMods}
-                initialName="Enter name"
-                setAdding={setAdding}
-              />
-            )}
+            <NavLink
+              to={`/add${name}`}
+              text={`Add ${name.toLowerCase()}`}
+              icon="plus"
+              mods={{ action: ["none"], icon: ["left"] }}
+            />
           </li>
-
           {entries.map((entry, index) => {
             return (
               <li {...$("item")} key={index}>
-                {entry}
+                <NavLink {...entry} mods={{ action: ["none"], icon: ["left"] }} />
               </li>
             );
           })}
@@ -76,7 +51,7 @@ export default function Menu({ name, entries, type, propStyles }) {
   );
 }
 
-function NoMenu() {
-  const $ = genClass({ block: "menu", menu: ["none"] });
-  return <div {...$()}></div>;
-}
+// function NoMenu() {
+//   const $ = genClass({ block: "menu", menu: ["none"] });
+//   return <div {...$()}></div>;
+// }
