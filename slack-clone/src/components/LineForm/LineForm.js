@@ -1,12 +1,12 @@
 import { BiSave } from "react-icons/bi";
 import genClass from "../../helpers/genClass";
-import useLineFormLogic from "../../hooks/useLineFormLogic";
+import useLineFormLogic from "./useLineFormLogic";
 import Loader from "../Loader/Loader";
 
-export default function LineForm({ initialName, mods, type, setAdding }) {
+export default function LineForm({ initialName, mods }) {
   console.log("LineForm");
   const { isLoading, state, labelRef, handleSubmit, handleChange, handleEscape, handleBlur } =
-    useLineFormLogic(initialName, type, setAdding);
+    useLineFormLogic(initialName);
 
   const $ = genClass({ block: "line-form", mods });
 
