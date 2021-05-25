@@ -10,13 +10,13 @@ export default function Profile({ propStyles }) {
   const { photoURL, displayName, uid } = useUserState();
 
   if (!uid) {
-    return <NoProfile />;
+    return <NoProfile propStyles={propStyles} />;
   }
 
   return (
     <div {...$()}>
       <Avatar propStyles={$("avatar").className} photoURL={photoURL} />
-      <LineForm propStyles={$("name").className} initialName={displayName} />
+      <LineForm propStyles={$("name").className} initialName={displayName || "User"} />
       <button {...$("logout")} onClick={() => signOut()}>
         logout
       </button>
@@ -24,8 +24,8 @@ export default function Profile({ propStyles }) {
   );
 }
 
-function NoProfile() {
-  const $ = genClass({ block: "profile", mod: { profile: ["none"] } });
+function NoProfile({ propStyles }) {
+  const $ = genClass({ block: "profile--none", propStyles });
   return (
     <div {...$()}>
       <div {...$("avatar")}></div>
