@@ -20,7 +20,6 @@ export default function useChatBarLogic() {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       submitRef.current.click();
-      setContent("");
     } else {
       return;
     }
@@ -28,6 +27,7 @@ export default function useChatBarLogic() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setContent("");
   }
 
   return {
