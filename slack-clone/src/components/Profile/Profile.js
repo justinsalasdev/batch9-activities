@@ -4,10 +4,6 @@ import signOut from "../../helpers/signOut";
 import LineForm from "../LineForm/LineForm";
 import genClass from "../../helpers/genClass";
 
-const lineFormMods = {
-  "line-form": ["profile"]
-};
-
 export default function Profile({ propStyles }) {
   console.log("Profile");
   const $ = genClass({ block: "profile", propStyles });
@@ -20,12 +16,7 @@ export default function Profile({ propStyles }) {
   return (
     <div {...$()}>
       <Avatar propStyles={$("avatar").className} photoURL={photoURL} />
-      <LineForm
-        propStyles={$("name").className}
-        type="profile"
-        mods={lineFormMods}
-        initialName={displayName}
-      />
+      <LineForm propStyles={$("name").className} initialName={displayName} />
       <button {...$("logout")} onClick={() => signOut()}>
         logout
       </button>

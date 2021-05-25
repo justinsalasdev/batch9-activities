@@ -5,7 +5,7 @@ import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Sidebar from "../Sidebar/Sidebar";
 import Form from "../Form/Form";
 import { Switch, Route, useHistory } from "react-router-dom";
-import ChatBar from "../ChatBar/Charbar";
+import ChatBar from "../ChatBar/ChatBar";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
 
