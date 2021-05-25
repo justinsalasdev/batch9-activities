@@ -8,6 +8,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import ChatBar from "../ChatBar/ChatBar";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
+import Chat from "../Chat/Chat";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -55,11 +56,11 @@ export default function App() {
             <div>New contact</div>
           </Route>
           <Route path="/">
-            <div>Home page</div>
+            <Chat />
           </Route>
         </Switch>
       </View>
-      <ChatBar propStyles={$("chat-bar").className} />
+      {/* <ChatBar propStyles={$("chat-bar").className} /> */}
     </div>
   );
 }

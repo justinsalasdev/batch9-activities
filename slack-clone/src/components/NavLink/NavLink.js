@@ -23,9 +23,9 @@ export default function NavLink({ text, icon, propStyles, mods, to }) {
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
       </Link>
-      <span {...$("action")}>
+      <button {...$("action")}>
         <RiChatNewFill />
-      </span>
+      </button>
     </div>
   );
 }

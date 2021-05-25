@@ -11,6 +11,7 @@
   }
 
   &__logout {
+    margin-top: 0.5rem;
     text-transform: uppercase;
     font-size: 0.6rem;
     background: transparent;
@@ -24,5 +25,24 @@
     &:active {
       transform: scale(1.05);
     }
+  }
+}
+
+.profile--none {
+  @extend %flex-column;
+  padding-bottom: 0.5rem;
+
+  &__avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: $violet_1817188_06;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    height: 1em;
+    width: 5rem;
+    background: $violet_1817188_06;
   }
 }

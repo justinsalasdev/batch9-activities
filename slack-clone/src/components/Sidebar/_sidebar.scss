@@ -11,4 +11,8 @@ $profile-height: 2rem;
   &__profile {
     margin: 1rem auto;
   }
+
+  &__nav {
+    align-self: flex-start;
+  }
 }
