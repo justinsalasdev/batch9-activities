@@ -1,8 +1,7 @@
 .profile {
   @extend %flex-column;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid $violet_1817188_06;
-  padding-bottom: 1rem;
-  margin-bottom: 0.8rem;
 
   &__avatar {
     margin-top: 0.5rem;
@@ -24,25 +23,6 @@
 
     &:active {
       transform: scale(1.05);
-    }
-  }
-
-  &--none {
-    @extend .profile;
-    min-height: 10rem;
-
-    &__avatar {
-      border-radius: 50%;
-      margin-bottom: 0.5rem;
-      height: 3.5rem;
-      width: 3.5rem;
-      background-color: $violet_1817188_06;
-    }
-
-    &__name {
-      height: 1rem;
-      width: 5rem;
-      background-color: $violet_1817188_06;
     }
   }
 }

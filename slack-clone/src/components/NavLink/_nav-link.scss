@@ -1,0 +1,44 @@
+.nav-link {
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    padding-left: 0.2rem;
+  }
+
+  &__icon {
+    padding-left: 0.2rem;
+    display: flex;
+    color: inherit;
+    &--left {
+      padding-left: 0;
+    }
+  }
+
+  &__action {
+    display: flex;
+    padding: 0.2rem;
+    color: inherit;
+    cursor: pointer;
+
+    // @media (hover: hover) {
+    //   display: none;
+    // }
+    &--none {
+      display: none;
+    }
+  }
+}

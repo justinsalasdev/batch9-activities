@@ -8,9 +8,9 @@ const lineFormMods = {
   "line-form": ["profile"]
 };
 
-export default function Profile() {
+export default function Profile({ propStyles }) {
   console.log("Profile");
-  const $ = genClass({ block: "profile" });
+  const $ = genClass({ block: "profile", propStyles });
   const { photoURL, displayName, uid } = useUserState();
 
   if (!uid) {
@@ -18,9 +18,14 @@ export default function Profile() {
   }
 
   return (
-    <div className="profile">
+    <div {...$()}>
       <Avatar propStyles={$("avatar").className} photoURL={photoURL} />
-      <LineForm type="profile" mods={lineFormMods} initialName={displayName} />
+      <LineForm
+        propStyles={$("name").className}
+        type="profile"
+        mods={lineFormMods}
+        initialName={displayName}
+      />
       <button {...$("logout")} onClick={() => signOut()}>
         logout
       </button>

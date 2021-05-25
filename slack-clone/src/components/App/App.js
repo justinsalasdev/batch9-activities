@@ -5,6 +5,9 @@ import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Sidebar from "../Sidebar/Sidebar";
 import Form from "../Form/Form";
 import { Switch, Route, useHistory } from "react-router-dom";
+import ChatBar from "../ChatBar/Charbar";
+import genClass from "../../helpers/genClass";
+import View from "../View/View";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -33,20 +36,30 @@ export default function App() {
   }, []);
 
   //TODO: guard login route
+  const $ = genClass({ block: "app" });
   return (
-    <>
-      <Sidebar />
-      <div className="view">
+    <div {...$()}>
+      <Sidebar propStyles={$("sidebar").className} />
+      <View propStyles={$("view").className}>
         <Switch>
           <Route path="/login">
             <Form />
           </Route>
+          <Route path="/addChannels">
+            <div>New channel</div>
+          </Route>
+          <Route path="/dms">
+            <div>Dms pages</div>
+          </Route>
+          <Route path="/addContacts">
+            <div>New contact</div>
+          </Route>
           <Route path="/">
-            <div>Home view</div>
+            <div>Home page</div>
           </Route>
         </Switch>
-      </div>
-      <div className="chat"></div>
-    </>
+      </View>
+      <ChatBar propStyles={$("chat-bar").className} />
+    </div>
   );
 }
