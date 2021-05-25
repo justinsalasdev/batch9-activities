@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 
 export default function useNameChanger(initialName) {
@@ -16,17 +16,38 @@ export default function useNameChanger(initialName) {
     } else {
       setLoading(true);
       const user = auth.currentUser;
-      user
-        .updateProfile({
-          displayName: state
+      //updateDB first
+      db.collection("Users")
+        .doc(user.uid)
+        .set(
+          {
+            name: state,
+            uid: user.uid,
+            email: user.email,
+            photoURL: user.photoURL
+          },
+          { merge: true }
+        )
+        .then(() => {
+          console.log("Document written with ID");
+          user
+            .updateProfile({
+              displayName: state
+            })
+            .then(function () {
+              //TODO: add userData to database
+              //TODO: don't allow user who didn't update their name to use chat
+              userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
+              setLoading(false);
+            })
+            .catch(function (error) {
+              setLoading(false);
+              console.log(error, "auth error");
+            });
         })
-        .then(function () {
+        .catch(error => {
           setLoading(false);
-          userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
-          labelRef.current.previousElementSibling.blur();
-        })
-        .catch(function (error) {
-          console.log(error);
+          console.error("db error", error);
         });
     }
   }
