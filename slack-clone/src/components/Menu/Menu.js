@@ -46,7 +46,10 @@ export default function Menu({ withAdder, name, entries, propStyles }) {
                 <NavLink
                   text={entry.name}
                   icon="picture"
-                  to={`${name.toLowerCase()}/${entry.uid}`}
+                  to={{
+                    pathname: `/${name.toLowerCase()}/${entry.uid}`,
+                    state: { name: entry.name }
+                  }}
                   mods={{ action: ["none"], icon: ["left"] }}
                 />
               </li>

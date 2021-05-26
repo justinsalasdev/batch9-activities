@@ -45,6 +45,7 @@ export default function App() {
       <Sidebar propStyles={$("sidebar").className} />
       <View propStyles={$("view").className}>
         <Switch>
+          <Route path="/people/:id" component={Chat} />
           <Route path="/login">
             <Form />
           </Route>
@@ -58,11 +59,16 @@ export default function App() {
             <div>New contact</div>
           </Route>
           <Route path="/">
-            <Chat />
+            <div>Home page</div>
           </Route>
         </Switch>
       </View>
       {/* <ChatBar propStyles={$("chat-bar").className} /> */}
     </div>
   );
+}
+
+function Comp(props) {
+  console.log(props);
+  return <h1>{props.match.params.id}</h1>;
 }
