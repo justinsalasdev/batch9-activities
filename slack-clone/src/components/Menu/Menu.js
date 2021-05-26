@@ -42,8 +42,13 @@ export default function Menu({ withAdder, name, entries, propStyles }) {
           )}
           {entries.map((entry, index) => {
             return (
-              <li {...$("item")} key={index}>
-                <NavLink {...entry} mods={{ action: ["none"], icon: ["left"] }} />
+              <li {...$("item")} key={entry.uid}>
+                <NavLink
+                  text={entry.name}
+                  icon="picture"
+                  to={`${name.toLowerCase()}/${entry.uid}`}
+                  mods={{ action: ["none"], icon: ["left"] }}
+                />
               </li>
             );
           })}
@@ -52,6 +57,8 @@ export default function Menu({ withAdder, name, entries, propStyles }) {
     </div>
   );
 }
+
+//text, icon, propStyles, mods, to
 
 // function NoMenu() {
 //   const $ = genClass({ block: "menu", menu: ["none"] });

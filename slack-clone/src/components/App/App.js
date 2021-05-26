@@ -8,6 +8,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
 import Chat from "../Chat/Chat";
+import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -26,8 +27,10 @@ function onAuthStateChange(auth, userDispatch, navigator) {
 export default function App() {
   const navigator = useHistory();
   const userDispatch = useUserDispatcher();
+  const peopleDispatch = usePeopleDispatcher();
 
   useEffect(() => {
+    peopleDispatch({ type: "save people", payload: "haha" });
     const unsubscribe = onAuthStateChange(auth, userDispatch, navigator); //subscribe to authChanges & receive unsubscribe
     return function () {
       unsubscribe(); //unsubscribe when app unmounts
