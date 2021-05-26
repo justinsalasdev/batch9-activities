@@ -3,7 +3,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 import genClass from "../../helpers/genClass";
 import NavLink from "../NavLink/NavLink";
 
-export default function Menu({ name, entries, propStyles }) {
+export default function Menu({ withAdder, name, entries, propStyles }) {
   console.log("Menu");
 
   const [isListExpanded, expandList] = useState(false);
@@ -30,14 +30,16 @@ export default function Menu({ name, entries, propStyles }) {
 
       {isListExpanded && (
         <ul {...$("items")}>
-          <li {...$("item")}>
-            <NavLink
-              to={`/add${name}`}
-              text={`Add ${name.toLowerCase()}`}
-              icon="plus"
-              mods={{ action: ["none"], icon: ["left"] }}
-            />
-          </li>
+          {withAdder && (
+            <li {...$("item")}>
+              <NavLink
+                to={`/add${name}`}
+                text={`Add ${name.toLowerCase()}`}
+                icon="plus"
+                mods={{ action: ["none"], icon: ["left"] }}
+              />
+            </li>
+          )}
           {entries.map((entry, index) => {
             return (
               <li {...$("item")} key={index}>

@@ -18,7 +18,7 @@ export default function Nav({ propStyles }) {
     { to: "#", text: "batch11", icon: "channel" }
   ];
 
-  const contacts = [
+  const people = [
     { to: "#", text: "Justin", icon: "picture" },
     { to: "#", text: "Raffy", icon: "picture" },
     { to: "#", text: "Salas", icon: "picture" }
@@ -28,8 +28,8 @@ export default function Nav({ propStyles }) {
     <nav {...$()}>
       {/* <div className></div> */}
       <NavLink to="/dms" text="DMs" icon="message" propStyles={$("link").className} />
-      <Menu name={"Channels"} entries={channels} propStyles={$("menu").className} />
-      <Menu name={"Contacts"} entries={contacts} propStyles={$("menu").className} />
+      <Menu withAdder name={"Channels"} entries={channels} propStyles={$("menu").className} />
+      <Menu name={"People"} entries={people} propStyles={$("menu").className} />
     </nav>
   );
 }

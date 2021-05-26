@@ -5,7 +5,7 @@ const initialState = {
   displayName: ""
 };
 
-export default function authReducer(state, action) {
+export default function userReducer(state, action) {
   switch (action.type) {
     case "save user": {
       return { ...state, ...action.payload };
@@ -30,7 +30,7 @@ export default function authReducer(state, action) {
     }
 
     default: {
-      console.log("auth-reducer: unknown action");
+      console.log("user-reducer: unknown action");
     }
   }
 }

@@ -9,6 +9,7 @@ import ChatBar from "../ChatBar/ChatBar";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
 import Chat from "../Chat/Chat";
+import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
