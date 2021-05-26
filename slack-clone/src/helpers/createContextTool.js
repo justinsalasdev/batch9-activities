@@ -4,10 +4,10 @@ import { useContext } from "react";
 //pass dispatch context to create dispatcher hook
 export default function (context, name) {
   return function () {
-    const dispatch = useContext(context);
-    if (typeof dispatch === "undefined") {
+    const contextValue = useContext(context);
+    if (typeof contextValue === "undefined") {
       throw new Error(`tool must be used within ${name} provider`);
     }
-    return dispatch;
+    return contextValue;
   };
 }
