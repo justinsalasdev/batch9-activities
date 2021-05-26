@@ -2,10 +2,11 @@ const initialState = {
   photoURL: "",
   email: "",
   uid: "",
-  displayName: ""
+  displayName: "",
+  error: null
 };
 
-export default function authReducer(state, action) {
+export default function userReducer(state, action) {
   switch (action.type) {
     case "save user": {
       return { ...state, ...action.payload };
@@ -25,12 +26,28 @@ export default function authReducer(state, action) {
       };
     }
 
+    case "error": {
+      //dispatch action when there's an error in updating state
+      return {
+        ...state,
+        error: true
+      };
+    }
+
+    //clear error when error handler is ran
+    case "clear error": {
+      return {
+        ...state,
+        error: null
+      };
+    }
+
     case "delete user": {
       return initialState;
     }
 
     default: {
-      console.log("auth-reducer: unknown action");
+      console.log("user-reducer: unknown action");
     }
   }
 }

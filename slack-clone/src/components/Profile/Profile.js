@@ -7,7 +7,7 @@ import genClass from "../../helpers/genClass";
 export default function Profile({ propStyles }) {
   console.log("Profile");
   const $ = genClass({ block: "profile", propStyles });
-  const { photoURL, displayName, uid } = useUserState();
+  const { photoURL, displayName, uid, error } = useUserState();
 
   if (!uid) {
     return <NoProfile propStyles={propStyles} />;
@@ -16,7 +16,11 @@ export default function Profile({ propStyles }) {
   return (
     <div {...$()}>
       <Avatar propStyles={$("avatar").className} photoURL={photoURL} />
-      <LineForm propStyles={$("name").className} initialName={displayName || "User"} />
+      <LineForm
+        error={error}
+        propStyles={$("name").className}
+        initialName={displayName || "User"}
+      />
       <button {...$("logout")} onClick={() => signOut()}>
         logout
       </button>
