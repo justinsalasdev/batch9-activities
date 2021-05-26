@@ -8,7 +8,7 @@ const initialState = {
   people: []
 };
 
-export default function UserProvider({ children }) {
+export default function PeopleProvider({ children }) {
   const [state, dispatch] = useReducer(peopleReducer, initialState);
   return (
     <peopleStateContext.Provider value={state}>

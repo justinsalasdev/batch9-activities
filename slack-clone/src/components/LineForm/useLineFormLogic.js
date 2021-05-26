@@ -1,12 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 
-export default function useNameChanger(initialName) {
+export default function useNameChanger(initialName, error) {
   const labelRef = useRef();
   const userDispatch = useUserDispatcher();
   const [state, setState] = useState(initialName);
   const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (error) {
+      setState(initialName); //set to initial name when update attempt fails
+      userDispatch({ type: "clear error" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,9 +24,9 @@ export default function useNameChanger(initialName) {
     } else {
       setLoading(true);
       const user = auth.currentUser;
-      //updateDB first
       db.collection("Users")
         .doc(user.uid)
+        //TODO:must be .update when user just want to change name
         .set(
           {
             name: state,
@@ -30,24 +38,19 @@ export default function useNameChanger(initialName) {
         )
         .then(() => {
           console.log("Document written with ID");
-          user
-            .updateProfile({
-              displayName: state
-            })
-            .then(function () {
-              //TODO: add userData to database
-              //TODO: don't allow user who didn't update their name to use chat
-              userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
-              setLoading(false);
-            })
-            .catch(function (error) {
-              setLoading(false);
-              console.log(error, "auth error");
-            });
+          //return promise to extend 'then' chain
+          return user.updateProfile({
+            displayName: state
+          });
         })
-        .catch(error => {
+        .then(function () {
+          userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
           setLoading(false);
-          console.error("db error", error);
+        })
+        .catch(function (error) {
+          setLoading(false);
+          userDispatch({ type: "error" });
+          console.log(error, "modify name error");
         });
     }
   }

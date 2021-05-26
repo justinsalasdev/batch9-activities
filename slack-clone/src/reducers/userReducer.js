@@ -2,7 +2,8 @@ const initialState = {
   photoURL: "",
   email: "",
   uid: "",
-  displayName: ""
+  displayName: "",
+  error: null
 };
 
 export default function userReducer(state, action) {
@@ -22,6 +23,22 @@ export default function userReducer(state, action) {
       return {
         ...state,
         displayName: action.payload
+      };
+    }
+
+    case "error": {
+      //dispatch action when there's an error in updating state
+      return {
+        ...state,
+        error: true
+      };
+    }
+
+    //clear error when error handler is ran
+    case "clear error": {
+      return {
+        ...state,
+        error: null
       };
     }
 

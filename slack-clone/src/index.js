@@ -3,18 +3,15 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import App from "./components/App/App";
 import "./styles/index.scss";
-import UserProvider from "./providers/User";
+import CombinedProvider from "./providers/Combined";
 import { BrowserRouter } from "react-router-dom";
-import PeopleProvider from "./providers/People";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <PeopleProvider>
-          <App />
-        </PeopleProvider>
-      </UserProvider>
+      <CombinedProvider>
+        <App />
+      </CombinedProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
