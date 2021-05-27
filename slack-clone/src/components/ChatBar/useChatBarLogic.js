@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-export default function useChatBarLogic() {
+import { db } from "../../firebase/firebase";
+export default function useChatBarLogic(to, from) {
   const areaRef = useRef();
   const submitRef = useRef();
   const [content, setContent] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   function countNL(content) {
     return (content.match(/\n/g) || []).length;
@@ -27,6 +29,26 @@ export default function useChatBarLogic() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!content) {
+      return;
+    } else {
+      setLoading(true);
+      db.collection("Messages")
+        .add({
+          content,
+          from,
+          to
+        })
+        .then(docRef => {
+          console.log("Document written with ID: ", docRef.id);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error("Error adding document: ", error);
+          setLoading(false);
+        });
+    }
     setContent("");
   }
 
@@ -34,6 +56,7 @@ export default function useChatBarLogic() {
     content,
     areaRef,
     submitRef,
+    isLoading,
     handleSubmit,
     handleEnter,
     handleChange

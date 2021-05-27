@@ -16,3 +16,16 @@
 3. start upload process
 4. get download URL
 5. change img src to download URL
+
+
+
+//when sending message
+@mount of chat, if messages is 0, 
+fn_sendChat must create a new DM document
+get that DM document Id & include it in the commital of the chat message
+*add field "isLatest" and subscribe to its changes
+//TODO: think on how to associate DM id to contact
+
+1. get to uid
+2. get from uid
+3. send content {to,from, content}

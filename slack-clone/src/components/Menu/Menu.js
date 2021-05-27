@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import genClass from "../../helpers/genClass";
-import NavLink from "../NavLink/NavLink";
+import Pointer from "../Pointer/Pointer";
 
-export default function Menu({ withAdder, name, entries, propStyles }) {
+export default function Menu({ withAdder, userId, menuName, menuItems, propStyles }) {
   console.log("Menu");
 
   const [isListExpanded, expandList] = useState(false);
@@ -25,30 +25,33 @@ export default function Menu({ withAdder, name, entries, propStyles }) {
         <span {...$("icon")}>
           <IoIosArrowDropdown />
         </span>
-        <span {...$("text")}>{name}</span>
+        <span {...$("text")}>{menuName}</span>
       </button>
 
       {isListExpanded && (
         <ul {...$("items")}>
           {withAdder && (
             <li {...$("item")}>
-              <NavLink
-                to={`/add${name}`}
-                text={`Add ${name.toLowerCase()}`}
+              <Pointer
+                to={`/add${menuName}`}
+                text={`Add ${menuName.toLowerCase()}`}
                 icon="plus"
                 mods={{ action: ["none"], icon: ["left"] }}
               />
             </li>
           )}
-          {entries.map((entry, index) => {
+          {menuItems.map(menuItem => {
             return (
-              <li {...$("item")} key={entry.uid}>
-                <NavLink
-                  text={entry.name}
+              <li {...$("item")} key={menuItem.uid}>
+                <Pointer //inside is <Link/> from 'react-router
+                  text={isSelf(menuItem, userId)}
                   icon="picture"
                   to={{
-                    pathname: `/${name.toLowerCase()}/${entry.uid}`,
-                    state: { name: entry.name }
+                    pathname: `/${menuName.toLowerCase()}/${menuItem.uid}`,
+                    state: {
+                      chatName: `${isSelf(menuItem, userId)}`,
+                      userId: userId
+                    }
                   }}
                   mods={{ action: ["none"], icon: ["left"] }}
                 />
@@ -61,6 +64,9 @@ export default function Menu({ withAdder, name, entries, propStyles }) {
   );
 }
 
+function isSelf(menuItem, userId) {
+  return menuItem.uid === userId ? "Yourself" : menuItem.name;
+}
 //text, icon, propStyles, mods, to
 
 // function NoMenu() {
