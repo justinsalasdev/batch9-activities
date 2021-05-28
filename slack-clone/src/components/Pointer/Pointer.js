@@ -14,7 +14,7 @@ const icons = {
   picture: <CgProfile />
 };
 
-export default function NavLink({ text, icon, propStyles, mods, to }) {
+export default function Pointer({ text, icon, propStyles, mods, to }) {
   const $ = genClass({ block: "nav-link", propStyles, mods });
 
   return (

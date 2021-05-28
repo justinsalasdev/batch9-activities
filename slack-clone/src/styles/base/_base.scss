@@ -41,11 +41,16 @@ html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
   scroll-behavior: smooth;
   height: 100%;
+
+  :root {
+    --inline-loader-width: 33%;
+    --inline-loader-height: var(--inline-loader-width);
+  }
 }
 
 body {
   box-sizing: border-box;
-  font-family: "Barlow", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   -webkit-font-smoothing: antialiased;

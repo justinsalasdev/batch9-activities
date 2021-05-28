@@ -5,12 +5,12 @@ import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
 import usePeopleState from "../../hooks/people/usePeopleState";
 import useUserState from "../../hooks/user/useUserState";
 import Menu from "../Menu/Menu";
-import NavLink from "../NavLink/NavLink";
+import Pointer from "../Pointer/Pointer";
 
 export default function Nav({ propStyles }) {
-  const { uid, displayName } = useUserState();
+  const userState = useUserState();
   const peopleDispatch = usePeopleDispatcher();
-  const { people } = usePeopleState();
+  const peopleState = usePeopleState();
 
   useEffect(() => {
     db.collection("Users")
@@ -25,7 +25,7 @@ export default function Nav({ propStyles }) {
       });
   }, []);
 
-  if (!uid || !displayName) {
+  if (!userState.uid || !userState.displayName) {
     return <NoNav propStyles={propStyles} />;
   }
 
@@ -46,9 +46,14 @@ export default function Nav({ propStyles }) {
   return (
     <nav {...$()}>
       {/* <div className></div> */}
-      <NavLink to="/dms" text="DMs" icon="message" propStyles={$("link").className} />
+      <Pointer to="/dms" text="DMs" icon="message" propStyles={$("link").className} />
       {/* <Menu withAdder name={"Channels"} entries={channels} propStyles={$("menu").className} /> */}
-      <Menu name={"People"} entries={people} propStyles={$("menu").className} />
+      <Menu
+        userId={userState.uid}
+        menuName={"People"}
+        menuItems={peopleState.people}
+        propStyles={$("menu").className}
+      />
     </nav>
   );
 }
