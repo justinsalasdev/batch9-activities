@@ -41,6 +41,11 @@ html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
   scroll-behavior: smooth;
   height: 100%;
+
+  :root {
+    --inline-loader-width: 33%;
+    --inline-loader-height: var(--inline-loader-width);
+  }
 }
 
 body {

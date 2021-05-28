@@ -22,7 +22,11 @@
 //when sending message
 @mount of chat, if messages is 0, 
 fn_sendChat must create a new DM document
+with Id (uidFrom + uidTo -- if uidFrom < uidTo else --swap)
+
 get that DM document Id & include it in the commital of the chat message
+
+
 *add field "isLatest" and subscribe to its changes
 //TODO: think on how to associate DM id to contact
 
