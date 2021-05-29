@@ -8,4 +8,8 @@
   &__info {
     background-color: $violet_833883;
   }
+
+  &__scroller {
+    overflow-y: scroll;
+  }
 }

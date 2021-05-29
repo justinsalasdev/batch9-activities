@@ -1,7 +1,7 @@
 export default function messagesReducer(state, action) {
   switch (action.type) {
     case "save messages": {
-      return { ...state, messages: action.payload };
+      return { ...state, messages: [...action.payload] };
     }
 
     case "create": {

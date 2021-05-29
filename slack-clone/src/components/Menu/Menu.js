@@ -5,7 +5,6 @@ import Pointer from "../Pointer/Pointer";
 
 export default function Menu({ withAdder, userId, menuName, menuItems, propStyles }) {
   console.log("Menu");
-  console.log(menuItems);
 
   const [isListExpanded, expandList] = useState(false);
 
@@ -20,7 +19,9 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
       <button
         {...$("expander")}
         onClick={() => {
-          expandList(state => !state);
+          if (menuItems?.length) {
+            expandList(state => !state);
+          } else return;
         }}
       >
         <span {...$("icon")}>

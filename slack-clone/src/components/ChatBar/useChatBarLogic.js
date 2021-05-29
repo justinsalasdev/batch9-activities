@@ -62,7 +62,7 @@ export default function useChatBarLogic(to, from) {
       try {
         setLoading(true);
 
-        if (!messagesState.isCreated || messagesState.messages.length === 0) {
+        if (messagesState.messages.length === 0) {
           const batch = db.batch();
           batch.set(dmRef, {
             isLatest: true

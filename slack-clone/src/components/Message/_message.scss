@@ -1,3 +1,38 @@
 .message {
-  background: red;
+  background: violet;
+  padding: 0.5rem;
+  padding-bottom: 0.2rem;
+
+  &--mine {
+    align-self: flex-end;
+  }
+
+  &__div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+  }
+
+  &__sendee {
+    font-size: 0.7em;
+  }
+
+  &__photo {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  &__time-stamp {
+    font-size: 0.5em;
+    text-align: right;
+    display: block;
+    width: 100%;
+  }
+  &__content {
+    padding-left: 0.5rem;
+    &--mine {
+      padding-left: 0;
+    }
+  }
 }

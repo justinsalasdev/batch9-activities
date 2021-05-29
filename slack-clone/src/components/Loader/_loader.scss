@@ -56,13 +56,13 @@
   justify-content: center;
 
   &__box {
-    border-radius: 50%;
+    // border-radius: 50%;
     display: inline-block;
     height: 0.5em;
     width: 33%;
-    margin: 0px 2px;
+    margin: 5%;
     background-color: $white_09;
-    animation: loader__fade-out-in 0.3s linear infinite alternate;
+    animation: loader__fade-out-in 0.5s linear infinite alternate;
 
     &:nth-child(1) {
       animation-delay: 0.1s;
