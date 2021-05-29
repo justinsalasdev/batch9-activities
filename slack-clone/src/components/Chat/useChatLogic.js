@@ -33,6 +33,10 @@ async function getMessages(messageDispatch, uidFrom, uidTo) {
       });
     });
     messageDispatch({ type: "save messages", payload: messages });
+
+    if (messages.length > 0) {
+      await dmRef.update({ isLatest: true });
+    }
   } catch (err) {
     console.log(err);
   }

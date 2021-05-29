@@ -17,7 +17,8 @@ export default function useChatBarLogic(to, from) {
 
   //firebase resources
   const dmRef = db.collection("DMs").doc(createDMId(from, to));
-  const messageRef = dmRef.collection("Messages").doc(); //points to a new doc
+  const messageCols = dmRef.collection("Messages");
+  const messageRef = messageCols.doc(); //points to a new doc
   const data = {
     from,
     to,
@@ -32,7 +33,15 @@ export default function useChatBarLogic(to, from) {
 
   useEffect(() => {
     dmRef.onSnapshot(doc => {
-      console.log("Current data: ", doc.data());
+      if (doc && !doc.data().isLatest) {
+        messageCols.get().then(docs => {
+          docs.forEach(doc => {
+            console.log(doc.id, doc.data()); //TODO: make async function retrieve and update status same as useChatLogic
+          });
+        });
+      } else {
+        console.log("do nothing");
+      }
     });
   }, []);
 

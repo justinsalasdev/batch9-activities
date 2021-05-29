@@ -3,7 +3,6 @@ import Messages from "../Messages/Messages";
 import ChatBar from "../ChatBar/ChatBar";
 import ChatInfo from "../ChatInfo/ChatInfo";
 import useChatLogic from "./useChatLogic";
-import { useEffect, useRef } from "react";
 
 //user from state  -to from userId
 export default function Chat(props) {
