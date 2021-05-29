@@ -5,6 +5,7 @@ import Pointer from "../Pointer/Pointer";
 
 export default function Menu({ withAdder, userId, menuName, menuItems, propStyles }) {
   console.log("Menu");
+  console.log(menuItems);
 
   const [isListExpanded, expandList] = useState(false);
 
