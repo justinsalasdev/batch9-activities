@@ -33,6 +33,10 @@ async function getMessages(messageDispatch, uidFrom, uidTo) {
       });
     });
     messageDispatch({ type: "save messages", payload: messages });
+
+    if (messages.length > 0) {
+      await dmRef.update({ isLatest: true });
+    }
   } catch (err) {
     console.log(err);
   }
@@ -44,7 +48,13 @@ async function getMessages(messageDispatch, uidFrom, uidTo) {
 
     db.runTransaction((transaction) => {
       const querySnapshot = await transaction.get(messageRef);
+      await transaction.update(dmRef,{
+        isLatest: false
+      })
+      return querySnapshot
     })
+
+    
 
 db.runTransaction((transaction) => {
     return transaction.get(sfDocRef).then((sfDoc) => {
@@ -73,7 +83,6 @@ export default function useChatLogic(uidFrom, uidTo) {
   const messagesDispatch = useMessagesDispatcher();
 
   useEffect(() => {
-    console.log("runs");
     getMessages(messagesDispatch, uidFrom, uidTo);
   }, [uidFrom, uidTo]);
 

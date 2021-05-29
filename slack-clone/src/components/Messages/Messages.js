@@ -2,19 +2,22 @@ import genClass from "../../helpers/genClass";
 import useMessagesState from "../../hooks/messages/useMessagesState";
 import Message from "../Message/Message";
 
-export default function Messages({ propStyles }) {
+export default function Messages() {
   console.log("Messages");
   const { messages } = useMessagesState();
 
-  console.log(messages);
-  const $ = genClass({ block: "messages", propStyles });
+  const $ = genClass({ block: "messages" });
   return (
     <ul {...$()}>
-      {messages?.map(message => {
+      {messages?.map((message, index) => {
         return (
-          <li {...$("message")} key={message.id}>
-            <Message content={message.content} date={message.date} isoDate={message.isoDate} />
-          </li>
+          <Message
+            max={messages.length - 1}
+            num={index}
+            key={message.id}
+            propStyles={$("message").className}
+            resources={message}
+          />
         );
       })}
     </ul>

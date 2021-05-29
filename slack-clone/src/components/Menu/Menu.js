@@ -40,24 +40,25 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
               />
             </li>
           )}
-          {menuItems.map(menuItem => {
-            return (
-              <li {...$("item")} key={menuItem.uid}>
-                <Pointer //inside is <Link/> from 'react-router
-                  text={isSelf(menuItem, userId)}
-                  icon="picture"
-                  to={{
-                    pathname: `/${menuName.toLowerCase()}/${menuItem.uid}`,
-                    state: {
-                      chatName: `${isSelf(menuItem, userId)}`,
-                      userId: userId
-                    }
-                  }}
-                  mods={{ action: ["none"], icon: ["left"] }}
-                />
-              </li>
-            );
-          })}
+          {menuItems &&
+            menuItems.map(menuItem => {
+              return (
+                <li {...$("item")} key={menuItem.uid}>
+                  <Pointer //inside is <Link/> from 'react-router
+                    text={isSelf(menuItem, userId)}
+                    icon="picture"
+                    to={{
+                      pathname: `/${menuName.toLowerCase()}/${menuItem.uid}`,
+                      state: {
+                        chatName: `${isSelf(menuItem, userId)}`,
+                        userId: userId
+                      }
+                    }}
+                    mods={{ action: ["none"], icon: ["left"] }}
+                  />
+                </li>
+              );
+            })}
         </ul>
       )}
     </div>

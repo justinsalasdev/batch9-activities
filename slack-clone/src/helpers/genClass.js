@@ -6,7 +6,7 @@ export default function genClass(config) {
     blockString += block;
   }
   if (mods?.[block]) {
-    blockString += " " + mods[block].map(mod => `${block}--${mod}`).join(" ");
+    blockString += " " + mods[block].map(mod => mod && `${block}--${mod}`).join(" ") || "";
   }
 
   if (propStyles) {
@@ -22,7 +22,8 @@ export default function genClass(config) {
     }
 
     if (mods?.[elem]) {
-      modifiedString += elemString + " " + mods[elem].map(mod => `${elemString}--${mod}`).join(" ");
+      modifiedString +=
+        elemString + " " + mods[elem].map(mod => mod && `${elemString}--${mod}`).join(" ") || "";
       return { className: modifiedString };
     } else {
       return { className: elemString };

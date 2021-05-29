@@ -16,6 +16,13 @@ $padding: 0.2rem;
     position: relative;
   }
 
+  &__loader {
+    min-height: 1.2rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
   &__field {
     font-size: 1.1rem;
     position: absolute;
@@ -40,6 +47,8 @@ $padding: 0.2rem;
   }
 
   &__label {
+    width: 100%;
+    height: 100%;
     color: $violet_1817188;
     position: inline-block;
     padding: $padding;

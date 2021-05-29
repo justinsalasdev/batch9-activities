@@ -13,7 +13,7 @@ export default function LineForm({ initialName, mods, error }) {
   return (
     <form {...$()} onSubmit={handleSubmit}>
       {isLoading ? (
-        <Loader type="inline" />
+        <Loader propStyles={$("loader").className} type="inline" />
       ) : (
         <div {...$("div")}>
           <input
