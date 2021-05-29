@@ -67,8 +67,3 @@ export default function App() {
     </div>
   );
 }
-
-function Comp(props) {
-  console.log(props);
-  return <h1>{props.match.params.id}</h1>;
-}
