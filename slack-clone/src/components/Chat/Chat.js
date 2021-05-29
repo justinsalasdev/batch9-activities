@@ -15,15 +15,9 @@ export default function Chat(props) {
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>
-      <div {...$("info")}>
-        <ChatInfo name={location.state.chatName} />
-      </div>
-      <div {...$("messages")}>
-        <Messages />
-      </div>
-      <div {...$("bar")}>
-        <ChatBar from={uidFrom} to={uidTo} />
-      </div>
+      <ChatInfo propStyles={$("info").className} name={location.state.chatName} />
+      <Messages propStyles={$("messages").className} />
+      <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />
     </div>
   );
 }

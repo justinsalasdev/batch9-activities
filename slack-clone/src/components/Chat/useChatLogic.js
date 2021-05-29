@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase/firebase";
 import createDMId from "../../helpers/createDMId";
 
+function getDateString(date, type) {
+  if (type === "human") {
+    return date.toLocaleDateString("en-US") + " " + date.toLocaleTimeString("en-US");
+  } else {
+    return date.toISOString();
+  }
+}
+
 async function getMessages(messageDispatch, uidFrom, uidTo) {
   try {
     const messages = [];
@@ -13,7 +21,16 @@ async function getMessages(messageDispatch, uidFrom, uidTo) {
     const querySnapshot = await messageRef.get();
 
     querySnapshot.forEach(message => {
-      messages.push({ id: message.id, ...message.data() });
+      const { from, to, content, timeStamp } = message.data();
+      messages.push({
+        id: message.id,
+        content,
+        from,
+        to,
+        //timeStamp.toDate() convert firebase timeStamp to regular JS Date Object
+        date: getDateString(timeStamp.toDate(), "human"),
+        isoDate: getDateString(timeStamp.toDate(), "iso")
+      });
     });
     messageDispatch({ type: "save messages", payload: messages });
   } catch (err) {
