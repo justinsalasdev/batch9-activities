@@ -33,17 +33,19 @@ export default function Nav({ propStyles }) {
   const $ = genClass({ block: "nav", propStyles });
 
   // eslint-disable-next-line
-  const channels = [
-    { to: "#", text: "batch9", icon: "channel" },
-    { to: "#", text: "batch9", icon: "channel" },
-    { to: "#", text: "batch11", icon: "channel" }
-  ];
+  const channels = [];
 
   return (
     <nav {...$()}>
       {/* <div className></div> */}
       <Pointer to="/dms" text="DMs" icon="message" propStyles={$("link").className} />
-      {/* <Menu withAdder name={"Channels"} entries={channels} propStyles={$("menu").className} /> */}
+      <Menu
+        withAdder
+        userId={userState.uid}
+        menuName={"Channels"}
+        menuItems={channels}
+        propStyles={$("menu").className}
+      />
       <Menu
         userId={userState.uid}
         menuName={"People"}

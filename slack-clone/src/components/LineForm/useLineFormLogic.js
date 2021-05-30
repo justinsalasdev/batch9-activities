@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 
-export default function useNameChanger(initialName, error) {
+export default function useLineFormLogic(initialName, error) {
   const labelRef = useRef();
   const userDispatch = useUserDispatcher();
   const [state, setState] = useState(initialName);

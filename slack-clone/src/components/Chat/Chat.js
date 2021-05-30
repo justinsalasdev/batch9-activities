@@ -26,4 +26,8 @@ export default function Chat(props) {
   );
 }
 
+/*
+TODO: if name is supplied use that name
+if no name is supplied, find out the recepient
+ */
 //props.location.state.name

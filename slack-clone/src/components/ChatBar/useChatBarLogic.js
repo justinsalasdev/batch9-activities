@@ -50,8 +50,6 @@ export default function useChatBarLogic(to, from) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    //firebase resources
-
     if (!cbState.content) {
       return;
     } else {
