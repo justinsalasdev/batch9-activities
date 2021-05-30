@@ -1,0 +1,19 @@
+{
+  "name": "images/table.JPG",
+  "bucket": "slack-clone-c2d0b.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1622371332829,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "9cb8dbeb-a667-4293-9d76-8be17e50abc0"
+  ],
+  "timeCreated": "2021-05-30T10:42:12.828Z",
+  "updated": "2021-05-30T10:42:12.838Z",
+  "size": 154415,
+  "md5Hash": "q4+5y7vCYFvRLf6tBbRhzA==",
+  "crc32c": "1168694047"
+}

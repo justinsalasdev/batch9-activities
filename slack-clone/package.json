@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "firebase": "^8.6.3",
+    "fuse.js": "^6.4.6",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -16,6 +17,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "emulate": "firebase emulators:start --import=./emulator-data --export-on-exit",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

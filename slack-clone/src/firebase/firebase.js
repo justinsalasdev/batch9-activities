@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
 import "firebase/auth";
+import createDMId from "../helpers/createDMId";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAzQhRKT9UhKG-ArC5-p8uNCVELWQXM7Yc",
@@ -21,4 +22,10 @@ auth.useEmulator("http://localhost:9099");
 storage.useEmulator("localhost", 9199);
 db.useEmulator("localhost", 8080);
 
-export { db, auth, storage, firebase as default };
+const setTimeStamp = firebase.firestore.FieldValue.serverTimestamp;
+
+function createDMRef(from, to) {
+  return db.collection("DMs").doc(createDMId(from, to));
+}
+
+export { db, auth, storage, setTimeStamp, createDMRef };
