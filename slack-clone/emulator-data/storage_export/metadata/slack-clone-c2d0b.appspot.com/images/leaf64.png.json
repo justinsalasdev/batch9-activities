@@ -1,0 +1,19 @@
+{
+  "name": "images/leaf64.png",
+  "bucket": "slack-clone-c2d0b.appspot.com",
+  "contentType": "image/png",
+  "metageneration": 1,
+  "generation": 1622370384144,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "2c6f3c1c-53ea-4427-a49d-705685402dc4"
+  ],
+  "timeCreated": "2021-05-30T10:26:24.143Z",
+  "updated": "2021-05-30T10:26:24.143Z",
+  "size": 2039,
+  "md5Hash": "KPRz+7Rv3+mGxZdR2x2VQA==",
+  "crc32c": "3158786996"
+}

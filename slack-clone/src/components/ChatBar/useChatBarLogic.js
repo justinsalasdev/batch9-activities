@@ -4,39 +4,23 @@ import useMessagesState from "../../hooks/messages/useMessagesState";
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
 import getMessages from "../../helpers/getMessages";
 import generateString from "../../helpers/generateString";
+import chatBarReducer from "./chatBarReducer";
 
 //helper
 function countNL(content) {
   return (content.match(/\n/g) || []).length;
 }
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "set content":
-      return { ...state, content: action.payload };
-    case "finish sending":
-      return { ...state, content: "", isLoading: false };
-    case "start sending":
-      return { ...state, isLoading: true };
-    default:
-      console.log("cb unknown action");
-  }
-}
-
 export default function useChatBarLogic(to, from) {
   const areaRef = useRef();
   const submitRef = useRef();
-  const [cbState, cbDispatch] = useReducer(reducer, { content: "", isLoading: false });
+  const [cbState, cbDispatch] = useReducer(chatBarReducer, { content: "", isLoading: false });
   const messagesState = useMessagesState(); //used in conditionals only
   const messagesDispatch = useMessagesDispatcher();
 
   useEffect(() => {
     areaRef.current.setAttribute("rows", `${countNL(cbState.content) + 1}`);
   });
-
-  function handleChange(e) {
-    cbDispatch({ type: "set content", payload: e.target.value });
-  }
 
   function handleEnter(e) {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -110,6 +94,6 @@ export default function useChatBarLogic(to, from) {
     isLoading: cbState.isLoading,
     handleSubmit,
     handleEnter,
-    handleChange
+    handleChange: e => cbDispatch({ type: "set content", payload: e.target.value })
   };
 }

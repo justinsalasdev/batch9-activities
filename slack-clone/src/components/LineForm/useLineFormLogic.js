@@ -1,84 +1,62 @@
-import { useEffect, useRef, useState } from "react";
+import { useReducer, useRef } from "react";
 import { auth, db } from "../../firebase/firebase";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
+import lineFormReducer from "./lineFormReducer";
 
-export default function useLineFormLogic(initialName, error) {
+export default function useLineFormLogic(initialName) {
   const labelRef = useRef();
   const userDispatch = useUserDispatcher();
-  const [state, setState] = useState(initialName);
-  const [isLoading, setLoading] = useState(false);
+  const [compState, compDispatch] = useReducer(lineFormReducer, {
+    value: initialName,
+    isLoading: false
+  });
 
-  useEffect(() => {
-    if (error) {
-      setState(initialName); //set to initial name when update attempt fails
-      userDispatch({ type: "clear error" });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error]);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!state || state === initialName) {
-      labelRef.current.textContent = initialName;
-      labelRef.current.previousElementSibling.blur();
-    } else {
-      setLoading(true);
-      const user = auth.currentUser;
-      db.collection("Users")
-        .doc(user.uid)
-        //TODO:must be .update when user just want to change name
-        .set(
+  async function handleSubmit(e) {
+    try {
+      e.preventDefault();
+      if (!compState.value || compState.value === initialName) {
+        labelRef.current.textContent = initialName;
+        labelRef.current.previousElementSibling.blur();
+      } else {
+        compDispatch({ type: "start submit" });
+        const user = auth.currentUser;
+        await db.collection("Users").doc(user.uid).set(
           {
-            name: state,
+            name: compState.value,
             uid: user.uid,
             email: user.email,
             photoURL: user.photoURL
           },
           { merge: true }
-        )
-        .then(() => {
-          console.log("Document written with ID");
-          //return promise to extend 'then' chain
-          return user.updateProfile({
-            displayName: state
-          });
-        })
-        .then(function () {
-          userDispatch({ type: "update name", payload: state }); //rerenders <Name/> with new initialName
-          setLoading(false);
-        })
-        .catch(function (error) {
-          setLoading(false);
-          userDispatch({ type: "error" });
-          console.log(error, "modify name error");
+        );
+        await user.updateProfile({
+          displayName: compState.value
         });
+
+        userDispatch({ type: "update name", payload: compState.value });
+        compDispatch({ type: "end submit" });
+      }
+    } catch (err) {
+      compDispatch({ type: "submit error", payload: initialName });
     }
   }
 
-  function handleChange(e) {
-    setState(e.target.value);
-  }
-
-  function handleBlur(e) {
-    if (state === "") {
-      setState(initialName);
-    } else return;
-  }
-
-  function handleEscape(e) {
-    if (e.key === "Escape") {
-      setState(initialName);
-      labelRef.current.previousElementSibling.blur();
-    } else return;
-  }
-
   return {
-    state,
+    state: compState.value,
     labelRef,
-    isLoading,
+    isLoading: compState.isLoading,
     handleSubmit,
-    handleChange,
-    handleEscape,
-    handleBlur
+    handleChange: e => compDispatch({ type: "set value", payload: e.target.value }),
+    handleEscape: e => {
+      if (e.key === "Escape") {
+        compDispatch({ type: "set value", payload: initialName });
+        labelRef.current.previousElementSibling.blur();
+      } else return;
+    },
+    handleBlur: () => {
+      if (compState.value === "") {
+        compDispatch({ type: "set value", payload: initialName });
+      } else return;
+    }
   };
 }
