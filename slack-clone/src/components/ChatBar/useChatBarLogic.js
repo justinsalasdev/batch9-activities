@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { db } from "../../firebase/firebase";
-import firebase from "../../firebase/firebase";
+import { db, setTimeStamp } from "../../firebase/firebase";
 import createDMId from "../../helpers/createDMId";
 import useMessagesState from "../../hooks/messages/useMessagesState";
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
+import getMessages from "../../helpers/getMessages";
 
 //helper
 
@@ -16,16 +16,10 @@ export default function useChatBarLogic(to, from) {
   const messagesDispatch = useMessagesDispatcher();
 
   //firebase resources
+
   const dmRef = db.collection("DMs").doc(createDMId(from, to));
-  const messageCols = dmRef.collection("Messages");
-  const messageRef = messageCols.doc(); //points to a new doc
-  const data = {
-    from,
-    to,
-    content
-  };
-  const getTimeStamp = firebase.firestore.FieldValue.serverTimestamp;
-  const batch = db.batch();
+  const messageCol = dmRef.collection("Messages");
+  const messageRef = messageCol.doc();
 
   useEffect(() => {
     areaRef.current.setAttribute("rows", `${countNL(content) + 1}`);
@@ -33,17 +27,13 @@ export default function useChatBarLogic(to, from) {
 
   useEffect(() => {
     dmRef.onSnapshot(doc => {
-      if (doc && !doc.data().isLatest) {
-        messageCols.get().then(docs => {
-          docs.forEach(doc => {
-            console.log(doc.id, doc.data()); //TODO: make async function retrieve and update status same as useChatLogic
-          });
-        });
+      if (doc && !doc.data()?.isLatest) {
+        getMessages(messagesDispatch, from, to);
       } else {
         console.log("do nothing");
       }
     });
-  }, []);
+  }, [from, to]); //run once onMount
 
   function countNL(content) {
     return (content.match(/\n/g) || []).length;
@@ -65,32 +55,49 @@ export default function useChatBarLogic(to, from) {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    //firebase resources
+
+    const data = {
+      from,
+      to,
+      content
+    };
+
     if (!content) {
       return;
     } else {
       try {
         setLoading(true);
 
-        if (messagesState.messages.length === 0) {
+        if (messagesState.messages.length > 0 || messagesState.isCreated) {
           const batch = db.batch();
-          batch.set(dmRef, {
-            isLatest: true
-          });
-          batch.set(messageRef, { ...data, timeStamp: getTimeStamp() });
-          await batch.commit();
+          await batch
+            .set(messageRef, {
+              ...data,
+              timeStamp: setTimeStamp()
+            })
+            .update(dmRef, {
+              isLatest: false
+            })
+            .commit();
 
-          console.log("New DM initiated, and first message written");
-          messagesDispatch({ type: "create" });
+          console.log("Document successfully written!");
           setLoading(false);
           setContent("");
         } else {
-          batch.update(dmRef, {
-            isLatest: false
-          });
-          batch.set(messageRef, { ...data, timeStamp: getTimeStamp() });
-          await batch.commit();
+          const batch = db.batch();
+          await batch
+            .set(dmRef, {
+              isLatest: true
+            })
+            .set(messageRef, {
+              ...data,
+              timeStamp: setTimeStamp()
+            })
+            .commit();
 
-          console.log("Document successfully written!");
+          console.log("New DM initiated, and first message written");
+          getMessages(messagesDispatch, from, to);
           setLoading(false);
           setContent("");
         }

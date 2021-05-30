@@ -9,7 +9,7 @@ const initialState = {
   messages: []
 };
 
-export default function MessagesProvider({ children }) {
+export default function PeopleProvider({ children }) {
   const [state, dispatch] = useReducer(messagesReducer, initialState);
   return (
     <messagesStateContext.Provider value={state}>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
-import defaultAvatar from "../../assets/images/default.jpg";
+import defaultAvatar from "../../assets/images/avatar.svg";
 import Loader from "../Loader/Loader";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import uploadPhoto from "../../helpers/uploadPhoto";

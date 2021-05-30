@@ -21,4 +21,6 @@ auth.useEmulator("http://localhost:9099");
 storage.useEmulator("localhost", 9199);
 db.useEmulator("localhost", 8080);
 
-export { db, auth, storage, firebase as default };
+const setTimeStamp = firebase.firestore.FieldValue.serverTimestamp;
+
+export { db, auth, storage, setTimeStamp };

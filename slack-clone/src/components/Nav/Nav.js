@@ -23,7 +23,7 @@ export default function Nav({ propStyles }) {
         });
         peopleDispatch({ type: "save people", payload: people });
       });
-  }, []);
+  }, [userState]);
 
   if (!userState.uid || !userState.displayName) {
     return <NoNav propStyles={propStyles} />;

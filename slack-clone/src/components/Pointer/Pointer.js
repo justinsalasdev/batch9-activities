@@ -17,8 +17,6 @@ const icons = {
 export default function Pointer({ text, icon, propStyles, mods, to }) {
   const $ = genClass({ block: "nav-link", propStyles, mods });
 
-  console.log(to);
-
   return (
     <div {...$()}>
       <Link {...$("link")} to={to}>

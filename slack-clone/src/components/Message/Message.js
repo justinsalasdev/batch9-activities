@@ -1,12 +1,11 @@
 import genClass from "../../helpers/genClass";
 import usePeopleState from "../../hooks/people/usePeopleState";
 import useUserState from "../../hooks/user/useUserState";
-import defaultAvatar from "../../assets/images/default.jpg";
+import defaultAvatar from "../../assets/images/avatar.svg";
 import { useEffect, useRef } from "react";
 
 export default function Message({ num, max, resources, propStyles }) {
   const { from, content, date, isoDate } = resources;
-  console.log(from);
   const userState = useUserState();
   const peopleState = usePeopleState();
   const messageRef = useRef();
