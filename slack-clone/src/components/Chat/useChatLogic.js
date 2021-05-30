@@ -8,7 +8,7 @@ export default function useChatLogic(uidFrom, uidTo) {
 
   useEffect(() => {
     createDMRef(uidFrom, uidTo).onSnapshot(doc => {
-      if (doc && !doc.data()?.isLatest) {
+      if (doc) {
         getMessages(messagesDispatch, uidFrom, uidTo);
       } else {
         console.log("do nothing");
