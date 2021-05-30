@@ -10,8 +10,8 @@ export default function Chat(props) {
 
   const { location, match } = props; //destructure Route props
   const uidFrom = location.state.userId;
-  const photoURL = location.state.photoURL;
   const uidTo = match.params.id;
+  const photoURL = location.state.photoURL;
   useChatLogic(uidFrom, uidTo);
 
   const $ = genClass({ block: "chat" });

@@ -1,17 +1,19 @@
-import useMessagesState from "../../hooks/messages/useMessagesState";
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { createDMRef } from "../../firebase/firebase";
 import getMessages from "../../helpers/getMessages";
 
 export default function useChatLogic(uidFrom, uidTo) {
-  const [isLoading, setLoading] = useState(false);
-  const messagesState = useMessagesState();
   const messagesDispatch = useMessagesDispatcher();
 
   useEffect(() => {
-    console.log("chat get messages");
-    getMessages(messagesDispatch, uidFrom, uidTo);
+    createDMRef(uidFrom, uidTo).onSnapshot(doc => {
+      if (doc && !doc.data()?.isLatest) {
+        getMessages(messagesDispatch, uidFrom, uidTo);
+      } else {
+        console.log("do nothing");
+      }
+    });
+    // eslint-disable-next-line
   }, [uidFrom, uidTo]);
-
-  return { isLoading, messagesState, messagesDispatch };
 }

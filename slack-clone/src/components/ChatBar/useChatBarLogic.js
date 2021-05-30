@@ -4,6 +4,7 @@ import createDMId from "../../helpers/createDMId";
 import useMessagesState from "../../hooks/messages/useMessagesState";
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
 import getMessages from "../../helpers/getMessages";
+import generateString from "../../helpers/generateString";
 
 //helper
 
@@ -12,7 +13,7 @@ export default function useChatBarLogic(to, from) {
   const submitRef = useRef();
   const [content, setContent] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const messagesState = useMessagesState();
+  const messagesState = useMessagesState(); //used in conditionals only
   const messagesDispatch = useMessagesDispatcher();
 
   //firebase resources
@@ -24,16 +25,6 @@ export default function useChatBarLogic(to, from) {
   useEffect(() => {
     areaRef.current.setAttribute("rows", `${countNL(content) + 1}`);
   });
-
-  useEffect(() => {
-    dmRef.onSnapshot(doc => {
-      if (doc && !doc.data()?.isLatest) {
-        getMessages(messagesDispatch, from, to);
-      } else {
-        console.log("do nothing");
-      }
-    });
-  }, [from, to]); //run once onMount
 
   function countNL(content) {
     return (content.match(/\n/g) || []).length;
@@ -77,7 +68,7 @@ export default function useChatBarLogic(to, from) {
               timeStamp: setTimeStamp()
             })
             .update(dmRef, {
-              isLatest: false
+              watchedString: generateString()
             })
             .commit();
 
@@ -88,7 +79,7 @@ export default function useChatBarLogic(to, from) {
           const batch = db.batch();
           await batch
             .set(dmRef, {
-              isLatest: true
+              watchedString: ""
             })
             .set(messageRef, {
               ...data,
@@ -97,7 +88,7 @@ export default function useChatBarLogic(to, from) {
             .commit();
 
           console.log("New DM initiated, and first message written");
-          getMessages(messagesDispatch, from, to);
+          getMessages(messagesDispatch, from, to); //fetch message on first creation of DM
           setLoading(false);
           setContent("");
         }

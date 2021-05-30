@@ -1,6 +1,5 @@
 import { db } from "../firebase/firebase";
 import createDMId from "./createDMId";
-import generateString from "./generateString";
 import getDateString from "./getDateString";
 
 export default async function getMessages(messageDispatch, uidFrom, uidTo) {
@@ -25,7 +24,7 @@ export default async function getMessages(messageDispatch, uidFrom, uidTo) {
     messageDispatch({ type: "save messages", payload: messages });
 
     if (messages.length > 0) {
-      await dmRef.update({ watchedString: generateString() });
+      await dmRef.update({ watchedString: "" });
     }
   } catch (err) {
     console.log(err);

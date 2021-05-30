@@ -23,6 +23,7 @@ export default function Nav({ propStyles }) {
         });
         peopleDispatch({ type: "save people", payload: people });
       });
+    // eslint-disable-next-line
   }, [userState]);
 
   if (!userState.uid || !userState.displayName) {
@@ -31,17 +32,12 @@ export default function Nav({ propStyles }) {
 
   const $ = genClass({ block: "nav", propStyles });
 
+  // eslint-disable-next-line
   const channels = [
     { to: "#", text: "batch9", icon: "channel" },
     { to: "#", text: "batch9", icon: "channel" },
     { to: "#", text: "batch11", icon: "channel" }
   ];
-
-  // const people = [
-  //   { to: "#", text: "Justin", icon: "picture" },
-  //   { to: "#", text: "Raffy", icon: "picture" },
-  //   { to: "#", text: "Salas", icon: "picture" }
-  // ];
 
   return (
     <nav {...$()}>

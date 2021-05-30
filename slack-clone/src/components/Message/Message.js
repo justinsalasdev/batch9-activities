@@ -18,6 +18,7 @@ export default function Message({ num, max, resources, propStyles }) {
     if (num === max) {
       messageRef.current.scrollIntoView();
     }
+    // eslint-disable-next-line
   }, []);
 
   const $ = genClass({
@@ -34,7 +35,7 @@ export default function Message({ num, max, resources, propStyles }) {
     <li ref={messageRef} {...$()}>
       <div {...$("sendee")}>{!isMine && <p>{name}</p>}</div>
       <div {...$("div")}>
-        {!isMine && <img src={photoURL || defaultAvatar} {...$("photo")} />}
+        {!isMine && <img alt="user avatar" src={photoURL || defaultAvatar} {...$("photo")} />}
         <p {...$("content")}>{content}</p>
       </div>
       <time {...$("time-stamp")} dateTime={isoDate}>
