@@ -1,37 +1,41 @@
-import { useEffect, useRef, useState } from "react";
-import { db, setTimeStamp } from "../../firebase/firebase";
-import createDMId from "../../helpers/createDMId";
+import { useEffect, useReducer, useRef } from "react";
+import { createDMRef, db, setTimeStamp } from "../../firebase/firebase";
 import useMessagesState from "../../hooks/messages/useMessagesState";
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
 import getMessages from "../../helpers/getMessages";
 import generateString from "../../helpers/generateString";
 
 //helper
+function countNL(content) {
+  return (content.match(/\n/g) || []).length;
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "set content":
+      return { ...state, content: action.payload };
+    case "finish sending":
+      return { ...state, content: "", isLoading: false };
+    case "start sending":
+      return { ...state, isLoading: true };
+    default:
+      console.log("cb unknown action");
+  }
+}
 
 export default function useChatBarLogic(to, from) {
   const areaRef = useRef();
   const submitRef = useRef();
-  const [content, setContent] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [cbState, cbDispatch] = useReducer(reducer, { content: "", isLoading: false });
   const messagesState = useMessagesState(); //used in conditionals only
   const messagesDispatch = useMessagesDispatcher();
 
-  //firebase resources
-
-  const dmRef = db.collection("DMs").doc(createDMId(from, to));
-  const messageCol = dmRef.collection("Messages");
-  const messageRef = messageCol.doc();
-
   useEffect(() => {
-    areaRef.current.setAttribute("rows", `${countNL(content) + 1}`);
+    areaRef.current.setAttribute("rows", `${countNL(cbState.content) + 1}`);
   });
 
-  function countNL(content) {
-    return (content.match(/\n/g) || []).length;
-  }
-
   function handleChange(e) {
-    setContent(e.target.value);
+    cbDispatch({ type: "set content", payload: e.target.value });
   }
 
   function handleEnter(e) {
@@ -48,17 +52,20 @@ export default function useChatBarLogic(to, from) {
 
     //firebase resources
 
-    const data = {
-      from,
-      to,
-      content
-    };
-
-    if (!content) {
+    if (!cbState.content) {
       return;
     } else {
       try {
-        setLoading(true);
+        const dmRef = createDMRef(from, to);
+        const messageCol = dmRef.collection("Messages");
+        const messageRef = messageCol.doc();
+        const data = {
+          from,
+          to,
+          content: cbState.content
+        };
+
+        cbDispatch({ type: "start sending" });
 
         if (messagesState.messages.length > 0 || messagesState.isCreated) {
           const batch = db.batch();
@@ -73,8 +80,7 @@ export default function useChatBarLogic(to, from) {
             .commit();
 
           console.log("Document successfully written!");
-          setLoading(false);
-          setContent("");
+          cbDispatch({ type: "finish sending" });
         } else {
           const batch = db.batch();
           await batch
@@ -89,22 +95,21 @@ export default function useChatBarLogic(to, from) {
 
           console.log("New DM initiated, and first message written");
           getMessages(messagesDispatch, from, to); //fetch message on first creation of DM
-          setLoading(false);
-          setContent("");
+          cbDispatch({ type: "finish sending" });
         }
         //if messages = [0]{} await create DM
       } catch (err) {
         console.error("Error adding document: ", err);
-        setLoading(false);
+        cbDispatch({ type: "finish sending" });
       }
     }
   }
 
   return {
-    content,
+    content: cbState.content,
     areaRef,
     submitRef,
-    isLoading,
+    isLoading: cbState.isLoading,
     handleSubmit,
     handleEnter,
     handleChange
