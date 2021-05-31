@@ -2,15 +2,21 @@
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  // background: red;
   position: relative;
 
   &__input {
     position: relative;
-    padding: 0.2rem;
+    // padding: 0.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    display: flex;
   }
 
   &__field {
+    padding-left: 0.2rem;
     border-bottom: 1px solid transparent;
     &:focus,
     &:active {

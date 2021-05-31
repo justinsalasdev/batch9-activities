@@ -15,7 +15,7 @@ const icons = {
 };
 
 export default function Pointer({ text, icon, propStyles, mods, to, action }) {
-  const $ = genClass({ block: "nav-link", propStyles, mods });
+  const $ = genClass({ block: "pointer", propStyles, mods });
 
   return (
     <div {...$()}>

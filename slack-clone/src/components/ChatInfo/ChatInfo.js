@@ -3,8 +3,9 @@ import { MdPersonAdd } from "react-icons/md";
 import { IoIosChatbubbles } from "react-icons/io";
 import Selector from "../Selector/Selector";
 
-export default function ChatInfo({ name, withGroup, propStyles }) {
+export default function ChatInfo({ name, propStyles, chatType }) {
   const $ = genClass({ block: "chat-info", propStyles });
+
   return (
     <div {...$()}>
       {(name && (
@@ -15,7 +16,7 @@ export default function ChatInfo({ name, withGroup, propStyles }) {
           {name}
         </p>
       )) || <Selector />}
-      {withGroup && (
+      {chatType === "channels" && (
         <div {...$("div")}>
           <div {...$("number")}>9</div>
           <button {...$("add")}>
