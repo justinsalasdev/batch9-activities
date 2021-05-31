@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { db } from "../../firebase/firebase";
 import genClass from "../../helpers/genClass";
 import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
@@ -11,6 +12,7 @@ export default function Nav({ propStyles }) {
   const userState = useUserState();
   const peopleDispatch = usePeopleDispatcher();
   const peopleState = usePeopleState();
+  const navigator = useHistory();
 
   useEffect(() => {
     db.collection("Users")
@@ -19,7 +21,11 @@ export default function Nav({ propStyles }) {
         const people = [];
         querySnapshot.forEach(doc => {
           // doc.data() is never undefined for query doc snapshots
-          people.push(doc.data());
+          if (doc.data().uid === userState.uid) {
+            people.push({ ...doc.data(), name: "Yourself" });
+          } else {
+            people.push(doc.data());
+          }
         });
         peopleDispatch({ type: "save people", payload: people });
       });
@@ -38,7 +44,15 @@ export default function Nav({ propStyles }) {
   return (
     <nav {...$()}>
       {/* <div className></div> */}
-      <Pointer to="/dms" text="DMs" icon="message" propStyles={$("link").className} />
+      <Pointer
+        action={() => {
+          navigator.push("/people/new");
+        }}
+        to="/dms"
+        text="DMs"
+        icon="message"
+        propStyles={$("link").className}
+      />
       <Menu
         withAdder
         userId={userState.uid}

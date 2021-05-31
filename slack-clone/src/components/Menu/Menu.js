@@ -44,12 +44,12 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
             return (
               <li {...$("item")} key={menuItem.uid}>
                 <Pointer //inside is <Link/> from 'react-router
-                  text={isSelf(menuItem, userId)}
+                  text={menuItem.name}
                   icon="picture"
                   to={{
                     pathname: `/${menuName.toLowerCase()}/${menuItem.uid}`,
                     state: {
-                      chatName: `${isSelf(menuItem, userId)}`,
+                      chatName: menuItem.name,
                       userId: userId
                     }
                   }}

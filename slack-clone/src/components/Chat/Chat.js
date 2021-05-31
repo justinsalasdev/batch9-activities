@@ -9,19 +9,19 @@ export default function Chat(props) {
   console.log("Chat");
 
   const { location, match } = props; //destructure Route props
-  const uidFrom = location.state.userId;
+  const uidFrom = location.state?.userId;
   const uidTo = match.params.id;
-  const photoURL = location.state.photoURL;
+  const photoURL = location.state?.photoURL;
   useChatLogic(uidFrom, uidTo);
 
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>
-      <ChatInfo propStyles={$("info").className} name={location.state.chatName} />
+      <ChatInfo propStyles={$("info").className} name={location.state?.chatName} />
       <div {...$("scroller")}>
         <Messages photoURL={photoURL} />
       </div>
-      <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />
+      {!(uidTo === "new") && <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />}
     </div>
   );
 }
