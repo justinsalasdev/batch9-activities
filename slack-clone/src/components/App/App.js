@@ -8,8 +8,6 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
 import Chat from "../Chat/Chat";
-import Selector from "../Selector/Selector";
-import Person from "../Person/Person";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -58,14 +56,7 @@ export default function App() {
             <div>New contact</div>
           </Route>
           <Route path="/">
-            <div>
-              <Selector
-                multiple
-                propStyles={$("selector").className}
-                mods={{ selector: ["multiple"], list: ["multiple"], "list-ref": ["multiple"] }}
-              />
-              <Person />
-            </div>
+            <div>Home</div>
           </Route>
         </Switch>
       </View>

@@ -15,5 +15,6 @@ export default function lineFormReducer(state, action) {
 
     default:
       console.log("unknown lineForm action");
+      return { ...state };
   }
 }

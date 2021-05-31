@@ -53,7 +53,7 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
                       userId: userId
                     }
                   }}
-                  mods={{ link: ["menu"], action: ["none"], icon: ["left"] }}
+                  mods={{ link: ["menu"], icon: ["left"] }}
                 />
               </li>
             );

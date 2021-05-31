@@ -48,6 +48,7 @@ export default function userReducer(state, action) {
 
     default: {
       console.log("user-reducer: unknown action");
+      return { ...state };
     }
   }
 }

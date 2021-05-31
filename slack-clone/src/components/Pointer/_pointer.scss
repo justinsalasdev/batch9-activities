@@ -7,6 +7,18 @@
   color: inherit;
   cursor: pointer;
 
+  &--active {
+    color: $white_09;
+    background-color: purple;
+  }
+
+  &--selector {
+    padding: 0.2rem;
+    &:hover {
+      background-color: $violet_1817188_06;
+    }
+  }
+
   &__link {
     display: flex;
     width: 100%;
@@ -35,12 +47,5 @@
     padding: 0.2rem;
     color: inherit;
     cursor: pointer;
-
-    // @media (hover: hover) {
-    //   display: none;
-    // }
-    &--none {
-      display: none;
-    }
   }
 }

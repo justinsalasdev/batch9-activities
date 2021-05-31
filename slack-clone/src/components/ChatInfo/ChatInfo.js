@@ -1,13 +1,23 @@
 import genClass from "../../helpers/genClass";
 import { MdPersonAdd } from "react-icons/md";
 import { IoIosChatbubbles } from "react-icons/io";
+import { ImCancelCircle } from "react-icons/im";
 import Selector from "../Selector/Selector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
+import usePeopleState from "../../hooks/people/usePeopleState";
 
 export default function ChatInfo({ name, propStyles, chatType }) {
+  console.log("Chat Info");
   const [isSelecting, setSelecting] = useState(false);
-  const [selected, setSelected] = useState({});
+  const peopleDispatch = usePeopleDispatcher();
+  const peopleState = usePeopleState();
+  const numSelected = peopleState.people.filter(person => person.checked).length;
   const $ = genClass({ block: "chat-info", propStyles });
+
+  useEffect(() => {
+    setSelecting(false);
+  }, [name]);
 
   return (
     <div {...$()}>
@@ -23,11 +33,11 @@ export default function ChatInfo({ name, propStyles, chatType }) {
 
       {chatType === "channels" && (
         <div {...$("actions")}>
-          <div {...$("number")}>9</div>
+          <div {...$("number")}>{numSelected}</div>
           <button {...$("add")} onClick={() => setSelecting(state => !state)}>
-            <MdPersonAdd />
+            {isSelecting ? <ImCancelCircle /> : <MdPersonAdd />}
           </button>
-          <button>create</button>
+          <button onClick={() => peopleDispatch({ type: "reset" })}>create</button>
           {isSelecting && (
             <Selector
               multiple

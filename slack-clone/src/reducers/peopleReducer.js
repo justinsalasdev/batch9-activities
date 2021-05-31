@@ -9,17 +9,23 @@ export default function peopleReducer(state, action) {
     }
 
     case "mark person": {
-      const peopleCopy = [].concat(state.people);
-      const targetIndex = state.peopleCopy.find(person => {
-        person.uid === action.payload;
+      const newPeople = state.people.map(person => ({ ...person }));
+      const targetIndex = newPeople.findIndex(person => {
+        return person.uid === action.payload;
       });
 
-      peopleCopy[targetIndex].checked = true;
-      return { ...state, people: peopleCopy };
+      newPeople[targetIndex].checked = !newPeople[targetIndex].checked;
+
+      return { ...state, people: newPeople };
+    }
+
+    case "reset": {
+      return { ...state, people: state.people.map(person => ({ ...person, checked: false })) };
     }
 
     default: {
       console.log("people-reducer: unknown action");
+      return { ...state };
     }
   }
 }

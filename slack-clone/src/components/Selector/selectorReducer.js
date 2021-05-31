@@ -5,5 +5,6 @@ export default function selectorReducer(state, action) {
 
     default:
       console.log("unknown selector action");
+      return { ...state };
   }
 }
