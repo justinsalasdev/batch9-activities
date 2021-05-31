@@ -64,9 +64,6 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
   );
 }
 
-function isSelf(menuItem, userId) {
-  return menuItem.uid === userId ? "Yourself" : menuItem.name;
-}
 //text, icon, propStyles, mods, to
 
 // function NoMenu() {

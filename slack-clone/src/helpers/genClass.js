@@ -30,3 +30,11 @@ export default function genClass(config) {
     }
   };
 }
+
+export function toggler(condition, modifier) {
+  if (condition) {
+    return modifier;
+  } else {
+    return "";
+  }
+}

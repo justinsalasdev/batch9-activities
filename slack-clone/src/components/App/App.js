@@ -9,6 +9,7 @@ import genClass from "../../helpers/genClass";
 import View from "../View/View";
 import Chat from "../Chat/Chat";
 import Selector from "../Selector/Selector";
+import Person from "../Person/Person";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -58,7 +59,12 @@ export default function App() {
           </Route>
           <Route path="/">
             <div>
-              <Selector propStyles={$("selector").className} mods={{}} />
+              <Selector
+                multiple
+                propStyles={$("selector").className}
+                mods={{ selector: ["multiple"], list: ["multiple"], "list-ref": ["multiple"] }}
+              />
+              <Person />
             </div>
           </Route>
         </Switch>

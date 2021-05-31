@@ -15,7 +15,7 @@ export default function ChatInfo({ name, propStyles, chatType }) {
           </span>
           {name}
         </p>
-      )) || <Selector />}
+      )) || <Selector mods={{ list: ["single"] }} />}
       {chatType === "channels" && (
         <div {...$("div")}>
           <div {...$("number")}>9</div>

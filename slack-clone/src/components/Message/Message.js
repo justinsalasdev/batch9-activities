@@ -1,11 +1,12 @@
-import genClass from "../../helpers/genClass";
+import genClass, { toggler as $t } from "../../helpers/genClass";
 import usePeopleState from "../../hooks/people/usePeopleState";
 import useUserState from "../../hooks/user/useUserState";
 import defaultAvatar from "../../assets/images/avatar.svg";
 import { useEffect, useRef } from "react";
 
-export default function Message({ num, max, resources, propStyles }) {
+export default function Message({ num, max, resources, propStyles, mods }) {
   const { from, content, date, isoDate } = resources;
+  const imageRef = useRef();
   const userState = useUserState();
   const peopleState = usePeopleState();
   const messageRef = useRef();
@@ -24,9 +25,10 @@ export default function Message({ num, max, resources, propStyles }) {
   const $ = genClass({
     block: "message",
     mods: {
-      message: [`${isMine ? "mine" : ""}`],
+      ...mods,
+      message: [$t(isMine, "mine")],
       photo: ["sender"],
-      content: [`${isMine ? "mine" : ""}`]
+      content: [$t(isMine, "mine")]
     },
     propStyles
   });
@@ -35,7 +37,15 @@ export default function Message({ num, max, resources, propStyles }) {
     <li ref={messageRef} {...$()}>
       <div {...$("sendee")}>{!isMine && <p>{name}</p>}</div>
       <div {...$("div")}>
-        {!isMine && <img alt="user avatar" src={photoURL || defaultAvatar} {...$("photo")} />}
+        {!isMine && (
+          <img
+            ref={imageRef}
+            onError={() => imageRef.current.setAttribute("src", defaultAvatar)}
+            alt="user avatar"
+            src={photoURL || defaultAvatar}
+            {...$("photo")}
+          />
+        )}
         <p {...$("content")}>{content}</p>
       </div>
       <time {...$("time-stamp")} dateTime={isoDate}>

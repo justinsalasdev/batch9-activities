@@ -1,13 +1,13 @@
 import genClass from "../../helpers/genClass";
 import useSelectorLogic from "./useSelectorLogic";
 import Pointer from "../Pointer/Pointer";
-import useUserState from "../../hooks/user/useUserState";
 import { AiOutlineFileSearch } from "react-icons/ai";
 
-export default function Selector() {
-  const { inputRef, handleChange, fieldValue, searchItems } = useSelectorLogic();
-  const userState = useUserState();
-  const $ = genClass({ block: "selector" });
+export default function Selector({ propStyles, mods, multiple }) {
+  console.log("Selector");
+  const { inputRef, handleChange, fieldValue, searchItems, userId } = useSelectorLogic(multiple);
+
+  const $ = genClass({ block: "selector", mods, propStyles });
   return (
     <div {...$()}>
       <div {...$("input")}>
@@ -28,7 +28,6 @@ export default function Selector() {
       <div {...$("list-ref")}>
         <ul {...$("list")}>
           {searchItems.map(({ item }) => {
-            console.log(item);
             return (
               <li {...$("item")} key={item.uid}>
                 <Pointer //inside is <Link/> from 'react-router
@@ -38,7 +37,7 @@ export default function Selector() {
                     pathname: `/people/${item.uid}`,
                     state: {
                       chatName: item.name,
-                      userId: userState.uid
+                      userId
                     }
                   }}
                   mods={{ action: ["none"], icon: ["left"] }}
