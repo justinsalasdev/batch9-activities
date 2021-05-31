@@ -14,7 +14,7 @@ const icons = {
   picture: <CgProfile />
 };
 
-export default function Pointer({ text, icon, propStyles, mods, to }) {
+export default function Pointer({ text, icon, propStyles, mods, to, action }) {
   const $ = genClass({ block: "nav-link", propStyles, mods });
 
   return (
@@ -23,7 +23,7 @@ export default function Pointer({ text, icon, propStyles, mods, to }) {
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
       </Link>
-      <button {...$("action")}>
+      <button {...$("action")} onClick={action}>
         <RiChatNewFill />
       </button>
     </div>

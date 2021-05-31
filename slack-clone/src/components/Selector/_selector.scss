@@ -1,3 +1,46 @@
 .selector {
-  //   background-color: red;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // background: red;
+  position: relative;
+
+  &__input {
+    position: relative;
+    padding: 0.2rem;
+  }
+
+  &__field {
+    border-bottom: 1px solid transparent;
+    &:focus,
+    &:active {
+      border-bottom: 1px solid $violet_1817188_06;
+    }
+  }
+
+  &__list-ref {
+    width: 100%;
+    height: 0px;
+    position: relative;
+  }
+
+  &__list {
+    // display: none;
+    width: 100%;
+    position: absolute;
+    top: 0.2rem;
+    background: $violet_350d36;
+    border-radius: 0.2rem;
+    box-shadow: 0.1rem 0.1rem 0.8rem $violet_350d36_03;
+  }
+
+  &__item {
+    padding: 0.2rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      background: $violet_1817188_06;
+    }
+  }
 }

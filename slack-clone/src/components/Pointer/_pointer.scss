@@ -1,17 +1,15 @@
 .nav-link {
-  background-color: inherit;
+  // background-color: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   color: inherit;
-  opacity: 0.9;
-  &:hover {
-    opacity: 1;
-  }
+  opacity: 1;
 
   &__link {
     display: flex;
+    width: 100%;
     align-items: center;
   }
 
