@@ -43,7 +43,7 @@ export default function App() {
       <Sidebar propStyles={$("sidebar").className} />
       <View propStyles={$("view").className}>
         <Switch>
-          <Route path="/people/:id" component={Chat} />
+          <Route path="/:type/:id" component={Chat} />
           <Route path="/login">
             <Form />
           </Route>
@@ -58,7 +58,7 @@ export default function App() {
           </Route>
           <Route path="/">
             <div>
-              <Selector />
+              <Selector propStyles={$("selector").className} mods={{}} />
             </div>
           </Route>
         </Switch>

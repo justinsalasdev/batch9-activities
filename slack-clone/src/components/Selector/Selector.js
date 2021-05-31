@@ -2,6 +2,7 @@ import genClass from "../../helpers/genClass";
 import useSelectorLogic from "./useSelectorLogic";
 import Pointer from "../Pointer/Pointer";
 import useUserState from "../../hooks/user/useUserState";
+import { AiOutlineFileSearch } from "react-icons/ai";
 
 export default function Selector() {
   const { inputRef, handleChange, fieldValue, searchItems } = useSelectorLogic();
@@ -11,7 +12,7 @@ export default function Selector() {
     <div {...$()}>
       <div {...$("input")}>
         <label htmlFor="selector__field" {...$("label")}>
-          To:{" "}
+          <AiOutlineFileSearch />
         </label>
         <input
           spellCheck={false}

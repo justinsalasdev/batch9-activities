@@ -1,16 +1,20 @@
-.nav-link {
+.pointer {
   // background-color: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   color: inherit;
-  opacity: 1;
+  cursor: pointer;
 
   &__link {
     display: flex;
     width: 100%;
     align-items: center;
+
+    &--menu {
+      padding: 0.2rem;
+    }
   }
 
   &__text {

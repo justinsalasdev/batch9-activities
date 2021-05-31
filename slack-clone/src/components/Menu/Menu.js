@@ -33,10 +33,10 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
           {withAdder && (
             <li {...$("item")}>
               <Pointer
-                to={`/add${menuName}`}
+                to={`/${menuName.toLowerCase()}/new`}
                 text={`Add ${menuName.toLowerCase()}`}
                 icon="plus"
-                mods={{ action: ["none"], icon: ["left"] }}
+                mods={{ link: ["menu"], action: ["none"], icon: ["left"] }}
               />
             </li>
           )}
@@ -53,7 +53,7 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
                       userId: userId
                     }
                   }}
-                  mods={{ action: ["none"], icon: ["left"] }}
+                  mods={{ link: ["menu"], action: ["none"], icon: ["left"] }}
                 />
               </li>
             );

@@ -1,45 +1,16 @@
-import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { db } from "../../firebase/firebase";
 import genClass from "../../helpers/genClass";
-import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
-import usePeopleState from "../../hooks/people/usePeopleState";
-import useUserState from "../../hooks/user/useUserState";
 import Menu from "../Menu/Menu";
 import Pointer from "../Pointer/Pointer";
+import useNavLogic from "./useNavLogic";
 
 export default function Nav({ propStyles }) {
-  const userState = useUserState();
-  const peopleDispatch = usePeopleDispatcher();
-  const peopleState = usePeopleState();
-  const navigator = useHistory();
+  const { userId, userDisplayName, navigator, channels, people } = useNavLogic();
 
-  useEffect(() => {
-    db.collection("Users")
-      .get()
-      .then(querySnapshot => {
-        const people = [];
-        querySnapshot.forEach(doc => {
-          // doc.data() is never undefined for query doc snapshots
-          if (doc.data().uid === userState.uid) {
-            people.push({ ...doc.data(), name: "Yourself" });
-          } else {
-            people.push(doc.data());
-          }
-        });
-        peopleDispatch({ type: "save people", payload: people });
-      });
-    // eslint-disable-next-line
-  }, [userState]);
-
-  if (!userState.uid || !userState.displayName) {
+  if (!userId || !userDisplayName) {
     return <NoNav propStyles={propStyles} />;
   }
 
   const $ = genClass({ block: "nav", propStyles });
-
-  // eslint-disable-next-line
-  const channels = [];
 
   return (
     <nav {...$()}>
@@ -55,15 +26,15 @@ export default function Nav({ propStyles }) {
       />
       <Menu
         withAdder
-        userId={userState.uid}
+        userId={userId}
         menuName={"Channels"}
         menuItems={channels}
         propStyles={$("menu").className}
       />
       <Menu
-        userId={userState.uid}
+        userId={userId}
         menuName={"People"}
-        menuItems={peopleState.people}
+        menuItems={people}
         propStyles={$("menu").className}
       />
     </nav>
