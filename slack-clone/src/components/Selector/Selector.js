@@ -2,8 +2,9 @@ import genClass from "../../helpers/genClass";
 import useSelectorLogic from "./useSelectorLogic";
 import Pointer from "../Pointer/Pointer";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import Person from "../Person/Person";
 
-export default function Selector({ propStyles, mods, multiple }) {
+export default function Selector({ propStyles, mods, multiple, setSelected }) {
   console.log("Selector");
   const { inputRef, handleChange, fieldValue, searchItems, userId } = useSelectorLogic(multiple);
 

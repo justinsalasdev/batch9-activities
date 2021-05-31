@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import FieldValidator from "../../helpers/FieldValidator";
-import genClass from "../../helpers/genClass";
+import genClass, { toggler as $t } from "../../helpers/genClass";
 
 const icons = {
   email: <MdEmail />,
@@ -10,28 +10,28 @@ const icons = {
 };
 
 const fieldValidator = new FieldValidator();
-const $ = genClass({ block: "line" });
 
 export default React.memo(function Line(props) {
   console.log("Line");
   const { id, type, placeholder, formData } = props;
   const [state, setState] = useState("");
-  const lineRef = useRef();
   const labelRef = useRef();
+  const isError = fieldValidator.error?.length > 0;
 
   useEffect(() => {
     //update formData every render
     formData[id] = state;
     formData.errors[id] = fieldValidator.error;
-    lineRef.current.classList.toggle("error", fieldValidator.error?.length > 0);
   }); //effect run on every render
 
   useEffect(() => {
     labelRef.current.focus();
   }, []);
 
+  const $ = genClass({ block: "line", mods: { line: [$t(isError, "error")] } });
+
   return (
-    <div ref={lineRef} {...$()}>
+    <div {...$()}>
       <div {...$("div")}>
         <input
           placeholder={placeholder}
