@@ -119,6 +119,10 @@ input[type="file"] {
   cursor: auto;
 }
 
+input[type="checkbox"] {
+  appearance: auto;
+}
+
 textarea {
   appearance: none;
   outline: none;

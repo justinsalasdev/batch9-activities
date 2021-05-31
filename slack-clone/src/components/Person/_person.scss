@@ -1,0 +1,14 @@
+.person {
+  display: flex;
+  align-items: center;
+
+  &__checkbox {
+    width: 0.8em;
+    height: 0.8em;
+  }
+
+  &__label {
+    color: inherit;
+    padding-left: 0.2rem;
+  }
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import defaultAvatar from "../../assets/images/avatar.svg";
 import Loader from "../Loader/Loader";
@@ -7,6 +7,7 @@ import uploadPhoto from "../../helpers/uploadPhoto";
 import genClass from "../../helpers/genClass";
 
 export default function Avatar({ photoURL, propStyles }) {
+  const imgRef = useRef();
   const [isLoading, setLoading] = useState(false);
   const userDispatch = useUserDispatcher();
   const $ = genClass({ block: "avatar", propStyles });
@@ -25,7 +26,15 @@ export default function Avatar({ photoURL, propStyles }) {
       {isLoading ? (
         <Loader />
       ) : (
-        <img src={photoURL || defaultAvatar} {...$("image")} alt="user avatar"></img>
+        <img
+          ref={imgRef}
+          onError={() => {
+            imgRef.current.setAttribute("src", defaultAvatar);
+          }}
+          src={photoURL || defaultAvatar}
+          {...$("image")}
+          alt="user avatar"
+        ></img>
       )}
       <input
         {...$("input")}
