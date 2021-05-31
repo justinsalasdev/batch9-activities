@@ -10,6 +10,7 @@ export default function messagesReducer(state, action) {
 
     default: {
       console.log("people-reducer: unknown action");
+      return { ...state };
     }
   }
 }

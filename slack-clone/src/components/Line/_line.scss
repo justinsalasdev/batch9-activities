@@ -3,7 +3,7 @@
   margin-bottom: 0.5rem;
   display: grid;
 
-  &.error {
+  &--error {
     .line__field {
       color: $crimson_06;
       border-bottom: 1px solid $crimson_06;

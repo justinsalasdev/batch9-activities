@@ -8,5 +8,6 @@ export default function chatBarReducer(state, action) {
       return { ...state, isLoading: true };
     default:
       console.log("cb unknown action");
+      return { ...state };
   }
 }

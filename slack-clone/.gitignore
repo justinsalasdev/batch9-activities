@@ -5,7 +5,8 @@
 /.pnp
 .pnp.js
 
-
+/emulator-data
+firebase-debug.log
 # testing
 /coverage
 

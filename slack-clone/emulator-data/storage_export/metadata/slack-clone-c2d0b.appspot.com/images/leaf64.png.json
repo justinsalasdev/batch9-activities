@@ -3,16 +3,16 @@
   "bucket": "slack-clone-c2d0b.appspot.com",
   "contentType": "image/png",
   "metageneration": 1,
-  "generation": 1622427438941,
+  "generation": 1622467333836,
   "storageClass": "STANDARD",
   "etag": "someETag",
   "contentDisposition": "inline",
   "contentEncoding": "identity",
   "downloadTokens": [
-    "958746d8-3eea-4675-9387-1fce141a69a7"
+    "f4b1692b-f8d2-43eb-bd94-2aa0d2811f3a"
   ],
-  "timeCreated": "2021-05-31T02:17:18.940Z",
-  "updated": "2021-05-31T02:17:18.940Z",
+  "timeCreated": "2021-05-31T13:22:13.835Z",
+  "updated": "2021-05-31T13:22:13.836Z",
   "size": 2039,
   "md5Hash": "KPRz+7Rv3+mGxZdR2x2VQA==",
   "crc32c": "3158786996"

@@ -16,7 +16,7 @@ export default function Nav({ propStyles }) {
     <nav {...$()}>
       {/* <div className></div> */}
       <Pointer
-        action={() => {
+        buttonAction={() => {
           navigator.push("/people/new");
         }}
         to="/dms"

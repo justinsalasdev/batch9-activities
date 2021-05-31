@@ -5,6 +5,9 @@
   position: relative;
 
   &--multiple {
+    top: 3rem;
+    right: 0.8rem;
+    position: fixed;
     background-color: $violet_350d36;
     padding: 0.6rem;
     color: $violet_1817188_06;
@@ -62,7 +65,7 @@
 
   &__item {
     padding: 0.2rem;
-    margin: 0.2rem;
+    margin: 0.1rem;
     cursor: pointer;
   }
 }

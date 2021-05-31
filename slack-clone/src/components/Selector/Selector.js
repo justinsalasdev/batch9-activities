@@ -1,11 +1,19 @@
-import genClass from "../../helpers/genClass";
+import genClass, { toggler as $t } from "../../helpers/genClass";
 import useSelectorLogic from "./useSelectorLogic";
 import Pointer from "../Pointer/Pointer";
 import { AiOutlineFileSearch } from "react-icons/ai";
 
 export default function Selector({ propStyles, mods, multiple }) {
   console.log("Selector");
-  const { inputRef, handleChange, fieldValue, searchItems, userId } = useSelectorLogic(multiple);
+  const { inputRef, handleChange, peopleDispatch, fieldValue, searchItems, userId } =
+    useSelectorLogic(multiple);
+
+  const linkAction = uid => e => {
+    if (multiple) {
+      e.preventDefault();
+      peopleDispatch({ type: "mark person", payload: uid });
+    }
+  };
 
   const $ = genClass({ block: "selector", mods, propStyles });
   return (
@@ -40,7 +48,13 @@ export default function Selector({ propStyles, mods, multiple }) {
                       userId
                     }
                   }}
-                  mods={{ action: ["none"], icon: ["left"] }}
+                  propStyles={$("pointer").className}
+                  linkAction={linkAction(item.uid)}
+                  mods={{
+                    text: ["selector"],
+                    icon: ["left"],
+                    pointer: [$t(item.checked, "active"), "selector"]
+                  }}
                 />
               </li>
             );
@@ -50,5 +64,3 @@ export default function Selector({ propStyles, mods, multiple }) {
     </div>
   );
 }
-
-// text, icon, propStyles, mods, to

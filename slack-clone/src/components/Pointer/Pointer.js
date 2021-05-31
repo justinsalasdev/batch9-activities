@@ -14,18 +14,30 @@ const icons = {
   picture: <CgProfile />
 };
 
-export default function Pointer({ text, icon, propStyles, mods, to, action }) {
+export default function Pointer(props) {
+  const { text, icon, propStyles, mods, to, buttonAction, linkAction } = props;
   const $ = genClass({ block: "pointer", propStyles, mods });
 
   return (
     <div {...$()}>
-      <Link {...$("link")} to={to}>
+      <Link
+        {...$("link")}
+        to={to}
+        onClick={
+          linkAction ||
+          function (e) {
+            console.log("link click", e.type);
+          }
+        }
+      >
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
       </Link>
-      <button {...$("action")} onClick={action}>
-        <RiChatNewFill />
-      </button>
+      {buttonAction && (
+        <button {...$("action")} onClick={buttonAction}>
+          <RiChatNewFill />
+        </button>
+      )}
     </div>
   );
 }
