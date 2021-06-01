@@ -14,22 +14,13 @@ const icons = {
   picture: <CgProfile />
 };
 
-export default function Pointer(props) {
-  const { text, icon, propStyles, mods, to, buttonAction, linkAction } = props;
+export function PointerAction(props) {
+  const { text, icon, propStyles, mods, to, buttonAction } = props;
   const $ = genClass({ block: "pointer", propStyles, mods });
 
   return (
     <div {...$()}>
-      <Link
-        {...$("link")}
-        to={to}
-        onClick={
-          linkAction ||
-          function (e) {
-            console.log("link click", e.type);
-          }
-        }
-      >
+      <Link {...$("link")} to={to}>
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
       </Link>
@@ -38,6 +29,34 @@ export default function Pointer(props) {
           <RiChatNewFill />
         </button>
       )}
+    </div>
+  );
+}
+
+export function PointerOption(props) {
+  const { text, icon, propStyles, mods, optionAction } = props;
+  const $ = genClass({ block: "pointer", propStyles, mods });
+
+  return (
+    <div {...$()}>
+      <div {...$("link")} onClick={optionAction}>
+        <span {...$("icon")}>{icons[icon]}</span>
+        <span {...$("text")}>{text}</span>
+      </div>
+    </div>
+  );
+}
+
+export function PointerLink(props) {
+  const { text, icon, propStyles, mods, to } = props;
+  const $ = genClass({ block: "pointer", propStyles, mods });
+
+  return (
+    <div {...$()}>
+      <Link {...$("link")} to={to}>
+        <span {...$("icon")}>{icons[icon]}</span>
+        <span {...$("text")}>{text}</span>
+      </Link>
     </div>
   );
 }

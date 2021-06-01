@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import genClass from "../../helpers/genClass";
-import Pointer from "../Pointer/Pointer";
+import Pointer, { PointerLink } from "../Pointer/Pointer";
 
 export default function Menu({ withAdder, userId, menuName, menuItems, propStyles }) {
   console.log("Menu");
@@ -32,7 +32,7 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
         <ul {...$("items")}>
           {withAdder && (
             <li {...$("item")}>
-              <Pointer
+              <PointerLink
                 to={`/${menuName.toLowerCase()}/new`}
                 text={`Add ${menuName.toLowerCase()}`}
                 icon="plus"
@@ -43,7 +43,7 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
           {menuItems.map(menuItem => {
             return (
               <li {...$("item")} key={menuItem.uid}>
-                <Pointer //inside is <Link/> from 'react-router
+                <PointerLink //inside is <Link/> from 'react-router
                   text={menuItem.name}
                   icon="picture"
                   to={{

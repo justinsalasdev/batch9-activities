@@ -1,6 +1,6 @@
 import genClass, { toggler as $t } from "../../helpers/genClass";
 import useSelectorLogic from "./useSelectorLogic";
-import Pointer from "../Pointer/Pointer";
+import Pointer, { PointerOption } from "../Pointer/Pointer";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import React from "react";
 
@@ -9,7 +9,7 @@ export default React.memo(function Selector({ propStyles, mods, multiple, liftSt
   const { inputRef, handleChange, compDispatch, compState, fieldValue, searchItems, userId } =
     useSelectorLogic(multiple);
 
-  const linkAction = uid => e => {
+  const optionAction = uid => e => {
     if (multiple) {
       e.preventDefault();
       compDispatch({ type: "toggle person", payload: uid });
@@ -39,18 +39,11 @@ export default React.memo(function Selector({ propStyles, mods, multiple, liftSt
           {searchItems.map(({ item }) => {
             return (
               <li {...$("item")} key={item.uid}>
-                <Pointer //inside is <Link/> from 'react-router
+                <PointerOption //inside is <Link/> from 'react-router
                   text={item.name}
                   icon="picture"
-                  to={{
-                    pathname: `/people/${item.uid}`,
-                    state: {
-                      chatName: item.name,
-                      userId
-                    }
-                  }}
                   propStyles={$("pointer").className}
-                  linkAction={linkAction(item.uid)}
+                  optionAction={optionAction(item.uid)}
                   mods={{
                     link: ["selector"],
                     text: ["selector"],
