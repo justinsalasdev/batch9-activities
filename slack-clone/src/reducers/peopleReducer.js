@@ -13,14 +13,18 @@ export default function peopleReducer(state, action) {
       const targetIndex = newPeople.findIndex(person => {
         return person.uid === action.payload;
       });
-
       newPeople[targetIndex].checked = !newPeople[targetIndex].checked;
+      const numSelected = newPeople.filter(person => person.checked).length;
 
-      return { ...state, people: newPeople };
+      return { ...state, people: newPeople, numSelected };
     }
 
     case "reset": {
-      return { ...state, people: state.people.map(person => ({ ...person, checked: false })) };
+      return {
+        ...state,
+        numSelected: 0,
+        people: state.people.map(person => ({ ...person, checked: false }))
+      };
     }
 
     default: {

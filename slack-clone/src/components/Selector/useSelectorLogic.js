@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import usePeopleState from "../../hooks/people/usePeopleState";
 import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
 import selectorReducer from "./selectorReducer";
@@ -8,18 +8,17 @@ import useUserState from "../../hooks/user/useUserState";
 export default function useSelectorLogic(multiple) {
   const inputRef = useRef();
   const peopleState = usePeopleState();
-  const peopleDispatch = usePeopleDispatcher();
   const userState = useUserState();
   const [compState, compDispatch] = useReducer(selectorReducer, {
     fieldValue: "",
-    isFocused: false
+    selected: []
   });
 
   useEffect(() => {
     inputRef.current.focus();
 
     return () => {
-      peopleDispatch({ type: "reset" });
+      compDispatch({ type: "reset" });
     };
   }, []);
 
@@ -38,11 +37,12 @@ export default function useSelectorLogic(multiple) {
   }
 
   return {
+    compState,
     userId: userState.uid,
     inputRef,
     fieldValue: compState.fieldValue,
     searchItems: getSearchItems(multiple),
-    handleChange: e => compDispatch({ type: "set field", payload: e.target.value }),
-    peopleDispatch
+    compDispatch,
+    handleChange: e => compDispatch({ type: "set field", payload: e.target.value })
   };
 }

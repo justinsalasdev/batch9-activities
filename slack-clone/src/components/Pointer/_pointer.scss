@@ -12,13 +12,6 @@
     background-color: purple;
   }
 
-  &--selector {
-    padding: 0.2rem;
-    &:hover {
-      background-color: $violet_1817188_06;
-    }
-  }
-
   &__link {
     display: flex;
     width: 100%;
@@ -26,6 +19,13 @@
 
     &--menu {
       padding: 0.2rem;
+    }
+
+    &--selector {
+      padding: 0.2rem;
+      &:hover {
+        background-color: $violet_1817188_06;
+      }
     }
   }
 

@@ -2,16 +2,17 @@ import genClass, { toggler as $t } from "../../helpers/genClass";
 import useSelectorLogic from "./useSelectorLogic";
 import Pointer from "../Pointer/Pointer";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import React from "react";
 
-export default function Selector({ propStyles, mods, multiple }) {
+export default React.memo(function Selector({ propStyles, mods, multiple, liftState }) {
   console.log("Selector");
-  const { inputRef, handleChange, peopleDispatch, fieldValue, searchItems, userId } =
+  const { inputRef, handleChange, compDispatch, compState, fieldValue, searchItems, userId } =
     useSelectorLogic(multiple);
 
   const linkAction = uid => e => {
     if (multiple) {
       e.preventDefault();
-      peopleDispatch({ type: "mark person", payload: uid });
+      compDispatch({ type: "toggle person", payload: uid });
     }
   };
 
@@ -51,9 +52,10 @@ export default function Selector({ propStyles, mods, multiple }) {
                   propStyles={$("pointer").className}
                   linkAction={linkAction(item.uid)}
                   mods={{
+                    link: ["selector"],
                     text: ["selector"],
                     icon: ["left"],
-                    pointer: [$t(item.checked, "active"), "selector"]
+                    pointer: [$t(compState.selected.includes(item.uid), "active"), "selector"]
                   }}
                 />
               </li>
@@ -63,4 +65,4 @@ export default function Selector({ propStyles, mods, multiple }) {
       </div>
     </div>
   );
-}
+});

@@ -1,10 +1,15 @@
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import { createDMRef } from "../../firebase/firebase";
 import getMessages from "../../helpers/getMessages";
+import chatReducer from "./chatReducer";
 
 export default function useChatLogic(props) {
   const messagesDispatch = useMessagesDispatcher();
+  const [compState, compDispatch] = useReducer(chatReducer, {
+    members: [],
+    chatName: ""
+  });
 
   const uidFrom = props.location.state?.userId;
   const uidTo = props.match.params.id;
