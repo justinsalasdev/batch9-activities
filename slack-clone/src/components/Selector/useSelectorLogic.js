@@ -26,8 +26,8 @@ export default function useSelectorLogic(multiple) {
     keys: ["name"]
   });
 
-  function getSearchItems(isMultiple) {
-    if (isMultiple && compState.fieldValue === "") {
+  function getSearchItems(multiple) {
+    if (multiple && compState.fieldValue === "") {
       return peopleState.people.map(person => {
         return { item: { ...person } };
       });

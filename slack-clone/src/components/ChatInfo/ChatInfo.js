@@ -2,7 +2,7 @@ import genClass from "../../helpers/genClass";
 import { MdPersonAdd } from "react-icons/md";
 import { IoIosChatbubbles } from "react-icons/io";
 import { MdCancel } from "react-icons/md";
-import Selector from "../Selector/Selector";
+import Selector, { SelectorPointer } from "../Selector/Selector";
 import { useEffect, useState } from "react";
 
 export default function ChatInfo({ name, propStyles, chatType }) {
@@ -24,7 +24,9 @@ export default function ChatInfo({ name, propStyles, chatType }) {
           {name}
         </p>
       )) ||
-        (chatType !== "channels" && <Selector mods={{ list: ["single"] }} />) || <ChatName />}
+        (chatType !== "channels" && <SelectorPointer mods={{ list: ["single"] }} />) || (
+          <ChatName />
+        )}
 
       {chatType === "channels" && (
         <div {...$("actions")}>
@@ -34,7 +36,7 @@ export default function ChatInfo({ name, propStyles, chatType }) {
           </button>
           <button>create</button>
           {isSelecting && (
-            <Selector
+            <SelectorPointer
               liftState
               multiple
               propStyles={$("selector").className}
@@ -48,5 +50,5 @@ export default function ChatInfo({ name, propStyles, chatType }) {
 }
 
 function ChatName() {
-  return <div>Channel Name</div>;
+  return <div>ChatName</div>;
 }
