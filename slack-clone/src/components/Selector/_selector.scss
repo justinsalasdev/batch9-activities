@@ -6,7 +6,7 @@
 
   &--multiple {
     background-color: $violet_350d36;
-    top: 0.8rem;
+    top: $chat-info-h + 0.5rem;
     right: 0.8rem;
     position: fixed;
     padding: 0.2rem 0 1rem 0.2rem;
@@ -60,23 +60,24 @@
   //not present in multiselector
   &__actions {
     // height: 1.5rem;
+    padding-right: 0.5rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
 
-    > button {
-      color: $violet_1817188;
-      margin: 0.4rem 0.2rem;
-      display: flex;
+  &__action {
+    color: $violet_1817188;
+    margin: 0.4rem 0.2rem;
+    display: flex;
 
-      &:hover {
-        transform: scale(1.1);
-      }
+    &:hover {
+      transform: scale(1.1);
+    }
 
-      &:active {
-        transform: scale(1.05);
-      }
+    &:active {
+      transform: scale(1.05);
     }
   }
 

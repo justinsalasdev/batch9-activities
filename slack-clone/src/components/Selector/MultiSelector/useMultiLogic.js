@@ -1,27 +1,32 @@
-import { useCallback, useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import usePeopleState from "../../../hooks/people/usePeopleState";
 import Fuse from "fuse.js";
 import useUserState from "../../../hooks/user/useUserState";
 import multiSelectReducer from "./multiSelectReducer";
 import formatToFuse from "../formatToFuse";
 
-export default function useMultSelect() {
+export default function useMultSelect(props) {
   const inputRef = useRef();
   const peopleState = usePeopleState();
   const userState = useUserState();
   const [compState, compDispatch] = useReducer(multiSelectReducer, {
     userId: userState.uid,
     fieldValue: "",
-    selected: [userState.uid],
+    //remove userId from artifact, always use freshcopy of uid
+    selected: [userState.uid, ...props.membersRef.current.filter(uid => uid !== userState.uid)],
     isOptionsOpen: true
   });
 
   useEffect(() => {
-    inputRef.current.focus();
-
+    props.memberCountRef.current.textContent = compState.selected.length;
     return () => {
-      compDispatch({ type: "reset" });
+      //pass selected uids to parent before unmounting
+      props.membersRef.current = compState.selected;
     };
+  });
+
+  useEffect(() => {
+    inputRef.current.focus();
   }, []);
 
   const fuse = new Fuse(peopleState.people, {
@@ -37,9 +42,7 @@ export default function useMultSelect() {
     searchItems: compState.fieldValue
       ? fuse.search(compState.fieldValue)
       : formatToFuse(peopleState.people),
-    openOptions: () => compDispatch({ type: "open options" }),
     handleChange: e => compDispatch({ type: "set field", payload: e.target.value }),
-    handleClose: () => compDispatch({ type: "close options" }),
     handleReset: () => compDispatch({ type: "reset" }),
     handleSelectAll: () =>
       compDispatch({ type: "select all", payload: peopleState.people.map(person => person.uid) }),
