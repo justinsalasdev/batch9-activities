@@ -5,22 +5,23 @@
 @import "./base/base";
 @import "./page";
 @import "./A0";
-@import "../components/App/app";
-@import "../components/Avatar/avatar";
-@import "../components/Chat/chat";
-@import "../components/ChatBar/chat-bar";
-@import "../components/ChatInfo/chat-info";
+@import "../components/Loader/loader";
+@import "../components/LineForm/line-form";
+@import "../components/Line/line";
 @import "../components/Form/form";
 @import "../components/Menu/menu";
-@import "../components/Line/line";
-@import "../components/LineForm/line-form";
-@import "../components/Loader/loader";
-@import "../components/Messages/messages";
 @import "../components/Message/message";
-@import "../components/Nav/nav";
-@import "../components/Person/person";
+@import "../components/Messages/messages";
 @import "../components/Pointer/pointer";
-@import "../components/Profile/profile";
 @import "../components/Selector/selector";
-@import "../components/Sidebar/sidebar";
+@import "../components/ChatBar/chat-bar";
+@import "../components/ChatInfo/chat-info";
+@import "../components/Chat/chat";
 @import "../components/View/view";
+@import "../components/Avatar/avatar";
+@import "../components/Profile/profile";
+@import "../components/Nav/nav";
+@import "../components/Sidebar/sidebar";
+@import "../components/App/app";
+
+//parents must be at the bottom

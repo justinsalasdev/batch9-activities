@@ -4,7 +4,7 @@ import authenticate from "../../helpers/authenticate";
 import createAccount from "../../helpers/createAccount";
 import genClass from "../../helpers/genClass";
 import Line from "../Line/Line";
-import Loader from "../Loader/Loader";
+import { InlineLoader } from "../Loader/Loader";
 
 export default function Form() {
   const [isLoading, setLoading] = useState(false);
@@ -60,7 +60,7 @@ export default function Form() {
         <Line {...passwordConfig} />
       </div>
       <button {...$("action")} type="submit">
-        {isLoading ? <Loader type="inline" /> : isLogin ? "Login" : "Signup"}
+        {isLoading ? <InlineLoader /> : isLogin ? "Login" : "Signup"}
       </button>
     </form>
   );

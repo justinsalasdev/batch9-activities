@@ -1,7 +1,7 @@
 import { BiSave } from "react-icons/bi";
 import genClass from "../../helpers/genClass";
 import useLineFormLogic from "./useLineFormLogic";
-import Loader from "../Loader/Loader";
+import { InlineLoader } from "../Loader/Loader";
 
 export default function LineForm({ initialName, mods, error }) {
   console.log("LineForm");
@@ -13,7 +13,7 @@ export default function LineForm({ initialName, mods, error }) {
   return (
     <form {...$()} onSubmit={handleSubmit}>
       {isLoading ? (
-        <Loader propStyles={$("loader").className} type="inline" />
+        <InlineLoader propStyles={$("loader").className} />
       ) : (
         <div {...$("div")}>
           <input

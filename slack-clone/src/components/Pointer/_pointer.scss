@@ -27,6 +27,10 @@
         background-color: $violet_1817188_06;
       }
     }
+
+    &--active {
+      background-color: $purple;
+    }
   }
 
   &__text {

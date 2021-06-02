@@ -5,6 +5,7 @@ import { FiMessageCircle } from "react-icons/fi";
 import { VscDiffAdded } from "react-icons/vsc";
 import { BiGroup } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import React from "react";
 
 //props "link", "type", "text", "action"
 const icons = {
@@ -15,6 +16,7 @@ const icons = {
 };
 
 export function PointerAction(props) {
+  console.log("PointerAction");
   const { text, icon, propStyles, mods, to, buttonAction } = props;
   const $ = genClass({ block: "pointer", propStyles, mods });
 
@@ -34,6 +36,7 @@ export function PointerAction(props) {
 }
 
 export function PointerOption(props) {
+  console.log("PointerOption");
   const { text, icon, propStyles, mods, optionAction } = props;
   const $ = genClass({ block: "pointer", propStyles, mods });
 
@@ -48,6 +51,7 @@ export function PointerOption(props) {
 }
 
 export function PointerLink(props) {
+  console.log("PointerLink");
   const { text, icon, propStyles, mods, to } = props;
   const $ = genClass({ block: "pointer", propStyles, mods });
 

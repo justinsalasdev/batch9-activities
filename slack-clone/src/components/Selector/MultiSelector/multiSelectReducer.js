@@ -1,19 +1,23 @@
-export default function selectorReducer(state, action) {
+export default function multiSelectReducer(state, action) {
   switch (action.type) {
     case "set field":
       return { ...state, fieldValue: action.payload };
 
     case "toggle person":
+      console.log("toggle");
+      const memberId = action.payload;
       const newSelected = [...state.selected];
-      if (newSelected.includes(action.payload)) {
+      if (memberId === state.userId) {
+        return { ...state };
+      } else if (newSelected.includes(memberId)) {
         return { ...state, selected: newSelected.filter(uid => uid !== action.payload) };
       } else {
-        newSelected.push(action.payload);
+        newSelected.push(memberId);
         return { ...state, selected: newSelected };
       }
 
     case "reset":
-      return { ...state, selected: [] };
+      return { ...state, selected: [state.userId] };
 
     default:
       console.log("unknown selector action");

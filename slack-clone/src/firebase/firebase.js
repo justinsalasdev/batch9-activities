@@ -28,4 +28,8 @@ function createDMRef(from, to) {
   return db.collection("DMs").doc(createDMId(from, to));
 }
 
-export { db, auth, storage, setTimeStamp, createDMRef };
+function createGMRef(chatId) {
+  return db.collection("GMs").doc(chatId);
+}
+
+export { db, auth, storage, setTimeStamp, createDMRef, createGMRef };
