@@ -3,6 +3,14 @@ export default function multiSelectReducer(state, action) {
     case "set field":
       return { ...state, fieldValue: action.payload };
 
+    case "close options": {
+      return { ...state, isOptionsOpen: false };
+    }
+
+    case "open options": {
+      return { ...state, isOptionsOpen: true };
+    }
+
     case "toggle person":
       console.log("toggle");
       const memberId = action.payload;
@@ -18,6 +26,10 @@ export default function multiSelectReducer(state, action) {
 
     case "reset":
       return { ...state, selected: [state.userId] };
+
+    case "select all": {
+      return { ...state, selected: action.payload };
+    }
 
     default:
       console.log("unknown selector action");

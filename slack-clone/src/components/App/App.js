@@ -7,7 +7,8 @@ import Form from "../Form/Form";
 import { Switch, Route, useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
-import Chat, { PrivateRoom, RoomCreator } from "../Chat/Chat";
+import PrivateChat from "../Chat/PrivateChat/PrivateChat";
+import GroupChat from "../Chat/GroupChat/GroupChat";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -42,12 +43,12 @@ export default function App() {
       <Sidebar propStyles={$("sidebar").className} />
       <View propStyles={$("view").className}>
         <Switch>
-          <Route path="/people/:id" component={PrivateRoom} />
+          <Route path="/people/:id" component={PrivateChat} />
           <Route path="/login">
             <Form />
           </Route>
           <Route path="/channels/new">
-            <RoomCreator />
+            <GroupChat />
           </Route>
           <Route path="/dms">
             <div>Dms pages</div>

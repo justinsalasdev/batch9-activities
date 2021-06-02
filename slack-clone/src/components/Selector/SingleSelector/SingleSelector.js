@@ -27,31 +27,35 @@ export function SingleSelector({ mods, propStyles }) {
       </div>
 
       <div {...$("list-ref")}>
-        <ul {...$("list")}>
-          {searchItems.map(({ item }) => {
-            return (
-              <li {...$("item")} key={item.uid}>
-                <PointerLink //inside is <Link/> from 'react-router
-                  to={{
-                    pathname: `/people/${item.uid}`,
-                    state: {
-                      chatName: item.name,
-                      userId
-                    }
-                  }}
-                  text={item.name}
-                  icon="picture"
-                  propStyles={$("pointer").className}
-                  mods={{
-                    link: ["selector"],
-                    text: ["selector"],
-                    icon: ["left"]
-                  }}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <div {...$("selection")}>
+          <div {...$("scroller")}>
+            <ul {...$("list")}>
+              {searchItems.map(({ item }) => {
+                return (
+                  <li {...$("item")} key={item.uid}>
+                    <PointerLink //inside is <Link/> from 'react-router
+                      to={{
+                        pathname: `/people/${item.uid}`,
+                        state: {
+                          chatName: item.name,
+                          userId
+                        }
+                      }}
+                      text={item.name}
+                      icon="picture"
+                      propStyles={$("pointer").className}
+                      mods={{
+                        link: ["selector"],
+                        text: ["selector"],
+                        icon: ["left"]
+                      }}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
