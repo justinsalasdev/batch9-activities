@@ -5,6 +5,7 @@ import { FiMessageCircle } from "react-icons/fi";
 import { VscDiffAdded } from "react-icons/vsc";
 import { BiGroup } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import React from "react";
 
 //props "link", "type", "text", "action"
 const icons = {
@@ -14,22 +15,14 @@ const icons = {
   picture: <CgProfile />
 };
 
-export default function Pointer(props) {
-  const { text, icon, propStyles, mods, to, buttonAction, linkAction } = props;
+export function PointerAction(props) {
+  console.log("PointerAction");
+  const { text, icon, propStyles, mods, to, buttonAction } = props;
   const $ = genClass({ block: "pointer", propStyles, mods });
 
   return (
     <div {...$()}>
-      <Link
-        {...$("link")}
-        to={to}
-        onClick={
-          linkAction ||
-          function (e) {
-            console.log("link click", e.type);
-          }
-        }
-      >
+      <Link {...$("link")} to={to}>
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
       </Link>
@@ -38,6 +31,36 @@ export default function Pointer(props) {
           <RiChatNewFill />
         </button>
       )}
+    </div>
+  );
+}
+
+export function PointerOption(props) {
+  console.log("PointerOption");
+  const { text, icon, propStyles, mods, optionAction } = props;
+  const $ = genClass({ block: "pointer", propStyles, mods });
+
+  return (
+    <div {...$()}>
+      <div {...$("link")} onClick={optionAction}>
+        <span {...$("icon")}>{icons[icon]}</span>
+        <span {...$("text")}>{text}</span>
+      </div>
+    </div>
+  );
+}
+
+export function PointerLink(props) {
+  console.log("PointerLink");
+  const { text, icon, propStyles, mods, to } = props;
+  const $ = genClass({ block: "pointer", propStyles, mods });
+
+  return (
+    <div {...$()}>
+      <Link {...$("link")} to={to}>
+        <span {...$("icon")}>{icons[icon]}</span>
+        <span {...$("text")}>{text}</span>
+      </Link>
     </div>
   );
 }

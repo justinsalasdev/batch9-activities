@@ -1,26 +1,19 @@
-import genClass, { toggler as $t } from "../../helpers/genClass";
-import useSelectorLogic from "./useSelectorLogic";
-import Pointer from "../Pointer/Pointer";
-import { AiOutlineFileSearch } from "react-icons/ai";
+import genClass, { toggler } from "../../../helpers/genClass";
+import { PointerLink } from "../../Pointer/Pointer";
+import { MdContacts } from "react-icons/md";
+import React from "react";
+import useSingleSelect from "./useSingleSelect";
 
-export default function Selector({ propStyles, mods, multiple }) {
-  console.log("Selector");
-  const { inputRef, handleChange, peopleDispatch, fieldValue, searchItems, userId } =
-    useSelectorLogic(multiple);
-
-  const linkAction = uid => e => {
-    if (multiple) {
-      e.preventDefault();
-      peopleDispatch({ type: "mark person", payload: uid });
-    }
-  };
+export function SingleSelector({ mods, propStyles }) {
+  console.log("SingleSelector");
+  const { inputRef, handleChange, fieldValue, searchItems, userId } = useSingleSelect();
 
   const $ = genClass({ block: "selector", mods, propStyles });
   return (
     <div {...$()}>
       <div {...$("input")}>
         <label htmlFor="selector__field" {...$("label")}>
-          <AiOutlineFileSearch />
+          <MdContacts />
         </label>
         <input
           spellCheck={false}
@@ -38,9 +31,7 @@ export default function Selector({ propStyles, mods, multiple }) {
           {searchItems.map(({ item }) => {
             return (
               <li {...$("item")} key={item.uid}>
-                <Pointer //inside is <Link/> from 'react-router
-                  text={item.name}
-                  icon="picture"
+                <PointerLink //inside is <Link/> from 'react-router
                   to={{
                     pathname: `/people/${item.uid}`,
                     state: {
@@ -48,12 +39,13 @@ export default function Selector({ propStyles, mods, multiple }) {
                       userId
                     }
                   }}
+                  text={item.name}
+                  icon="picture"
                   propStyles={$("pointer").className}
-                  linkAction={linkAction(item.uid)}
                   mods={{
+                    link: ["selector"],
                     text: ["selector"],
-                    icon: ["left"],
-                    pointer: [$t(item.checked, "active"), "selector"]
+                    icon: ["left"]
                   }}
                 />
               </li>

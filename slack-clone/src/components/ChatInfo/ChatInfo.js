@@ -1,18 +1,13 @@
 import genClass from "../../helpers/genClass";
 import { MdPersonAdd } from "react-icons/md";
 import { IoIosChatbubbles } from "react-icons/io";
-import { ImCancelCircle } from "react-icons/im";
-import Selector from "../Selector/Selector";
+import { MdCancel } from "react-icons/md";
+import Selector, { SelectorPointer } from "../Selector/Selector";
 import { useEffect, useState } from "react";
-import usePeopleDispatcher from "../../hooks/people/usePeopleDispatcher";
-import usePeopleState from "../../hooks/people/usePeopleState";
 
 export default function ChatInfo({ name, propStyles, chatType }) {
   console.log("Chat Info");
   const [isSelecting, setSelecting] = useState(false);
-  const peopleDispatch = usePeopleDispatcher();
-  const peopleState = usePeopleState();
-  const numSelected = peopleState.people.filter(person => person.checked).length;
   const $ = genClass({ block: "chat-info", propStyles });
 
   useEffect(() => {
@@ -29,17 +24,20 @@ export default function ChatInfo({ name, propStyles, chatType }) {
           {name}
         </p>
       )) ||
-        (chatType !== "channels" && <Selector mods={{ list: ["single"] }} />) || <ChatName />}
+        (chatType !== "channels" && <SelectorPointer mods={{ list: ["single"] }} />) || (
+          <ChatName />
+        )}
 
       {chatType === "channels" && (
         <div {...$("actions")}>
-          <div {...$("number")}>{numSelected}</div>
+          <div {...$("number")}>{9}</div>
           <button {...$("add")} onClick={() => setSelecting(state => !state)}>
-            {isSelecting ? <ImCancelCircle /> : <MdPersonAdd />}
+            {isSelecting ? <MdCancel /> : <MdPersonAdd />}
           </button>
-          <button onClick={() => peopleDispatch({ type: "reset" })}>create</button>
+          <button>create</button>
           {isSelecting && (
-            <Selector
+            <SelectorPointer
+              liftState
               multiple
               propStyles={$("selector").className}
               mods={{ selector: ["multiple"], list: ["multiple"], "list-ref": ["multiple"] }}
@@ -52,5 +50,5 @@ export default function ChatInfo({ name, propStyles, chatType }) {
 }
 
 function ChatName() {
-  return <div>Channel Name</div>;
+  return <div>ChatName</div>;
 }

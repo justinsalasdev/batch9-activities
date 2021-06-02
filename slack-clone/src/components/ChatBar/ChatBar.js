@@ -2,7 +2,7 @@ import genClass from "../../helpers/genClass";
 import { MdSend } from "react-icons/md";
 
 import useChatBarLogic from "./useChatBarLogic";
-import Loader from "../Loader/Loader";
+import Loader, { InlineLoader } from "../Loader/Loader";
 
 export default function ChatBar({ propStyles, to, from }) {
   console.log("ChatBar");
@@ -23,7 +23,7 @@ export default function ChatBar({ propStyles, to, from }) {
         {...$("input")}
       />
       <button ref={submitRef} type="submit" {...$("send")}>
-        {isLoading ? <Loader type="inline" /> : <MdSend />}
+        {isLoading ? <InlineLoader propStyles={$("loader").className} /> : <MdSend />}
       </button>
     </form>
   );

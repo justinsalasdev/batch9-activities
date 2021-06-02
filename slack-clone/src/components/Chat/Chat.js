@@ -1,32 +1,41 @@
 import genClass from "../../helpers/genClass";
 import Messages from "../Messages/Messages";
 import ChatBar from "../ChatBar/ChatBar";
-import ChatInfo from "../ChatInfo/ChatInfo";
-import useChatLogic from "./useChatLogic";
+import usePMLogic from "./usePMLogic";
+import { IoIosChatbubbles } from "react-icons/io";
+import { SingleSelector } from "../Selector/SingleSelector/SingleSelector";
+import { MultiSelector } from "../Selector/MultiSelector/MultiSelector";
 
-//user from state  -to from userId
-export default function Chat(props) {
-  const { status, chatName, chatType, uidFrom, uidTo } = useChatLogic(props);
+export function PrivateRoom(props) {
+  const { chatName, uidTo, uidFrom } = usePMLogic(props);
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>
-      <ChatInfo
-        propStyles={$("info").className}
-        name={chatName} /*if no chatName => means new*/
-        chatType={chatType}
-      />
-      {status === "ready" && (
-        <div {...$("scroller")}>
-          <Messages />
-        </div>
-      )}
-      {status === "ready" && <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />}
+      <div {...$("info")}>
+        {(chatName && (
+          <p {...$("name")}>
+            <span {...$("icon")}>
+              <IoIosChatbubbles />
+            </span>
+            {chatName}
+          </p>
+        )) || <SingleSelector mods={{ list: ["single"] }} />}
+      </div>
+      <div {...$("scroller")}>
+        <Messages propStyles={$("messages").className} />
+      </div>
+      <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />
     </div>
   );
 }
 
-/*
-TODO: if name is supplied use that name
-if no name is supplied, find out the recepient
- */
-//props.location.state.name
+export function RoomCreator(props) {
+  const $ = genClass({ block: "chat" });
+  return (
+    <div {...$()}>
+      <div {...$("info")}>
+        <MultiSelector mods={{ list: ["single"] }} />
+      </div>
+    </div>
+  );
+}

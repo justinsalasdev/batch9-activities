@@ -21,7 +21,7 @@ export default function useNavLogic() {
         querySnapshot.forEach(doc => {
           // doc.data() is never undefined for query doc snapshots
           if (doc.data().uid === userState.uid) {
-            people.push({ ...doc.data(), name: "Yourself" });
+            people.push({ ...doc.data(), name: doc.data().name + " " + "(you)" });
           } else {
             people.push(doc.data());
           }

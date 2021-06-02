@@ -1,21 +1,14 @@
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import { createDMRef } from "../../firebase/firebase";
 import getMessages from "../../helpers/getMessages";
-import chatReducer from "./chatReducer";
 
-export default function useChatLogic(props) {
+export default function usePMLogic(props) {
   const messagesDispatch = useMessagesDispatcher();
-  const [compState, compDispatch] = useReducer(chatReducer, {
-    members: [],
-    chatName: ""
-  });
 
   const uidFrom = props.location.state?.userId;
   const uidTo = props.match.params.id;
-  const status = props.match.params.id === "new" ? "creating" : "ready";
   const chatName = props.location.state?.chatName || "";
-  const chatType = props.match.params.type;
 
   useEffect(() => {
     if (uidFrom && uidTo) {
@@ -29,15 +22,12 @@ export default function useChatLogic(props) {
     } else {
       console.log("no sender or receiver");
     }
-
     // eslint-disable-next-line
   }, [uidFrom, uidTo]);
 
   return {
-    status,
     uidFrom,
     uidTo,
-    chatName,
-    chatType
+    chatName
   };
 }

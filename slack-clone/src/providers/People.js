@@ -5,7 +5,8 @@ export const peopleStateContext = createContext();
 export const peopleDispatchContext = createContext();
 
 const initialState = {
-  people: []
+  people: [],
+  numSelected: 0
 };
 
 export default function PeopleProvider({ children }) {

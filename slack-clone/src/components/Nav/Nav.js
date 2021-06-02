@@ -1,6 +1,6 @@
 import genClass from "../../helpers/genClass";
 import Menu from "../Menu/Menu";
-import Pointer from "../Pointer/Pointer";
+import Pointer, { PointerAction } from "../Pointer/Pointer";
 import useNavLogic from "./useNavLogic";
 
 export default function Nav({ propStyles }) {
@@ -15,7 +15,7 @@ export default function Nav({ propStyles }) {
   return (
     <nav {...$()}>
       {/* <div className></div> */}
-      <Pointer
+      <PointerAction
         buttonAction={() => {
           navigator.push("/people/new");
         }}

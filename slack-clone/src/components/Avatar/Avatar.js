@@ -24,7 +24,7 @@ export default function Avatar({ photoURL, propStyles }) {
   return (
     <div {...$()}>
       {isLoading ? (
-        <Loader />
+        <Loader propStyles={$("loader").className} />
       ) : (
         <img
           ref={imgRef}
