@@ -6,28 +6,36 @@ import useGroupChatLogic from "./useGroupLogic";
 
 export default function GroupChat() {
   console.log("Group Chat");
-  const { membersRef, memberCountRef, isSelecting, toggleSelector } = useGroupChatLogic();
-  console.log(membersRef.current);
+  const {
+    adderRef,
+    fieldRef,
+    membersRef,
+    memberCountRef,
+    isSelecting,
+    toggleSelector,
+    handleCreateRoom
+  } = useGroupChatLogic();
   const $ = genClass({ block: "chat" });
 
   return (
     <div {...$()}>
       <div {...$("info")}>
-        <div {...$("input")}>
-          <label htmlFor="chat__input">Name</label>
-          <input id="chat__input" />
-        </div>
+        <input type="text" ref={fieldRef} {...$("field")} placeholder="Channel name" />
         <div {...$("members")}>
           <span {...$("counter")} ref={memberCountRef}>
             1
           </span>
-          <button {...$("adder")} onClick={toggleSelector}>
+          <button ref={adderRef} {...$("adder")} onClick={toggleSelector}>
             {isSelecting ? <FaWindowClose /> : <IoMdPersonAdd />}
+          </button>
+          <button {...$("creator")} onClick={handleCreateRoom}>
+            create
           </button>
         </div>
 
         {isSelecting && (
           <MultiSelector
+            propStyles={$("multi-selector").className}
             membersRef={membersRef}
             memberCountRef={memberCountRef}
             mods={{

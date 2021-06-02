@@ -57,7 +57,8 @@ export default function useChatBarLogic(to, from) {
               timeStamp: setTimeStamp()
             })
             .update(dmRef, {
-              watchedString: generateString()
+              watchedString: generateString(),
+              members: [from, to]
             })
             .commit();
 

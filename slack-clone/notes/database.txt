@@ -46,3 +46,30 @@ users
     -Channels
      -owner
      -member
+
+
+
+Channels
+    channelString,
+    Channel(unique Id)
+        creator: creatorId //will have option to delete room
+        members:[creatorId included]
+        Messages
+            messageString
+            Message
+                sender
+
+
+DMs
+    DM(from+to uid)
+    members:[from, to] -- for getting user Dms
+    Messages
+        messageString
+        Message
+            from 
+            to
+
+
+
+    
+        

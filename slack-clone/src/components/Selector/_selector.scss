@@ -6,9 +6,8 @@
 
   &--multiple {
     background-color: $violet_350d36;
-    top: $chat-info-h + 0.5rem;
-    right: 0.8rem;
     position: fixed;
+    //offset declared in parent
     padding: 0.2rem 0 1rem 0.2rem;
     box-shadow: 0.2rem 0.2rem 0.8rem $violet_350d36_03;
   }

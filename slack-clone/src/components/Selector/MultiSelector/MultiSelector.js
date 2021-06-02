@@ -3,7 +3,6 @@ import { PointerOption } from "../../Pointer/Pointer";
 import { FiSearch } from "react-icons/fi";
 import React from "react";
 import useMultiLogic from "./useMultiLogic";
-import { IoMdExit } from "react-icons/io";
 import { BiSelectMultiple, BiReset } from "react-icons/bi";
 
 export function MultiSelector(props) {
