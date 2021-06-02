@@ -9,10 +9,22 @@
   &__info {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: $violet_833883;
     color: $violet_1817188;
     padding: 0.2rem;
-    min-height: 2.2rem;
+    min-height: $chat-info-h;
+  }
+
+  &__members {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+  }
+
+  &__adder {
+    display: flex;
+    margin-left: 0.4rem;
   }
 
   &__icon {

@@ -19,6 +19,10 @@ export default function multiSelectReducer(state, action) {
     case "reset":
       return { ...state, selected: [state.userId] };
 
+    case "select all": {
+      return { ...state, selected: action.payload };
+    }
+
     default:
       console.log("unknown selector action");
       return { ...state };
