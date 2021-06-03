@@ -3,10 +3,10 @@ import genClass from "../../../helpers/genClass";
 import ChatBar from "../../ChatBar/ChatBar";
 import Messages from "../../Messages/Messages";
 import { SingleSelector } from "../../Selector/SingleSelector/SingleSelector";
-import usePCLogic from "./usePCLogic";
+import usePrivateChat from "./usePrivateChat";
 
 export default function PrivateChat(props) {
-  const { chatName, uidTo, uidFrom } = usePCLogic(props);
+  const { chatName, uidTo, uidFrom } = usePrivateChat(props);
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>

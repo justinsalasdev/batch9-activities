@@ -1,7 +1,7 @@
 import genClass, { toggler as $t } from "../../../helpers/genClass";
 import { PointerOption } from "../../Pointer/Pointer";
 import { FiSearch } from "react-icons/fi";
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import useMultiLogic from "./useMultiLogic";
 import { BiSelectMultiple, BiReset } from "react-icons/bi";
 

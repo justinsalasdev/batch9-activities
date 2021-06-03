@@ -1,52 +1,27 @@
 import genClass from "../../../helpers/genClass";
-import { MultiSelector } from "../../Selector/MultiSelector/MultiSelector";
-import { IoMdPersonAdd } from "react-icons/io";
-import { FaWindowClose } from "react-icons/fa";
-import useGroupChatLogic from "./useGroupLogic";
+import ChatBar from "../../ChatBar/ChatBar";
+import Messages from "../../Messages/Messages";
+import { RiGroup2Fill } from "react-icons/ri";
 
-export default function GroupChat() {
-  console.log("Group Chat");
-  const {
-    adderRef,
-    fieldRef,
-    membersRef,
-    memberCountRef,
-    isSelecting,
-    toggleSelector,
-    handleCreateRoom
-  } = useGroupChatLogic();
-  const $ = genClass({ block: "chat" });
+export default function GroupChat(props) {
+  const { propStyles, mods } = props;
+  const string = useGroupChat(props);
+  const $ = genClass({ block: "chat", propStyles, mods });
 
   return (
     <div {...$()}>
       <div {...$("info")}>
-        <input type="text" ref={fieldRef} {...$("field")} placeholder="Channel name" />
-        <div {...$("members")}>
-          <span {...$("counter")} ref={memberCountRef}>
-            1
+        <p {...$("name")}>
+          <span {...$("icon")}>
+            <RiGroup2Fill />
           </span>
-          <button ref={adderRef} {...$("adder")} onClick={toggleSelector}>
-            {isSelecting ? <FaWindowClose /> : <IoMdPersonAdd />}
-          </button>
-          <button {...$("creator")} onClick={handleCreateRoom}>
-            create
-          </button>
-        </div>
-
-        {isSelecting && (
-          <MultiSelector
-            propStyles={$("multi-selector").className}
-            membersRef={membersRef}
-            memberCountRef={memberCountRef}
-            mods={{
-              "list-ref": ["multiple"],
-              selector: ["multiple"],
-              selection: ["multiple"],
-              input: ["multiple"]
-            }}
-          />
-        )}
+          {chatName}
+        </p>
       </div>
+      <div {...$("scroller")}>
+        <Messages propStyles={$("messages").className} />
+      </div>
+      <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />
     </div>
   );
 }
