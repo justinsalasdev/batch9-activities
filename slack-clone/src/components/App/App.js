@@ -8,7 +8,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import View from "../View/View";
 import PrivateChat from "../Chat/PrivateChat/PrivateChat";
-import GroupChat from "../Chat/GroupChat/GroupChat";
+import RoomCreator from "../Chat/RoomCreator/RoomCreator";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -44,11 +44,12 @@ export default function App() {
       <View propStyles={$("view").className}>
         <Switch>
           <Route path="/people/:id" component={PrivateChat} />
+          <Route path="/channels/:id" component={PrivateChat} />
           <Route path="/login">
             <Form />
           </Route>
           <Route path="/channels/new">
-            <GroupChat />
+            <RoomCreator />
           </Route>
           <Route path="/dms">
             <div>Dms pages</div>

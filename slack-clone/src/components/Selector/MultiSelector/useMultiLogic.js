@@ -19,10 +19,7 @@ export default function useMultSelect(props) {
 
   useEffect(() => {
     props.memberCountRef.current.textContent = compState.selected.length;
-    return () => {
-      //pass selected uids to parent before unmounting
-      props.membersRef.current = compState.selected;
-    };
+    props.membersRef.current = compState.selected;
   });
 
   useEffect(() => {

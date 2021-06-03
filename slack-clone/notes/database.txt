@@ -46,3 +46,63 @@ users
     -Channels
      -owner
      -member
+
+
+
+Collection("Channels"){
+    doc("watchedDoc"):{
+        watchedString:"" //use to track addition of new channel
+    }
+
+    doc("unique id"):{//Channel doc
+        watchedString:"", // use to track addition of new messages
+        creator: creatorId//have option to delete room
+        members:[creatorId included] //use to query channels which includes a certain user
+    
+        Collection("messages"){
+            doc("unique id"):{
+                content,
+                from,
+                to,
+            }
+        }
+    }
+     
+}
+
+
+Collection("DMs"):{
+    doc("watchedDoc"):{
+        watchedString:"" //use to track addition of new DM
+    }
+
+    doc("unique id"):{//DM doc
+        watchedString:"", // use to track addition of new messages
+        members:[from, to] //use to query DMS which includes a certain user
+    
+        Collection("messages"){
+            doc("unique id"):{
+                content,
+                from,
+                to,
+            }
+        }
+    }
+}
+   
+
+
+
+DMs Collection
+    DM(from+to uid)
+    members:[from, to] -- for getting user Dms
+    Messages
+        messageString
+        Message
+            from 
+            to
+
+
+
+    
+        

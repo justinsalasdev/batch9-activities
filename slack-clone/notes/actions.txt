@@ -33,3 +33,11 @@ get that DM document Id & include it in the commital of the chat message
 1. get to uid
 2. get from uid
 3. send content {to,from, content}
+
+
+
+//groupChat creation process
+1. create group chat <== returns roomId
+2. push router to rooms/roomId
+3. RoomComponent fetches roomData using roomId
+4. 

@@ -4,18 +4,19 @@ import useMessagesState from "../../hooks/messages/useMessagesState";
 import useMessagesDispatcher from "../../hooks/messages/useMessagesDispatcher";
 import getMessages from "../../helpers/getMessages";
 import generateString from "../../helpers/generateString";
-import chatBarReducer from "./chatBarReducer";
 import createDMId from "../../helpers/createDMId";
+import chatBarReducer from "../chatBarReducer";
 
 //helper
 function countNL(content) {
   return (content.match(/\n/g) || []).length;
 }
 
-export default function useChatBarLogic(to, from) {
+export default function useGroupBar(props) {
   const areaRef = useRef();
   const submitRef = useRef();
-  const [cbState, cbDispatch] = useReducer(chatBarReducer, { content: "", isLoading: false });
+  const [compState, compDispatch] = useReducer(chatBarReducer, { content: "", isLoading: false });
+  //TODO: write announcementProvider
   const messagesState = useMessagesState(); //used in conditionals only
   const messagesDispatch = useMessagesDispatcher();
 

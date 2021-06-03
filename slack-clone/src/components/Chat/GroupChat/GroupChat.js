@@ -1,44 +1,27 @@
 import genClass from "../../../helpers/genClass";
-import { MultiSelector } from "../../Selector/MultiSelector/MultiSelector";
-import { IoMdPersonAdd } from "react-icons/io";
-import { FaWindowClose } from "react-icons/fa";
-import useGroupChatLogic from "./useGroupLogic";
+import ChatBar from "../../ChatBar/ChatBar";
+import Messages from "../../Messages/Messages";
+import { RiGroup2Fill } from "react-icons/ri";
 
-export default function GroupChat() {
-  console.log("Group Chat");
-  const { membersRef, memberCountRef, isSelecting, toggleSelector } = useGroupChatLogic();
-  console.log(membersRef.current);
-  const $ = genClass({ block: "chat" });
+export default function GroupChat(props) {
+  const { propStyles, mods } = props;
+  const string = useGroupChat(props);
+  const $ = genClass({ block: "chat", propStyles, mods });
 
   return (
     <div {...$()}>
       <div {...$("info")}>
-        <div {...$("input")}>
-          <label htmlFor="chat__input">Name</label>
-          <input id="chat__input" />
-        </div>
-        <div {...$("members")}>
-          <span {...$("counter")} ref={memberCountRef}>
-            1
+        <p {...$("name")}>
+          <span {...$("icon")}>
+            <RiGroup2Fill />
           </span>
-          <button {...$("adder")} onClick={toggleSelector}>
-            {isSelecting ? <FaWindowClose /> : <IoMdPersonAdd />}
-          </button>
-        </div>
-
-        {isSelecting && (
-          <MultiSelector
-            membersRef={membersRef}
-            memberCountRef={memberCountRef}
-            mods={{
-              "list-ref": ["multiple"],
-              selector: ["multiple"],
-              selection: ["multiple"],
-              input: ["multiple"]
-            }}
-          />
-        )}
+          {chatName}
+        </p>
       </div>
+      <div {...$("scroller")}>
+        <Messages propStyles={$("messages").className} />
+      </div>
+      <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />
     </div>
   );
 }
