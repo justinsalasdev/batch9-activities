@@ -6,7 +6,7 @@ import useGroupChatLogic from "./useRoomCreator";
 import { InlineLoader } from "../../Loader/Loader";
 
 export default function RoomCreator() {
-  console.log("Group Chat");
+  console.log("Room Creator");
   const {
     adderRef,
     fieldRef,

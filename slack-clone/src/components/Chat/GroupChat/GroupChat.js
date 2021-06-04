@@ -1,11 +1,12 @@
 import genClass from "../../../helpers/genClass";
-import ChatBar from "../../ChatBar/ChatBar";
 import Messages from "../../Messages/Messages";
 import { RiGroup2Fill } from "react-icons/ri";
+import ChatBar from "../../ChatBar/ChatBar";
+import useShoutSender from "../../ChatBar/useShoutSender";
 
 export default function GroupChat(props) {
   const { propStyles, mods } = props;
-  const string = useGroupChat(props);
+  const { channelId, channelName, uidFrom } = useGroupChat(props);
   const $ = genClass({ block: "chat", propStyles, mods });
 
   return (
@@ -15,13 +16,13 @@ export default function GroupChat(props) {
           <span {...$("icon")}>
             <RiGroup2Fill />
           </span>
-          {chatName}
+          {channelName}
         </p>
       </div>
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} />
       </div>
-      <ChatBar propStyles={$("bar").className} from={uidFrom} to={uidTo} />
+      <ChatBar propStyles={$("bar").className} sender={useShoutSender(uidFrom, channelId)} />
     </div>
   );
 }

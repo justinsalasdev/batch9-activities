@@ -44,13 +44,14 @@ export default function App() {
       <View propStyles={$("view").className}>
         <Switch>
           <Route path="/people/:id" component={PrivateChat} />
+          <Route path="/channels/new">
+            <RoomCreator />
+          </Route>
           <Route path="/channels/:id" component={PrivateChat} />
           <Route path="/login">
             <Form />
           </Route>
-          <Route path="/channels/new">
-            <RoomCreator />
-          </Route>
+
           <Route path="/dms">
             <div>Dms pages</div>
           </Route>

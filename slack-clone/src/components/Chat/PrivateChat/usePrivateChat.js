@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { createDMRef } from "../../../firebase/firebase";
-import getMessages from "../../../helpers/getMessages";
-import useMessagesDispatcher from "../../../hooks/messages/useMessagesDispatcher";
+import getLetters from "../../../helpers/getLetters";
+import useLettersDispatcher from "../../../hooks/letters/useLettersDispatcher";
 
-export default function usePMLogic(props) {
-  const messagesDispatch = useMessagesDispatcher();
+export default function usePrivateChat(props) {
+  const lettersDispatch = useLettersDispatcher();
 
   const uidFrom = props.location.state?.userId;
   const uidTo = props.match.params.id;
@@ -12,9 +12,10 @@ export default function usePMLogic(props) {
 
   useEffect(() => {
     if (uidFrom && uidTo) {
+      //TODO: fix transition delay when changing DMs
       createDMRef(uidFrom, uidTo).onSnapshot(doc => {
         if (doc) {
-          getMessages(messagesDispatch, uidFrom, uidTo);
+          getLetters(lettersDispatch, uidFrom, uidTo);
         } else {
           console.log("do nothing");
         }
@@ -22,6 +23,7 @@ export default function usePMLogic(props) {
     } else {
       console.log("no sender or receiver");
     }
+
     // eslint-disable-next-line
   }, [uidFrom, uidTo]);
 

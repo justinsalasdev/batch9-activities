@@ -2,8 +2,8 @@ import genClass, { toggler as $t } from "../../../helpers/genClass";
 import { PointerOption } from "../../Pointer/Pointer";
 import { FiSearch } from "react-icons/fi";
 import React, { useCallback, useMemo } from "react";
-import useMultiLogic from "./useMultiLogic";
 import { BiSelectMultiple, BiReset } from "react-icons/bi";
+import useMultiSelector from "./useMultiSelector";
 
 export function MultiSelector(props) {
   const { mods, propStyles } = props;
@@ -17,7 +17,7 @@ export function MultiSelector(props) {
     handleReset,
     handleSelectAll,
     togglePerson
-  } = useMultiLogic(props);
+  } = useMultiSelector(props);
 
   //derived from state
   const numResults = searchItems.length;

@@ -2,10 +2,11 @@ import { db } from "../firebase/firebase";
 import createDMId from "./createDMId";
 import getDateString from "./getDateString";
 
-export default async function getMessages(messageDispatch, uidFrom, uidTo) {
+export default async function getLetters(lettersDispatch, uidFrom, uidTo) {
   try {
     const messages = [];
     const dmRef = db.collection("DMs").doc(createDMId(uidFrom, uidTo));
+    //TODO: change to collection name to "Letters"
     const messageCol = dmRef.collection("Messages").orderBy("timeStamp", "desc").limit(7);
     const messagesCursor = await messageCol.get();
 
@@ -21,7 +22,7 @@ export default async function getMessages(messageDispatch, uidFrom, uidTo) {
         isoDate: getDateString(timeStamp?.toDate() || new Date(), "iso")
       });
     });
-    messageDispatch({ type: "save messages", payload: messages });
+    lettersDispatch({ type: "save letters", payload: messages });
   } catch (err) {
     console.log(err);
   }
