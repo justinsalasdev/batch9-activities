@@ -5,7 +5,7 @@ import useUserState from "../../../hooks/user/useUserState";
 import multiSelectReducer from "./multiSelectReducer";
 import formatToFuse from "../formatToFuse";
 
-export default function useMultSelect(props) {
+export default function useMultiSelector(props) {
   const inputRef = useRef();
   const peopleState = usePeopleState();
   const userState = useUserState();

@@ -5,18 +5,21 @@ import App from "./components/App/App";
 import "./styles/index.scss";
 import { BrowserRouter } from "react-router-dom";
 import PeopleProvider from "./providers/People";
-import MessagesProvider from "./providers/Messages";
+import LettersProvider from "./providers/LettersProvider";
 import UserProvider from "./providers/User";
+import ShoutsProvider from "./providers/ShoutsProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <PeopleProvider>
-        <MessagesProvider>
-          <UserProvider>
-            <App />
-          </UserProvider>
-        </MessagesProvider>
+        <UserProvider>
+          <LettersProvider>
+            <ShoutsProvider>
+              <App />
+            </ShoutsProvider>
+          </LettersProvider>
+        </UserProvider>
       </PeopleProvider>
     </BrowserRouter>
   </React.StrictMode>,

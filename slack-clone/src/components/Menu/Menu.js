@@ -7,7 +7,6 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
   console.log("Menu");
 
   const [isListExpanded, expandList] = useState(false);
-
   const $ = genClass({ block: "menu", propStyles });
 
   //   if (!uid) {

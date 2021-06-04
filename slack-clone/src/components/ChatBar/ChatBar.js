@@ -1,15 +1,16 @@
 import genClass from "../../helpers/genClass";
 import { MdSend } from "react-icons/md";
 
-import useChatBarLogic from "./useChatBarLogic";
-import Loader, { InlineLoader } from "../Loader/Loader";
+import { InlineLoader } from "../Loader/Loader";
+import useChatBar from "./useChatBar";
 
-export default function ChatBar({ propStyles, to, from }) {
+export default function ChatBar({ propStyles, mods, sender }) {
   console.log("ChatBar");
-  const { content, areaRef, submitRef, isLoading, handleSubmit, handleEnter, handleChange } =
-    useChatBarLogic(to, from);
 
-  const $ = genClass({ block: "chat-bar", propStyles });
+  const { content, areaRef, submitRef, handleEnter, handleChange } = useChatBar();
+  const { handleSubmit, isSending } = sender(content);
+
+  const $ = genClass({ block: "chat-bar", propStyles, mods });
 
   return (
     <form onKeyDown={handleEnter} {...$()} onSubmit={handleSubmit}>
@@ -23,7 +24,7 @@ export default function ChatBar({ propStyles, to, from }) {
         {...$("input")}
       />
       <button ref={submitRef} type="submit" {...$("send")}>
-        {isLoading ? <InlineLoader propStyles={$("loader").className} /> : <MdSend />}
+        {isSending ? <InlineLoader propStyles={$("loader").className} /> : <MdSend />}
       </button>
     </form>
   );

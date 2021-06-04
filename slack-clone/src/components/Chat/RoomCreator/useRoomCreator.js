@@ -29,20 +29,20 @@ export default function useRoomCreator() {
 
     try {
       setCreating(true);
-      const GMsRef = db.collection("GMs");
+      const channelsColRef = db.collection("Channels");
 
-      await GMsRef.doc("watchedDoc").set({
+      await channelsColRef.doc("watchedDoc").set({
         watchedString: generateString()
       });
 
-      const gmId = await GMsRef.add({
+      const channelDoc = await channelsColRef.add({
         chatName: fieldRef.current.value,
         watchedString: "",
         creator: userState.uid,
         members: [...membersRef.current]
       });
 
-      console.log(gmId.id);
+      console.log(channelDoc.id); //TODO: route to chatRoom after creation
       setCreating(false);
     } catch (err) {
       console.error("Error adding group chat room: ", err);

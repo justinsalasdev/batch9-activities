@@ -1,4 +1,5 @@
 import createContextTool from "../../helpers/createContextTool";
 import { userDispatchContext } from "../../providers/User";
 
-export default createContextTool(userDispatchContext, "user");
+const useUserDispatcher = createContextTool(userDispatchContext, "user");
+export default useUserDispatcher;
