@@ -5,6 +5,7 @@ import defaultAvatar from "../../assets/images/avatar.svg";
 import { useEffect, useRef } from "react";
 
 export default function Message({ num, max, resources, propStyles, mods }) {
+  console.log("Message");
   const { from, content, date, isoDate } = resources;
   const imageRef = useRef();
   const userState = useUserState();

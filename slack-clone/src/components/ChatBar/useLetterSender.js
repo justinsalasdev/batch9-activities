@@ -7,7 +7,7 @@ import generateString from "../../helpers/generateString";
 import createDMId from "../../helpers/createDMId";
 
 export default function (from, to) {
-  return function useLetterSender(content) {
+  return function useLetterSender(content, clearInput) {
     const [isSending, setSending] = useState(false);
     const lettersState = useLettersState(); //used in conditionals only
     const lettersDispatch = useLettersDispatcher();
@@ -45,6 +45,7 @@ export default function (from, to) {
 
             console.log("Document successfully written!");
             setSending(false);
+            clearInput();
           } else {
             await dmRefCol.doc("watchedDoc").set({
               watchedString: generateString()
@@ -65,6 +66,7 @@ export default function (from, to) {
             console.log("New DM initiated, and first message written");
             getLetters(lettersDispatch, from, to); //fetch message on first creation of DM
             setSending(false);
+            clearInput();
           }
           //if messages = [0]{} await create DM
         } catch (err) {

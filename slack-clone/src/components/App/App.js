@@ -9,6 +9,7 @@ import genClass from "../../helpers/genClass";
 import View from "../View/View";
 import PrivateChat from "../Chat/PrivateChat/PrivateChat";
 import RoomCreator from "../Chat/RoomCreator/RoomCreator";
+import GroupChat from "../Chat/GroupChat/GroupChat";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -47,7 +48,7 @@ export default function App() {
           <Route path="/channels/new">
             <RoomCreator />
           </Route>
-          <Route path="/channels/:id" component={PrivateChat} />
+          <Route path="/channels/:id" component={GroupChat} />
           <Route path="/login">
             <Form />
           </Route>

@@ -1,7 +1,7 @@
 export default function shoutsReducer(state, action) {
   switch (action.type) {
     case "save shouts": {
-      return { ...state, messages: action.payload };
+      return { ...state, shouts: action.payload };
     }
 
     default: {

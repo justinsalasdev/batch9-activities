@@ -7,8 +7,8 @@ import useChatBar from "./useChatBar";
 export default function ChatBar({ propStyles, mods, sender }) {
   console.log("ChatBar");
 
-  const { content, areaRef, submitRef, handleEnter, handleChange } = useChatBar();
-  const { handleSubmit, isSending } = sender(content);
+  const { content, areaRef, submitRef, handleEnter, handleChange, clearInput } = useChatBar();
+  const { handleSubmit, isSending } = sender(content, clearInput);
 
   const $ = genClass({ block: "chat-bar", propStyles, mods });
 
