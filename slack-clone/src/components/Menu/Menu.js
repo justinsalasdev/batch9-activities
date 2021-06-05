@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import genClass from "../../helpers/genClass";
-import Pointer, { PointerLink } from "../Pointer/Pointer";
+import { PointerLink } from "../Pointer/Pointer";
 
-export default function Menu({ withAdder, userId, menuName, menuItems, propStyles }) {
+export default function Menu({ propStyles, getItems, menuName, adderLink }) {
   console.log("Menu");
-
   const [isListExpanded, expandList] = useState(false);
-  const $ = genClass({ block: "menu", propStyles });
+  const { menuItems } = getItems();
 
-  //   if (!uid) {
-  //     return <NoMenu />;
-  //   }
+  const $ = genClass({ block: "menu", propStyles });
 
   return (
     <div {...$()}>
@@ -29,16 +26,7 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
 
       {isListExpanded && (
         <ul {...$("items")}>
-          {withAdder && (
-            <li {...$("item")}>
-              <PointerLink
-                to={`/${menuName.toLowerCase()}/new`}
-                text={`Add ${menuName.toLowerCase()}`}
-                icon="plus"
-                mods={{ link: ["menu"], action: ["none"], icon: ["left"] }}
-              />
-            </li>
-          )}
+          {adderLink && <li {...$("item")}>{adderLink}</li>}
           {menuItems.map(menuItem => {
             return (
               <li {...$("item")} key={menuItem.uid}>
@@ -48,8 +36,7 @@ export default function Menu({ withAdder, userId, menuName, menuItems, propStyle
                   to={{
                     pathname: `/${menuName.toLowerCase()}/${menuItem.uid}`,
                     state: {
-                      chatName: menuItem.name,
-                      userId: userId
+                      chatName: menuItem.name
                     }
                   }}
                   mods={{ link: ["menu"], icon: ["left"] }}

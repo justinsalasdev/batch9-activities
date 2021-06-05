@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { db, setTimeStamp } from "../../../firebase/firebase";
-import generateString from "../../../helpers/generateString";
+import { db, setTimeStamp } from "../../firebase/firebase";
+import generateString from "../../helpers/generateString";
 
 export default function (from, chatId) {
-  return function useShoutSender(content) {
+  return function useShoutSender(content, clearInput) {
     const [isSending, setSending] = useState(false);
 
     async function handleSubmit(e) {
@@ -35,6 +35,7 @@ export default function (from, chatId) {
 
           console.log("Shout successfully sent!");
           setSending(false);
+          clearInput();
 
           //if messages = [0]{} await create DM
         } catch (err) {

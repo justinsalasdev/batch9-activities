@@ -28,6 +28,7 @@ export default function useChatBar() {
     areaRef,
     submitRef,
     handleEnter,
-    handleChange: e => setContent(e.target.value)
+    handleChange: e => setContent(e.target.value),
+    clearInput: () => setContent("")
   };
 }

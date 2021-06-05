@@ -23,6 +23,7 @@ storage.useEmulator("localhost", 9199);
 db.useEmulator("localhost", 8080);
 
 const setTimeStamp = firebase.firestore.FieldValue.serverTimestamp;
+const getId = firebase.firestore.FieldPath.documentId;
 
 function createDMRef(from, to) {
   return db.collection("DMs").doc(createDMId(from, to));
@@ -32,4 +33,4 @@ function createGMRef(chatId) {
   return db.collection("GMs").doc(chatId);
 }
 
-export { db, auth, storage, setTimeStamp, createDMRef, createGMRef };
+export { db, auth, storage, setTimeStamp, createDMRef, createGMRef, getId };

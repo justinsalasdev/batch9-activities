@@ -1,20 +1,23 @@
 import { useEffect } from "react";
+import { db } from "../../../firebase/firebase";
 import getShouts from "../../../helpers/getShouts";
-import useShoutDispatcher from "../../../hooks/shouts/useShoutsDispatcher";
+import useShoutsDispatcher from "../../../hooks/shouts/useShoutsDispatcher";
+import useShoutsState from "../../../hooks/shouts/useShoutsState";
+import useUserState from "../../../hooks/user/useUserState";
 
 export default function useGroupChat(props) {
-  const shoutDispatch = useShoutDispatcher();
+  const shoutsDispatch = useShoutsDispatcher();
+  const shoutsState = useShoutsState();
+  const { uid: uidFrom } = useUserState();
 
   const channelId = props.match.params.id;
-  const channelName = props.location.state.channelName;
-  const uidFrom = props.location.state.userId;
+  const channelName = props.location.state.chatName;
 
   useEffect(() => {
     const channelRef = db.collection("Channels").doc(channelId);
-
     channelRef.onSnapshot(doc => {
       if (doc) {
-        getShouts(shoutDispatch, channelId);
+        getShouts(shoutsDispatch, channelId);
       } else {
         console.log("dont get channel messages");
       }
@@ -23,6 +26,7 @@ export default function useGroupChat(props) {
   }, [channelId]);
 
   return {
+    messages: shoutsState.shouts,
     channelId,
     channelName,
     uidFrom

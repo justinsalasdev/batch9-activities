@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { createDMRef } from "../../../firebase/firebase";
 import getLetters from "../../../helpers/getLetters";
 import useLettersDispatcher from "../../../hooks/letters/useLettersDispatcher";
+import useLettersState from "../../../hooks/letters/useLettersState";
+import useUserState from "../../../hooks/user/useUserState";
 
 export default function usePrivateChat(props) {
   const lettersDispatch = useLettersDispatcher();
+  const lettersState = useLettersState();
+  const { uid: uidFrom } = useUserState();
 
-  const uidFrom = props.location.state?.userId;
   const uidTo = props.match.params.id;
   const chatName = props.location.state?.chatName || "";
 
@@ -30,6 +33,7 @@ export default function usePrivateChat(props) {
   return {
     uidFrom,
     uidTo,
-    chatName
+    chatName,
+    messages: lettersState.letters
   };
 }

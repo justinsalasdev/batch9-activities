@@ -1,12 +1,14 @@
 import genClass from "../../helpers/genClass";
+import useUserState from "../../hooks/user/useUserState";
 import Menu from "../Menu/Menu";
-import Pointer, { PointerAction } from "../Pointer/Pointer";
-import useNavLogic from "./useNavLogic";
+import useGetChannels from "../Menu/useGetChannels";
+import useGetPeople from "../Menu/useGetPeople";
+import { PointerAction, PointerLink } from "../Pointer/Pointer";
 
 export default function Nav({ propStyles }) {
-  const { userId, userDisplayName, navigator, channels, people } = useNavLogic();
+  const userState = useUserState();
 
-  if (!userId || !userDisplayName) {
+  if (!userState.uid || !userState.displayName) {
     return <NoNav propStyles={propStyles} />;
   }
 
@@ -25,18 +27,19 @@ export default function Nav({ propStyles }) {
         propStyles={$("link").className}
       />
       <Menu
-        withAdder
-        userId={userId}
+        adderLink={
+          <PointerLink
+            to={`/channels/new`}
+            text={`Add channel`}
+            icon="plus"
+            mods={{ link: ["menu"], action: ["none"], icon: ["left"] }}
+          />
+        }
         menuName={"Channels"}
-        menuItems={channels}
         propStyles={$("menu").className}
+        getItems={useGetChannels}
       />
-      <Menu
-        userId={userId}
-        menuName={"People"}
-        menuItems={people}
-        propStyles={$("menu").className}
-      />
+      <Menu menuName={"People"} propStyles={$("menu").className} getItems={useGetPeople} />
     </nav>
   );
 }

@@ -1,22 +1,19 @@
 import genClass from "../../helpers/genClass";
-import useLettersState from "../../hooks/letters/useLettersState";
 import Message from "../Message/Message";
 
-export default function Messages() {
+export default function Messages({ messages }) {
   console.log("Messages");
-  const { letters } = useLettersState();
-
   const $ = genClass({ block: "messages" });
   return (
     <ul {...$()}>
-      {letters?.map((letters, index) => {
+      {messages.map((message, index) => {
         return (
           <Message
-            max={letters.length - 1}
+            max={message.length - 1}
             num={index}
-            key={letters.id}
-            propStyles={$("messages").className}
-            resources={letters}
+            key={message.id}
+            propStyles={$("message").className}
+            resources={message}
           />
         );
       })}
