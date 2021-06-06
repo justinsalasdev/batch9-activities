@@ -5,6 +5,7 @@
 @import "./base/base";
 @import "./page";
 @import "./A0";
+@import "../components/Backdrop/backdrop";
 @import "../components/Loader/loader";
 @import "../components/LineForm/line-form";
 @import "../components/Line/line";
@@ -17,7 +18,6 @@
 @import "../components/ChatBar/chat-bar";
 @import "../components/Members/members";
 @import "../components/Chat/chat";
-@import "../components/View/view";
 @import "../components/Avatar/avatar";
 @import "../components/Profile/profile";
 @import "../components/Nav/nav";

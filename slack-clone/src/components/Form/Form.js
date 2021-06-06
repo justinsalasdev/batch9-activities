@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import authenticate from "../../helpers/authenticate";
@@ -41,7 +42,12 @@ export default function Form() {
   };
 
   return (
-    <form {...$()} onSubmit={handleSubmit}>
+    <motion.form
+      {...$()}
+      onSubmit={handleSubmit}
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 1, y: 30 }}
+    >
       <div {...$("info")}>
         <h3 {...$("title")}>{isLogin ? "LOGIN" : "CREATE ACCOUNT"}</h3>
         <span
@@ -62,6 +68,6 @@ export default function Form() {
       <button {...$("action")} type="submit">
         {isLoading ? <InlineLoader /> : isLogin ? "Login" : "Signup"}
       </button>
-    </form>
+    </motion.form>
   );
 }

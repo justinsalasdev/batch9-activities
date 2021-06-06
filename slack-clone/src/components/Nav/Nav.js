@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import useUserState from "../../hooks/user/useUserState";
@@ -7,6 +8,17 @@ import useGetPeople from "../Menu/useGetPeople";
 import Channels from "../MenuItems/Channels";
 import People from "../MenuItems/People";
 import { PointerAction } from "../Pointer/Pointer";
+
+const variants = {
+  initial: {
+    opacity: 0,
+    x: -20
+  },
+  final: {
+    opacity: 1,
+    x: 0
+  }
+};
 
 export default function Nav({ propStyles }) {
   console.log("Nav");
@@ -20,7 +32,7 @@ export default function Nav({ propStyles }) {
   const $ = genClass({ block: "nav", propStyles });
 
   return (
-    <nav {...$()}>
+    <motion.nav {...$()} variants={variants} animate="final" initial="initial">
       {/* <div className></div> */}
       <PointerAction
         buttonAction={() => {
@@ -44,17 +56,17 @@ export default function Nav({ propStyles }) {
         renderItems={items => <People people={items} />}
         getItems={useGetPeople}
       />
-    </nav>
+    </motion.nav>
   );
 }
 
 function NoNav({ propStyles }) {
   const $ = genClass({ block: "nav--none", propStyles });
   return (
-    <div {...$()}>
+    <motion.div {...$()} variants={variants} animate="final" initial="initial">
       <div {...$("link")}></div>
       <div {...$("link")}></div>
       <div {...$("link")}></div>
-    </div>
+    </motion.div>
   );
 }

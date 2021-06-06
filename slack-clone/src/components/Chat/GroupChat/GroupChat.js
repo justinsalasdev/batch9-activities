@@ -5,6 +5,7 @@ import ChatBar from "../../ChatBar/ChatBar";
 import useShoutSender from "../../ChatBar/useShoutSender";
 import useGroupChat from "./useGroupChat";
 import Members from "../../Members/Members";
+import { motion } from "framer-motion";
 
 export default function GroupChat(props) {
   const { propStyles, mods } = props;
@@ -13,7 +14,7 @@ export default function GroupChat(props) {
 
   return (
     <div {...$()}>
-      <div {...$("info")}>
+      <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -20 }} {...$("info")}>
         <p {...$("name")}>
           <span {...$("icon")}>
             <MdGroup />
@@ -21,7 +22,7 @@ export default function GroupChat(props) {
           <span {...$("text")}>{channelName}</span>
         </p>
         <Members membersData={membersData} propStyles={$("members").className} />
-      </div>
+      </motion.div>
 
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} messages={messages} />
