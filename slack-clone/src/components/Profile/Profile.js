@@ -4,6 +4,18 @@ import signOut from "../../helpers/signOut";
 import LineForm from "../LineForm/LineForm";
 import genClass from "../../helpers/genClass";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const variants = {
+  initial: {
+    opacity: 0,
+    x: -20
+  },
+  final: {
+    opacity: 1,
+    x: 0
+  }
+};
 
 export default function Profile({ propStyles }) {
   console.log("Profile");
@@ -16,7 +28,7 @@ export default function Profile({ propStyles }) {
   }
 
   return (
-    <div {...$()}>
+    <motion.div {...$()} variants={variants} initial="initial" animate="final">
       <Avatar propStyles={$("avatar").className} photoURL={photoURL} />
       <LineForm
         error={error}
@@ -32,16 +44,16 @@ export default function Profile({ propStyles }) {
       >
         logout
       </button>
-    </div>
+    </motion.div>
   );
 }
 
 function NoProfile({ propStyles }) {
   const $ = genClass({ block: "profile--none", propStyles });
   return (
-    <div {...$()}>
+    <motion.div variants={variants} initial="initial" animate="final" {...$()}>
       <div {...$("avatar")}></div>
       <div {...$("name")}></div>
-    </div>
+    </motion.div>
   );
 }

@@ -4,6 +4,7 @@ import useUserState from "../../hooks/user/useUserState";
 import defaultAvatar from "../../assets/images/avatar.svg";
 import { useEffect, useRef } from "react";
 import useImageError from "../../hooks/useImageError";
+import { motion } from "framer-motion";
 
 export default function Message({ num, max, resources, propStyles, mods }) {
   console.log("Message");
@@ -37,7 +38,12 @@ export default function Message({ num, max, resources, propStyles, mods }) {
   });
 
   return (
-    <li ref={messageRef} {...$()}>
+    <motion.li
+      ref={messageRef}
+      {...$()}
+      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: isMine ? 10 : -10 }}
+    >
       {!isMine && (
         <img
           ref={imgRef}
@@ -55,6 +61,6 @@ export default function Message({ num, max, resources, propStyles, mods }) {
           {date}
         </time>
       </div>
-    </li>
+    </motion.li>
   );
 }

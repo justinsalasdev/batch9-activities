@@ -2,6 +2,7 @@ import genClass from "../../helpers/genClass";
 import { BiGroup } from "react-icons/bi";
 import { useState } from "react";
 import { PointerImg } from "../Pointer/Pointer";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Members({ membersData, propStyles }) {
   console.log("Members");
@@ -16,27 +17,35 @@ export default function Members({ membersData, propStyles }) {
       </button>
 
       <div {...$("ref")}>
-        {isExpanded && (
-          <ul {...$("list")}>
-            {membersData.map(member => {
-              return (
-                <li {...$("item")} key={member.uid}>
-                  <PointerImg //inside is <Link/> from 'react-router
-                    text={member.name}
-                    to={{
-                      pathname: `/people/${member.uid}`,
-                      state: {
-                        chatName: member.name
-                      }
-                    }}
-                    photoURL={member.photoURL}
-                    mods={{ link: ["menu"], icon: ["left"] }}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        )}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.ul
+              {...$("list")}
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              {membersData.map(member => {
+                return (
+                  <li {...$("item")} key={member.uid}>
+                    <PointerImg //inside is <Link/> from 'react-router
+                      text={member.name}
+                      to={{
+                        pathname: `/people/${member.uid}`,
+                        state: {
+                          chatName: member.name
+                        }
+                      }}
+                      photoURL={member.photoURL}
+                      mods={{ link: ["menu"], icon: ["left"] }}
+                    />
+                  </li>
+                );
+              })}
+            </motion.ul>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

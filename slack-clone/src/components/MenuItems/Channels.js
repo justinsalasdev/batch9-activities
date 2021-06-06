@@ -1,11 +1,18 @@
 import genClass from "../../helpers/genClass";
 import { PointerLink } from "../Pointer/Pointer";
+import { motion } from "framer-motion";
 
 export default function Channels({ channels }) {
   console.log("MenuItems-Channels");
   const $ = genClass({ block: "menu" });
   return (
-    <ul {...$("items")}>
+    <motion.ul
+      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: -20 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.1 }}
+      {...$("items")}
+    >
       <li {...$("item")}>
         <PointerLink
           to={`/channels/new`}
@@ -30,6 +37,6 @@ export default function Channels({ channels }) {
           />
         </li>
       ))}
-    </ul>
+    </motion.ul>
   );
 }

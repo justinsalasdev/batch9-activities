@@ -3,6 +3,7 @@ import { PointerOption } from "../../Pointer/Pointer";
 import { FiSearch } from "react-icons/fi";
 import { BiSelectMultiple, BiReset } from "react-icons/bi";
 import useMultiSelector from "./useMultiSelector";
+import { motion } from "framer-motion";
 
 export function MultiSelector(props) {
   const { mods, propStyles } = props;
@@ -20,7 +21,12 @@ export function MultiSelector(props) {
 
   const $ = genClass({ block: "selector", mods, propStyles });
   return (
-    <div {...$()}>
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: -20 }}
+      exit={{ opacity: 0 }}
+      {...$()}
+    >
       <div {...$("actions")}>
         <button {...$("action")} onClick={handleReset}>
           <BiReset />
@@ -67,6 +73,6 @@ export function MultiSelector(props) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

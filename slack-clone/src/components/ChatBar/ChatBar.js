@@ -1,8 +1,8 @@
 import genClass from "../../helpers/genClass";
 import { MdSend } from "react-icons/md";
-
 import { InlineLoader } from "../Loader/Loader";
 import useChatBar from "./useChatBar";
+import { motion } from "framer-motion";
 
 export default function ChatBar({ propStyles, mods, sender }) {
   console.log("ChatBar");
@@ -13,7 +13,13 @@ export default function ChatBar({ propStyles, mods, sender }) {
   const $ = genClass({ block: "chat-bar", propStyles, mods });
 
   return (
-    <form onKeyDown={handleEnter} {...$()} onSubmit={handleSubmit}>
+    <motion.form
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      onKeyDown={handleEnter}
+      {...$()}
+      onSubmit={handleSubmit}
+    >
       <textarea
         ref={areaRef}
         spellCheck="false"
@@ -26,6 +32,6 @@ export default function ChatBar({ propStyles, mods, sender }) {
       <button ref={submitRef} type="submit" {...$("send")}>
         {isSending ? <InlineLoader propStyles={$("loader").className} /> : <MdSend />}
       </button>
-    </form>
+    </motion.form>
   );
 }

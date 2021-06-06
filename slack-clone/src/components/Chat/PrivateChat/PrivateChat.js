@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { IoIosChatbubbles } from "react-icons/io";
 import genClass from "../../../helpers/genClass";
 import ChatBar from "../../ChatBar/ChatBar";
@@ -11,7 +12,7 @@ export default function PrivateChat(props) {
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>
-      <div {...$("info")}>
+      <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} {...$("info")}>
         {(chatName && (
           <p {...$("name")}>
             <span {...$("icon")}>
@@ -20,7 +21,7 @@ export default function PrivateChat(props) {
             <span {...$("text")}>{chatName}</span>
           </p>
         )) || <SingleSelector mods={{ scroller: ["single"] }} />}
-      </div>
+      </motion.div>
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} messages={messages} />
       </div>

@@ -1,11 +1,16 @@
 .form {
   @extend %inline-flex-column;
   align-items: center;
-  border: 1px solid $violet_350d36_05;
+  // border: 1px solid $violet_350d36_05;
+  border-top: 1px solid $white_09;
+  border-left: 1px solid $white_09;
+  backdrop-filter: blur(5px);
   width: auto;
   margin: 0.5rem;
   padding: 1rem;
   width: 20rem;
+  color: $violet_833883;
+  background: $white_04;
 
   &__fields {
     @extend %inline-flex-column;
@@ -33,10 +38,15 @@
     font-size: 0.8rem;
     text-transform: uppercase;
     background: $violet_350d36;
+    box-shadow: 0 0 0.4rem $purple_05;
     padding: 0.2rem 1rem;
     border-radius: 10rem;
     color: $violet_1817188;
     min-width: 5rem;
     min-height: 2rem;
+
+    &:active {
+      transform: translateY(0.05rem);
+    }
   }
 }

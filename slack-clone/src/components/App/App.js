@@ -9,8 +9,10 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import genClass, { toggler as $t } from "../../helpers/genClass";
 import View from "../View/View";
 import PrivateChat from "../Chat/PrivateChat/PrivateChat";
+import Director from "../Chat/RoomCreator/Director";
 import RoomCreator from "../Chat/RoomCreator/RoomCreator";
 import GroupChat from "../Chat/GroupChat/GroupChat";
+import Backdrop from "../Backdrop/Backdrop";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -29,6 +31,7 @@ function onAuthStateChange(auth, userDispatch, navigator) {
 export default function App() {
   const navigator = useHistory();
   const userDispatch = useUserDispatcher();
+
   const [isExpanded, expand] = useState(false);
 
   useEffect(() => {
@@ -43,20 +46,25 @@ export default function App() {
   const $ = genClass({
     block: "app",
     mods: {
-      sidebar: [$t(isExpanded, "expanded")],
-      backdrop: [$t(isExpanded, "shown")],
       expander: [$t(isExpanded, "hidden")]
     }
   });
+
   return (
     <div {...$()}>
-      <Sidebar propStyles={$("sidebar").className} />
-      <div {...$("backdrop")} onClick={() => expand(false)}></div>
+      <Sidebar propStyles={$("sidebar").className} isExpanded={isExpanded} />
+      <Backdrop
+        propStyles={$("backdrop").className}
+        isExpanded={isExpanded}
+        onClick={() => expand(false)}
+      />
+
       <button {...$("expander")} onClick={() => expand(state => !state)}>
         <GiHamburgerMenu />
       </button>
       <View propStyles={$("view").className}>
         <Switch>
+          <Route path="/people/new" component={Director} />
           <Route path="/people/:id" component={PrivateChat} />
           <Route path="/channels/new">
             <RoomCreator mods={{ info: ["creator"], members: ["creator"] }} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { db, setTimeStamp } from "../../firebase/firebase";
 import useLettersState from "../../hooks/letters/useLettersState";
 import useLettersDispatcher from "../../hooks/letters/useLettersDispatcher";

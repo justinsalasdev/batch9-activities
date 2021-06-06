@@ -4,6 +4,7 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { FaWindowClose } from "react-icons/fa";
 import useGroupChatLogic from "./useRoomCreator";
 import { InlineLoader } from "../../Loader/Loader";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function RoomCreator({ propStyles, mods }) {
   console.log("Room Creator");
@@ -21,7 +22,7 @@ export default function RoomCreator({ propStyles, mods }) {
 
   return (
     <div {...$()}>
-      <div {...$("info")}>
+      <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -20 }} {...$("info")}>
         <input type="text" ref={fieldRef} {...$("field")} placeholder="Channel name" />
         <div {...$("members")}>
           <span {...$("counter")} ref={memberCountRef}>
@@ -35,20 +36,22 @@ export default function RoomCreator({ propStyles, mods }) {
           </button>
         </div>
 
-        {isSelecting && (
-          <MultiSelector
-            propStyles={$("multi-selector").className}
-            membersRef={membersRef}
-            memberCountRef={memberCountRef}
-            mods={{
-              "list-ref": ["multiple"],
-              selector: ["multiple"],
-              selection: ["multiple"],
-              input: ["multiple"]
-            }}
-          />
-        )}
-      </div>
+        <AnimatePresence>
+          {isSelecting && (
+            <MultiSelector
+              propStyles={$("multi-selector").className}
+              membersRef={membersRef}
+              memberCountRef={memberCountRef}
+              mods={{
+                "list-ref": ["multiple"],
+                selector: ["multiple"],
+                selection: ["multiple"],
+                input: ["multiple"]
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

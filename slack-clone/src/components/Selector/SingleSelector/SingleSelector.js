@@ -3,6 +3,8 @@ import { PointerImg } from "../../Pointer/Pointer";
 import { MdContacts } from "react-icons/md";
 import React from "react";
 import useSingleSelect from "./useSingleSelect";
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 export function SingleSelector({ mods, propStyles }) {
   console.log("SingleSelector");
@@ -27,7 +29,12 @@ export function SingleSelector({ mods, propStyles }) {
       </div>
 
       <div {...$("list-ref")}>
-        <div {...$("selection")}>
+        <motion.div
+          {...$("selection")}
+          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          exit={{ opacity: 0, x: -20 }}
+        >
           <div {...$("scroller")}>
             <ul {...$("list")}>
               {searchItems.map(({ item }) => {
@@ -55,7 +62,7 @@ export function SingleSelector({ mods, propStyles }) {
               })}
             </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

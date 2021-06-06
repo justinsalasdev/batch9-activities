@@ -84,7 +84,7 @@
   &__scroller {
     padding: 0 0.2rem;
     max-height: 10rem;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__list {
