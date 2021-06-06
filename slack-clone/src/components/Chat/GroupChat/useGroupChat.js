@@ -22,6 +22,7 @@ export default function useGroupChat(props) {
         console.log("dont get channel messages");
       }
     });
+
     // eslint-disable-next-line
   }, [channelId]);
 

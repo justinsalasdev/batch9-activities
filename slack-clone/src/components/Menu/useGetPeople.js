@@ -28,5 +28,5 @@ export default function useGetPeople() {
     // eslint-disable-next-line
   }, [userState]);
 
-  return { menuItems: peopleState.people };
+  return peopleState.people;
 }

@@ -52,7 +52,8 @@ export default function useRoomCreator() {
       console.log(channelDoc.id);
       navigator.push(`/channels/${channelDoc.id}`, {
         chatName: channelName,
-        userId: userState.uid
+        userId: userState.uid,
+        members: chatMembers
       });
     } catch (err) {
       console.error("Error adding group chat room: ", err);

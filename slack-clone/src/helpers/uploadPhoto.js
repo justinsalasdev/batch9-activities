@@ -1,6 +1,6 @@
-import { auth, storage } from "../firebase/firebase";
+import { auth, db, storage } from "../firebase/firebase";
 
-export default function uploadPhoto(imageFile, setLoading, userDispatch) {
+export default function uploadPhoto(imageFile, setLoading, userDispatch, userId) {
   //params imageFile, setLoading, userDispatch
   const ref = storage.ref(`images/${imageFile.name}`);
   const uploadTask = ref.put(imageFile);
@@ -20,21 +20,19 @@ export default function uploadPhoto(imageFile, setLoading, userDispatch) {
     },
 
     //success
-    () => {
-      ref.getDownloadURL().then(url => {
-        //TODO: make sure that user can only change photo when logged in
+    async () => {
+      try {
+        const userRef = db.collection("Users").doc(userId);
+        const url = await ref.getDownloadURL();
         const user = auth.currentUser;
-
-        user
-          .updateProfile({
-            photoURL: url
-          })
-          .then(_ => {
-            userDispatch({ type: "update photo", payload: url });
-            setLoading(false);
-          })
-          .catch(err => err);
-      });
+        await user.updateProfile({ photoURL: url });
+        await userRef.update({ photoURL: url });
+        userDispatch({ type: "update photo", payload: url });
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
     }
   );
 }

@@ -46,7 +46,7 @@ export default function App() {
         <Switch>
           <Route path="/people/:id" component={PrivateChat} />
           <Route path="/channels/new">
-            <RoomCreator />
+            <RoomCreator mods={{ info: ["creator"] }} />
           </Route>
           <Route path="/channels/:id" component={GroupChat} />
           <Route path="/login">
@@ -56,15 +56,11 @@ export default function App() {
           <Route path="/dms">
             <div>Dms pages</div>
           </Route>
-          <Route path="/addContacts">
-            <div>New contact</div>
-          </Route>
           <Route path="/">
             <div>Home</div>
           </Route>
         </Switch>
       </View>
-      {/* <ChatBar propStyles={$("chat-bar").className} /> */}
     </div>
   );
 }

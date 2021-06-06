@@ -14,14 +14,19 @@
   &__info {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background-color: $violet_833883;
     color: $violet_1817188;
     padding: 0.2rem;
     min-height: $chat-info-h;
+
+    &--creator {
+      justify-content: space-between;
+    }
   }
 
   &__name {
+    display: flex;
+    align-items: center;
     font-weight: 700;
   }
 

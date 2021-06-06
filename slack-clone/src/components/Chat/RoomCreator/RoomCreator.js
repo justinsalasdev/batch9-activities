@@ -5,7 +5,7 @@ import { FaWindowClose } from "react-icons/fa";
 import useGroupChatLogic from "./useRoomCreator";
 import { InlineLoader } from "../../Loader/Loader";
 
-export default function RoomCreator() {
+export default function RoomCreator({ propStyles, mods }) {
   console.log("Room Creator");
   const {
     adderRef,
@@ -17,7 +17,7 @@ export default function RoomCreator() {
     toggleSelector,
     handleCreateRoom
   } = useGroupChatLogic();
-  const $ = genClass({ block: "chat" });
+  const $ = genClass({ block: "chat", propStyles, mods });
 
   return (
     <div {...$()}>
