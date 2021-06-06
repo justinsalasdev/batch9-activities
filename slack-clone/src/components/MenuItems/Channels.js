@@ -2,6 +2,7 @@ import genClass from "../../helpers/genClass";
 import { PointerLink } from "../Pointer/Pointer";
 
 export default function Channels({ channels }) {
+  console.log("MenuItems-Channels");
   const $ = genClass({ block: "menu" });
   return (
     <ul {...$("items")}>
@@ -21,7 +22,8 @@ export default function Channels({ channels }) {
             to={{
               pathname: `/channels/${channel.id}`,
               state: {
-                chatName: channel.name
+                chatName: channel.name,
+                members: channel.members
               }
             }}
             mods={{ link: ["menu"], icon: ["left"] }}

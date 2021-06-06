@@ -17,7 +17,7 @@ export default function useGetPeople() {
         usersSnapShot.forEach(userDoc => {
           // doc.data() is never undefined for query doc snapshots
           if (userDoc.data().uid === userState.uid) {
-            people.push({ ...userDoc.data(), name: userDoc.data().name + " " + "(you)" });
+            people.push({ ...userDoc.data(), name: userDoc.data().name + " (you)" });
           } else {
             people.push(userDoc.data());
           }

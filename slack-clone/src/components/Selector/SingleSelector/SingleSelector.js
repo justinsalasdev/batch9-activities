@@ -1,5 +1,5 @@
-import genClass, { toggler } from "../../../helpers/genClass";
-import { PointerLink } from "../../Pointer/Pointer";
+import genClass from "../../../helpers/genClass";
+import { PointerImg } from "../../Pointer/Pointer";
 import { MdContacts } from "react-icons/md";
 import React from "react";
 import useSingleSelect from "./useSingleSelect";
@@ -33,7 +33,7 @@ export function SingleSelector({ mods, propStyles }) {
               {searchItems.map(({ item }) => {
                 return (
                   <li {...$("item")} key={item.uid}>
-                    <PointerLink //inside is <Link/> from 'react-router
+                    <PointerImg //inside is <Link/> from 'react-router
                       to={{
                         pathname: `/people/${item.uid}`,
                         state: {
@@ -42,7 +42,7 @@ export function SingleSelector({ mods, propStyles }) {
                         }
                       }}
                       text={item.name}
-                      icon="picture"
+                      photoURL={item.photoURL}
                       propStyles={$("pointer").className}
                       mods={{
                         link: ["selector"],

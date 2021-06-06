@@ -6,9 +6,10 @@ import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import uploadPhoto from "../../helpers/uploadPhoto";
 import genClass from "../../helpers/genClass";
 import useUserState from "../../hooks/user/useUserState";
+import useImageError from "../../hooks/useImageError";
 
 export default function Avatar({ photoURL, propStyles }) {
-  const imgRef = useRef();
+  const { imgRef, handleImgError } = useImageError();
   const [isLoading, setLoading] = useState(false);
   const userDispatch = useUserDispatcher();
   const userState = useUserState();
@@ -30,9 +31,7 @@ export default function Avatar({ photoURL, propStyles }) {
       ) : (
         <img
           ref={imgRef}
-          onError={() => {
-            imgRef.current.setAttribute("src", defaultAvatar);
-          }}
+          onError={handleImgError}
           src={photoURL || defaultAvatar}
           {...$("image")}
           alt="user avatar"

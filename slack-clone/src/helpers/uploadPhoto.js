@@ -2,7 +2,7 @@ import { auth, db, storage } from "../firebase/firebase";
 
 export default function uploadPhoto(imageFile, setLoading, userDispatch, userId) {
   //params imageFile, setLoading, userDispatch
-  const ref = storage.ref(`images/${imageFile.name}`);
+  const ref = storage.ref(`images/${userId}/${imageFile.name}`);
   const uploadTask = ref.put(imageFile);
   uploadTask.on(
     "state_changed", //name of event

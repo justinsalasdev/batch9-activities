@@ -6,6 +6,8 @@ import { VscDiffAdded } from "react-icons/vsc";
 import { BiGroup } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import React from "react";
+import useImageError from "../../hooks/useImageError";
+// import defaultAvatar from "../../assets/images/avatar.svg";
 
 //props "link", "type", "text", "action"
 const icons = {
@@ -37,13 +39,20 @@ export function PointerAction(props) {
 
 export function PointerOption(props) {
   console.log("PointerOption");
-  const { text, icon, propStyles, mods, optionAction } = props;
+  const { text, propStyles, mods, optionAction, photoURL } = props;
+  const { imgRef, handleImgError } = useImageError();
   const $ = genClass({ block: "pointer", propStyles, mods });
 
   return (
     <div {...$()}>
       <div {...$("link")} onClick={optionAction}>
-        <span {...$("icon")}>{icons[icon]}</span>
+        <img
+          ref={imgRef}
+          src={photoURL}
+          {...$("icon")}
+          alt="person icon"
+          onError={handleImgError}
+        />
         <span {...$("text")}>{text}</span>
       </div>
     </div>
@@ -59,6 +68,28 @@ export function PointerLink(props) {
     <div {...$()}>
       <Link {...$("link")} to={to}>
         <span {...$("icon")}>{icons[icon]}</span>
+        <span {...$("text")}>{text}</span>
+      </Link>
+    </div>
+  );
+}
+
+export function PointerImg(props) {
+  console.log("PointerImg");
+  const { text, photoURL, propStyles, mods, to } = props;
+  const { imgRef, handleImgError } = useImageError();
+  const $ = genClass({ block: "pointer", propStyles, mods });
+
+  return (
+    <div {...$()}>
+      <Link {...$("link")} to={to}>
+        <img
+          ref={imgRef}
+          onError={handleImgError}
+          src={photoURL}
+          {...$("icon")}
+          alt="person icon"
+        />
         <span {...$("text")}>{text}</span>
       </Link>
     </div>

@@ -1,0 +1,51 @@
+.members {
+  display: grid;
+  align-items: center;
+  //   background: green;
+  grid-template: auto auto/ 1fr;
+
+  &__action {
+    grid-area: 1/2/2/3;
+    display: flex;
+    font-size: 1.2rem;
+
+    &:active,
+    &:focus {
+      color: $white_09;
+    }
+  }
+
+  &__count {
+    color: $violet_350d36;
+    font-size: 0.7rem;
+    background: $violet_1817188;
+    grid-area: 1/1/2/2;
+    padding: 0.2rem 0.4rem;
+    margin-right: 0.2rem;
+    border-radius: 0.5rem;
+  }
+
+  &__ref {
+    height: 0;
+    grid-area: 2/1/3/3;
+    width: 100%;
+    position: relative;
+  }
+
+  &__list {
+    padding: 1rem;
+    min-width: 12rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.1rem 0.1rem 0.8rem $violet_833883;
+    top: 0;
+    right: 0.5rem;
+    position: absolute;
+    background: $violet_350d36;
+  }
+
+  &__item {
+    &:hover {
+      background: $violet_1817188_06;
+    }
+  }
+}

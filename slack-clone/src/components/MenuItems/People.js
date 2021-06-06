@@ -1,21 +1,22 @@
 import genClass from "../../helpers/genClass";
-import { PointerLink } from "../Pointer/Pointer";
+import { PointerImg } from "../Pointer/Pointer";
 
 export default function People({ people }) {
+  console.log("MenuItems-People");
   const $ = genClass({ block: "menu" });
   return (
     <ul {...$("items")}>
       {people.map(person => (
         <li {...$("item")} key={person.uid}>
-          <PointerLink //inside is <Link/> from 'react-router
+          <PointerImg //inside is <Link/> from 'react-router
             text={person.name}
-            icon="picture"
             to={{
               pathname: `/people/${person.uid}`,
               state: {
                 chatName: person.name
               }
             }}
+            photoURL={person.photoURL}
             mods={{ link: ["menu"], icon: ["left"] }}
           />
         </li>

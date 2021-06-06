@@ -1,6 +1,5 @@
 import { IoIosChatbubbles } from "react-icons/io";
 import genClass from "../../../helpers/genClass";
-import useLettersState from "../../../hooks/letters/useLettersState";
 import ChatBar from "../../ChatBar/ChatBar";
 import useLetterSender from "../../ChatBar/useLetterSender";
 import Messages from "../../Messages/Messages";

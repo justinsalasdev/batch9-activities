@@ -1,7 +1,6 @@
 import genClass, { toggler as $t } from "../../../helpers/genClass";
 import { PointerOption } from "../../Pointer/Pointer";
 import { FiSearch } from "react-icons/fi";
-import React, { useCallback, useMemo } from "react";
 import { BiSelectMultiple, BiReset } from "react-icons/bi";
 import useMultiSelector from "./useMultiSelector";
 
@@ -18,9 +17,6 @@ export function MultiSelector(props) {
     handleSelectAll,
     togglePerson
   } = useMultiSelector(props);
-
-  //derived from state
-  const numResults = searchItems.length;
 
   const $ = genClass({ block: "selector", mods, propStyles });
   return (
@@ -56,7 +52,7 @@ export function MultiSelector(props) {
                     <PointerOption //Link converted to div
                       optionAction={togglePerson(item.uid)}
                       text={item.name}
-                      icon="picture"
+                      photoURL={item.photoURL}
                       propStyles={$("pointer").className}
                       mods={{
                         link: [$t(selected.includes(item.uid), "active"), "selector"],

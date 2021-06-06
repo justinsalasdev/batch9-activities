@@ -3,11 +3,12 @@ import usePeopleState from "../../hooks/people/usePeopleState";
 import useUserState from "../../hooks/user/useUserState";
 import defaultAvatar from "../../assets/images/avatar.svg";
 import { useEffect, useRef } from "react";
+import useImageError from "../../hooks/useImageError";
 
 export default function Message({ num, max, resources, propStyles, mods }) {
   console.log("Message");
   const { from, content, date, isoDate } = resources;
-  const imageRef = useRef();
+  const { imgRef, handleImgError } = useImageError();
   const userState = useUserState();
   const peopleState = usePeopleState();
   const messageRef = useRef();
@@ -40,8 +41,8 @@ export default function Message({ num, max, resources, propStyles, mods }) {
       <div {...$("div")}>
         {!isMine && (
           <img
-            ref={imageRef}
-            onError={() => imageRef.current.setAttribute("src", defaultAvatar)}
+            ref={imgRef}
+            onError={handleImgError}
             alt="user avatar"
             src={photoURL || defaultAvatar}
             {...$("photo")}
