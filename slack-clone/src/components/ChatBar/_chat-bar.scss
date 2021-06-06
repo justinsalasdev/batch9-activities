@@ -1,23 +1,27 @@
 .chat-bar {
   width: 100%;
   padding: $chat-padding;
+  padding-top: 0;
   display: flex;
   position: relative;
   align-items: center;
   color: $violet_833883;
 
   &__input {
-    border-radius: 0.5rem;
-    color: inherit;
+    color: $gray_f5f5f5;
     resize: none;
     font-size: inherit;
     font-family: inherit;
     width: 100%;
     height: 100%;
     padding: $chat-padding;
-    border: 1px solid $violet_1817188;
+    // border: 1px solid $violet_1817188;
+    border: none;
+    background: $violet_350d36;
+    box-shadow: 0.2rem 0.2rem 0.4rem $violet_1817188;
 
     &::placeholder {
+      color: $violet_1817188_06;
       font-size: inherit;
     }
   }

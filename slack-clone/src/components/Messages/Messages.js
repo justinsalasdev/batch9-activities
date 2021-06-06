@@ -9,7 +9,7 @@ export default function Messages({ messages }) {
       {messages.map((message, index) => {
         return (
           <Message
-            max={message.length - 1}
+            max={message.length - 2}
             num={index}
             key={message.id}
             propStyles={$("message").className}

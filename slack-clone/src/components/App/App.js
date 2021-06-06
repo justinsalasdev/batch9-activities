@@ -46,7 +46,7 @@ export default function App() {
         <Switch>
           <Route path="/people/:id" component={PrivateChat} />
           <Route path="/channels/new">
-            <RoomCreator mods={{ info: ["creator"] }} />
+            <RoomCreator mods={{ info: ["creator"], members: ["creator"] }} />
           </Route>
           <Route path="/channels/:id" component={GroupChat} />
           <Route path="/login">

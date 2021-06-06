@@ -20,15 +20,9 @@ export default function useLineFormLogic(initialName) {
       } else {
         compDispatch({ type: "start submit" });
         const user = auth.currentUser;
-        await db.collection("Users").doc(user.uid).set(
-          {
-            name: compState.value,
-            uid: user.uid,
-            email: user.email,
-            photoURL: user.photoURL
-          },
-          { merge: true }
-        );
+        await db.collection("Users").doc(user.uid).update({
+          name: compState.value
+        });
         await user.updateProfile({
           displayName: compState.value
         });

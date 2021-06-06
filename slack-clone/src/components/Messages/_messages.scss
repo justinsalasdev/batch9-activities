@@ -1,5 +1,4 @@
 .messages {
-  //   background: red;
   min-height: 100%;
   width: 100%;
   padding: $chat-padding;
@@ -9,7 +8,7 @@
   justify-content: flex-end;
 
   &__message {
-    margin: 0.2rem;
+    margin: 0.3rem;
     // width: 50%;
   }
 }

@@ -18,7 +18,7 @@ export default function GroupChat(props) {
           <span {...$("icon")}>
             <MdGroup />
           </span>
-          {channelName}
+          <span {...$("text")}>{channelName}</span>
         </p>
         <Members membersData={membersData} propStyles={$("members").className} />
       </div>

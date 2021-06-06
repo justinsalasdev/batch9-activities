@@ -1,8 +1,9 @@
 import { auth, db, storage } from "../firebase/firebase";
 
-export default function uploadPhoto(imageFile, setLoading, userDispatch, userId) {
+export default function uploadPhoto(imageFile, setLoading, userDispatch) {
   //params imageFile, setLoading, userDispatch
-  const ref = storage.ref(`images/${userId}/${imageFile.name}`);
+  const user = auth.currentUser;
+  const ref = storage.ref(`images/${user.uid}/${imageFile.name}`);
   const uploadTask = ref.put(imageFile);
   uploadTask.on(
     "state_changed", //name of event
@@ -22,9 +23,8 @@ export default function uploadPhoto(imageFile, setLoading, userDispatch, userId)
     //success
     async () => {
       try {
-        const userRef = db.collection("Users").doc(userId);
+        const userRef = db.collection("Users").doc(user.uid);
         const url = await ref.getDownloadURL();
-        const user = auth.currentUser;
         await user.updateProfile({ photoURL: url });
         await userRef.update({ photoURL: url });
         userDispatch({ type: "update photo", payload: url });

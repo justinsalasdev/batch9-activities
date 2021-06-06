@@ -18,11 +18,12 @@ export default function Message({ num, max, resources, propStyles, mods }) {
 
   useEffect(() => {
     //check if element is the last message
-    if (num === max) {
+    if (num >= num) {
       messageRef.current.scrollIntoView();
     }
+    // }
     // eslint-disable-next-line
-  }, []);
+  }, [max, num]);
 
   const $ = genClass({
     block: "message",
@@ -37,22 +38,23 @@ export default function Message({ num, max, resources, propStyles, mods }) {
 
   return (
     <li ref={messageRef} {...$()}>
-      <div {...$("sendee")}>{!isMine && <p>{name}</p>}</div>
+      {!isMine && (
+        <img
+          ref={imgRef}
+          onError={handleImgError}
+          alt="user avatar"
+          src={photoURL || defaultAvatar}
+          {...$("photo")}
+        />
+      )}
       <div {...$("div")}>
-        {!isMine && (
-          <img
-            ref={imgRef}
-            onError={handleImgError}
-            alt="user avatar"
-            src={photoURL || defaultAvatar}
-            {...$("photo")}
-          />
-        )}
-        <p {...$("content")}>{content}</p>
+        <div {...$("name")}>{!isMine && <p>{name}</p>}</div>
+        <pre {...$("content")}>{content}</pre>
+
+        <time {...$("time-stamp")} dateTime={isoDate}>
+          {date}
+        </time>
       </div>
-      <time {...$("time-stamp")} dateTime={isoDate}>
-        {date}
-      </time>
     </li>
   );
 }

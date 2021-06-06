@@ -17,7 +17,7 @@ export default function PrivateChat(props) {
             <span {...$("icon")}>
               <IoIosChatbubbles />
             </span>
-            {chatName}
+            <span {...$("text")}>{chatName}</span>
           </p>
         )) || <SingleSelector mods={{ scroller: ["single"] }} />}
       </div>

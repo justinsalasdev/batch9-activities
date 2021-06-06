@@ -1,7 +1,6 @@
 .members {
   display: grid;
   align-items: center;
-  //   background: green;
   grid-template: auto auto/ 1fr;
 
   &__action {
@@ -38,7 +37,8 @@
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.8rem $violet_833883;
     top: 0;
-    right: 0.5rem;
+    // right: 0.5rem;
+    right: 0;
     position: absolute;
     background: $violet_350d36;
   }
