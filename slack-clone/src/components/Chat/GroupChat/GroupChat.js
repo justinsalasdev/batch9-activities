@@ -4,11 +4,12 @@ import { MdGroup } from "react-icons/md";
 import ChatBar from "../../ChatBar/ChatBar";
 import useShoutSender from "../../ChatBar/useShoutSender";
 import useGroupChat from "./useGroupChat";
+import Members from "../../Members/Members";
 
 export default function GroupChat(props) {
   const { propStyles, mods } = props;
-  const { channelId, channelName, uidFrom, messages } = useGroupChat(props);
-  const $ = genClass({ block: "chat", propStyles, mods });
+  const { channelId, channelName, uidFrom, messages, membersData } = useGroupChat(props);
+  const $ = genClass({ block: "chat", propStyles, mods: { ...mods, info: ["group"] } });
 
   return (
     <div {...$()}>
@@ -17,9 +18,11 @@ export default function GroupChat(props) {
           <span {...$("icon")}>
             <MdGroup />
           </span>
-          {channelName}
+          <span {...$("text")}>{channelName}</span>
         </p>
+        <Members membersData={membersData} propStyles={$("members").className} />
       </div>
+
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} messages={messages} />
       </div>

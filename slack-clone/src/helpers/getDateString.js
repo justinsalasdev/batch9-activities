@@ -1,7 +1,9 @@
 export default function getDateString(date, type) {
   if (type === "human") {
-    return date.toLocaleDateString("en-US") + " " + date.toLocaleTimeString("en-US");
+    return date.toLocaleTimeString("en-US");
   } else {
     return date.toISOString();
   }
 }
+
+//date.toLocaleDateString("en-US") + " " +

@@ -35,12 +35,17 @@
 
   &__text {
     padding-left: 0.2rem;
+    display: block;
+    @include prevent-text;
+    max-width: 6rem;
   }
 
   &__icon {
     padding-left: 0.2rem;
     display: flex;
     color: inherit;
+    width: 1.1em;
+    height: 1.1em;
     &--left {
       padding-left: 0;
     }

@@ -1,11 +1,16 @@
+import { useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import useUserState from "../../hooks/user/useUserState";
 import Menu from "../Menu/Menu";
 import useGetChannels from "../Menu/useGetChannels";
 import useGetPeople from "../Menu/useGetPeople";
-import { PointerAction, PointerLink } from "../Pointer/Pointer";
+import Channels from "../MenuItems/Channels";
+import People from "../MenuItems/People";
+import { PointerAction } from "../Pointer/Pointer";
 
 export default function Nav({ propStyles }) {
+  console.log("Nav");
+  const navigator = useHistory();
   const userState = useUserState();
 
   if (!userState.uid || !userState.displayName) {
@@ -27,19 +32,18 @@ export default function Nav({ propStyles }) {
         propStyles={$("link").className}
       />
       <Menu
-        adderLink={
-          <PointerLink
-            to={`/channels/new`}
-            text={`Add channel`}
-            icon="plus"
-            mods={{ link: ["menu"], action: ["none"], icon: ["left"] }}
-          />
-        }
         menuName={"Channels"}
         propStyles={$("menu").className}
+        renderItems={items => <Channels channels={items} />}
         getItems={useGetChannels}
       />
-      <Menu menuName={"People"} propStyles={$("menu").className} getItems={useGetPeople} />
+
+      <Menu
+        menuName={"People"}
+        propStyles={$("menu").className}
+        renderItems={items => <People people={items} />}
+        getItems={useGetPeople}
+      />
     </nav>
   );
 }

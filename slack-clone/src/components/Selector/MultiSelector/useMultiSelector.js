@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import usePeopleState from "../../../hooks/people/usePeopleState";
 import Fuse from "fuse.js";
 import useUserState from "../../../hooks/user/useUserState";

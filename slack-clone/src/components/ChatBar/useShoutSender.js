@@ -2,6 +2,7 @@ import { useState } from "react";
 import { db, setTimeStamp } from "../../firebase/firebase";
 import generateString from "../../helpers/generateString";
 
+// eslint-disable-next-line
 export default function (from, chatId) {
   return function useShoutSender(content, clearInput) {
     const [isSending, setSending] = useState(false);

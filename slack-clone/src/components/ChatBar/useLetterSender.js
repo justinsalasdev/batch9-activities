@@ -6,6 +6,7 @@ import getLetters from "../../helpers/getLetters";
 import generateString from "../../helpers/generateString";
 import createDMId from "../../helpers/createDMId";
 
+// eslint-disable-next-line
 export default function (from, to) {
   return function useLetterSender(content, clearInput) {
     const [isSending, setSending] = useState(false);

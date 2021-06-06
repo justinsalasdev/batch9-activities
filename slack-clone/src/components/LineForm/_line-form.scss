@@ -6,7 +6,6 @@ $padding: 0.2rem;
   align-items: center;
   background-color: $violet_350d36;
   color: $violet_1817188;
-  min-height: 1em;
 
   &--profile {
     margin-bottom: 0.3rem;
@@ -52,10 +51,14 @@ $padding: 0.2rem;
     color: $violet_1817188;
     position: inline-block;
     padding: $padding;
+    border-bottom: 1px solid transparent;
     padding-bottom: 0.1rem;
     background-color: transparent;
     cursor: text;
     font-size: 1.1rem;
+    display: block;
+    max-width: 5rem;
+    @include prevent-text;
 
     &--channel {
       padding: 0;

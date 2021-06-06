@@ -1,38 +1,51 @@
 .message {
-  background: violet;
-  padding: 0.5rem;
-  padding-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
 
   &--mine {
     align-self: flex-end;
   }
 
   &__div {
-    width: 100%;
+    margin-left: 0.3rem;
     display: flex;
-    justify-content: space-between;
-    margin: 0.5rem 0;
-  }
-
-  &__sendee {
-    font-size: 0.7em;
+    flex-direction: column;
   }
 
   &__photo {
-    width: 1.5em;
-    height: 1.5em;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  &__content {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+
+    background: $violet_833883;
+    color: $violet_1817188;
+    font-family: inherit;
+    border-radius: 0.6rem;
+
+    &--mine {
+      background: $violet_1817188;
+      color: $violet_350d36;
+    }
   }
 
   &__time-stamp {
-    font-size: 0.5em;
-    text-align: right;
-    display: block;
-    width: 100%;
+    color: $violet_1817188;
+    font-size: 0.6em;
+    align-self: flex-end;
+    margin-right: 0.2rem;
+    margin-top: 0.1rem;
   }
-  &__content {
-    padding-left: 0.5rem;
-    &--mine {
-      padding-left: 0;
-    }
+
+  &__name {
+    color: $violet_833883;
+    font-size: 0.9rem;
+    font-weight: 700;
+    @include prevent-text;
+    max-width: 5rem;
   }
 }

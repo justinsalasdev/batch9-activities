@@ -3,11 +3,12 @@ import usePeopleState from "../../hooks/people/usePeopleState";
 import useUserState from "../../hooks/user/useUserState";
 import defaultAvatar from "../../assets/images/avatar.svg";
 import { useEffect, useRef } from "react";
+import useImageError from "../../hooks/useImageError";
 
 export default function Message({ num, max, resources, propStyles, mods }) {
   console.log("Message");
   const { from, content, date, isoDate } = resources;
-  const imageRef = useRef();
+  const { imgRef, handleImgError } = useImageError();
   const userState = useUserState();
   const peopleState = usePeopleState();
   const messageRef = useRef();
@@ -17,11 +18,12 @@ export default function Message({ num, max, resources, propStyles, mods }) {
 
   useEffect(() => {
     //check if element is the last message
-    if (num === max) {
+    if (num >= max) {
       messageRef.current.scrollIntoView();
     }
+    // }
     // eslint-disable-next-line
-  }, []);
+  }, [max, num]);
 
   const $ = genClass({
     block: "message",
@@ -36,22 +38,23 @@ export default function Message({ num, max, resources, propStyles, mods }) {
 
   return (
     <li ref={messageRef} {...$()}>
-      <div {...$("sendee")}>{!isMine && <p>{name}</p>}</div>
+      {!isMine && (
+        <img
+          ref={imgRef}
+          onError={handleImgError}
+          alt="user avatar"
+          src={photoURL || defaultAvatar}
+          {...$("photo")}
+        />
+      )}
       <div {...$("div")}>
-        {!isMine && (
-          <img
-            ref={imageRef}
-            onError={() => imageRef.current.setAttribute("src", defaultAvatar)}
-            alt="user avatar"
-            src={photoURL || defaultAvatar}
-            {...$("photo")}
-          />
-        )}
-        <p {...$("content")}>{content}</p>
+        <div {...$("name")}>{!isMine && <p>{name}</p>}</div>
+        <pre {...$("content")}>{content}</pre>
+
+        <time {...$("time-stamp")} dateTime={isoDate}>
+          {date}
+        </time>
       </div>
-      <time {...$("time-stamp")} dateTime={isoDate}>
-        {date}
-      </time>
     </li>
   );
 }

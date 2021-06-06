@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db, getId } from "../../firebase/firebase";
+import { db } from "../../firebase/firebase";
 import useUserState from "../../hooks/user/useUserState";
 
 export default function useGetChannels() {
@@ -18,7 +18,7 @@ export default function useGetChannels() {
     // eslint-disable-next-line
   }, [userState]);
 
-  return { menuItems: channels };
+  return channels;
 }
 
 async function getChannels(setChannels, userId) {
@@ -31,7 +31,7 @@ async function getChannels(setChannels, userId) {
 
   channelSnapshots.forEach(channelDoc => {
     if (channelDoc.data()) {
-      retrievedChannels.push({ uid: channelDoc.id, ...channelDoc.data() });
+      retrievedChannels.push({ id: channelDoc.id, ...channelDoc.data() });
     } else {
       return;
     }
