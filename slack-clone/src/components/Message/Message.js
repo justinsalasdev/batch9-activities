@@ -18,7 +18,7 @@ export default function Message({ num, max, resources, propStyles, mods }) {
 
   useEffect(() => {
     //check if element is the last message
-    if (num >= num) {
+    if (num >= max) {
       messageRef.current.scrollIntoView();
     }
     // }

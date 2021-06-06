@@ -37,10 +37,8 @@
 
   &__text {
     // display: inline-block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
     max-width: 8rem;
+    @include prevent-text;
   }
 
   &__members {

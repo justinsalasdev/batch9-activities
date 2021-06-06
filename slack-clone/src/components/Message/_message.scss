@@ -45,5 +45,7 @@
     color: $violet_833883;
     font-size: 0.9rem;
     font-weight: 700;
+    @include prevent-text;
+    max-width: 5rem;
   }
 }

@@ -20,6 +20,70 @@
     margin: 0.5rem;
   }
 
+  &__backdrop {
+    display: none;
+  }
+
+  &__expander {
+    display: none;
+    position: fixed;
+    top: $chat-info-h + 0.6rem;
+    left: 0.5rem;
+    z-index: $sidebar-expander-i;
+    background: $violet_833883;
+    color: $violet_1817188;
+    height: 2.2rem;
+    width: 2.2rem;
+    border-radius: 50%;
+    box-shadow: 0.1rem 0.1rem 0.4rem $violet_1817188;
+  }
+
+  @media screen and (max-width: 484px) {
+    grid-template: 1fr / 1fr;
+
+    .app__sidebar {
+      display: none;
+      position: fixed;
+      z-index: $sidebar-i;
+      box-shadow: 0.2rem 0.2rem 0.4rem $black_05;
+
+      &--expanded {
+        display: block;
+      }
+    }
+
+    .app__backdrop {
+      display: none;
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: $violet_350d36_08;
+      z-index: $backdrop-i;
+
+      &--shown {
+        display: block;
+      }
+    }
+
+    .app__view {
+      grid-area: 1/1/2/2;
+    }
+
+    .app__expander {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--hidden {
+        display: none;
+      }
+    }
+  }
+
   // &__chat-bar {
   //   grid-area: 2/2/3/3;
   // }

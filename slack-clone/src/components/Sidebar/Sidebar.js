@@ -4,6 +4,7 @@ import Profile from "../Profile/Profile";
 import Nav from "../Nav/Nav";
 
 export default function Sidebar({ propStyles }) {
+  console.log("Sidebar");
   const $ = genClass({ block: "sidebar", propStyles });
 
   return (

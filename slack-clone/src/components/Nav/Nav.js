@@ -9,6 +9,7 @@ import People from "../MenuItems/People";
 import { PointerAction } from "../Pointer/Pointer";
 
 export default function Nav({ propStyles }) {
+  console.log("Nav");
   const navigator = useHistory();
   const userState = useUserState();
 

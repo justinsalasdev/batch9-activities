@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
+import { GiHamburgerMenu } from "react-icons/gi";
 import getUserFields from "../../helpers/getUserFields";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Sidebar from "../Sidebar/Sidebar";
 import Form from "../Form/Form";
 import { Switch, Route, useHistory } from "react-router-dom";
-import genClass from "../../helpers/genClass";
+import genClass, { toggler as $t } from "../../helpers/genClass";
 import View from "../View/View";
 import PrivateChat from "../Chat/PrivateChat/PrivateChat";
 import RoomCreator from "../Chat/RoomCreator/RoomCreator";
@@ -28,6 +29,7 @@ function onAuthStateChange(auth, userDispatch, navigator) {
 export default function App() {
   const navigator = useHistory();
   const userDispatch = useUserDispatcher();
+  const [isExpanded, expand] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChange(auth, userDispatch, navigator); //subscribe to authChanges & receive unsubscribe
@@ -38,10 +40,21 @@ export default function App() {
   }, []);
 
   //TODO: guard login route
-  const $ = genClass({ block: "app" });
+  const $ = genClass({
+    block: "app",
+    mods: {
+      sidebar: [$t(isExpanded, "expanded")],
+      backdrop: [$t(isExpanded, "shown")],
+      expander: [$t(isExpanded, "hidden")]
+    }
+  });
   return (
     <div {...$()}>
       <Sidebar propStyles={$("sidebar").className} />
+      <div {...$("backdrop")} onClick={() => expand(false)}></div>
+      <button {...$("expander")} onClick={() => expand(state => !state)}>
+        <GiHamburgerMenu />
+      </button>
       <View propStyles={$("view").className}>
         <Switch>
           <Route path="/people/:id" component={PrivateChat} />
