@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { GiHamburgerMenu } from "react-icons/gi";
 import getUserFields from "../../helpers/getUserFields";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Sidebar from "../Sidebar/Sidebar";
-import Form from "../Form/Form";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import genClass, { toggler as $t } from "../../helpers/genClass";
-import View from "../View/View";
-import PrivateChat from "../Chat/PrivateChat/PrivateChat";
-import Director from "../Chat/RoomCreator/Director";
-import RoomCreator from "../Chat/RoomCreator/RoomCreator";
-import GroupChat from "../Chat/GroupChat/GroupChat";
 import Backdrop from "../Backdrop/Backdrop";
+import { motion } from "framer-motion";
+import Views from "../Views/Views";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -31,6 +27,7 @@ function onAuthStateChange(auth, userDispatch, navigator) {
 export default function App() {
   const navigator = useHistory();
   const userDispatch = useUserDispatcher();
+  const constraintsRef = useRef();
 
   const [isExpanded, expand] = useState(false);
 
@@ -51,7 +48,7 @@ export default function App() {
   });
 
   return (
-    <div {...$()}>
+    <div {...$()} ref={constraintsRef}>
       <Sidebar propStyles={$("sidebar").className} isExpanded={isExpanded} />
       <Backdrop
         propStyles={$("backdrop").className}
@@ -59,11 +56,26 @@ export default function App() {
         onClick={() => expand(false)}
       />
 
-      <button {...$("expander")} onClick={() => expand(state => !state)}>
+      <motion.button
+        drag
+        dragConstraints={constraintsRef}
+        dragElastic={0}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 50 }}
+        {...$("expander")}
+        onClick={() => expand(state => !state)}
+      >
         <GiHamburgerMenu />
-      </button>
-      <View propStyles={$("view").className}>
-        <Switch>
+      </motion.button>
+
+      <div {...$("views")}>
+        <Views expand={expand} />
+      </div>
+    </div>
+  );
+}
+
+/*
+<Switch>
           <Route path="/people/new" component={Director} />
           <Route path="/people/:id" component={PrivateChat} />
           <Route path="/channels/new">
@@ -80,8 +92,4 @@ export default function App() {
           <Route path="/">
             <div>Home</div>
           </Route>
-        </Switch>
-      </View>
-    </div>
-  );
-}
+        </Switch> */

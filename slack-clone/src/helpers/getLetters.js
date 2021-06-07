@@ -2,8 +2,9 @@ import { db } from "../firebase/firebase";
 import createDMId from "./createDMId";
 import getDateString from "./getDateString";
 
-export default async function getLetters(lettersDispatch, uidFrom, uidTo) {
+export default async function getLetters(lettersDispatch, uidFrom, uidTo, setLoading) {
   try {
+    // setLoading(true);
     const messages = [];
     const dmRef = db.collection("DMs").doc(createDMId(uidFrom, uidTo));
     //TODO: change to collection name to "Letters"
@@ -23,7 +24,9 @@ export default async function getLetters(lettersDispatch, uidFrom, uidTo) {
       });
     });
     lettersDispatch({ type: "save letters", payload: messages });
+    // setLoading(false);
   } catch (err) {
     console.log(err);
+    // setLoading(false);
   }
 }

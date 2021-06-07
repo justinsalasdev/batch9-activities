@@ -6,7 +6,7 @@ export default function Director() {
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>
-      <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} {...$("info")}>
+      <motion.div animate={{ y: 0 }} initial={{ y: -10 }} {...$("info")}>
         <SingleSelector mods={{ scroller: ["single"] }} />
       </motion.div>
     </div>

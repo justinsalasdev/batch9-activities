@@ -4,7 +4,6 @@ import genClass from "../../../helpers/genClass";
 import ChatBar from "../../ChatBar/ChatBar";
 import useLetterSender from "../../ChatBar/useLetterSender";
 import Messages from "../../Messages/Messages";
-import { SingleSelector } from "../../Selector/SingleSelector/SingleSelector";
 import usePrivateChat from "./usePrivateChat";
 
 export default function PrivateChat(props) {
@@ -12,16 +11,14 @@ export default function PrivateChat(props) {
   const $ = genClass({ block: "chat" });
   return (
     <div {...$()}>
-      <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} {...$("info")}>
-        {(chatName && (
-          <p {...$("name")}>
-            <span {...$("icon")}>
-              <IoIosChatbubbles />
-            </span>
-            <span {...$("text")}>{chatName}</span>
-          </p>
-        )) || <SingleSelector mods={{ scroller: ["single"] }} />}
-      </motion.div>
+      <div {...$("info")}>
+        <motion.p animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -10 }} {...$("name")}>
+          <span {...$("icon")}>
+            <IoIosChatbubbles />
+          </span>
+          <span {...$("text")}>{chatName}</span>
+        </motion.p>
+      </div>
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} messages={messages} />
       </div>

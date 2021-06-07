@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import { RiChatNewFill } from "react-icons/ri";
 import { FiMessageCircle } from "react-icons/fi";
@@ -24,10 +24,10 @@ export function PointerAction(props) {
 
   return (
     <div {...$()}>
-      <Link {...$("link")} to={to}>
+      <NavLink {...$("link")} to={to} activeClassName="pointer__link--current">
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
-      </Link>
+      </NavLink>
       {buttonAction && (
         <button {...$("action")} onClick={buttonAction}>
           <RiChatNewFill />
@@ -66,10 +66,10 @@ export function PointerLink(props) {
 
   return (
     <div {...$()}>
-      <Link {...$("link")} to={to}>
+      <NavLink {...$("link")} to={to} activeClassName="pointer__link--current">
         <span {...$("icon")}>{icons[icon]}</span>
         <span {...$("text")}>{text}</span>
-      </Link>
+      </NavLink>
     </div>
   );
 }
@@ -82,7 +82,7 @@ export function PointerImg(props) {
 
   return (
     <div {...$()}>
-      <Link {...$("link")} to={to}>
+      <NavLink {...$("link")} to={to} activeClassName="pointer__link--current">
         <img
           ref={imgRef}
           onError={handleImgError}
@@ -91,7 +91,7 @@ export function PointerImg(props) {
           alt="person icon"
         />
         <span {...$("text")}>{text}</span>
-      </Link>
+      </NavLink>
     </div>
   );
 }

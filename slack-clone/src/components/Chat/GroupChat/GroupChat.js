@@ -1,4 +1,4 @@
-import genClass from "../../../helpers/genClass";
+import genClass, { toggler } from "../../../helpers/genClass";
 import Messages from "../../Messages/Messages";
 import { MdGroup } from "react-icons/md";
 import ChatBar from "../../ChatBar/ChatBar";
@@ -14,15 +14,15 @@ export default function GroupChat(props) {
 
   return (
     <div {...$()}>
-      <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -20 }} {...$("info")}>
-        <p {...$("name")}>
+      <div {...$("info")}>
+        <motion.p animate={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -10 }} {...$("name")}>
           <span {...$("icon")}>
             <MdGroup />
           </span>
           <span {...$("text")}>{channelName}</span>
-        </p>
+        </motion.p>
         <Members membersData={membersData} propStyles={$("members").className} />
-      </motion.div>
+      </div>
 
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} messages={messages} />

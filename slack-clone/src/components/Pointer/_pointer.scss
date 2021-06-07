@@ -31,6 +31,11 @@
     &--active {
       background-color: $purple;
     }
+
+    &--current {
+      color: $white_09;
+      background-color: $purple_05;
+    }
   }
 
   &__text {
