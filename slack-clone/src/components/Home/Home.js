@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { FaReact } from "react-icons/fa";
 import { IoLogoSass } from "react-icons/io";
 import { SiFirebase, SiReactrouter, SiFramer } from "react-icons/si";
-import { RiArrowGoBackFill } from "react-icons/ri";
 
 const reqs = [
   "User is able to create account and login with email and password",

@@ -4,6 +4,7 @@ import isClean from "./isClean";
 export default async function createAccount(formData, setLoading, setAuthError, history) {
   try {
     if (isClean(Object.values(formData.errors))) {
+      setLoading(true);
       const {
         user: { displayName, uid, photoURL }
       } = await auth.createUserWithEmailAndPassword(formData.email, formData.password);
