@@ -22,7 +22,7 @@ export default function RoomCreator({ propStyles, mods }) {
 
   return (
     <div {...$()}>
-      <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -20 }} {...$("info")}>
+      <motion.div animate={{ y: 0 }} initial={{ y: -10 }} {...$("info")}>
         <input type="text" ref={fieldRef} {...$("field")} placeholder="Channel name" />
         <div {...$("members")}>
           <span {...$("counter")} ref={memberCountRef}>

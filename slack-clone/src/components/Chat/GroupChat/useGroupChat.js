@@ -12,9 +12,9 @@ export default function useGroupChat(props) {
   const peopleState = usePeopleState();
   const { uid: uidFrom } = useUserState();
 
-  const channelId = props.match.params.id;
-  const channelName = props.location.state.chatName;
-  const members = props.location.state.members;
+  const channelId = props.match.params?.id;
+  const channelName = props.location.state?.chatName;
+  const members = props.location.state?.members;
   const membersData = peopleState.people.filter(person => members.includes(person.uid));
 
   useEffect(() => {

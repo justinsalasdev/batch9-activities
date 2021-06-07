@@ -1,0 +1,10 @@
+.check {
+  width: 1em;
+  height: 1em;
+
+  &__path {
+    stroke: $purple;
+    fill: none;
+    stroke-width: 1;
+  }
+}

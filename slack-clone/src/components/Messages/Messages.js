@@ -1,9 +1,9 @@
 import genClass from "../../helpers/genClass";
 import Message from "../Message/Message";
 
-export default function Messages({ messages }) {
+export default function Messages({ messages, mods, propStyles }) {
   console.log("Messages");
-  const $ = genClass({ block: "messages" });
+  const $ = genClass({ block: "messages", mods, propStyles });
   return (
     <ul {...$()}>
       {messages.map((message, index) => {

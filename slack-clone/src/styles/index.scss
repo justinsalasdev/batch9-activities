@@ -6,6 +6,8 @@
 @import "./page";
 @import "./A0";
 @import "../components/Backdrop/backdrop";
+@import "../components/Check/check";
+@import "../components/Burger/burger";
 @import "../components/Loader/loader";
 @import "../components/LineForm/line-form";
 @import "../components/Line/line";
@@ -22,6 +24,7 @@
 @import "../components/Profile/profile";
 @import "../components/Nav/nav";
 @import "../components/Sidebar/sidebar";
+@import "../components/Home/home";
 @import "../components/App/app";
 
 //parents must be at the bottom

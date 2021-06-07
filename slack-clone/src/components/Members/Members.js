@@ -10,7 +10,7 @@ export default function Members({ membersData, propStyles }) {
   const $ = genClass({ block: "members", propStyles });
 
   return (
-    <div {...$()}>
+    <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -10 }} {...$()}>
       <span {...$("count")}>{membersData.length}</span>
       <button {...$("action")} onClick={() => expand(state => !state)}>
         <BiGroup />
@@ -47,6 +47,6 @@ export default function Members({ membersData, propStyles }) {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 }

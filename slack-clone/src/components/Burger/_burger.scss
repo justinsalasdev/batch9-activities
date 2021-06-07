@@ -1,0 +1,17 @@
+.burger {
+  background: $white_09;
+  border-top: 1px solid $white_09;
+  border-left: 1px solid $white_09;
+  color: $violet_350d36;
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0.4rem $violet_1817188;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > svg {
+    width: 1em;
+    height: 1em;
+  }
+}

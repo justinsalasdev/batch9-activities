@@ -1,8 +1,9 @@
 import { db } from "../firebase/firebase";
 import getDateString from "./getDateString";
 
-export default async function getShouts(shoutsDispatch, channelId) {
+export default async function getShouts(shoutsDispatch, channelId, setLoading) {
   try {
+    // setLoading(true);
     const shouts = [];
     const channelRef = db.collection("Channels").doc(channelId);
     const shoutsCol = channelRef.collection("Shouts").orderBy("timeStamp", "desc").limit(7);
@@ -19,8 +20,11 @@ export default async function getShouts(shoutsDispatch, channelId) {
         isoDate: getDateString(timeStamp?.toDate() || new Date(), "iso")
       });
     });
+
     shoutsDispatch({ type: "save shouts", payload: shouts });
+    // setLoading(false);
   } catch (err) {
     console.log(err);
+    // setLoading(false);
   }
 }
