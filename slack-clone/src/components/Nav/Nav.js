@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useHistory } from "react-router-dom";
 import genClass from "../../helpers/genClass";
 import useUserState from "../../hooks/user/useUserState";
 import Menu from "../Menu/Menu";
@@ -7,7 +6,7 @@ import useGetChannels from "../Menu/useGetChannels";
 import useGetPeople from "../Menu/useGetPeople";
 import Channels from "../MenuItems/Channels";
 import People from "../MenuItems/People";
-import { PointerAction } from "../Pointer/Pointer";
+import { PointerLink } from "../Pointer/Pointer";
 
 const variants = {
   initial: {
@@ -22,7 +21,6 @@ const variants = {
 
 export default function Nav({ propStyles }) {
   console.log("Nav");
-  const navigator = useHistory();
   const userState = useUserState();
 
   if (!userState.uid || !userState.displayName) {
@@ -34,12 +32,10 @@ export default function Nav({ propStyles }) {
   return (
     <motion.nav {...$()} variants={variants} animate="final" initial="initial">
       {/* <div className></div> */}
-      <PointerAction
-        buttonAction={() => {
-          navigator.push("/people/new");
-        }}
-        to="/dms"
-        text="DMs"
+      <PointerLink exact to="/" text="Home" icon="home" propStyles={$("link").className} />
+      <PointerLink
+        to="/people/new"
+        text="Chat someone"
         icon="message"
         propStyles={$("link").className}
       />

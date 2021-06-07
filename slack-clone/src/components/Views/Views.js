@@ -6,6 +6,7 @@ import Form from "../Form/Form";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import Home from "../Home/Home";
 
 export default function Views({ expand }) {
   console.log("Views");
@@ -25,6 +26,7 @@ export default function Views({ expand }) {
       }
       prevLocRef.current = pathname;
     }
+    // eslint-disable-next-line
   }, [pathname]);
 
   return (
@@ -38,12 +40,8 @@ export default function Views({ expand }) {
       <Route path="/login">
         <Form />
       </Route>
-
-      <Route path="/dms">
-        <div>Dms pages</div>
-      </Route>
       <Route path="/">
-        <div>Home</div>
+        <Home />
       </Route>
     </Switch>
   );

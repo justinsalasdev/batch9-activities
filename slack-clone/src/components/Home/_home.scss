@@ -1,0 +1,58 @@
+.home {
+  color: $purple;
+  max-width: 40rem;
+  width: 90%;
+  //   background: red;
+
+  &__heading {
+    font-weight: 900;
+    color: $violet_350d36;
+    margin-bottom: 0.4rem;
+  }
+  &__req-heading {
+    margin-bottom: 0.2rem;
+  }
+  &__tech-heading {
+    margin-bottom: 0.5rem;
+  }
+
+  &__req-summary {
+    margin-bottom: 0.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: baseline;
+    padding: 0.2rem;
+  }
+  &__req {
+    padding-left: 0.2rem;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &__techs {
+    display: flex;
+    padding: 0.2rem;
+    flex-wrap: wrap;
+  }
+
+  &__tech {
+    background: $white_04;
+    border-top: 1px solid $white_09;
+    border-left: 1px solid $white_09;
+    color: $black_05;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+
+    font-size: 2.5rem;
+  }
+}

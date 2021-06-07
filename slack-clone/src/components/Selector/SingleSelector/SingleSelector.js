@@ -4,7 +4,6 @@ import { MdContacts } from "react-icons/md";
 import React from "react";
 import useSingleSelect from "./useSingleSelect";
 import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
 
 export function SingleSelector({ mods, propStyles }) {
   console.log("SingleSelector");

@@ -43,14 +43,6 @@
     top: $chat-info-h + 0.6rem;
     left: 0.5rem;
     z-index: $sidebar-expander-i;
-    background: $white_09;
-    border-top: 1px solid $white_09;
-    border-left: 1px solid $white_09;
-    color: $violet_350d36;
-    height: 2.2rem;
-    width: 2.2rem;
-    border-radius: 50%;
-    box-shadow: 0 0 0.4rem $violet_1817188;
   }
 
   @media screen and (max-width: 484px) {

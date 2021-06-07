@@ -25,18 +25,6 @@ Messages
     -message
 
 
-DMs
- -dm1
-   -name (name of user 2 if owner is user1)
-   -user 1 
-   -user 2 
-   -messages (get message with dmId)
-
-
- -dm2
- -dm3
- -dm4
- - 
 
 
 users

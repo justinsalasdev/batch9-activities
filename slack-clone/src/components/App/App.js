@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { auth } from "../../firebase/firebase";
-import { GiHamburgerMenu } from "react-icons/gi";
 import getUserFields from "../../helpers/getUserFields";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
 import Sidebar from "../Sidebar/Sidebar";
 import { useHistory } from "react-router-dom";
 import genClass, { toggler as $t } from "../../helpers/genClass";
 import Backdrop from "../Backdrop/Backdrop";
-import { motion } from "framer-motion";
 import Views from "../Views/Views";
+import Burger from "../Burger/Burger";
 
 function onAuthStateChange(auth, userDispatch, navigator) {
   return auth.onAuthStateChanged(user => {
@@ -56,16 +55,12 @@ export default function App() {
         onClick={() => expand(false)}
       />
 
-      <motion.button
-        drag
-        dragConstraints={constraintsRef}
-        dragElastic={0}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 50 }}
-        {...$("expander")}
-        onClick={() => expand(state => !state)}
-      >
-        <GiHamburgerMenu />
-      </motion.button>
+      <Burger
+        propStyles={$("expander").className}
+        isExpanded={isExpanded}
+        expand={expand}
+        constraintsRef={constraintsRef}
+      />
 
       <div {...$("views")}>
         <Views expand={expand} />
