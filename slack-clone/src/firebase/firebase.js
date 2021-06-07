@@ -18,9 +18,9 @@ const auth = firebase.auth();
 const storage = firebase.storage();
 const db = firebase.firestore();
 
-auth.useEmulator("http://localhost:9099");
-storage.useEmulator("localhost", 9199);
-db.useEmulator("localhost", 8080);
+// auth.useEmulator("http://localhost:9099");
+// storage.useEmulator("localhost", 9199);
+// db.useEmulator("localhost", 8080);
 
 const setTimeStamp = firebase.firestore.FieldValue.serverTimestamp;
 const getId = firebase.firestore.FieldPath.documentId;
