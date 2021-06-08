@@ -1,12 +1,12 @@
 import { db } from "../firebase/firebase";
 import getDateString from "./getDateString";
 
-export default async function getShouts(shoutsDispatch, channelId, setLoading) {
+export default async function getShouts(shoutsDispatch, channelId) {
   try {
     // setLoading(true);
     const shouts = [];
     const channelRef = db.collection("Channels").doc(channelId);
-    const shoutsCol = channelRef.collection("Shouts").orderBy("timeStamp", "desc").limit(7);
+    const shoutsCol = channelRef.collection("Shouts").orderBy("timeStamp", "desc").limit(10);
     const shoutsCursor = await shoutsCol.get();
 
     shoutsCursor.forEach(shout => {

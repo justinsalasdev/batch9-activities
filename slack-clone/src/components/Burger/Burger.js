@@ -2,16 +2,21 @@ import { motion } from "framer-motion";
 import genClass from "../../helpers/genClass";
 
 const pathVars = {
-  closed: { fill: "purple", rotate: 0, scale: 1.2 },
-  expanded: { fill: "violet", rotate: 90, scale: 1 }
+  closed: { fill: "purple", scale: 1.1 },
+  expanded: { fill: "violet", scale: 1 }
+};
+
+const buttonVars = {
+  closed: { rotate: 0 },
+  expanded: { rotate: 90 }
 };
 
 export default function Burger({ constraintsRef, isExpanded, expand, mods, propStyles }) {
   const $ = genClass({ block: "burger", mods, propStyles });
   return (
     <motion.button
-      initial="hidden"
-      animate="shown"
+      variants={buttonVars}
+      animate={isExpanded ? "expanded" : "closed"}
       drag
       dragConstraints={constraintsRef}
       dragElastic={0}
@@ -21,6 +26,7 @@ export default function Burger({ constraintsRef, isExpanded, expand, mods, propS
     >
       <motion.svg viewBox="0 0 20 20" {...$("icon")}>
         <motion.path
+          style={{ y: -0.8 }}
           variants={pathVars}
           animate={isExpanded ? "expanded" : "closed"}
           fill="none"

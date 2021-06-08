@@ -22,7 +22,7 @@ export default function PrivateChat(props) {
       <div {...$("scroller")}>
         <Messages propStyles={$("messages").className} messages={messages} />
       </div>
-      <ChatBar propStyles={$("bar").className} sender={useLetterSender(uidFrom, uidTo)} />
+      <ChatBar propStyles={$("chat-bar").className} sender={useLetterSender(uidFrom, uidTo)} />
     </div>
   );
 }

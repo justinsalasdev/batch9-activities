@@ -42,6 +42,7 @@ export default function Avatar({ photoURL, propStyles }) {
         accept="image/*"
         type="file"
         onChange={updateAvatar}
+        autoComplete="off"
       />
       {!isLoading && (
         <label {...$("icon")} htmlFor="file">

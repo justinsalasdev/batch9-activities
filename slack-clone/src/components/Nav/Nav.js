@@ -21,13 +21,14 @@ const variants = {
 
 export default function Nav({ propStyles }) {
   console.log("Nav");
-  const userState = useUserState();
-
-  if (!userState.uid || !userState.displayName) {
-    return <NoNav propStyles={propStyles} />;
-  }
 
   const $ = genClass({ block: "nav", propStyles });
+
+  const userState = useUserState();
+
+  if (!userState.uid) {
+    return <NoNav />;
+  }
 
   return (
     <motion.nav {...$()} variants={variants} animate="final" initial="initial">

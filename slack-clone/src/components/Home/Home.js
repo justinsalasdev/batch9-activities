@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { FaReact } from "react-icons/fa";
 import { IoLogoSass } from "react-icons/io";
 import { SiFirebase, SiReactrouter, SiFramer } from "react-icons/si";
-import { RiArrowGoBackFill } from "react-icons/ri";
 
 const reqs = [
   "User is able to create account and login with email and password",
@@ -33,14 +32,20 @@ const colors = ["#0693E3", "#e82456", "#f5b606", "#000", "#000"];
 
 const techVars = {
   loop: i => ({
-    y: -10,
-    "border-radius": `1rem`,
-    color: colors[i],
-    background: "rgba(254, 254, 254, 0.9)",
+    y: [0, -10, 0],
+    "border-radius": [".2rem", "1rem", ".2rem"],
+    color: ["rgba(0,0,0,.5)", colors[i], "rgba(0,0,0,.5)"],
+    background: [
+      "rgba(254, 254, 254, 0.4)",
+      "rgba(254, 254, 254, 0.9)",
+      "rgba(254, 254, 254, 0.4)"
+    ],
     transition: {
-      delay: i * 0.5,
-      duration: 1,
-      yoyo: Infinity
+      delay: i * 1,
+      duration: 2,
+      repeat: Infinity,
+      repeatDelay: 1,
+      ease: "easeInOut"
     }
   })
 };
@@ -59,7 +64,6 @@ export default function Home({ mods, propStyles }) {
             return (
               <motion.li
                 custom={index}
-                initial="hidden"
                 animate="shown"
                 variants={liVars}
                 {...$("item")}

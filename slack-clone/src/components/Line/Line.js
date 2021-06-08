@@ -34,6 +34,7 @@ export default React.memo(function Line(props) {
     <div {...$()}>
       <div {...$("div")}>
         <input
+          autoComplete="off"
           placeholder={placeholder}
           {...$("field")}
           id={id}

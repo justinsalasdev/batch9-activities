@@ -16,7 +16,7 @@ const variants = {
 };
 
 export default function Backdrop({ isExpanded, onClick }) {
-  const isMobile = useMediaQuery("(max-width: 484px)");
+  const isMobile = useMediaQuery("(max-width: 700px)");
   const $ = genClass({ block: "backdrop" });
   return (
     <motion.div

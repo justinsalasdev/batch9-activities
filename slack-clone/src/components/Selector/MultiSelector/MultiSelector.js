@@ -40,6 +40,7 @@ export function MultiSelector(props) {
           <FiSearch />
         </label>
         <input
+          autoComplete="off"
           spellCheck={false}
           ref={inputRef}
           {...$("field")}

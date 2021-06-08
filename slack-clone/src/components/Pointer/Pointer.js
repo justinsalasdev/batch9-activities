@@ -6,6 +6,7 @@ import { BiGroup } from "react-icons/bi";
 import { RiChatNewLine, RiHome2Line } from "react-icons/ri";
 import React from "react";
 import useImageError from "../../hooks/useImageError";
+import defaultAvatar from "../../assets/images/avatar.svg";
 // import defaultAvatar from "../../assets/images/avatar.svg";
 
 //props "link", "type", "text", "action"
@@ -47,7 +48,7 @@ export function PointerOption(props) {
       <div {...$("link")} onClick={optionAction}>
         <img
           ref={imgRef}
-          src={photoURL}
+          src={photoURL || defaultAvatar}
           {...$("icon")}
           alt="person icon"
           onError={handleImgError}
@@ -85,7 +86,7 @@ export function PointerImg(props) {
         <img
           ref={imgRef}
           onError={handleImgError}
-          src={photoURL}
+          src={photoURL || defaultAvatar}
           {...$("icon")}
           alt="person icon"
         />
