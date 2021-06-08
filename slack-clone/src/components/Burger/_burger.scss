@@ -1,16 +1,20 @@
 .burger {
+  margin: 0;
   background: $white_09;
   border-top: 1px solid $white_09;
   border-left: 1px solid $white_09;
   color: $violet_350d36;
-  height: 2.4rem;
-  width: 2.4rem;
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 50%;
   box-shadow: 0 0 0.4rem $violet_1817188;
   display: flex;
   align-items: center;
   justify-content: center;
   & > svg {
+    display: flex;
+    align-self: center;
+    justify-content: center;
     width: 1em;
     height: 1em;
   }

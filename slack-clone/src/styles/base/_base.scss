@@ -33,17 +33,28 @@
 }
 
 $min_width: 300px;
-$max_width: 1500px;
-$min_font: 12px;
+$max_width: 1200px;
+$min_font: 16px;
 $max_font: 24px;
 
 html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
   scroll-behavior: smooth;
   height: 100%;
+  position: relative;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
 }
 
 body {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   box-sizing: border-box;
   font-family: "Prompt", sans-serif;
   font-weight: 400;
@@ -52,12 +63,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  align-items: stretch;
-}
-
-#root {
-  width: 100%;
 }
 
 $mod_1: 1.2; // mobile

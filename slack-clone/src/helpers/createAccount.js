@@ -6,12 +6,12 @@ export default async function createAccount(formData, setLoading, setAuthError, 
     if (isClean(Object.values(formData.errors))) {
       setLoading(true);
       const {
-        user: { displayName, uid, photoURL }
+        user: { uid, photoURL }
       } = await auth.createUserWithEmailAndPassword(formData.email, formData.password);
       //no need to run onAuthState updates context value upon signup
       // userDispatch({ type: "save user", payload: getUserFields(userCredential.user) });
       db.collection("Users").doc(uid).set({
-        name: displayName,
+        name: "User",
         uid,
         photoURL
       });
