@@ -12,6 +12,7 @@
   }
 
   &__info {
+    grid-row: 1/2;
     display: flex;
     align-items: center;
     background-color: $violet_833883;
@@ -93,9 +94,13 @@
   }
 
   &__scroller {
+    grid-row: 2/3;
+    width: 100%;
+    height: 100%;
     overflow-y: scroll;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  &__chat-bar {
+    grid-row: 3/4;
   }
 }

@@ -30,7 +30,7 @@ export default function GroupChat(props) {
         <div {...$("scroller")}>
           <Messages propStyles={$("messages").className} messages={messages} />
         </div>
-        <ChatBar propStyles={$("bar").className} sender={useShoutSender(uidFrom, channelId)} />
+        <ChatBar propStyles={$("chat-bar").className} sender={useShoutSender(uidFrom, channelId)} />
       </div>
     </>
   );

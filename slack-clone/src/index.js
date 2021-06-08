@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import App from "./components/App/App";
 import "./styles/index.scss";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import PeopleProvider from "./providers/People";
 import LettersProvider from "./providers/LettersProvider";
 import UserProvider from "./providers/User";
@@ -11,7 +11,7 @@ import ShoutsProvider from "./providers/ShoutsProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <PeopleProvider>
         <UserProvider>
           <LettersProvider>
@@ -21,7 +21,7 @@ ReactDOM.render(
           </LettersProvider>
         </UserProvider>
       </PeopleProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
