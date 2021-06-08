@@ -7,12 +7,13 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Home from "../Home/Home";
+import Guard from "../Guard/Guard";
 
 export default function Views({ expand }) {
   console.log("Views");
   const { pathname } = useLocation();
   const prevLocRef = useRef();
-  const isMobile = useMediaQuery("(max-width: 484px)");
+  const isMobile = useMediaQuery("(max-width: 700px)");
 
   useEffect(() => {
     console.log(prevLocRef.current);
@@ -31,16 +32,14 @@ export default function Views({ expand }) {
 
   return (
     <Switch>
-      <Route path="/people/new" component={Director} />
-      <Route path="/people/:id" component={PrivateChat} />
       <Route path="/channels/new">
         <RoomCreator mods={{ info: ["creator"], members: ["creator"] }} />
       </Route>
-      <Route path="/channels/:id" component={GroupChat} />
-      <Route path="/login">
-        <Form />
-      </Route>
-      <Route path="/">
+      <Guard path="/channels/:id" component={GroupChat} />
+      <Guard path="/people/new" component={Director} />
+      <Guard path="/people/:id" component={PrivateChat} />
+      <Route path="/login" component={Form} />
+      <Route path="/" exact>
         <Home />
       </Route>
     </Switch>

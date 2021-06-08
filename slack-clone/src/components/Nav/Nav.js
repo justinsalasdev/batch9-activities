@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import genClass from "../../helpers/genClass";
+import useUserState from "../../hooks/user/useUserState";
 import Menu from "../Menu/Menu";
 import useGetChannels from "../Menu/useGetChannels";
 import useGetPeople from "../Menu/useGetPeople";
@@ -22,6 +23,12 @@ export default function Nav({ propStyles }) {
   console.log("Nav");
 
   const $ = genClass({ block: "nav", propStyles });
+
+  const userState = useUserState();
+
+  if (!userState.uid) {
+    return <NoNav />;
+  }
 
   return (
     <motion.nav {...$()} variants={variants} animate="final" initial="initial">

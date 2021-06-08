@@ -17,6 +17,7 @@ export default function LineForm({ initialName, mods, error }) {
       ) : (
         <div {...$("div")}>
           <input
+            autoComplete="off"
             spellCheck="false"
             {...$("field")}
             type="text"

@@ -51,6 +51,8 @@
     color: inherit;
     width: 1.1em;
     height: 1.1em;
+    object-fit: cover;
+    object-position: center;
     &--left {
       padding-left: 0;
     }

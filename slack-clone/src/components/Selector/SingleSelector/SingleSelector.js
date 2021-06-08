@@ -17,6 +17,7 @@ export function SingleSelector({ mods, propStyles }) {
           <MdContacts />
         </label>
         <input
+          autoComplete="off"
           spellCheck={false}
           ref={inputRef}
           {...$("field")}

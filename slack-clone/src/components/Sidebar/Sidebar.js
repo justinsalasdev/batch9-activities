@@ -20,7 +20,7 @@ const variants = {
 
 export default function Sidebar({ propStyles, isExpanded }) {
   console.log("Sidebar");
-  const isMobile = useMediaQuery("(max-width:484px");
+  const isMobile = useMediaQuery("(max-width:700px");
   const $ = genClass({ block: "sidebar", propStyles });
 
   return (
