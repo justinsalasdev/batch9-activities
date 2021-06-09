@@ -1,13 +1,13 @@
-####SLACK CLONE
+#### SLACK CLONE
 
-#####Requirements
+##### Requirements
 
 - User can create an account and login
 - User can send and receive direct messages to and from another user
 - User can create a channel and add other users into it
 - User can send and receive messages to and from a channel
 
-#####Technologies and methods
+##### Technologies and methods
 
 - Core - React JS
 - State management - React Context API
