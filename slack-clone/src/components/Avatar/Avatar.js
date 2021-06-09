@@ -3,6 +3,7 @@ import { BiImageAdd } from "react-icons/bi";
 import defaultAvatar from "../../assets/images/avatar.svg";
 import Loader from "../Loader/Loader";
 import useUserDispatcher from "../../hooks/user/useUserDispatcher";
+import useUserState from "../../hooks/user/useUserState";
 import uploadPhoto from "../../helpers/uploadPhoto";
 import genClass from "../../helpers/genClass";
 import useImageError from "../../hooks/useImageError";
@@ -11,12 +12,13 @@ export default function Avatar({ photoURL, propStyles }) {
   const { imgRef, handleImgError } = useImageError();
   const [isLoading, setLoading] = useState(false);
   const userDispatch = useUserDispatcher();
+  const userState = useUserState();
   const $ = genClass({ block: "avatar", propStyles });
 
   function updateAvatar(e) {
     const imageFile = e.target.files[0];
     if (imageFile) {
-      uploadPhoto(imageFile, setLoading, userDispatch);
+      uploadPhoto(imageFile, setLoading, userDispatch, userState.uid);
     } else {
       console.log("nothing selected");
     }

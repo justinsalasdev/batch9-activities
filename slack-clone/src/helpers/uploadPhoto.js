@@ -3,6 +3,7 @@ import { auth, db, storage } from "../firebase/firebase";
 export default function uploadPhoto(imageFile, setLoading, userDispatch) {
   //params imageFile, setLoading, userDispatch
   const user = auth.currentUser;
+  console.log(user);
   const ref = storage.ref(`images/${user.uid}/${imageFile.name}`);
   const uploadTask = ref.put(imageFile);
   uploadTask.on(
