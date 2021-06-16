@@ -1,0 +1,38 @@
+//SCENARIO  
+user goes to bank
+opens account
+account approved
+log-in
+must change password first before using features
+
+
+admin actions
+    -get all user data
+    -create user account [email and password] // user can't create account on his own
+    -delete user account
+    -update user data [name, address, birthday] //must go through admin 
+    -update user balance //
+
+user actions 
+    - transfer balance --> to account number
+    - change password
+
+    [budget app]
+        -expenses [CRUD]
+        -balance after expenses must be shown
+
+    //additional features
+    - **request account closing
+
+user info
+    name   
+    birthday 
+    address
+    balance
+    account number --> random generator [5 digits only]
+
+user dashboard
+    - balance
+    - userInfo [modal]
+
+
