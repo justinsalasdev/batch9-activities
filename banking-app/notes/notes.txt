@@ -13,18 +13,38 @@ admin actions
     -update user data [name, address, birthday] //must go through admin 
     -update user balance //
 
+
+
+
+
+
+
+
+
+
+
+
 user actions 
     - transfer balance --> to account number
-    - change password
+
 
     [budget app]
         -expenses [CRUD]
         -balance after expenses must be shown
 
     //additional features
+      **change password
     - **request account closing
 
+
+admin info
+    email
+    password //not hashed - just plain text
+
 user info
+    isAdmin??
+    email - for authentication
+    password - for authentication
     name   
     birthday 
     address
@@ -36,3 +56,7 @@ user dashboard
     - userInfo [modal]
 
 
+
+
+Users Collection
+    

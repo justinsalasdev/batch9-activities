@@ -7,6 +7,7 @@ specifiers:
   node-sass: ^6.0.0
   react: ^17.0.2
   react-dom: ^17.0.2
+  react-icons: ^4.2.0
   react-scripts: 4.0.3
   web-vitals: ^1.0.1
 
@@ -17,6 +18,7 @@ dependencies:
   node-sass: 6.0.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-icons: 4.2.0_react@17.0.2
   react-scripts: 4.0.3_node-sass@6.0.0+react@17.0.2
   web-vitals: 1.1.2
 
@@ -9732,6 +9734,14 @@ packages:
 
   /react-error-overlay/6.0.9:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
+    dev: false
+
+  /react-icons/4.2.0_react@17.0.2:
+    resolution: {integrity: sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-is/16.13.1:
