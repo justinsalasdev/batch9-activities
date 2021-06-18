@@ -6,12 +6,12 @@ import "firebase/app-check";
 import createDMId from "../helpers/createDMId";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAzQhRKT9UhKG-ArC5-p8uNCVELWQXM7Yc",
-  authDomain: "slack-clone-c2d0b.firebaseapp.com",
-  projectId: "slack-clone-c2d0b",
-  storageBucket: "slack-clone-c2d0b.appspot.com",
-  messagingSenderId: "668223952571",
-  appId: "1:668223952571:web:7397301c829bd2c6347b9e"
+  apiKey: "AIzaSyDku-Gi0CviDzQvmvP5CvUeWK3dEpdFEeo",
+  authDomain: "slack-clone-97162.firebaseapp.com",
+  projectId: "slack-clone-97162",
+  storageBucket: "slack-clone-97162.appspot.com",
+  messagingSenderId: "733729208163",
+  appId: "1:733729208163:web:11b1e07fa61c3c1fe7c556"
 };
 
 firebase.initializeApp(firebaseConfig);
