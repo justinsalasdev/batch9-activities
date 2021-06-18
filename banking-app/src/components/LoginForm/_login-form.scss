@@ -1,0 +1,33 @@
+.login-form {
+  background-color: $white;
+  max-width: 25rem;
+  width: 95%;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid navy;
+  border-left: 1px solid navy;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 1rem 1rem 0 0.2rem $blue;
+
+  &__heading {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $navy;
+  }
+
+  &__line {
+    margin-bottom: 0.5rem;
+  }
+
+  &__submit {
+    width: 5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin: 1rem;
+    color: $white;
+  }
+}

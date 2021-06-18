@@ -1,13 +1,13 @@
-import { AiOutlineMail } from "react-icons/ai";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 import genClass from "../../helpers/genClass";
 
 const icons = {
-  email: <AiOutlineMail />,
-  password: <RiLockPasswordLine />
+  email: <MdEmail />,
+  password: <RiLockPasswordFill />
 };
 
-export default function Icon({ type }) {
-  const $ = genClass({ block: "icon" });
+export default function Icon({ type, ps }) {
+  const $ = genClass({ block: "icon", ps });
   return <div {...$()}>{icons[type]}</div>;
 }
