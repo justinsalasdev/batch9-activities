@@ -1,5 +1,5 @@
 export default function genClass(config) {
-  const { block, mods, propStyles } = config;
+  const { block, mods, ps } = config;
   let blockString = "";
 
   if (block) {
@@ -10,8 +10,8 @@ export default function genClass(config) {
       " " + mods[block].map(mod => mod && `${block}--${mod}`).join(" ") || "";
   }
 
-  if (propStyles) {
-    blockString += " " + propStyles;
+  if (ps) {
+    blockString += " " + ps;
   }
 
   return function (elem) {

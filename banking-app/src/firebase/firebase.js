@@ -6,3 +6,10 @@ const firebaseConfig = {
   messagingSenderId: "826635141255",
   appId: "1:826635141255:web:37f13b8d400fad9b2f3822"
 };
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+auth.useEmulator("http://localhost:9099");
+storage.useEmulator("localhost", 9199);
+db.useEmulator("localhost", 8080);
