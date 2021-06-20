@@ -4,23 +4,25 @@ import useEmailValidator from "../Line/useEmailValidator";
 import usePwValidator from "../Line/usePwValidator";
 import genClass from "../../helpers/genClass";
 import Button from "../Button/Button";
+import useSubmit from "./useSubmit";
 
 export default function LoginForm() {
-  const { current: formErrors } = useRef({});
+  const {
+    current: { formData, formErrors }
+  } = useRef({ formData: {}, formErrors: {} });
 
-  function submitHandler(e) {
-    e.preventDefault();
-    console.log(formErrors);
-  }
+  const { error, isLoading, handleSubmit } = useSubmit(formData, formErrors);
 
   const $ = genClass({ block: "login-form" });
   return (
-    <form {...$()} onSubmit={submitHandler}>
+    <form {...$()} onSubmit={handleSubmit}>
       <p {...$("heading")}>Login</p>
+      <p {...$("toolkit")}>some errors</p>
       <Line
         id="email"
         type="text"
         placeholder="Email"
+        formData={formData}
         validator={useEmailValidator(formErrors)}
         ps={$("line").className}
       />
@@ -28,15 +30,16 @@ export default function LoginForm() {
         id="password"
         type="password"
         placeholder="Password"
+        formData={formData}
         validator={usePwValidator(formErrors)}
       />
 
       <Button
         type="submit"
-        text="Submit"
+        text={isLoading ? "..." : "Submit"}
         ps={$("submit").className}
         clickHandler={() => {
-          console.log(formErrors);
+          console.log("clicked");
         }}
       />
     </form>

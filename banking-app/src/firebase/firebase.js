@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBMz6dQ-8Ih7TF88x8_uOswKwz_xx9WRNM",
   authDomain: "banking-app-2782b.firebaseapp.com",
@@ -10,6 +12,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-auth.useEmulator("http://localhost:9099");
-storage.useEmulator("localhost", 9199);
 db.useEmulator("localhost", 8080);
+
+export { db };

@@ -6,10 +6,18 @@ import Icon from "../Icon/Icon";
 //type =
 //placeholder =
 //validator = customHook that returns fieldError <String>
-export default function Line({ id, type, placeholder, validator, ps }) {
+export default function Line({
+  id,
+  type,
+  placeholder,
+  validator,
+  ps,
+  formData
+}) {
   console.log("Line");
   const [fieldValue, setFieldValue] = useState("");
   const fieldError = validator(fieldValue);
+  formData[id] = fieldValue;
   const $ = genClass({ block: "line", ps });
 
   function handleChange(e) {
