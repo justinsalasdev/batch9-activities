@@ -3,19 +3,22 @@ import { useRef } from "react";
 export default function (formErrors) {
   return function usePwValidator(fieldValue) {
     const errorRef = useRef("initial");
+    const isDirty = errorRef.current !== "initial";
 
-    if (!fieldValue && errorRef.current !== "initial") {
+    if (!fieldValue && isDirty) {
       errorRef.current = "password is required";
-      formErrors["password"] = errorRef.current;
     } else if (fieldValue && fieldValue.length < 6) {
-      errorRef.current = "password must be at least 6 characters";
-      formErrors["password"] = errorRef.current;
+      errorRef.current = "must be at least 6 characters";
     } else {
-      if (errorRef.current === "initial") {
-        formErrors["password"] = "initial";
-      }
       errorRef.current = "";
     }
+
+    if (!isDirty) {
+      formErrors["password"] = "initial";
+    } else {
+      formErrors["password"] = errorRef.current;
+    }
+
     return errorRef.current;
   };
 }

@@ -15,8 +15,14 @@
     text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     color: $navy;
+  }
+
+  &__toolkit {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: rgba($red, 0.8);
   }
 
   &__line {

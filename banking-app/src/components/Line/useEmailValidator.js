@@ -5,18 +5,20 @@ const emailRegex =
 export default function (formErrors) {
   return function useEmailValidator(fieldValue) {
     const errorRef = useRef("initial");
+    const isDirty = errorRef.current !== "initial";
 
-    if (!fieldValue && errorRef.current !== "initial") {
+    if (!fieldValue && isDirty) {
       errorRef.current = "email is required";
-      formErrors["email"] = errorRef.current;
-    } else if (fieldValue && !emailRegex.test(fieldValue)) {
+    } else if (!emailRegex.test(fieldValue) && isDirty) {
       errorRef.current = "email is invalid";
-      formErrors["email"] = errorRef.current;
     } else {
-      if (errorRef.current === "initial") {
-        formErrors["email"] = "initial";
-      }
       errorRef.current = "";
+    }
+
+    if (!isDirty) {
+      formErrors["email"] = "initial";
+    } else {
+      formErrors["email"] = errorRef.current;
     }
 
     return errorRef.current;
