@@ -1,11 +1,12 @@
-import { MdEmail, MdSecurity } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { HiUserCircle } from "react-icons/hi";
-import { SiFirebase, SiFramer, SiNextDotJs } from "react-icons/si";
+import { SiFirebase, SiFramer } from "react-icons/si";
 import { BsInfoSquareFill, BsFillPersonPlusFill } from "react-icons/bs";
 import { IoMdSend, IoLogoBitcoin, IoLogoSass } from "react-icons/io";
-import { ImCancelCircle, ImCheckboxChecked } from "react-icons/im";
-import { AiFillWarning, AiOutlineNumber } from "react-icons/ai";
+import { ImCancelCircle } from "react-icons/im";
+import { AiOutlineNumber } from "react-icons/ai";
+import { GoDiffAdded } from "react-icons/go";
 import genClass from "../../helpers/style/genClass";
 
 //migration-done
@@ -17,12 +18,9 @@ const icons = {
   balance: <IoLogoBitcoin />,
   info: <BsInfoSquareFill />,
   add: <BsFillPersonPlusFill />,
+  plus: <GoDiffAdded />,
   send: <IoMdSend />,
   cancel: <ImCancelCircle />,
-  shield: <MdSecurity />,
-  warning: <AiFillWarning />,
-  success: <ImCheckboxChecked />,
-  nextjs: <SiNextDotJs />,
   sass: <IoLogoSass />,
   firebase: <SiFirebase />,
   framer: <SiFramer />,

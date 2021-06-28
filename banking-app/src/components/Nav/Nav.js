@@ -20,6 +20,13 @@ export default function Nav() {
       <ul {...$("list")}>
         {isAuth && (
           <li {...$("item")}>
+            <NavLink {...$("link")} to="/budget">
+              BUDGET
+            </NavLink>
+          </li>
+        )}
+        {isAuth && (
+          <li {...$("item")}>
             <NavLink {...$("link")} to="/history">
               HISTORY
             </NavLink>
