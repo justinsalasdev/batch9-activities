@@ -1,7 +1,7 @@
-import getValidators from "../helpers/validation/getValidators";
-import iterateCheck from "../helpers/validation/iterateCheck";
+import getValidators from "./getValidators";
+import iterateCheck from "./iterateCheck";
 
-export default function usePassword(formErrors) {
+export default function checkPassword(formErrors) {
   //password regex for nominating password only
   // const passwordRgx =
   //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{3,}$/;

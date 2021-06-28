@@ -39,6 +39,8 @@ export function useUserState() {
 
 function reducer(state, action) {
   switch (action.type) {
+    case "start":
+      return { ...state, isLoading: true };
     case "save":
       return { ...state, ...action.payload, isLoading: false };
     case "delete":

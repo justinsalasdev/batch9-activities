@@ -1,12 +1,12 @@
-import genClass from "../../helpers/style/genClass"; //ok
-import useCurrency from "../../hooks/useCurrency"; //ok
-import useAccount from "../../hooks/useAccount"; //ok
-import useForm from "../../hooks/useForm"; //ok
-import Icon from "../Icon/Icon"; //ok
-import Line from "../Line/Line"; //ok
+import genClass from "../../helpers/style/genClass";
+import useForm from "../../hooks/useForm";
+import Icon from "../Icon/Icon";
+import Line from "../Line/Line";
 import { motion } from "framer-motion";
 import { buttonVars, submitVars, variants } from "../Sender/variants";
 import useTransfer from "./useTransfer";
+import checkAccount from "../../helpers/validation/checkAccount";
+import checkCurrency from "../../helpers/validation/checkCurrency";
 
 export default function Sender({ ps, cancel, placeholder, account, balance }) {
   const [formData, formErrors] = useForm();
@@ -27,7 +27,7 @@ export default function Sender({ ps, cancel, placeholder, account, balance }) {
         type="text"
         placeholder={"Destination account"}
         formData={formData}
-        validator={useAccount(formErrors)}
+        validator={checkAccount(formErrors)}
         ps={$("line").className}
         mods={{ div: ["transactor"] }}
       />
@@ -36,7 +36,7 @@ export default function Sender({ ps, cancel, placeholder, account, balance }) {
         type="text"
         placeholder={placeholder}
         formData={formData}
-        validator={useCurrency(formErrors)}
+        validator={checkCurrency(formErrors)}
         ps={$("line").className}
         mods={{ div: ["transactor"] }}
       />

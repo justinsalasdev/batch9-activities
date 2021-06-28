@@ -15,13 +15,9 @@ export default function useLogin(formData, formErrors) {
     try {
       if (isClean(formErrors)) {
         dispatch({ type: "start" });
-        const userId = await authenticate(formData);
-
-        userDispatch({
-          type: "save",
-          payload: { uid: userId }
-        });
+        await authenticate(formData);
         dispatch({ type: "done" });
+        userDispatch({ type: "start" });
       } else {
         return;
       }

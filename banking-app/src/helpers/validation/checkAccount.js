@@ -1,7 +1,7 @@
-import getValidators from "../helpers/validation/getValidators";
-import iterateCheck from "../helpers/validation/iterateCheck";
+import getValidators from "./getValidators";
+import iterateCheck from "./iterateCheck";
 
-export default function useAccount(formErrors) {
+export default function checkAccount(formErrors) {
   const numRgx = /^[0-9]+$/;
   const validators = getValidators("account", [
     ["isRequired"],

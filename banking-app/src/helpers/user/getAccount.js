@@ -1,6 +1,7 @@
 import { db } from "../../firebase/firebase";
 export default function getAccount(userId) {
   return new Promise(async (resolve, reject) => {
+    console.log("account get runs");
     try {
       const accountsSnapshot = await db
         .collection("Accounts")

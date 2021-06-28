@@ -1,20 +1,27 @@
 import Line from "../Line/Line";
 import genClass, { toggler as $t } from "../../helpers/style/genClass";
-import useLogin from "./useLogin";
 import { motion } from "framer-motion";
 import { formVars, btnVars } from "./variants";
-import useEmail from "../../hooks/useEmail";
-import usePassword from "../../hooks/usePassword";
+import useLogin from "./useLogin";
 import useForm from "../../hooks/useForm";
+import { useUserState } from "../../managers/userManager";
+import { Redirect } from "react-router-dom";
+import checkEmail from "../../helpers/validation/checkEmail";
+import checkPassword from "../../helpers/validation/checkPassword";
 
-export default function Creator() {
+export default function Login() {
   const [formData, formErrors] = useForm();
+  const userState = useUserState();
   const { error, isLoading, handleSubmit } = useLogin(formData, formErrors);
 
   const $ = genClass({
     block: "form",
     mods: { form: ["login"], action: [$t(isLoading, "loading")] }
   });
+
+  if (userState.uid) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <motion.form
@@ -30,7 +37,7 @@ export default function Creator() {
         type="text"
         placeholder="Email"
         formData={formData}
-        validator={useEmail(formErrors)}
+        validator={checkEmail(formErrors)}
         ps={$("line").className}
       />
       <Line
@@ -38,7 +45,7 @@ export default function Creator() {
         type="password"
         placeholder="Password"
         formData={formData}
-        validator={usePassword(formErrors)}
+        validator={checkPassword(formErrors)}
         ps={$("line").className}
       />
       <motion.button
