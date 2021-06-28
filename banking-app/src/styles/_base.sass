@@ -1,0 +1,78 @@
+@use 'sass:math' 
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;700;800&display=swap')
+
+*,
+*::before,
+*::after
+  padding: 0
+  margin: 0
+  box-sizing: inherit
+
+@function strip-unit($value)
+  @return $value / ($value * 0 + 1)
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size)
+  $u1: unit($min-vw)
+  $u2: unit($max-vw)
+  $u3: unit($min-font-size)
+  $u4: unit($max-font-size)
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4
+    &
+      font-size: $min-font-size
+      @media screen and (min-width: $min-vw)
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)}*((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}))
+
+      @media screen and (min-width: $max-vw)
+        font-size: $max-font-size
+
+$min_width: 300px
+$max_width: 1200px
+$min_font: 16px
+$max_font: 24px
+
+html
+  @include fluid-type($min_width, $max_width, $min_font, $max_font)
+  scroll-behavior: smooth
+  position: relative
+  width: 100%
+  height: 100%
+
+body
+  box-sizing: border-box
+  font-family: "Mukta", sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  height: 100%
+  width: 100%
+
+#root
+  height: 100%
+  width: 100%
+
+a
+  text-decoration: none
+  color: inherit
+
+li
+  list-style: none
+
+input[type="text"],
+input[type="password"]
+  background: inherit
+  appearance: none
+  border: none
+  outline: none
+  font-family: inherit
+  font-size: inherit
+
+button
+  appearance: none
+  border: none
+  outline: none
+  font-family: inherit
+  font-size: .8em
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center

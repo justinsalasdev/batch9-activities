@@ -14,7 +14,7 @@ export default function genClass(config) {
     blockString += " " + ps;
   }
 
-  return function (elem) {
+  return function $(elem) {
     const elemString = `${block}__${elem}`;
     let modifiedString = "";
 
