@@ -1,0 +1,51 @@
+.entry
+  position: relative
+  border-bottom: 1px solid $navy
+  overflow: hidden
+  width: 100%
+  background: $navy
+  color: $light
+
+  &__type
+    border-top-left-radius: .2rem
+    border-top-right-radius: .2rem
+    background: $navy
+    position: absolute
+    font-size: .6rem
+    bottom: 0
+    min-width: 5rem
+    padding: .05rem
+    padding-left: .5rem
+
+  &__details
+    width: 100%
+    align-self: stretch
+    color: $dark
+    background: $light
+    display: grid
+    align-items: center
+    justify-items: start
+    grid-template-rows: auto 1fr auto
+
+  &__account
+    font-size: .6rem
+    margin-left: .4rem
+
+  &__date
+    font-size: .6rem
+    justify-self: end
+    margin-right: .4rem
+
+  &__amount
+    width: 100%
+    justify-self: start
+    padding: 0 .5rem
+    font-size: 1.1rem
+    display: flex
+    align-items: baseline
+    justify-content: space-between
+    span:first-of-type
+      margin-right: 1rem
+      font-weight: 700
+    span:last-of-type
+      font-size: .9rem

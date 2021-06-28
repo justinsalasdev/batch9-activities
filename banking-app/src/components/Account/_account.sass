@@ -1,0 +1,64 @@
+.account
+
+  background: $light
+  width: 95%
+  max-width: 35rem
+  display: grid
+  grid-template: auto 1fr auto auto/1fr
+  border-radius: .3rem
+  overflow: hidden
+  // border: 1px solid $navy
+  box-shadow: .2rem .2rem .8rem rgba($dark,0.2)
+
+  &--home
+    margin-top: 1rem
+    align-self: start
+
+  &__bar
+    background: $navy
+    color: $light
+    display: flex
+    justify-content: space-between
+
+    &--skeleton
+
+    & > p
+      padding: .5rem
+      font-weight: 700
+
+  &__balance
+    margin: .7rem
+    padding: .2rem
+    font-size: 2rem
+    font-weight: 700
+    color: $navy
+
+  &__form
+    margin: .7rem
+
+  &__action
+    text-transform: uppercase
+    padding: .2rem .5rem
+    margin: .7rem
+    margin-top: 0
+
+    border-radius: .2rem
+    font-weight: 700
+    justify-self: start
+    background: $orange
+
+  &__withdraw
+    color: $dark
+    background: $orange
+    &--active
+      box-shadow: 0 0 .4rem rgba($orange,0.6)
+  &__deposit
+    color: $light
+    background: $green
+    &--active
+      box-shadow: 0 0 .4rem rgba($green,0.8)
+  &__transfer
+    color: $light
+    background: $navy
+    &--active
+      box-shadow: 0 0 .4rem rgba($navy,0.6)

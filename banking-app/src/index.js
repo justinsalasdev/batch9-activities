@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.scss";
+import "./styles/index.sass";
 import reportWebVitals from "./reportWebVitals";
 import App from "./components/App/App";
+import UserProvider from "./managers/userManager";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

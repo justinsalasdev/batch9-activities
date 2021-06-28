@@ -1,28 +1,30 @@
-import { useState } from "react";
-import genClass from "../../helpers/genClass";
+import genClass from "../../helpers/style/genClass";
 import Icon from "../Icon/Icon";
+import { useEffect, useState } from "react";
 
-//id =
-//type =
-//placeholder =
-//validator = customHook that returns fieldError <String>
+//line migration - ok
 export default function Line({
   id,
   type,
   placeholder,
   validator,
+  formData,
   ps,
-  formData
+  mods
 }) {
   console.log("Line");
-  const [fieldValue, setFieldValue] = useState("");
-  const fieldError = validator(fieldValue);
+  const [fieldValue, setFieldValue] = useState("_initial");
+  const fieldError = validator(fieldValue, id);
   formData[id] = fieldValue;
-  const $ = genClass({ block: "line", ps });
+  const $ = genClass({ block: "line", ps, mods });
 
   function handleChange(e) {
     setFieldValue(e.target.value);
   }
+
+  useEffect(() => {
+    setFieldValue("_initial");
+  }, [placeholder]);
 
   return (
     <div {...$()}>
@@ -33,7 +35,7 @@ export default function Line({
         <input
           spellCheck="off"
           autoComplete="off"
-          value={fieldValue}
+          value={fieldValue === "_initial" ? "" : fieldValue}
           onChange={handleChange}
           type={type}
           id={"line__field--" + id}
@@ -43,7 +45,9 @@ export default function Line({
         />
       </div>
 
-      <span {...$("toolkit")}>{fieldError}</span>
+      <span {...$("toolkit")}>
+        {fieldError === "initial" ? "" : fieldError}
+      </span>
     </div>
   );
 }

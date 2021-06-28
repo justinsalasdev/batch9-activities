@@ -1,4 +1,6 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBMz6dQ-8Ih7TF88x8_uOswKwz_xx9WRNM",
@@ -10,8 +12,8 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+const FieldValue = firebase.firestore.FieldValue;
 const db = firebase.firestore();
+const auth = firebase.auth();
 
-db.useEmulator("localhost", 8080);
-
-export { db };
+export { db, auth, FieldValue };
