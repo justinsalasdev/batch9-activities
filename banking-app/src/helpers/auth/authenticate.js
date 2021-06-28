@@ -1,6 +1,6 @@
 import { auth } from "../../firebase/firebase";
-export default async function authenticate(formData) {
-  return new Promise((resolve, reject) => {
+export default function authenticate(formData) {
+  return new Promise(async (resolve, reject) => {
     try {
       const {
         user: { uid }
@@ -11,10 +11,7 @@ export default async function authenticate(formData) {
       resolve(uid);
     } catch (err) {
       console.log(err);
-      if (err.message) {
-        reject({ custom: error.message });
-      }
-      reject("Error authenticating");
+      reject(err?.message || "Failed to login");
     }
   });
 }

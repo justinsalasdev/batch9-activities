@@ -1,20 +1,15 @@
-import { Switch, Route } from "react-router-dom";
-import Form from "../Form/Form";
-import Home from "../Home/Home";
+import { Switch } from "react-router-dom";
+import Account from "../Account/Account";
 import Guard from "../Guard/Guard";
+import Login from "../Login/Login";
 
 export default function Views() {
   console.log("Views");
 
   return (
     <Switch>
-      <Route path="/channels/new">
-        <RoomCreator mods={{ info: ["creator"], members: ["creator"] }} />
-      </Route>
-      <Route path="/login" component={Form} />
-      <Route path="/" exact>
-        <Home />
-      </Route>
+      <Guard path="/login" component={Login} />
+      <Guard path="/" exact component={Account} />
     </Switch>
   );
 }

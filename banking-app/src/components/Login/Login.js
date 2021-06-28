@@ -9,7 +9,7 @@ import useForm from "../../hooks/useForm";
 
 export default function Creator() {
   const [formData, formErrors] = useForm();
-  const { isLoading, handleSubmit } = useLogin(formData, formErrors);
+  const { error, isLoading, handleSubmit } = useLogin(formData, formErrors);
 
   const $ = genClass({
     block: "form",
@@ -24,6 +24,7 @@ export default function Creator() {
       {...$()}
       onSubmit={handleSubmit}
     >
+      <p {...$("error")}>{error}</p>
       <Line
         id="email"
         type="text"

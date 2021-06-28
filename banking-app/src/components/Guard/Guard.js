@@ -1,17 +1,17 @@
 import { Redirect, Route } from "react-router-dom";
-// import useUserState from "../../hooks/user/useUserState";
+import { useUserState } from "../../managers/userManager";
 
-export default function Guard({
-  children,
-  path: routePath,
-  component: Component,
-  ...rest
-}) {
-  // const userState = useUserState(); //create userContext
+export default function Guard({ component: Component, ...rest }) {
+  const { path } = rest;
+  const userState = useUserState();
   return (
     <Route
       {...rest}
       render={props => {
+        if (userState.uid && path === "/login") {
+          return <Redirect to="/" />;
+        }
+
         if (!userState.uid) {
           return <Redirect to="/login" />;
         }

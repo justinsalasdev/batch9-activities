@@ -1,0 +1,33 @@
+.sender
+  display: grid
+  grid-template: 1fr 1fr /1fr auto
+  display: flex
+  flex-direction: column
+  margin-top: 1rem
+  position: relative
+
+  &__line
+    margin-bottom: .5rem
+
+  &__actions
+    display: flex
+    margin-left: .5rem
+    align-self: flex-end
+
+  &__action
+    background: none
+    padding: .5rem
+    font-size: 1rem
+
+  &__toolkit
+    position: absolute
+    bottom: 0
+    left: 0
+    text-align: center
+    border-radius: .2rem
+    justify-self: start
+    display: inline-block
+    padding: .1rem .5rem
+    font-size: .8em
+    background: $red
+    color: $light

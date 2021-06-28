@@ -1,5 +1,5 @@
 import { db } from "../../firebase/firebase";
-export default async function getAccount(userId) {
+export default function getAccount(userId) {
   return new Promise(async (resolve, reject) => {
     try {
       const accountsSnapshot = await db
@@ -9,7 +9,7 @@ export default async function getAccount(userId) {
 
       const accounts = [];
       accountsSnapshot.forEach(accountDoc =>
-        users.push({ account: accountDoc.id, ...accountDoc.data() })
+        accounts.push({ account: accountDoc.id, ...accountDoc.data() })
       );
       resolve(accounts[0]); // {account as account uid, active, balance, name, owner as uid}
     } catch (err) {

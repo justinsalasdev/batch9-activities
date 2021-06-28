@@ -1,5 +1,5 @@
 import { db } from "../../firebase/firebase";
-export default async function getHistory(account) {
+export default function getHistory(account) {
   return new Promise(async (resolve, reject) => {
     try {
       const history = [];

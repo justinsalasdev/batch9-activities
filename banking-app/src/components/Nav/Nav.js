@@ -1,4 +1,5 @@
 import genClass from "../../helpers/style/genClass";
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   const $ = genClass({
@@ -7,11 +8,14 @@ export default function Nav() {
 
   return (
     <nav {...$()}>
-      <a {...$("home")}>HOME</a>
-
+      <NavLink {...$("home")} to="/" exact>
+        HOME
+      </NavLink>
       <ul {...$("list")}>
         <li {...$("item")}>
-          <a {...$("link")}>LOGIN</a>
+          <NavLink {...$("link")} to="/login">
+            LOGIN
+          </NavLink>
         </li>
       </ul>
     </nav>
