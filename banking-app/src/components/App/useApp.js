@@ -14,6 +14,7 @@ export default function useApp() {
   useEffect(() => {
     var unsubscribe = auth.onAuthStateChanged(async user => {
       if (user) {
+        console.log("listener runs");
         const account = await getAccount(user.uid);
         const history = await getHistory(account.account);
         userDispatch({

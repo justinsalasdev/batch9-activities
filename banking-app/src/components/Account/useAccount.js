@@ -3,6 +3,7 @@ import { db } from "../../firebase/firebase";
 import getAccount from "../../helpers/user/getAccount";
 import getHistory from "../../helpers/user/getHistory";
 import { useUserDispatcher, useUserState } from "../../managers/userManager";
+let subscribed = false;
 
 export default function useAccount() {
   const userState = useUserState();
@@ -11,7 +12,11 @@ export default function useAccount() {
   const userDispatch = useUserDispatcher();
   useEffect(() => {
     const accountRef = db.collection("Accounts").doc(account.account);
-    var unsubscribe = accountRef.onSnapshot(async doc => {
+    if (subscribed) {
+      return;
+    }
+    accountRef.onSnapshot(async doc => {
+      subscribed = true;
       try {
         if (doc) {
           const latestAcc = await getAccount(uid);
@@ -27,10 +32,6 @@ export default function useAccount() {
         console.log(err);
       }
     });
-
-    return function () {
-      unsubscribe();
-    };
 
     // eslint-disable-next-line
   }, []);

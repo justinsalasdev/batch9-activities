@@ -45,6 +45,8 @@ function reducer(state, action) {
       return { ...state, ...action.payload, isLoading: false };
     case "delete":
       return { ...initialState, isLoading: false };
+    case "make active":
+      return { ...state, account: { ...state.account, active: true } };
 
     default:
       console.log("user action does not exist");

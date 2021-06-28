@@ -11,6 +11,10 @@ export default function Guard({ component: Component, ...rest }) {
           return <Redirect to="/login" />;
         }
 
+        if (!userState.account.active) {
+          return <Redirect to="/change-password" />;
+        }
+
         return <Component {...props} />;
       }}
     />
