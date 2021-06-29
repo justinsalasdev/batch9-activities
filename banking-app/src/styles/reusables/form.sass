@@ -14,10 +14,11 @@
     padding-top: 2rem
 
   &--dues
+    padding: 0
+    // width: 10rem
     background: none
-    padding: .5rem
-    width: 100%
-    max-width: 100%
+    display: flex
+    grid-template-columns: 1fr 1fr
 
   &__error
     color: lighten($red, 30%)
@@ -29,6 +30,9 @@
 
   &__line
     margin-bottom: 1rem
+
+    &--spender
+      margin-bottom: .5rem
 
   &__action
     text-align: center
@@ -44,3 +48,9 @@
       width: 2rem
       height: 2rem
       box-shadow: 0 0 .4rem rgba($cyan,0.5)
+
+  &__date
+    outline: none
+    appearance: none
+    font-family: inherit
+    padding: .1rem

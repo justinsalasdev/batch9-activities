@@ -10,10 +10,11 @@ export default function Line({
   validator,
   formData,
   ps,
-  mods
+  mods,
+  defaultValue
 }) {
   console.log("Line");
-  const [fieldValue, setFieldValue] = useState("_initial");
+  const [fieldValue, setFieldValue] = useState(defaultValue || "_initial");
   const fieldError = validator(fieldValue, id);
   formData[id] = fieldValue;
   const $ = genClass({ block: "line", ps, mods });
@@ -22,9 +23,9 @@ export default function Line({
     setFieldValue(e.target.value);
   }
 
-  useEffect(() => {
-    setFieldValue("_initial");
-  }, [placeholder]);
+  // useEffect(() => {
+  //   setFieldValue("_initial");
+  // }, [placeholder]);
 
   return (
     <div {...$()}>

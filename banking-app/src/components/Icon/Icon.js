@@ -1,29 +1,35 @@
-import { MdEmail } from "react-icons/md";
-import { RiLockPasswordFill } from "react-icons/ri";
+import { MdEmail, MdDateRange } from "react-icons/md";
+import { RiLockPasswordFill, RiQuillPenLine } from "react-icons/ri";
 import { HiUserCircle } from "react-icons/hi";
 import { SiFirebase, SiFramer } from "react-icons/si";
-import { BsInfoSquareFill, BsFillPersonPlusFill } from "react-icons/bs";
+import {
+  BsInfoSquareFill,
+  BsFillPersonPlusFill,
+  BsPlusCircle
+} from "react-icons/bs";
 import { IoMdSend, IoLogoBitcoin, IoLogoSass } from "react-icons/io";
 import { ImCancelCircle } from "react-icons/im";
 import { AiOutlineNumber } from "react-icons/ai";
-import { GoDiffAdded } from "react-icons/go";
 import genClass from "../../helpers/style/genClass";
 
 //migration-done
 const icons = {
-  email: <MdEmail />,
-  password: <RiLockPasswordFill />,
-  name: <HiUserCircle />,
   account: <AiOutlineNumber />,
-  balance: <IoLogoBitcoin />,
-  info: <BsInfoSquareFill />,
   add: <BsFillPersonPlusFill />,
-  plus: <GoDiffAdded />,
-  send: <IoMdSend />,
+  amount: <IoLogoBitcoin />, //duplicated userd in Spender
+  balance: <IoLogoBitcoin />,
   cancel: <ImCancelCircle />,
-  sass: <IoLogoSass />,
+  date: <MdDateRange />,
+  description: <RiQuillPenLine />,
+  email: <MdEmail />,
   firebase: <SiFirebase />,
   framer: <SiFramer />,
+  info: <BsInfoSquareFill />,
+  name: <HiUserCircle />,
+  password: <RiLockPasswordFill />,
+  plus: <BsPlusCircle />,
+  sass: <IoLogoSass />,
+  send: <IoMdSend />,
   none: ""
 };
 
