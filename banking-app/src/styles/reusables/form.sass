@@ -13,10 +13,13 @@
   &--login
     padding-top: 2rem
 
-  &--dues
+  &--spender
+    width: 100%
     padding: 0
-    // width: 10rem
-    background: none
+    padding: .7rem
+    border: .2rem solid rgba($light,0.4)
+    background: rgba($cyan,0.1)
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba($dark,0.4)
     display: flex
     grid-template-columns: 1fr 1fr
 
@@ -42,6 +45,12 @@
     color: $light
     font-size: .8rem
     border-radius: .2rem
+
+    &--spender
+      margin-top: .7rem
+      background: inherit
+      border: .15rem solid rgba($light,0.5)
+      box-shadow: .2rem .2rem .4rem rgba($dark,0.2)
 
     &--loading
       min-width: 2rem

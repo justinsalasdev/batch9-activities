@@ -3,8 +3,7 @@ import iterateCheck from "./iterateCheck";
 
 export default function checkDate(formErrors) {
   const dateRgx =
-    /^(0[1-9]|1[012])[\/ /.](0[1-9]|[12][0-9]|3[01])[\/ /.](19|20)\d\d$/;
-  // eslint-disable-next-line
+    /^(0[1-9]|1[012])[/ /.](0[1-9]|[12][0-9]|3[01])[/ /.](19|20)\d\d$/;
   const validators = getValidators("date", [
     ["isRequired"],
     ["isInitial"],

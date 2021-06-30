@@ -3,7 +3,7 @@ import genClass from "../../helpers/style/genClass";
 import Icon from "../Icon/Icon";
 import Spender from "../Spender/Spender";
 import { motion } from "framer-motion";
-import { addVars } from "./variants";
+import { addVars, spenderVars } from "./variants";
 
 const dues = [
   {
@@ -40,9 +40,15 @@ export default function Dues() {
           <Icon type="plus" ps={$("icon").className} />
         </motion.button>
         <span {...$("title")}>DUES</span>
-        <div {...$("spender")}>
-          {isStarted && <Spender mods={{ form: ["dues"] }} />}
-        </div>
+        <motion.div
+          {...$("spender")}
+          variants={spenderVars}
+          animate={isStarted ? "shown" : "hidden"}
+        >
+          {isStarted && (
+            <Spender mods={{ form: ["spender"], action: ["spender"] }} />
+          )}
+        </motion.div>
       </div>
       <div {...$("view")}>
         <table {...$("table")}>
