@@ -10,11 +10,12 @@ const variants = {
   }
 };
 
-export default function Loader() {
-  const $ = genClass({ block: "loader" });
+export default function Loader({ mods, text }) {
+  const $ = genClass({ block: "loader", mods });
   return (
     <div {...$()}>
       <motion.div variants={variants} animate="loop" {...$("box")}></motion.div>
+      <span {...$("text")}>{text}</span>
     </div>
   );
 }

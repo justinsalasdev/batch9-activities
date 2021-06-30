@@ -14,6 +14,7 @@ export default function useSpender() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (isClean(formErrors)) {
+      console.log(formData);
       try {
         dispatch({ type: "start" });
         await addBudget(formData, userState.account.account);
@@ -23,6 +24,7 @@ export default function useSpender() {
         dispatch({ type: "error", payload: err?.custom || err });
       }
     } else {
+      console.log(formErrors);
       return;
     }
   }

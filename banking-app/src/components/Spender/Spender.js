@@ -1,6 +1,7 @@
 import genClass from "../../helpers/style/genClass";
 import genMod from "../../helpers/style/genMod";
 import Line from "../Line/Line";
+import Loader from "../Loader/Loader";
 import checkCurrency from "../../helpers/validation/checkCurrency";
 import checkDesc from "../../helpers/validation/checkDesc";
 import checkDate from "../../helpers/validation/checkDate";
@@ -20,6 +21,10 @@ export default function Spender({ mods, ps }) {
     ps
   });
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <motion.form
       {...$()}
@@ -28,7 +33,6 @@ export default function Spender({ mods, ps }) {
       animate="shown"
       onSubmit={handleSubmit}
     >
-      {" "}
       <Line
         id="description"
         type="text"
@@ -59,7 +63,7 @@ export default function Spender({ mods, ps }) {
       />
       <Radio formData={formData} formErrors={formErrors} />
       <button {...$("action")} type="submit">
-        {isLoading ? " * * *" : "SUBMIT"}
+        SUBMIT
       </button>
     </motion.form>
   );

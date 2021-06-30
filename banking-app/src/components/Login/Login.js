@@ -2,6 +2,7 @@ import Line from "../Line/Line";
 import genClass, { toggler as $t } from "../../helpers/style/genClass";
 import { motion } from "framer-motion";
 import { formVars, btnVars } from "./variants";
+import Loader from "../Loader/Loader";
 import useLogin from "./useLogin";
 import useForm from "../../hooks/useForm";
 import { useUserState } from "../../managers/userManager";
@@ -21,6 +22,10 @@ export default function Login() {
 
   if (userState.uid) {
     return <Redirect to="/" />;
+  }
+
+  if (isLoading) {
+    return <Loader text={"loggin in.."} />;
   }
 
   return (
@@ -48,14 +53,9 @@ export default function Login() {
         validator={checkPassword(formErrors)}
         ps={$("line").className}
       />
-      <motion.button
-        variants={btnVars}
-        animate={isLoading ? "submit" : ""}
-        {...$("action")}
-        type="submit"
-      >
-        {isLoading ? "" : "Login"}
-      </motion.button>
+      <button {...$("action")} type="submit">
+        Login
+      </button>
     </motion.form>
   );
 }
