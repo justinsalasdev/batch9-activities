@@ -2,6 +2,7 @@ import genClass from "../../helpers/style/genClass";
 import useForm from "../../hooks/useForm";
 import Icon from "../Icon/Icon";
 import Line from "../Line/Line";
+import Loader from "../Loader/Loader";
 import { motion } from "framer-motion";
 import { buttonVars, submitVars, variants } from "../Sender/variants";
 import useTransfer from "./useTransfer";
@@ -20,6 +21,15 @@ export default function Sender({ ps, cancel, placeholder, account, balance }) {
     block: "sender",
     ps
   });
+
+  if (isLoading) {
+    return (
+      <Loader
+        text="transferring.."
+        mods={{ text: ["sender"], box: ["sender"], loader: ["sender"] }}
+      />
+    );
+  }
   return (
     <motion.form {...$()} onSubmit={handleSubmit} variants={variants}>
       <Line
@@ -41,14 +51,9 @@ export default function Sender({ ps, cancel, placeholder, account, balance }) {
         mods={{ div: ["transactor"] }}
       />
       <motion.div {...$("actions")} variants={buttonVars}>
-        <motion.button
-          variants={submitVars}
-          animate={isLoading ? "submit" : ""}
-          type="submit"
-          {...$("action")}
-        >
+        <button type="submit" {...$("action")}>
           <Icon type="send" />
-        </motion.button>
+        </button>
         <button type="button" {...$("action")} onClick={cancel}>
           <Icon type="cancel" />
         </button>

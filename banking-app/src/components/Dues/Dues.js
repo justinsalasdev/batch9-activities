@@ -2,6 +2,8 @@ import { useState } from "react";
 import genClass from "../../helpers/style/genClass";
 import Icon from "../Icon/Icon";
 import Spender from "../Spender/Spender";
+import { motion } from "framer-motion";
+import { addVars, spenderVars } from "./variants";
 
 const dues = [
   {
@@ -28,13 +30,25 @@ export default function Dues() {
   return (
     <div {...$()}>
       <div {...$("bar")}>
-        <button {...$("add")} onClick={handleClick}>
+        <motion.button
+          {...$("add")}
+          onClick={handleClick}
+          variants={addVars}
+          initial="inactive"
+          animate={isStarted ? "active" : "inactive"}
+        >
           <Icon type="plus" ps={$("icon").className} />
-        </button>
+        </motion.button>
         <span {...$("title")}>DUES</span>
-        {isStarted && (
-          <Spender ps={$("spender").className} mods={{ form: ["dues"] }} />
-        )}
+        <motion.div
+          {...$("spender")}
+          variants={spenderVars}
+          animate={isStarted ? "shown" : "hidden"}
+        >
+          {isStarted && (
+            <Spender mods={{ form: ["spender"], action: ["spender"] }} />
+          )}
+        </motion.div>
       </div>
       <div {...$("view")}>
         <table {...$("table")}>
