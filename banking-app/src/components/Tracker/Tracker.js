@@ -1,6 +1,6 @@
 import { Switch, Route, useRouteMatch, NavLink } from "react-router-dom";
 import genClass from "../../helpers/style/genClass";
-import Summary from "../Summary.js/Summary";
+import Summary from "../Summary/Summary";
 import Salary from "../Salary/Salary";
 import Dues from "../Dues/Dues";
 
