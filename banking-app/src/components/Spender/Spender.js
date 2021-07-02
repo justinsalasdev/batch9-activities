@@ -59,7 +59,7 @@ export default function Spender({ mods, ps }) {
         validator={checkDate(formErrors)}
         ps={$("line").className}
         mods={{ ...lineMods, field: ["spender", "date"] }}
-        defaultValue={formatDate(new Date())}
+        initialValue={formatDate(new Date())}
       />
       <Radio formData={formData} formErrors={formErrors} />
       <button {...$("action")} type="submit">
