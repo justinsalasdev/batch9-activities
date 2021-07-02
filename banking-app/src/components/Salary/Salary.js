@@ -20,7 +20,13 @@ export default function Salary() {
 
   const $ = genClass({ block: "budget" });
   return (
-    <motion.div {...$()} variants={blockVars} animate="shown" initial="hidden">
+    <motion.div
+      {...$()}
+      variants={blockVars}
+      animate="shown"
+      initial="hidden"
+      exit="hidden"
+    >
       <div {...$("bar")}>
         <motion.button
           {...$("add")}

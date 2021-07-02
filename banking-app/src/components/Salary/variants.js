@@ -8,8 +8,8 @@ export const addVars = {
 };
 
 export const blockVars = {
-  hidden: { y: -30 },
-  shown: { y: 0, transition: { when: "afterChildren" } }
+  hidden: { y: 5 },
+  shown: { y: 0 }
 };
 
 export const spenderVars = {
