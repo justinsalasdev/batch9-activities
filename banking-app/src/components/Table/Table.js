@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 import { motion } from "framer-motion";
 import { deleteVars, tableVars } from "./variants";
 
-export default function Table({ dues, handleDelete, isDeleting }) {
+export default function Table({ heads, data, handleDelete, isDeleting }) {
   const $ = genClass({ block: "table" });
 
   return (
@@ -16,24 +16,25 @@ export default function Table({ dues, handleDelete, isDeleting }) {
     >
       <thead>
         <tr {...$("head")}>
-          <th {...$("title")}>Name</th>
-          <th {...$("title")}>Cost</th>
-          <th {...$("title")}>Due</th>
-          <th {...$("title")}>Reps</th>
+          {heads.map(head => (
+            <th {...$("title")} key={head}>
+              {head}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {dues.map(due => {
+        {data.map(item => {
           return (
-            <tr {...$("row")} key={due.id}>
-              <td {...$("data")}>{due.description}</td>
-              <td {...$("data")}>{due.amount}</td>
-              <td {...$("data")}>{getDeadline(due.date, due.frequency)}</td>
-              <td {...$("data")}>{due.frequency}</td>
+            <tr {...$("row")} key={item.id}>
+              <td {...$("data")}>{item.description}</td>
+              <td {...$("data")}>{item.amount}</td>
+              <td {...$("data")}>{getDeadline(item.date, item.frequency)}</td>
+              <td {...$("data")}>{item.frequency}</td>
               <motion.td
                 {...$("delete")}
                 variants={deleteVars}
-                onClick={handleDelete(due.id)}
+                onClick={handleDelete(item.id)}
                 animate={isDeleting ? "active" : "inactive"}
               >
                 <Icon type="delete" />

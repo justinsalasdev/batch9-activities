@@ -6,6 +6,7 @@ import Guard from "../Guard/Guard";
 import History from "../History/History";
 import Login from "../Login/Login";
 import Test from "./Test";
+import Salary from "../Salary/Salary";
 
 export default function Views() {
   return (
@@ -15,6 +16,7 @@ export default function Views() {
       <Route path="/change-password" component={Changer} />
       <Route path="/test" component={Test} />
       <Guard path="/budget" component={Dues} />
+      <Guard path="/salary" component={Salary} />
       <Guard path="/" exact component={Account} />
     </Switch>
   );

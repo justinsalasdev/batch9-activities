@@ -9,15 +9,15 @@ import formatDate from "../../helpers/formatDate";
 import Radio from "../Radio/Radio";
 import { motion } from "framer-motion";
 import { formVars } from "./variants";
-import useSaver from "../Saver/useSaver";
+import useSaver from "./useSaver";
 
-export default function Spender({ mods, ps }) {
-  const { formData, formErrors, handleSubmit, isLoading } = useSaver("Dues");
+export default function Saver({ category, mods, ps }) {
+  const { formData, formErrors, handleSubmit, isLoading } = useSaver(category);
 
-  const lineMods = genMod("spender", ["field", "toolkit", "icon", "div"]);
+  const lineMods = genMod("saver", ["field", "toolkit", "icon", "div"]);
   const $ = genClass({
     block: "form",
-    mods: { ...mods, line: ["spender"] },
+    mods: { ...mods, line: ["saver"] },
     ps
   });
 

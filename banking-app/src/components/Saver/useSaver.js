@@ -3,7 +3,7 @@ import isClean from "../../helpers/validation/isClean";
 import { useReducer } from "react";
 import { useUserState } from "../../managers/userManager";
 import addBudget from "../../helpers/account/addBudget";
-export default function useSpender() {
+export default function useSaver(category) {
   const userState = useUserState();
   const [formData, formErrors] = useForm();
   const [state, dispatch] = useReducer(reducer, {
@@ -17,7 +17,7 @@ export default function useSpender() {
       console.log(formData);
       try {
         dispatch({ type: "start" });
-        await addBudget(formData, userState.account.account, "Dues");
+        await addBudget(formData, userState.account.account, category);
         dispatch({ type: "done" });
       } catch (err) {
         console.log(err);
