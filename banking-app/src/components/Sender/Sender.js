@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 import Line from "../Line/Line";
 import Loader from "../Loader/Loader";
 import { motion } from "framer-motion";
-import { buttonVars, submitVars, variants } from "../Sender/variants";
+import { buttonVars, variants } from "../Sender/variants";
 import useTransfer from "./useTransfer";
 import checkAccount from "../../helpers/validation/checkAccount";
 import checkCurrency from "../../helpers/validation/checkCurrency";

@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 import { IoMdSend, IoLogoBitcoin, IoLogoSass } from "react-icons/io";
 import { ImCancelCircle } from "react-icons/im";
-import { AiOutlineNumber } from "react-icons/ai";
+import { AiOutlineNumber, AiOutlineDelete } from "react-icons/ai";
 import genClass from "../../helpers/style/genClass";
 
 //migration-done
@@ -20,6 +20,7 @@ const icons = {
   balance: <IoLogoBitcoin />,
   cancel: <ImCancelCircle />,
   date: <MdDateRange />,
+  delete: <AiOutlineDelete />,
   description: <RiQuillPenLine />,
   email: <MdEmail />,
   firebase: <SiFirebase />,

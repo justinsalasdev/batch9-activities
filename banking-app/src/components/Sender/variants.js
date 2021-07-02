@@ -20,15 +20,3 @@ export const buttonVars = {
     x: 0
   }
 };
-
-export const submitVars = {
-  submit: {
-    scale: [1, 1.2, 1],
-    rotateX: [0, 180, 360],
-    transition: {
-      repeat: Infinity,
-      duration: 1.2,
-      ease: "easeInOut"
-    }
-  }
-};

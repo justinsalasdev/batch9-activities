@@ -11,10 +11,10 @@ export default function Line({
   formData,
   ps,
   mods,
-  defaultValue
+  initialValue
 }) {
   console.log("Line");
-  const [fieldValue, setFieldValue] = useState(defaultValue || "_initial");
+  const [fieldValue, setFieldValue] = useState(initialValue || "_initial");
   const fieldError = validator(fieldValue, id);
   formData[id] = fieldValue;
   const $ = genClass({ block: "line", ps, mods });

@@ -1,0 +1,53 @@
+.table
+  width: 100%
+  background: $light
+  border-collapse: collapse
+  background: transparent
+
+  &__head,
+  &__row
+    display: flex
+    justify-content: space-between
+    position: relative
+
+  &__row
+    &:hover
+      background: rgba($light,0.2)
+
+    &:hover > .table__delete
+      display: flex
+
+  &__title,
+  &__data
+    border-bottom: 1px solid rgba($light,0.3)
+    border-left: 1px solid rgba($light,0.3)
+    // min-width: 10rem
+    width: 100%
+    padding: .3rem
+    text-align: left
+    color: rgba($light,0.7)
+
+  &__title
+    color: $light
+    font-weight: 800
+    text-transform: uppercase
+    background: rgba($light,0.05)
+    padding: .5rem
+    padding-bottom: .25rem
+
+  &__delete
+    display: none
+    cursor: pointer
+    font-size: .7rem
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: .4rem
+    color: $navy
+    background: rgba($light,0.6)
+    padding: .2rem
+    border-radius: 50%
+    box-shadow: .1rem .1rem .4rem rgba($navy,0.4)
+
+    &:hover
+      background: rgba($light,0.9)
