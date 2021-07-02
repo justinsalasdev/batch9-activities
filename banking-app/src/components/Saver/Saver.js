@@ -11,13 +11,13 @@ import { motion } from "framer-motion";
 import { formVars } from "./variants";
 import useLogger from "../../hooks/useLogger";
 
-export default function Spender({ mods, ps }) {
-  const { formData, formErrors, handleSubmit, isLoading } = useLogger("Dues");
+export default function Saver({ mods, ps }) {
+  const { formData, formErrors, handleSubmit, isLoading } = useLogger("Income");
 
-  const lineMods = genMod("spender", ["field", "toolkit", "icon", "div"]);
+  const lineMods = genMod("saver", ["field", "toolkit", "icon", "div"]);
   const $ = genClass({
     block: "form",
-    mods: { ...mods, line: ["spender"] },
+    mods: { ...mods, line: ["saver"] },
     ps
   });
 

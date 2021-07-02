@@ -1,9 +1,10 @@
 import { useEffect, useReducer, useState } from "react";
-import { db } from "../../firebase/firebase";
-import deleteBudget from "../../helpers/account/deleteBudget";
-import { useUserState } from "../../managers/userManager";
+import { db } from "../firebase/firebase";
+import deleteBudget from "../helpers/account/deleteBudget";
+import { useUserState } from "../managers/userManager";
 
-export default function useDues() {
+//type
+export default function useBudget(category) {
   const [isStarted, setStarted] = useState(false);
   const [isDeleting, setDeleting] = useState(false);
   const { account } = useUserState();
@@ -16,18 +17,16 @@ export default function useDues() {
   useEffect(() => {
     const accountDocRef = db.collection("Accounts").doc(account.account);
     const budgetColRef = accountDocRef
-      .collection("Budget")
+      .collection(category)
       .orderBy("date", "desc");
 
     dispatch({ type: "start" });
 
-    budgetColRef.onSnapshot(
+    var unsubscribe = budgetColRef.onSnapshot(
       budgetSnapshot => {
         const budget = [];
         budgetSnapshot.forEach(budgetDoc => {
-          if (budgetDoc.id !== "watchedDoc") {
-            budget.push({ id: budgetDoc.id, ...budgetDoc.data() });
-          }
+          budget.push({ id: budgetDoc.id, ...budgetDoc.data() });
         });
         dispatch({ type: "done", payload: budget });
       },
@@ -36,12 +35,18 @@ export default function useDues() {
         dispatch({ type: "error", payload: "failed to get budget" });
       }
     );
+
+    return function () {
+      unsubscribe();
+    };
+
+    // eslint-disable-next-line
   }, []);
 
   function handleDelete(id) {
     return async function () {
       setDeleting(true);
-      await deleteBudget(account.account, id);
+      await deleteBudget(account.account, id, category);
       setDeleting(false);
     };
   }
@@ -65,5 +70,9 @@ function reducer(state, action) {
       return { ...state, isLoading: false, budget: action.payload };
     case "error":
       return { ...state, isLoading: false, error: action.payload };
+
+    default:
+      console.log("unknown budget action");
+      return state;
   }
 }

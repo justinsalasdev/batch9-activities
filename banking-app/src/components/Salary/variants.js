@@ -1,8 +1,3 @@
-export const blockVars = {
-  hidden: { y: -30 },
-  shown: { y: 0, transition: { when: "afterChildren" } }
-};
-
 export const addVars = {
   inactive: {
     rotate: 0
@@ -10,6 +5,11 @@ export const addVars = {
   active: {
     rotate: 135
   }
+};
+
+export const blockVars = {
+  hidden: { y: -30 },
+  shown: { y: 0, transition: { when: "afterChildren" } }
 };
 
 export const spenderVars = {
@@ -22,6 +22,7 @@ export const spenderVars = {
     }
   },
   shown: {
+    opacity: 1,
     height: "22rem",
     transition: {
       // type: "tween",

@@ -3,3 +3,29 @@
 enable routing from
 login
 dashboard
+
+exclusive of today
+fixed date --> end of month or 15th
+show total due expense up to that date
+show incoming income
+
+
+starting balance after fixed date
+
+
+for daily dues
+fixed date of 15
+  add all expenses from start of current month to 15 
+fixed date of end of month
+  add all expenses from 16th to end of month
+
+
+
+Your status 
+@ 7/15/2021
+
+[12301931]
+
+you might be overspending
+
+'Your wallet is looking good!'

@@ -1,9 +1,9 @@
-import useForm from "../../hooks/useForm";
-import isClean from "../../helpers/validation/isClean";
+import useForm from "./useForm";
+import isClean from "../helpers/validation/isClean";
 import { useReducer } from "react";
-import { useUserState } from "../../managers/userManager";
-import addBudget from "../../helpers/account/addBudget";
-export default function useSpender() {
+import { useUserState } from "../managers/userManager";
+import addBudget from "../helpers/account/addBudget";
+export default function useLogger(category) {
   const userState = useUserState();
   const [formData, formErrors] = useForm();
   const [state, dispatch] = useReducer(reducer, {
@@ -14,10 +14,9 @@ export default function useSpender() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (isClean(formErrors)) {
-      console.log(formData);
       try {
         dispatch({ type: "start" });
-        await addBudget(formData, userState.account.account);
+        await addBudget(formData, userState.account.account, category);
         dispatch({ type: "done" });
       } catch (err) {
         console.log(err);
@@ -45,5 +44,9 @@ function reducer(state, action) {
     case "error": {
       return { ...state, isLoading: false, error: action.payload };
     }
+
+    default:
+      console.log("unknown logger action");
+      return state;
   }
 }
