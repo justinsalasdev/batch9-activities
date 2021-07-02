@@ -14,7 +14,6 @@ export default function useLogger(category) {
   async function handleSubmit(e) {
     e.preventDefault();
     if (isClean(formErrors)) {
-      console.log(formData);
       try {
         dispatch({ type: "start" });
         await addBudget(formData, userState.account.account, category);
@@ -45,5 +44,9 @@ function reducer(state, action) {
     case "error": {
       return { ...state, isLoading: false, error: action.payload };
     }
+
+    default:
+      console.log("unknown logger action");
+      return state;
   }
 }

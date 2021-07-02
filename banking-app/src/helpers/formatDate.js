@@ -1,4 +1,5 @@
 export default function formatDate(date) {
   const [year, month, day] = date.toISOString().split("T")[0].split("-");
-  return `${month}/${day}/${year}`;
+  const numDay = Number(day) + 1;
+  return `${month}/${numDay < 10 ? `0${numDay}` : numDay}/${year}`;
 }

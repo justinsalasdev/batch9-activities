@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Switch, Route, useRouteMatch, NavLink } from "react-router-dom";
 import genClass from "../../helpers/style/genClass";
 import Summary from "../Summary/Summary";
+import Salary from "../Salary/Salary";
+import Dues from "../Dues/Dues";
 
 //gets latest balance from userState
 //gets income via ref
@@ -27,13 +29,13 @@ export default function Tracker() {
 
       <Switch>
         <Route path={`${match.path}/income`}>
-          <h3>INCOME</h3>
+          <Salary />
         </Route>
         <Route path={`${match.path}/summary`}>
           <Summary />
         </Route>
         <Route path={`${match.path}`}>
-          <h3>DUES</h3>
+          <Dues />
         </Route>
       </Switch>
     </div>

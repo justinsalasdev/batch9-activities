@@ -1,8 +1,7 @@
 import formatDate from "./formatDate";
 
 export default function getDeadline(dateString, rep) {
-  const [m, d, y] = dateString.split("/");
-  const date = new Date(`${m}/${Number(d) + 1}/${y}`);
+  const date = new Date(dateString);
 
   switch (rep) {
     case "daily": {

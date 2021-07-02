@@ -39,6 +39,8 @@ export default function useBudget(category) {
     return function () {
       unsubscribe();
     };
+
+    // eslint-disable-next-line
   }, []);
 
   function handleDelete(id) {
@@ -68,5 +70,9 @@ function reducer(state, action) {
       return { ...state, isLoading: false, budget: action.payload };
     case "error":
       return { ...state, isLoading: false, error: action.payload };
+
+    default:
+      console.log("unknown budget action");
+      return state;
   }
 }

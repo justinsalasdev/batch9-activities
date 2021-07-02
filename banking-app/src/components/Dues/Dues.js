@@ -2,7 +2,7 @@ import genClass from "../../helpers/style/genClass";
 import Icon from "../Icon/Icon";
 import Spender from "../Spender/Spender";
 import { motion } from "framer-motion";
-import { addVars, spenderVars } from "./variants";
+import { addVars, blockVars, spenderVars } from "./variants";
 // import useDues from "./useDues";
 import Loader from "../Loader/Loader";
 import Table from "../Table/Table";
@@ -27,7 +27,7 @@ export default function Dues() {
 
   const $ = genClass({ block: "budget" });
   return (
-    <div {...$()}>
+    <motion.div {...$()} variants={blockVars} animate="shown" initial="hidden">
       <div {...$("bar")}>
         <motion.button
           {...$("add")}
@@ -63,6 +63,6 @@ export default function Dues() {
           )}
         </>
       </div>
-    </div>
+    </motion.div>
   );
 }

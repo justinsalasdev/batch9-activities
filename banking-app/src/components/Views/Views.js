@@ -1,11 +1,9 @@
 import { Switch, Route } from "react-router-dom";
 import Account from "../Account/Account";
-import Dues from "../Dues/Dues";
 import Changer from "../Changer/Changer";
 import Guard from "../Guard/Guard";
 import History from "../History/History";
 import Login from "../Login/Login";
-import Salary from "../Salary/Salary";
 import Tracker from "../Tracker/Tracker";
 
 export default function Views() {
@@ -14,9 +12,7 @@ export default function Views() {
       <Route path="/login" component={Login} />
       <Guard path="/history" component={History} />
       <Route path="/change-password" component={Changer} />
-      <Guard path="/budget" component={Dues} />
-      <Guard path="/salary" component={Salary} />
-      <Guard path="/tracker" component={Tracker} />
+      <Guard path="/budget" component={Tracker} />
       <Guard path="/" exact component={Account} />
     </Switch>
   );

@@ -7,6 +7,11 @@ export const addVars = {
   }
 };
 
+export const blockVars = {
+  hidden: { y: -30 },
+  shown: { y: 0, transition: { when: "afterChildren" } }
+};
+
 export const spenderVars = {
   hidden: {
     opacity: 0,

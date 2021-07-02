@@ -11,8 +11,8 @@ import { motion } from "framer-motion";
 import { formVars } from "./variants";
 import useLogger from "../../hooks/useLogger";
 
-export default function Saver({ category, mods, ps }) {
-  const { formData, formErrors, handleSubmit, isLoading } = useLogger(category);
+export default function Saver({ mods, ps }) {
+  const { formData, formErrors, handleSubmit, isLoading } = useLogger("Income");
 
   const lineMods = genMod("saver", ["field", "toolkit", "icon", "div"]);
   const $ = genClass({

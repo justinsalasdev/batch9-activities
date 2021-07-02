@@ -2,7 +2,7 @@ import genClass from "../../helpers/style/genClass";
 import Icon from "../Icon/Icon";
 import Saver from "../Saver/Saver";
 import { motion } from "framer-motion";
-import { addVars, spenderVars } from "./variants";
+import { addVars, blockVars, spenderVars } from "./variants";
 import useBudget from "../../hooks/useBudget";
 import Loader from "../Loader/Loader";
 import Table from "../Table/Table";
@@ -20,7 +20,7 @@ export default function Salary() {
 
   const $ = genClass({ block: "budget" });
   return (
-    <div {...$()}>
+    <motion.div {...$()} variants={blockVars} animate="shown" initial="hidden">
       <div {...$("bar")}>
         <motion.button
           {...$("add")}
@@ -54,6 +54,6 @@ export default function Salary() {
           )}
         </>
       </div>
-    </div>
+    </motion.div>
   );
 }
