@@ -3,7 +3,7 @@ import Icon from "../Icon/Icon";
 import Saver from "../Saver/Saver";
 import { motion } from "framer-motion";
 import { addVars, spenderVars } from "./variants";
-import useBudget from "./useBudget";
+import useBudget from "../../hooks/useBudget";
 import Loader from "../Loader/Loader";
 import Table from "../Table/Table";
 

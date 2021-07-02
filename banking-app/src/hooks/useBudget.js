@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
-import { db } from "../../firebase/firebase";
-import deleteBudget from "../../helpers/account/deleteBudget";
-import { useUserState } from "../../managers/userManager";
+import { db } from "../firebase/firebase";
+import deleteBudget from "../helpers/account/deleteBudget";
+import { useUserState } from "../managers/userManager";
 
 //type
 export default function useBudget(category) {

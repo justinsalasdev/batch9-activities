@@ -9,10 +9,10 @@ import formatDate from "../../helpers/formatDate";
 import Radio from "../Radio/Radio";
 import { motion } from "framer-motion";
 import { formVars } from "./variants";
-import useSaver from "../Saver/useSaver";
+import useLogger from "../../hooks/useLogger";
 
 export default function Spender({ mods, ps }) {
-  const { formData, formErrors, handleSubmit, isLoading } = useSaver("Dues");
+  const { formData, formErrors, handleSubmit, isLoading } = useLogger("Dues");
 
   const lineMods = genMod("spender", ["field", "toolkit", "icon", "div"]);
   const $ = genClass({

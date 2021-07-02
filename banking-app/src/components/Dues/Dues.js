@@ -6,7 +6,7 @@ import { addVars, spenderVars } from "./variants";
 // import useDues from "./useDues";
 import Loader from "../Loader/Loader";
 import Table from "../Table/Table";
-import useBudget from "../Salary/useBudget";
+import useBudget from "../../hooks/useBudget";
 
 //Dues props
 /*
