@@ -8,8 +8,15 @@ import Loader from "../Loader/Loader";
 import Table from "../Table/Table";
 
 export default function Dues() {
-  const { isStarted, toggleForm, isLoading, error, budget } = useDues();
-  console.log(budget, isLoading);
+  const {
+    isStarted,
+    toggleForm,
+    isLoading,
+    error,
+    budget,
+    handleDelete,
+    isDeleting
+  } = useDues();
 
   const $ = genClass({ block: "dues" });
   return (
@@ -37,7 +44,16 @@ export default function Dues() {
       </div>
 
       <div {...$("view")}>
-        {(isLoading && <Loader />) || <Table dues={budget} />}
+        <>
+          {error && <span>{error}</span>}
+          {(isLoading && <Loader />) || (
+            <Table
+              dues={budget}
+              handleDelete={handleDelete}
+              isDeleting={isDeleting}
+            />
+          )}
+        </>
       </div>
     </div>
   );

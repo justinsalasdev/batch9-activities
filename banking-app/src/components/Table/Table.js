@@ -1,13 +1,21 @@
 import getDeadline from "../../helpers/getDeadline";
 import genClass from "../../helpers/style/genClass";
+import Icon from "../Icon/Icon";
+import { motion } from "framer-motion";
+import { deleteVars, tableVars } from "./variants";
 
 export default function Table({ dues, handleDelete, isDeleting }) {
   const $ = genClass({ block: "table" });
 
   return (
-    <table {...$()}>
+    <motion.table
+      {...$()}
+      variants={tableVars}
+      animate="shown"
+      initial="hidden"
+    >
       <thead>
-        <tr {...$("row")}>
+        <tr {...$("head")}>
           <th {...$("title")}>Name</th>
           <th {...$("title")}>Cost</th>
           <th {...$("title")}>Due</th>
@@ -22,11 +30,18 @@ export default function Table({ dues, handleDelete, isDeleting }) {
               <td {...$("data")}>{due.amount}</td>
               <td {...$("data")}>{getDeadline(due.date, due.frequency)}</td>
               <td {...$("data")}>{due.frequency}</td>
-              {/* <button onClick={handleDelete(due.id)}></button> */}
+              <motion.td
+                {...$("delete")}
+                variants={deleteVars}
+                onClick={handleDelete(due.id)}
+                animate={isDeleting ? "active" : "inactive"}
+              >
+                <Icon type="delete" />
+              </motion.td>
             </tr>
           );
         })}
       </tbody>
-    </table>
+    </motion.table>
   );
 }

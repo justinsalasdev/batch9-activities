@@ -1,9 +1,11 @@
 import { useEffect, useReducer, useState } from "react";
-import getBudget from "../../helpers/account/getBudget";
+import { db } from "../../firebase/firebase";
+import deleteBudget from "../../helpers/account/deleteBudget";
 import { useUserState } from "../../managers/userManager";
 
 export default function useDues() {
   const [isStarted, setStarted] = useState(false);
+  const [isDeleting, setDeleting] = useState(false);
   const { account } = useUserState();
   const [state, dispatch] = useReducer(reducer, {
     isLoading: false,
@@ -12,25 +14,46 @@ export default function useDues() {
   });
 
   useEffect(() => {
-    (async () => {
-      try {
-        dispatch({ type: "start" });
-        const budget = await getBudget(account.account);
+    const accountDocRef = db.collection("Accounts").doc(account.account);
+    const budgetColRef = accountDocRef
+      .collection("Budget")
+      .orderBy("date", "desc");
+
+    dispatch({ type: "start" });
+
+    budgetColRef.onSnapshot(
+      budgetSnapshot => {
+        const budget = [];
+        budgetSnapshot.forEach(budgetDoc => {
+          if (budgetDoc.id !== "watchedDoc") {
+            budget.push({ id: budgetDoc.id, ...budgetDoc.data() });
+          }
+        });
         dispatch({ type: "done", payload: budget });
-      } catch (err) {
+      },
+      err => {
         console.log(err);
-        dispatch({ type: "error", payload: err?.custom || err });
+        dispatch({ type: "error", payload: "failed to get budget" });
       }
-    })();
-    // eslint-disable-next-line
+    );
   }, []);
+
+  function handleDelete(id) {
+    return async function () {
+      setDeleting(true);
+      await deleteBudget(account.account, id);
+      setDeleting(false);
+    };
+  }
 
   return {
     isLoading: state.isLoading,
     budget: state.budget,
     error: state.error,
     isStarted,
-    toggleForm: () => setStarted(state => !state)
+    toggleForm: () => setStarted(state => !state),
+    handleDelete,
+    isDeleting
   };
 }
 

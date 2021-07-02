@@ -1,7 +1,7 @@
 import Line from "../Line/Line";
 import genClass, { toggler as $t } from "../../helpers/style/genClass";
 import { motion } from "framer-motion";
-import { formVars, btnVars } from "./variants";
+import { formVars } from "./variants";
 import Loader from "../Loader/Loader";
 import useLogin from "./useLogin";
 import useForm from "../../hooks/useForm";
@@ -25,7 +25,7 @@ export default function Login() {
   }
 
   if (isLoading) {
-    return <Loader text={"loggin in.."} />;
+    return <Loader text={"authenticating.."} />;
   }
 
   return (

@@ -4,9 +4,18 @@
   border-collapse: collapse
   background: transparent
 
+  &__head,
   &__row
     display: flex
     justify-content: space-between
+    position: relative
+
+  &__row
+    &:hover
+      background: rgba($light,0.2)
+
+    &:hover > .table__delete
+      display: flex
 
   &__title,
   &__data
@@ -25,3 +34,20 @@
     background: rgba($light,0.05)
     padding: .5rem
     padding-bottom: .25rem
+
+  &__delete
+    display: none
+    cursor: pointer
+    font-size: .7rem
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: .4rem
+    color: $navy
+    background: rgba($light,0.6)
+    padding: .2rem
+    border-radius: 50%
+    box-shadow: .1rem .1rem .4rem rgba($navy,0.4)
+
+    &:hover
+      background: rgba($light,0.9)
